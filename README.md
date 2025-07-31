@@ -1,4 +1,5 @@
 # AFORTU
+<<<<<<< HEAD
 
 This is a Next.js application for a small business ERP, built in Firebase Studio.
 
@@ -16,3 +17,6 @@ npm run dev
 ```
 
 The application will be available at `http://localhost:9002`.
+=======
+Software
+>>>>>>> efe608d264b7f238e3ec28f30f1a3b90b1b1fccf
