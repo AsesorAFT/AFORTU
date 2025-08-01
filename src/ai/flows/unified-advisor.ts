@@ -6,10 +6,10 @@
  */
 
 import { ai } from '@/ai/genkit';
-import { z } from 'genkit';
-import { ChatMessageSchema } from '../schemas/chat';
-import { getStockPrice } from '../tools/stock-price-tool';
-import { getAccountLog, getBusinessData, getBusinessGoals, getUserContracts, getUserInvestmentPlans, getUserInvoices, getUserPortfolio } from '../tools/user-data-tools';
+import { z } from 'zod';
+import { ChatMessageSchema } from '@/ai/schemas/chat';
+import { getStockPrice } from '@/ai/tools/stock-tools';
+import { getAccountLog, getBusinessData, getBusinessGoals, getUserContracts, getUserInvestmentPlans, getUserInvoices, getUserPortfolio } from '@/ai/tools/user-data-tools';
 
 const UnifiedAdvisorInputSchema = z.object({
   history: z.array(ChatMessageSchema),

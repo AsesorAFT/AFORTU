@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description: 'Tu suite de gestión para pequeñas empresas.',
   icons: {
     icon: [],
+    apple: [],
   },
 };
 

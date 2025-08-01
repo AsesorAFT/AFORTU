@@ -7,7 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, Dialog
 import { Bot, Loader2, Send } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-import { chatWithAdvisor } from '@/ai/flows/conversational-advisor';
+import { unifiedChat } from '@/ai/flows/unified-advisor';
 import { ChatMessage } from '@/ai/schemas/chat';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
@@ -55,7 +55,7 @@ export function ChatAsesor() {
     setIsLoading(true);
 
     try {
-      const result = await chatWithAdvisor({
+      const result = await unifiedChat({
         history: messages,
         message: currentMessage,
       });

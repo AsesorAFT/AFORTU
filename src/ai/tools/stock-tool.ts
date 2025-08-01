@@ -8,7 +8,7 @@
 
 import { ai } from '@/ai/genkit';
 import { getStockPrice as fetchStockPrice } from '@/services/stock-price-service';
-import { z } from 'genkit';
+import { z } from 'zod';
 
 export const getStockPrice = ai.defineTool(
   {

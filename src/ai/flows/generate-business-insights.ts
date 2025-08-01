@@ -1,4 +1,3 @@
-// src/ai/flows/generate-business-insights.ts
 'use server';
 
 /**
@@ -10,7 +9,7 @@
  */
 
 import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
+import {z} from 'zod';
 import { GenerateBusinessInsightsInputSchema, GenerateBusinessInsightsOutputSchema, GenerateBusinessInsightsInput, GenerateBusinessInsightsOutput } from '../schemas/business';
 
 
