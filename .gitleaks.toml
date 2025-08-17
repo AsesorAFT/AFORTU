@@ -1,0 +1,23 @@
+title = "AFORTU Gitleaks Config"
+
+[rules.google_api_key]
+description = "Google API Key"
+regex = '''AIza[0-9A-Za-z\-_]{35}'''
+tags = ["key", "google"]
+
+[rules.openai]
+description = "OpenAI Key"
+regex = '''sk-[A-Za-z0-9]{20,}'''
+tags = ["key", "openai"]
+
+[rules.aws_access_key]
+description = "AWS Access Key ID"
+regex = '''AKIA[0-9A-Z]{16}'''
+tags = ["key", "aws"]
+
+[allowlist]
+description = "Allowlisted patterns"
+paths = [
+  "docs/",
+  "LICENSE"
+]
