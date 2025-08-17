@@ -3,14 +3,16 @@
 /**
  * @fileOverview Unified Conversational AI flow for Asesor AFT.
  * This flow acts as a conversational chatbot with access to financial tools.
+ * Enhanced with intent detection, prefetching, and structured output.
  */
 
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
-import { ChatMessageSchema } from '../schemas/chat';
+import { ChatMessageSchema } from '../schemas/chats';
 import { getStockPrice } from '../tools/stock-price-tool';
 import { getAccountLog, getBusinessData, getBusinessGoals, getUserContracts, getUserInvestmentPlans, getUserInvoices, getUserPortfolio } from '../tools/user-data-tools';
 
+// Enhanced schemas with optional fields for UI consumption
 const UnifiedAdvisorInputSchema = z.object({
   history: z.array(ChatMessageSchema),
   message: z.string().describe('The latest message from the user.'),
@@ -21,8 +23,86 @@ const UnifiedAdvisorOutputSchema = z.object({
   response: z
     .string()
     .describe('The AI advisor\'s response to the user\'s message.'),
+  actions: z
+    .array(z.string())
+    .optional()
+    .describe('Optional list of suggested actions for the user.'),
+  dataSourcesUsed: z
+    .array(z.string())
+    .optional()
+    .describe('Optional list of data sources that were consulted for this response.'),
 });
 export type UnifiedAdvisorOutput = z.infer<typeof UnifiedAdvisorOutputSchema>;
+
+// Intent detection using regex patterns
+function detectIntent(message: string): string[] {
+  const intents: string[] = [];
+  const lowercaseMessage = message.toLowerCase();
+
+  // Portfolio-related intents
+  if (/\b(portafolio|portf[oó]lio|inversio|accio|invert|nasdaq|bolsa|mercado|stock|precio)\b/i.test(message)) {
+    intents.push('portfolio');
+  }
+
+  // Business-related intents 
+  if (/\b(negocio|empresa|ventas|ingresos|proyecc|objetivo|meta|plan)\b/i.test(message)) {
+    intents.push('business');
+  }
+
+  // Invoice/billing intents
+  if (/\b(factura|cobro|saldo|pago|deuda|estado\s+de\s+cuenta)\b/i.test(message)) {
+    intents.push('invoices');
+  }
+
+  // Contract intents
+  if (/\b(contrato|acuerdo|servicio|plan\s+de\s+inversion)\b/i.test(message)) {
+    intents.push('contracts');
+  }
+
+  // Account/advisor activity intents
+  if (/\b(asesor|actividad|seguimiento|bitacora|log|historial)\b/i.test(message)) {
+    intents.push('account');
+  }
+
+  // Investment planning intents
+  if (/\b(plan|planificacion|largo\s+plazo|jubilacion|pension|inversion\s+estructurada)\b/i.test(message)) {
+    intents.push('investment_plans');
+  }
+
+  return intents;
+}
+
+// Prefetch relevant tools based on detected intents
+function getToolsForIntents(intents: string[]) {
+  const toolMap = {
+    'portfolio': [getUserPortfolio, getStockPrice],
+    'business': [getBusinessData, getBusinessGoals], 
+    'invoices': [getUserInvoices],
+    'contracts': [getUserContracts],
+    'investment_plans': [getUserInvestmentPlans],
+    'account': [getAccountLog]
+  };
+
+  const tools = new Set([getStockPrice]); // Always include stock price tool
+  intents.forEach(intent => {
+    if (toolMap[intent as keyof typeof toolMap]) {
+      toolMap[intent as keyof typeof toolMap].forEach(tool => tools.add(tool));
+    }
+  });
+
+  return Array.from(tools);
+}
+
+// AFORTU disclaimer
+const AFORTU_DISCLAIMER = "\n\nRecuerda revisar los temas tratados con tu asesor de AFORTU para mayor detalle y asesoramiento personalizado.";
+
+function ensureAfortuDisclaimer(response: string): string {
+  // Check if disclaimer is already present
+  if (response.includes("asesor de AFORTU") || response.includes("AFORTU")) {
+    return response;
+  }
+  return response + AFORTU_DISCLAIMER;
+}
 
 export async function unifiedChat(input: UnifiedAdvisorInput): Promise<UnifiedAdvisorOutput> {
   return conversationalAdvisorFlow(input);
@@ -46,27 +126,28 @@ const prompt = ai.definePrompt({
 
 Mantén tus respuestas concisas y directas, inspirando confianza y motivación.
 
-Utiliza las herramientas disponibles para responder a las preguntas del usuario de la manera más precisa posible. Tienes acceso a información sobre su portafolio, datos de negocio, facturas, contratos, planes de inversión y la bitácora de seguimiento de su cuenta.
+<SYSTEM_INSTRUCTIONS>
+Utiliza las herramientas disponibles para responder de manera precisa. Tienes acceso a:
+- getUserPortfolio y getStockPrice: Para análisis de mercados y portafolios
+- getBusinessData y getBusinessGoals: Para proyecciones de negocio  
+- getUserInvoices: Para preguntas sobre facturación y saldos
+- getUserContracts: Para consultas sobre contratos y servicios
+- getUserInvestmentPlans: Para planes de inversión a largo plazo
+- getAccountLog: Para actividades del asesor en la cuenta
+- Conceptos financieros, cálculos de pensiones y estrategias de inversión
+</SYSTEM_INSTRUCTIONS>
 
-- Para análisis de mercados y portafolios, usa las herramientas 'getUserPortfolio' y 'getStockPrice'.
-- Para proyecciones de negocio, usa 'getBusinessData' y 'getBusinessGoals'.
-- Para preguntas sobre facturación, saldos o contratos, usa 'getUserInvoices' y 'getUserContracts'.
-- Para consultas sobre planes a largo plazo, usa 'getUserInvestmentPlans'.
-- Para saber qué ha hecho un asesor por la cuenta, usa 'getAccountLog'.
-- Puedes explicar conceptos financieros, calcular pensiones y proponer estrategias de inversión.
-
-El historial de la conversación es:
+<CONVERSATION_HISTORY>
 {{#each history}}
 - {{role}}: {{{content}}}
 {{/each}}
+</CONVERSATION_HISTORY>
 
-El nuevo mensaje del usuario es:
+<USER_MESSAGE>
 - user: {{{message}}}
+</USER_MESSAGE>
 
-Responde al nuevo mensaje del usuario, teniendo en cuenta el historial de la conversación y utilizando tus herramientas si es necesario para obtener la información más actualizada y precisa.
-
-Siempre finaliza tus respuestas recomendando revisar los temas tratados con su asesor de AFORTU para mayor detalle.
-`,
+Responde al nuevo mensaje del usuario teniendo en cuenta el historial de la conversación. Utiliza tus herramientas cuando sea necesario para obtener información actualizada y precisa. Siempre incluye el disclaimer de AFORTU al final si no está ya presente en tu respuesta.`,
 });
 
 const conversationalAdvisorFlow = ai.defineFlow(
@@ -76,17 +157,43 @@ const conversationalAdvisorFlow = ai.defineFlow(
     outputSchema: UnifiedAdvisorOutputSchema,
   },
   async (input) => {
+    // Detect intents from the message
+    const detectedIntents = detectIntent(input.message);
     
     // Combine history and the new message for the prompt
     const combinedHistory = [...input.history, { role: 'user' as const, content: input.message }];
 
     const { output } = await prompt({
         history: combinedHistory,
-        message: input.message // The message is also available at the top level for the prompt template
+        message: input.message
     });
     
+    let response = output?.response || "No se pudo obtener una respuesta del asesor. Intenta de nuevo.";
+    
+    // Ensure AFORTU disclaimer is present
+    response = ensureAfortuDisclaimer(response);
+    
+    // Track which data sources were potentially used based on intents
+    const dataSourcesUsed = detectedIntents.length > 0 ? detectedIntents : undefined;
+    
+    // Generate suggested actions based on intents (optional for UI)
+    const actions = detectedIntents.length > 0 ? 
+      detectedIntents.map(intent => {
+        const actionMap = {
+          'portfolio': 'Ver análisis detallado del portafolio',
+          'business': 'Generar reporte de proyecciones',
+          'invoices': 'Revisar estado de cuenta completo',
+          'contracts': 'Consultar términos y condiciones',
+          'investment_plans': 'Explorar planes de inversión',
+          'account': 'Ver historial completo de actividades'
+        };
+        return actionMap[intent as keyof typeof actionMap] || 'Consultar con asesor';
+      }) : undefined;
+
     return {
-        response: output?.response || "No se pudo obtener una respuesta del asesor. Intenta de nuevo."
+        response,
+        actions,
+        dataSourcesUsed
     };
   }
 );
