@@ -1,0 +1,18 @@
+repos:
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        name: detect-secrets (pre-commit)
+        args:
+          - "--baseline"
+          - ".secrets.baseline"
+          - "--fail-on-unaudited"
+        stages: [commit]
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-merge-conflict
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: detect-private-key

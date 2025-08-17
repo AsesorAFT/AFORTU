@@ -22,7 +22,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["@types/jspdf"]
+    "types": ["@types/jspdf", "node"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
