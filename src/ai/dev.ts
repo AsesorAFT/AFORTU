@@ -7,7 +7,7 @@ import '@/ai/flows/market-trend-analyzer.ts';
 import '@/ai/flows/portfolio-analyzer.ts';
 import '@/ai/flows/conversational-advirsor.ts';
 import '@/ai/flows/unified-advisor.ts';
-import '@/ai/schemas/chat.ts';
+import '@/ai/schemas/chats.ts';
 import '@/ai/schemas/portfolio.ts';
 import '@/ai/schemas/business.ts';
 import '@/ai/schemas/market.ts';
