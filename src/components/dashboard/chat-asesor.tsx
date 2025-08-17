@@ -7,8 +7,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, Dialog
 import { Bot, Loader2, Send } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-import { chatWithAdvisor } from '@/ai/flows/conversational-advisor';
-import { ChatMessage } from '@/ai/schemas/chat';
+import { chatWithAdvisor } from '@/ai/flows/conversational-advirsor';
+import { ChatMessage } from '@/ai/schemas/chats';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { useAuthState } from 'react-firebase-hooks/auth';

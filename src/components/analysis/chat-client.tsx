@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Loader2, Send, Bot } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-import { ChatMessage } from '@/ai/schemas/chat';
+import { ChatMessage } from '@/ai/schemas/chats';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { useAuthState } from 'react-firebase-hooks/auth';

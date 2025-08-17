@@ -10,7 +10,7 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
-import { ChatMessageSchema } from '../schemas/chat';
+import { ChatMessageSchema } from '../schemas/chats';
 
 const ChatWithAdvisorInputSchema = z.object({
   history: z.array(ChatMessageSchema),
