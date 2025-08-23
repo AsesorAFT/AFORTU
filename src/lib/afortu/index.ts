@@ -1,3 +1,1 @@
-"""typescript
 export * from './apiClient';
-"""

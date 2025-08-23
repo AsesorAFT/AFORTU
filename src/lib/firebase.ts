@@ -2,15 +2,36 @@ import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
+// Firebase configuration using environment variables
 const firebaseConfig = {
-  projectId: "afortu",
-  appId: "1:280531811428:web:5c9b7096e63736f8f17371",
-  storageBucket: "afortu.firebasestorage.app",
-  apiKey: "AIzaSyAwvf4ONYgS8MfNoJ2Sl9cQ7xXCcbMi5-I",
-  authDomain: "afortu.firebaseapp.com",
-  messagingSenderId: "280531811428",
-  databaseURL: "https://afortu-default-rtdb.firebaseio.com",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
 };
+
+// Validate that all required environment variables are present
+const requiredEnvVars = [
+  'NEXT_PUBLIC_FIREBASE_API_KEY',
+  'NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN', 
+  'NEXT_PUBLIC_FIREBASE_PROJECT_ID',
+  'NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET',
+  'NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID',
+  'NEXT_PUBLIC_FIREBASE_APP_ID'
+];
+
+const missingEnvVars = requiredEnvVars.filter(
+  envVar => !process.env[envVar]
+);
+
+if (missingEnvVars.length > 0) {
+  throw new Error(
+    `Missing required Firebase environment variables: ${missingEnvVars.join(', ')}`
+  );
+}
 
 // Initialize Firebase
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();

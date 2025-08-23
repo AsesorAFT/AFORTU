@@ -123,7 +123,7 @@ function AddContributionForm({ objective, onContribute }: { objective: Objective
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                    <DialogTitle>Aportación Extraordinaria a "{objective.title}"</DialogTitle>
+                    <DialogTitle>Aportación Extraordinaria a &quot;{objective.title}&quot;</DialogTitle>
                     <DialogDescription>
                         Ingresa el monto que deseas añadir a tu plan. ¡Cada paso cuenta!
                     </DialogDescription>
