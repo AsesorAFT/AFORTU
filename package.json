@@ -11,7 +11,16 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check": "npm-run-all -p lint typecheck",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,css}\"",
+    "firebase:build": "npm run build && npm run export",
+    "firebase:deploy": "npm run firebase:build && firebase deploy",
+    "firebase:serve": "firebase serve",
+    "firebase:emulators": "firebase emulators:start",
+    "firebase:hosting": "firebase deploy --only hosting",
+    "firebase:rules": "firebase deploy --only firestore:rules,storage:rules",
+    "build:ci": "npm run check && npm run build"
   },
   "dependencies": {
     "@genkit-ai/core": "^1.1.1",
@@ -66,13 +75,19 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@types/jszip": "^3.4.1",
     "@types/jspdf": "^2.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "genkit": "^1.15.5",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8",
+    "prettier": "^3.0.0",
     "tailwindcss": "^3.4.1",
+    "tsx": "^4.0.0",
     "typescript": "^5"
+    }
   }
-}
+
 

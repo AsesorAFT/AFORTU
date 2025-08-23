@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuCheckboxItem } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import { toast } from "react-hot-toast";
+import { useToast } from "@/hooks/use-toast";
 
 const contractsData = [
   {
@@ -47,6 +47,7 @@ const contractsData = [
 export default function ContractsPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<string | null>(null);
+  const { toast } = useToast();
 
   const filteredContracts = useMemo(() => {
     return contractsData
@@ -149,7 +150,13 @@ export default function ContractsPage() {
                     <Button
                       variant="ghost"
                       size="icon"
-                      onClick={() => toast.success(`Descargando ${contract.id}...`)}
+                      onClick={() =>
+                        toast({
+                          title: "Descarga iniciada",
+                          description: `Descargando ${contract.id}...`,
+                          variant: "default",
+                        })
+                      }
                     >
                       <Download className="h-4 w-4" />
                       <span className="sr-only">Descargar Contrato</span>

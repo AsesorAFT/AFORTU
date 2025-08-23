@@ -1,7 +1,7 @@
 'use client';
 
 import {
-  Briefcase, LogOut, TrendingUp, FileText, PieChart, BarChart2, Bell, ChevronRight, User, Phone, Mail
+  Briefcase, LogOut, TrendingUp, FileText, PieChart, BarChart2, Bell, ChevronRight, User, Phone, Mail, Layers
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -135,7 +135,7 @@ export default function DashboardPage() {
             <CardTitle className="text-lg text-[#185adb] font-bold flex items-center gap-2">
               <BarChart2 className="h-5 w-5" /> Tasa Fija AFORTU
             </CardTitle>
-            <CardDescription className="text-xs text-[#0d193c]/80">{productos[0].beneficios.join(" · ")}</CardDescription>
+            <CardDescription className="text-xs text-[#0d193c]/80">{productos[0].beneficios?.join(" · ")}</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="text-lg font-bold text-[#185adb] mb-1">Saldo: ${productos[0].saldo.toLocaleString()} MXN</div>
@@ -188,7 +188,7 @@ export default function DashboardPage() {
                 <span className="text-[10px] text-[#0d193c]/70">Diversificación</span>
               </div>
               <ul className="text-xs text-[#0d193c]/80">
-                {productos[1].diversificacion.map((d, i) =>
+                {productos[1].diversificacion?.map((d, i) =>
                   <li key={i}>{d.tipo}: <span className="font-semibold">{d.porcentaje}%</span></li>
                 )}
               </ul>
