@@ -44,3 +44,5 @@ next-env.d.ts
 firebase-debug.log
 firestore-debug.logclient_secret_*
 *.json
+client_secret_*
+*.json

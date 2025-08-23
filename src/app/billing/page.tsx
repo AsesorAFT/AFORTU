@@ -107,11 +107,10 @@ export default function BillingPage() {
         const subtotal = invoice.items.reduce((acc, item) => acc + (item.qty * item.price), 0);
         const tax = subtotal * 0.16; // 16% IVA example
         const total = subtotal + tax;
-        
-        tableBody.push(
+                tableBody.push(
             ['', '', 'Subtotal', `$${subtotal.toFixed(2)}`],
             ['', '', 'IVA (16%)', `$${tax.toFixed(2)}`],
-            ['', '', { content: 'Total', styles: { fontStyle: 'bold' } }, { content: `$${total.toFixed(2)}`, styles: { fontStyle: 'bold' } }]
+            ['', '', 'Total', `$${total.toFixed(2)}`]
         );
 
         autoTable(doc, {
@@ -121,9 +120,20 @@ export default function BillingPage() {
             theme: 'striped',
             headStyles: { fillColor: [38, 70, 83] },
             didDrawCell: (data) => {
-                if (data.section === 'body' && data.column.index >= 2 && data.row.index >= invoice.items.length) {
-                    data.cell.styles.halign = 'right';
+                // Negrita SOLO en la última fila (Total)
+                if (
+                    data.section === 'body' &&
+                    data.row.index === tableBody.length - 1
+                ) {
                     data.cell.styles.fontStyle = 'bold';
+                }
+                // Alinea a la derecha los montos de las filas de totales
+                if (
+                    data.section === 'body' &&
+                    data.column.index >= 2 &&
+                    data.row.index >= invoice.items.length
+                ) {
+                    data.cell.styles.halign = 'right';
                 }
             }
         });
@@ -206,7 +216,7 @@ export default function BillingPage() {
         const totalNet = totalInterest - totalISR;
         
         const foot = [[
-            { content: 'Totales', colSpan: 2, styles: { fontStyle: 'bold', halign: 'right' } },
+            { content: 'Totales', colSpan: 2, styles: { fontStyle: 'bold' as const, halign: 'right' as const } },
             `$${totalInterest.toFixed(2)}`,
             `$${totalISR.toFixed(2)}`,
             `$${totalNet.toFixed(2)}`,

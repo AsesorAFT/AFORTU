@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Target, Calculator, PlusCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-// Usa importación dinámica para mejorar el rendimiento y manejo de errores
 import dynamic from 'next/dynamic';
 
+// Importación dinámica del componente de meta financiera
 const FinancialGoalCard = useMemo(
   () =>
     dynamic(() => import('@/components/FinancialGoalCard'), {
@@ -16,27 +16,31 @@ const FinancialGoalCard = useMemo(
   []
 );
 
-export default function FinancialGoalsPage() {
-  // State de metas, aportaciones, etc.
-  // ...el mismo state que ya tienes...
+const initialFinancialGoals = [
+  {
+    id: '1',
+    name: 'Fondo de emergencia',
+    amount: 10000,
+    progress: 3500,
+    description: 'Ahorro para imprevistos',
+    targetAmount: 10000,
+    currentAmount: 3500,
+    deadline: '2024-12-31', // string, no Date
+  },
+  {
+    id: '2',
+    name: 'Viaje a Japón',
+    amount: 5000,
+    progress: 1200,
+    description: 'Vacaciones soñadas',
+    targetAmount: 5000,
+    currentAmount: 1200,
+    deadline: '2025-06-30', // string, no Date
+  },
+];
 
-  // Ejemplo de metas financieras iniciales (debes reemplazarlo con tus datos reales o lógica de carga)
-  const initialFinancialGoals = [
-    {
-      id: 1,
-      name: 'Fondo de emergencia',
-      amount: 10000,
-      progress: 3500,
-      description: 'Ahorro para imprevistos',
-    },
-    {
-      id: 2,
-      name: 'Viaje a Japón',
-      amount: 5000,
-      progress: 1200,
-      description: 'Vacaciones soñadas',
-    },
-  ];
+export default function FinancialGoalsPage() {
+  // Aquí puedes agregar state y lógica para metas, aportaciones, etc.
 
   return (
     <div className="flex flex-col gap-8 pb-12">
@@ -49,7 +53,10 @@ export default function FinancialGoalsPage() {
           </div>
           <div className="ml-auto flex gap-2">
             <Button variant="outline" size="sm" className="rounded-full">Ver Reporte</Button>
-            <Button variant="default" size="sm" className="rounded-full"><PlusCircle className="mr-2 h-4 w-4" />Nueva Meta</Button>
+            <Button variant="default" size="sm" className="rounded-full">
+              <PlusCircle className="mr-2 h-4 w-4" />
+              Nueva Meta
+            </Button>
           </div>
         </div>
       </header>
@@ -69,7 +76,9 @@ export default function FinancialGoalsPage() {
                 <Calculator className="h-5 w-5 text-primary" />
                 Simulador de liquidez
               </CardTitle>
-              <CardDescription>¿Cuánta liquidez puedes obtener sin desinvertir?</CardDescription>
+              <CardDescription>
+                ¿Cuánta liquidez puedes obtener sin desinvertir?
+              </CardDescription>
             </CardHeader>
             <CardContent>
               {/* Simulador aquí, relacionado con las metas */}
@@ -78,5 +87,3 @@ export default function FinancialGoalsPage() {
         </div>
       </div>
     </div>
-  );
-}
