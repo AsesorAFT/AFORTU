@@ -1,4 +1,3 @@
-"""typescript
 import { NextRequest } from 'next/server';
 
 /**
@@ -23,4 +22,3 @@ export function verifyAfortuApiKey(req: NextRequest): boolean {
   }
   return true;
 }
-"""
