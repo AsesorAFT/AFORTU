@@ -511,7 +511,7 @@ export default function CalendarPage() {
                                                     <AlertDialogHeader>
                                                     <AlertDialogTitle>¿Estás seguro?</AlertDialogTitle>
                                                     <AlertDialogDescription>
-                                                        Esta acción no se puede deshacer. Esto eliminará permanentemente la actividad "{apt.title}".
+                                                        Esta acción no se puede deshacer. Esto eliminará permanentemente la actividad &quot;{apt.title}&quot;.
                                                     </AlertDialogDescription>
                                                     </AlertDialogHeader>
                                                     <AlertDialogFooter>

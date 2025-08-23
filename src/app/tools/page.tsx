@@ -238,7 +238,7 @@ export default function ToolsPage() {
                            <AccordionTrigger className="p-6 hover:no-underline">
                                 <CardHeader className="p-0 text-left">
                                     <CardTitle>Gestión de la Bitácora de Seguimiento</CardTitle>
-                                    <CardDescription>Añade o elimina registros de la bitácora de seguimiento de cuenta que se muestra en la página de "Bitácora".</CardDescription>
+                                    <CardDescription>Añade o elimina registros de la bitácora de seguimiento de cuenta que se muestra en la página de &quot;Bitácora&quot;.</CardDescription>
                                 </CardHeader>
                            </AccordionTrigger>
                            <AccordionContent>
