@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -10,7 +11,7 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'zod';
-import { GenerateBusinessInsightsInputSchema, GenerateBusinessInsightsOutputSchema, GenerateBusinessInsightsInput, GenerateBusinessInsightsOutput } from '../schemas/business';
+import { GenerateBusinessInsightsInputSchema, GenerateBusinessInsightsOutputSchema, GenerateBusinessInsightsInput, GenerateBusinessInsightsOutput } from '@/ai/schemas/business';
 
 
 export async function generateBusinessInsights(input: GenerateBusinessInsightsInput): Promise<GenerateBusinessInsightsOutput> {

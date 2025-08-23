@@ -102,6 +102,33 @@ export function NavMenu({ isCollapsed }: { isCollapsed: boolean }) {
               <TooltipContent side="right">Configuración</TooltipContent>
             )}
           </Tooltip>
+           <Tooltip delayDuration={0}>
+            <TooltipTrigger asChild>
+              <Button
+                asChild
+                variant="ghost"
+                className={cn(
+                  'justify-start mt-4',
+                  isCollapsed && 'justify-center h-9 w-9'
+                )}
+              >
+                <Link href="/tools">
+                  <Wrench className="h-4 w-4" />
+                  <span
+                    className={cn(
+                      'ml-4',
+                      isCollapsed && 'hidden'
+                    )}
+                  >
+                    Tools
+                  </span>
+                </Link>
+              </Button>
+            </TooltipTrigger>
+            {isCollapsed && (
+              <TooltipContent side="right">Tools</TooltipContent>
+            )}
+          </Tooltip>
         </div>
       </div>
     </TooltipProvider>

@@ -1,229 +1,285 @@
-// src/app/dashboard/page.tsx
 'use client';
-import { useState, useEffect } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '@/lib/firebase';
+
+import {
+  Briefcase, LogOut, TrendingUp, FileText, PieChart, BarChart2, Bell, ChevronRight, User, Phone, Mail
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { StatCard } from '@/components/dashboard/stat-card';
-import { YearChart } from '@/components/dashboard/year-chart';
-import { PortfolioPieChart } from '@/components/dashboard/portfolio-pie-chart';
-import { PortfolioTable } from '@/components/dashboard/portfolio-table';
-import { Download, MessageCircle, Bot } from 'lucide-react';
-import { ChatAsesor } from '@/components/dashboard/chat-asesor';
-import { jsPDF } from 'jspdf';
-import 'jspdf-autotable';
-import { RecentTransactions } from '@/components/dashboard/recent-transactions';
-import axios from 'axios';
+import Link from 'next/link';
 
-interface PortfolioItem {
-  id: string;
-  name: string;
-  symbol: string;
-  shares: number;
-  purchasePrice: number;
-  purchaseDate: string;
-  currentPrice?: number;
-}
+// Simulated data (replace with real API data)
+const asesor = {
+  nombre: "María González",
+  mail: "maria.gonzalez@afortu.com.mx",
+  whatsapp: "+52 55 1234 5678"
+};
 
-interface Transaction {
-  description: string;
-  type: string;
-  amount: string;
-  status: string;
-  category: 'inversion' | 'servicio';
-}
-
-
-const initialPortfolio: PortfolioItem[] = [
-    { id: '1', name: 'NVIDIA Inc.', symbol: 'NVDA', shares: 10, purchasePrice: 95.50, purchaseDate: '2024-01-15' },
-    { id: '2', name: 'Tesla', symbol: 'TSLA', shares: 15, purchasePrice: 160.00, purchaseDate: '2023-08-20' },
-    { id: '3', name: 'Apple Inc.', symbol: 'AAPL', shares: 50, purchasePrice: 150.75, purchaseDate: '2023-05-10' },
-    { id: '4', name: 'Microsoft', symbol: 'MSFT', shares: 25, purchasePrice: 380.34, purchaseDate: '2024-03-01' },
+const productos = [
+  {
+    nombre: "Tasa Fija AFORTU",
+    saldo: 150000,
+    moneda: "MXN",
+    tasa: 15,
+    plazo: "24 meses",
+    vencimiento: "2026-08-01",
+    reinversion: true,
+    beneficios: [
+      "Servicios profesionales AFORTU",
+      "Acceso a App móvil",
+      "Salesforce para negocios"
+    ]
+  },
+  {
+    nombre: "Asset Management AFORTU",
+    saldo: 90000,
+    moneda: "MXN",
+    rendimiento: 13.2,
+    diversificacion: [
+      { tipo: "Acciones", porcentaje: 35 },
+      { tipo: "Deuda privada", porcentaje: 30 },
+      { tipo: "Deuda pública", porcentaje: 20 },
+      { tipo: "Liquidez", porcentaje: 15 }
+    ]
+  }
 ];
 
+const servicios = [
+  {
+    categoria: "Jurídico",
+    servicios: ["Consultoría patrimonial", "Protección legal", "Contratos especiales"]
+  },
+  {
+    categoria: "Contable/Fiscal",
+    servicios: ["Planeación fiscal", "Cumplimiento", "Auditoría"]
+  },
+  {
+    categoria: "Financiero",
+    servicios: ["Estrategia integral", "Evaluación de oportunidades", "Family office"]
+  }
+];
 
-export default function Dashboard() {
-  const [user] = useAuthState(auth);
-  const [portfolio, setPortfolio] = useState<PortfolioItem[]>(initialPortfolio);
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+const movimientos = [
+  { fecha: "02/08/2025", tipo: "Depósito Tasa Fija", monto: 50000, detalle: "Aporte extraordinario" },
+  { fecha: "29/07/2025", tipo: "Rebalanceo Asset Management", monto: 20000, detalle: "Compra deuda privada" },
+  { fecha: "15/07/2025", tipo: "Pago intereses Tasa Fija", monto: 1875, detalle: "Mensualidad" }
+];
 
-  useEffect(() => {
-    const fetchTransactions = async () => {
-        try {
-            const response = await axios.get('/api/transactions');
-            setTransactions(response.data);
-        } catch (error) {
-            console.error("Failed to fetch transactions:", error);
-        }
-    };
-    fetchTransactions();
-  }, []);
+const noticias = [
+  "El mercado bursátil mexicano cierra al alza, +2.5% semanal.",
+  "AFORTU incorpora nuevas herramientas de planeación patrimonial en su app.",
+  "Reformas fiscales 2025: implicaciones para personas físicas de alto patrimonio."
+];
 
-  const totalPortfolioValue = portfolio.reduce((acc, item) => acc + (item.currentPrice || item.purchasePrice) * item.shares, 0);
-  const totalPurchaseValue = portfolio.reduce((acc, item) => acc + item.purchasePrice * item.shares, 0);
-  const totalGainLoss = totalPortfolioValue - totalPurchaseValue;
-  
-  const generatePDF = () => {
-    const doc = new jsPDF();
-    
-    doc.setFontSize(18);
-    doc.text(`Estado de Cuenta Patrimonial - ${user?.displayName || 'Cliente'}`, 14, 22);
-    doc.setFontSize(11);
-    doc.text("Fecha: " + new Date().toLocaleDateString(), 14, 30);
-    
-    doc.setFontSize(14);
-    doc.text("Resumen General", 14, 45);
-    const summaryData = [
-        ["Inversión Total", `$${(1050000 + totalPortfolioValue).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`],
-        ["Rendimiento Total", `$${(150250 + totalGainLoss).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`],
-    ];
-    (doc as any).autoTable({
-        startY: 50,
-        head: [['Concepto', 'Valor']],
-        body: summaryData,
-        theme: 'striped',
-        headStyles: { fillColor: [75, 0, 130] },
-    });
-
-
-    doc.addPage();
-    doc.setFontSize(14);
-    doc.text("Inversión a Tasa Fija (Contrato ID: INV-TF-01)", 14, 22);
-     (doc as any).autoTable({
-        startY: 30,
-        head: [['Capital Inicial', 'Rendimiento Generado', 'Plazo', 'Vencimiento']],
-        body: [
-            ['$1,050,000.00', '$150,250.00', '24 meses', '29 de julio de 2026']
-        ],
-        theme: 'grid',
-    });
-
-
-    doc.setFontSize(14);
-    doc.text("Asset Management (Contrato ID: INV-AM-01)", 14, (doc as any).lastAutoTable.finalY + 15);
-    const portfolioBody = portfolio.map(item => [
-      item.name,
-      item.shares,
-      `$${item.purchasePrice.toFixed(2)}`,
-      `$${(item.currentPrice || item.purchasePrice).toFixed(2)}`,
-      `$${((item.currentPrice || item.purchasePrice) * item.shares).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`
-    ]);
-    (doc as any).autoTable({
-        startY: (doc as any).lastAutoTable.finalY + 20,
-        head: [['Activo', 'Títulos', 'Precio Compra', 'Precio Actual', 'Valor Mercado']],
-        body: portfolioBody,
-        theme: 'striped',
-        headStyles: { fillColor: [75, 0, 130] },
-    });
-
-    doc.save("estado-de-cuenta.pdf");
-  };
-
-  const portfolioPieData = portfolio.map(item => ({
-      name: item.symbol,
-      value: (item.currentPrice || item.purchasePrice) * item.shares,
-  }));
-  
-  const investmentTransactions = transactions.filter(t => t.category === 'inversion');
-  const serviceTransactions = transactions.filter(t => t.category === 'servicio');
-
+export default function DashboardPage() {
+  // Suma total
+  const totalMXN = productos.reduce((sum, p) => sum + p.saldo, 0);
+  const totalUSD = 0; // Si tuvieras saldo en USD lo sumas aquí.
+  const total = totalMXN + totalUSD * 17;
 
   return (
-    <div className="flex-1 space-y-6">
-      <div className="flex items-center justify-between space-y-2">
-        <div>
-            <h2 className="text-3xl font-bold tracking-tight font-headline">Hola, {user?.displayName || 'Cliente'}</h2>
-            <p className="text-muted-foreground">Bienvenido a tu centro de gestión patrimonial.</p>
-        </div>
-        <div className="hidden md:flex items-center space-x-2">
-          <ChatAsesor />
-          <Button onClick={generatePDF}><Download className="mr-2 h-4 w-4" /> Estado de Cuenta</Button>
-           <a href="https://wa.me/5215512345678?text=Hola,%20necesito%20solicitar%20un%20CFDI." target="_blank" rel="noopener noreferrer">
-              <Button variant="secondary">
-                <MessageCircle className="mr-2 h-4 w-4" /> Solicitar CFDI
-              </Button>
-            </a>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-[#0d193c] via-[#185adb] to-[#ffd600]/80 flex flex-col items-center py-10 px-2">
+      {/* Branding */}
+      <div className="flex items-center gap-4 mb-6">
+        <Briefcase className="h-10 w-10 text-[#ffd600]" />
+        <span className="font-extrabold text-3xl text-white tracking-tight">AFORTU</span>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <StatCard title="Patrimonio Total" value={`$${(1050000 + totalPortfolioValue).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`} iconName="dollarSign" description="Tasa Fija + Asset Management" />
-        <StatCard title="Rendimiento Total" value={`$${(150250 + totalGainLoss).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`} iconName="trendingUp" trend={totalGainLoss >= 0 ? 'up' : 'down'} description="Ganancia/pérdida total" />
-        <StatCard title="Tasa Fija" value="$1,211,187.69" iconName="banknote" description="Valor actual del contrato" />
-        <StatCard 
-            title="Asset Management" 
-            value={`$${totalPurchaseValue.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`} 
-            iconName="briefcase" 
-            description="Capital Invertido"
-        />
-      </div>
-
-       <Card>
-          <CardHeader>
-            <CardTitle>Inversión a Tasa Fija</CardTitle>
-             <CardDescription>
-                Contrato ID: INV-TF-01 | Interés anual: 19.23% | Plazo: 24 meses.
-             </CardDescription>
-          </CardHeader>
-          <CardContent className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
-            <div className="lg:col-span-2 flex flex-col gap-4">
-                 <h3 className="text-lg font-semibold">Resumen de Inversión</h3>
-                 <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4">
-                    <StatCard title="Capital Inicial" value="$1,050,000" iconName="dollarSign" description={null} />
-                    <StatCard title="Rendimiento Proyectado" value="$350,250" iconName="trendingUp" description={null} />
-                    <StatCard title="Vencimiento" value="29 jul, 2026" iconName="calendar" description={null} />
-                 </div>
+      {/* Bienvenida */}
+      <Card className="w-full max-w-5xl bg-white/95 shadow-2xl border-0 mb-8">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold text-[#0d193c] flex gap-2 items-center">
+            <User className="h-6 w-6 text-[#185adb]" />
+            ¡Bienvenido!
+          </CardTitle>
+          <CardDescription className="text-[#185adb]/90 mt-2">
+            Tu panel de control patrimonial premium. <span className="font-bold text-[#ffd600]">Respaldo, crecimiento y asesoría personalizada.</span>
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="bg-[#185adb]/10 rounded-xl p-4 text-center">
+            <div className="text-lg font-semibold text-[#0d193c] flex items-center gap-2 justify-center">
+              <PieChart className="h-5 w-5 text-[#185adb]" /> Inversión Total
             </div>
-            <div className="lg:col-span-3 h-[300px]">
-                <h3 className="text-lg font-semibold mb-2">Evolución del Capital</h3>
-                 <YearChart 
-                    data={[
-                        { time: '2025-02-01', value: 1065025 },
-                        { time: '2025-04-01', value: 1115025 },
-                        { time: '2025-06-01', value: 1211187.68824685 },
-                        { time: '2025-08-01', value: 1165025 },
-                        { time: '2025-10-01', value: 1195025 },
-                        { time: '2025-12-01', value: 1225025 },
-                    ]}
-                 />
+            <div className="text-3xl font-extrabold text-[#185adb] my-1">${total.toLocaleString()} <span className="text-base font-medium text-[#0d193c]/80">MXN eq</span></div>
+            <div className="flex gap-3 justify-center text-xs mt-1 text-[#0d193c]/80">
+              <span>MXN: ${totalMXN.toLocaleString()}</span>
+              <span>USD: ${totalUSD.toLocaleString()}</span>
+            </div>
+          </div>
+          <div className="bg-[#ffd600]/20 rounded-xl p-4 text-center">
+            <div className="text-lg font-semibold text-[#b28b00] flex items-center gap-2 justify-center">
+              <BarChart2 className="h-5 w-5 text-[#ffd600]" /> Tasa Fija
+            </div>
+            <div className="text-xl font-bold text-[#185adb] mt-1">
+              ${productos[0].saldo.toLocaleString()} <span className="text-xs text-[#185adb]">MXN</span>
+            </div>
+            <div className="text-xs text-[#0d193c]/70 mt-1">Plazo: {productos[0].plazo} | Tasa: {productos[0].tasa}%</div>
+          </div>
+          <div className="bg-[#0d193c]/10 rounded-xl p-4 text-center">
+            <div className="text-lg font-semibold text-[#185adb] flex items-center gap-2 justify-center">
+              <Layers className="h-5 w-5 text-[#0d193c]" /> Asset Management
+            </div>
+            <div className="text-xl font-bold text-[#0d193c] mt-1">
+              ${productos[1].saldo.toLocaleString()} <span className="text-xs text-[#185adb]">MXN</span>
+            </div>
+            <div className="text-xs text-[#0d193c]/70 mt-1">Rendimiento: {productos[1].rendimiento}%</div>
+          </div>
+        </CardContent>
+      </Card>
+      
+      {/* Productos de inversión */}
+      <div className="w-full max-w-5xl grid md:grid-cols-2 gap-4 mb-8">
+        {/* Tasa Fija */}
+        <Card className="bg-white/95 border border-[#185adb]/10 shadow">
+          <CardHeader>
+            <CardTitle className="text-lg text-[#185adb] font-bold flex items-center gap-2">
+              <BarChart2 className="h-5 w-5" /> Tasa Fija AFORTU
+            </CardTitle>
+            <CardDescription className="text-xs text-[#0d193c]/80">{productos[0].beneficios.join(" · ")}</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="text-lg font-bold text-[#185adb] mb-1">Saldo: ${productos[0].saldo.toLocaleString()} MXN</div>
+            <ul className="list-disc pl-4 text-xs text-[#0d193c]/80 mb-2">
+              <li>Plazo: {productos[0].plazo} &mdash; Vencimiento: {productos[0].vencimiento}</li>
+              <li>Tasa anual: {productos[0].tasa}%</li>
+              <li>Opción de reinversión con interés compuesto</li>
+            </ul>
+            {/* Simulated growth chart */}
+            <div className="my-2">
+              <div className="text-xs text-[#185adb] mb-1">Crecimiento estimado 24 meses</div>
+              <div className="w-full h-20 bg-gradient-to-r from-[#ffd600] via-[#185adb]/40 to-[#185adb]/90 rounded overflow-hidden flex items-end gap-0.5">
+                {[10, 20, 30, 45, 65, 90, 120, 150, 185, 225, 270, 320, 375, 435, 500, 570, 650, 735, 820, 910, 1000, 1100, 1220, 1350].map((v, i) => (
+                  <div key={i} style={{height: `${v/15}%`}} className="w-1 bg-[#185adb] rounded"></div>
+                ))}
+              </div>
+            </div>
+            <div className="flex items-center gap-2 mt-2">
+              <Button asChild size="sm" className="bg-[#185adb] hover:bg-[#0d193c] text-white font-bold">
+                <Link href="/dashboard/portafolio/tasafija">
+                  Ver detalle <ChevronRight className="h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild size="sm" className="bg-[#ffd600] hover:bg-[#fff176] text-[#0d193c] font-bold">
+                <Link href="/dashboard/inversiones/nueva?tasa=fija">
+                  Nueva inversión
+                </Link>
+              </Button>
+              <Button asChild size="sm" className="bg-[#b71c1c] hover:bg-[#c62828] text-white font-bold">
+                <Link href="/dashboard/portafolio/cerrar?tasa=fija">
+                  Cerrar cuenta
+                </Link>
+              </Button>
             </div>
           </CardContent>
         </Card>
-      
-        <div className="grid gap-4 grid-cols-1 lg:grid-cols-7">
-            <Card className="lg:col-span-4">
-            <CardHeader>
-                <CardTitle>Asset Management</CardTitle>
-                <CardDescription>Contrato ID: INV-AM-01 | Portafolio de Renta Variable.</CardDescription>
-            </CardHeader>
-            <CardContent className="pl-2">
-                <PortfolioTable portfolio={portfolio} setPortfolio={setPortfolio} />
-            </CardContent>
-            </Card>
-            <Card className="lg:col-span-3">
-            <CardHeader>
-                <CardTitle>Distribución de Activos</CardTitle>
-                <CardDescription>Composición de tu portafolio de Asset Management.</CardDescription>
-            </CardHeader>
-            <CardContent className="h-[300px]">
-                <PortfolioPieChart data={portfolioPieData} />
-            </CardContent>
-            </Card>
-        </div>
-        
-        <div className="grid gap-4 md:grid-cols-2">
-             <RecentTransactions 
-                transactions={investmentTransactions}
-                title="Movimientos de Inversión"
-                description="Aportaciones, retiros y vencimientos."
-            />
-             <RecentTransactions 
-                transactions={serviceTransactions}
-                title="Servicios y Comisiones"
-                description="Pagos de asesoría y otros servicios."
-            />
-        </div>
+        {/* Asset Management */}
+        <Card className="bg-white/95 border border-[#185adb]/10 shadow">
+          <CardHeader>
+            <CardTitle className="text-lg text-[#0d193c] font-bold flex items-center gap-2">
+              <Layers className="h-5 w-5 text-[#185adb]" /> Asset Management AFORTU
+            </CardTitle>
+            <CardDescription className="text-xs text-[#185adb]/80">Gestión profesional de portafolios, enfoque global y diversificación avanzada.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="text-lg font-bold text-[#0d193c] mb-1">Saldo: ${productos[1].saldo.toLocaleString()} MXN</div>
+            <div className="flex items-center gap-3 mb-2">
+              <div className="flex flex-col items-center">
+                <PieChart className="h-8 w-8 text-[#185adb]" />
+                <span className="text-[10px] text-[#0d193c]/70">Diversificación</span>
+              </div>
+              <ul className="text-xs text-[#0d193c]/80">
+                {productos[1].diversificacion.map((d, i) =>
+                  <li key={i}>{d.tipo}: <span className="font-semibold">{d.porcentaje}%</span></li>
+                )}
+              </ul>
+            </div>
+            <div className="flex items-center gap-2 mt-2">
+              <Button asChild size="sm" className="bg-[#0d193c] hover:bg-[#185adb] text-white font-bold">
+                <Link href="/dashboard/portafolio/asset">
+                  Ver detalle <ChevronRight className="h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild size="sm" className="bg-[#ffd600] hover:bg-[#fff176] text-[#0d193c] font-bold">
+                <Link href="/dashboard/inversiones/nueva?tipo=asset">
+                  Nueva inversión
+                </Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Servicios Profesionales */}
+      <Card className="w-full max-w-5xl bg-white/95 shadow-xl border-0 mb-8">
+        <CardHeader>
+          <CardTitle className="text-lg font-bold text-[#185adb] flex items-center gap-2">
+            <FileText className="h-5 w-5 text-[#ffd600]" /> Servicios Profesionales Complementarios
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="grid md:grid-cols-3 gap-4">
+          {servicios.map((cat, idx) => (
+            <div key={cat.categoria} className="border-l-4 border-[#ffd600] pl-3">
+              <div className="font-bold text-[#0d193c] mb-1">{cat.categoria}</div>
+              <ul className="text-xs text-[#185adb]/90 list-disc pl-3">
+                {cat.servicios.map((srv, i) => <li key={i}>{srv}</li>)}
+              </ul>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
+
+      {/* Movimientos y noticias */}
+      <div className="w-full max-w-5xl grid md:grid-cols-2 gap-4 mb-8">
+        <Card className="bg-[#0d193c]/5 border-0 shadow">
+          <CardHeader className="flex flex-row items-center gap-2 pb-2">
+            <Bell className="h-5 w-5 text-[#185adb]" />
+            <CardTitle className="text-base text-[#185adb]">Movimientos recientes</CardTitle>
+          </CardHeader>
+          <CardContent className="text-xs text-[#0d193c]/80">
+            <ul className="list-disc pl-4 space-y-1">
+              {movimientos.map((m, i) => (
+                <li key={i}><span className="font-semibold">{m.tipo}</span> - {m.fecha} - ${m.monto.toLocaleString()} <span className="text-xs text-[#185adb]">{m.detalle}</span></li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+        <Card className="bg-[#ffd600]/10 border-0 shadow">
+          <CardHeader className="flex flex-row items-center gap-2 pb-2">
+            <TrendingUp className="h-5 w-5 text-[#ffd600]" />
+            <CardTitle className="text-base text-[#ffd600]">Noticias y análisis</CardTitle>
+          </CardHeader>
+          <CardContent className="text-xs text-[#0d193c]/80">
+            <ul className="list-disc pl-4 space-y-1">{noticias.map((n, i) => <li key={i}>{n}</li>)}</ul>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Asesor y contacto */}
+      <Card className="w-full max-w-5xl bg-white/95 shadow-md border-0 mb-8">
+        <CardHeader>
+          <CardTitle className="text-base font-bold text-[#185adb] flex items-center gap-2">
+            <User className="h-5 w-5" /> Tu asesor AFORTU
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="flex flex-col md:flex-row gap-4 items-center">
+          <div className="text-[#0d193c] font-semibold">{asesor.nombre}</div>
+          <div className="flex items-center gap-2 text-[#185adb] text-sm">
+            <Mail className="h-4 w-4" /> <span>{asesor.mail}</span>
+          </div>
+          <div className="flex items-center gap-2 text-[#185adb] text-sm">
+            <Phone className="h-4 w-4" /> <span>{asesor.whatsapp}</span>
+          </div>
+          <Button asChild size="sm" className="bg-[#ffd600] hover:bg-[#fff176] text-[#0d193c] font-bold ml-auto">
+            <Link href="mailto:maria.gonzalez@afortu.com.mx">Agendar llamada</Link>
+          </Button>
+        </CardContent>
+      </Card>
+
+      {/* Footer */}
+      <div className="mt-6 text-xs text-[#0d193c]/60 text-center max-w-lg">
+        Plataforma inteligente para la gestión de tu patrimonio, inversiones y servicios.<br />
+        <span className="text-[#ffd600] font-semibold">AFORTU</span> &copy; {new Date().getFullYear()} | <a href="https://www.afortu.com.mx" target="_blank" rel="noopener noreferrer" className="underline text-[#ffd600]">www.afortu.com.mx</a>
+      </div>
     </div>
   );
 }

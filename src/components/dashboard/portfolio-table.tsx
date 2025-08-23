@@ -4,7 +4,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
 import { Loader2, TrendingDown, TrendingUp } from "lucide-react";
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
@@ -29,37 +28,63 @@ export function PortfolioTable({ portfolio, setPortfolio }: PortfolioTableProps)
   const [loadingPrices, setLoadingPrices] = useState(true);
 
   useEffect(() => {
+    let isMounted = true;
     const fetchPrices = async () => {
       setLoadingPrices(true);
       try {
         const pricePromises = portfolio.map(item =>
           axios.get(`/api/stock-price?symbol=${item.symbol}`)
         );
-        const priceResults = await Promise.all(pricePromises);
-
-        setPortfolio(prevPortfolio => {
-            return prevPortfolio.map((item, index) => {
-                const priceData = priceResults[index].data;
-                return {
-                    ...item,
-                    currentPrice: priceData?.price || item.purchasePrice,
-                };
+        const priceResults = await Promise.allSettled(pricePromises);
+        // Revisar si hay resultados antes de actualizar el portafolio
+        if (priceResults.length === portfolio.length && isMounted) {
+            const updatedPortfolio = portfolio.map((item, index) => {
+                const result = priceResults[index];
+                if (result.status === 'fulfilled' && result.value.data?.price) {
+                    return { ...item, currentPrice: result.value.data.price };
+                }
+                return { ...item, currentPrice: item.purchasePrice }; 
             });
-        });
+            // Only update if prices actually changed
+            const hasChanged = React.useMemo(() => {
+              return updatedPortfolio.some((item, idx) => {
+                const prev = portfolio[idx];
+                // Compare both value and type for currentPrice, and also check for NaN
+                return (
+                  (item.currentPrice !== prev.currentPrice) &&
+                  !(Number.isNaN(item.currentPrice) && Number.isNaN(prev.currentPrice))
+                );
+              });
+            }, [updatedPortfolio, portfolio]);
+            if (hasChanged) {
+              setPortfolio(updatedPortfolio);
+            }
+        }
 
       } catch (error) {
         console.error("Error fetching stock prices:", error);
+         if (isMounted) {
+            const portfolioWithFallbackPrices = portfolio.map(item => ({...item, currentPrice: item.purchasePrice}));
+            setPortfolio(portfolioWithFallbackPrices);
+         }
       } finally {
-        setLoadingPrices(false);
+        if (isMounted) {
+            setLoadingPrices(false);
+        }
       }
     };
 
+    // Only fetch prices on initial mount
     if (portfolio.length > 0) {
       fetchPrices();
     } else {
-        setLoadingPrices(false);
+      setLoadingPrices(false);
     }
-  }, []); // Run only on initial mount. Portfolio state is managed in the parent.
+    return () => {
+      isMounted = false;
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Empty dependency array to run only once on mount
 
   return (
     <Table>
@@ -73,10 +98,11 @@ export function PortfolioTable({ portfolio, setPortfolio }: PortfolioTableProps)
       </TableHeader>
       <TableBody>
         {portfolio.map((item) => {
+          const hasCurrentPrice = item.currentPrice !== undefined;
           const totalValue = (item.currentPrice || 0) * item.shares;
           const totalCost = item.purchasePrice * item.shares;
-          const gainLoss = totalValue - totalCost;
-          const gainLossPercent = totalCost > 0 ? (gainLoss / totalCost) * 100 : 0;
+          const gainLoss = hasCurrentPrice ? totalValue - totalCost : 0;
+          const gainLossPercent = totalCost > 0 && hasCurrentPrice ? (gainLoss / totalCost) * 100 : 0;
           
           return (
             <TableRow key={item.id}>

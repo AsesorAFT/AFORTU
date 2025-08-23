@@ -6,7 +6,7 @@
  */
 
 import {ai} from '@/ai/genkit';
-import { getStockPrice } from '@/ai/tools/stock-tools';
+import { getStockPrice } from '@/ai/tools/stock-tool';
 import { getUserPortfolio } from '@/ai/tools/user-data-tools';
 import { AnalyzePortfolioInput, AnalyzePortfolioInputSchema, AnalyzePortfolioOutput, AnalyzePortfolioOutputSchema } from '@/ai/schemas/portfolio';
 

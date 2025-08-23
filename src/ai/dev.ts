@@ -11,5 +11,5 @@ import '@/ai/schemas/chat.ts';
 import '@/ai/schemas/portfolio.ts';
 import '@/ai/schemas/business.ts';
 import '@/ai/schemas/market.ts';
-import '@/ai/tools/stock-tools.ts';
+import '@/ai/tools/stock-tool.ts';
 import '@/ai/tools/user-data-tools.ts';
