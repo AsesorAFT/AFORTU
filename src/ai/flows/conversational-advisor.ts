@@ -9,8 +9,8 @@
  */
 
 import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
-import { ChatMessageSchema } from '../schemas/chat';
+import {z} from 'zod';
+import { ChatMessageSchema } from '@/ai/schemas/chat';
 
 const ChatWithAdvisorInputSchema = z.object({
   history: z.array(ChatMessageSchema),

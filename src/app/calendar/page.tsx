@@ -6,7 +6,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import { es } from 'date-fns/locale';
-import { Clock, PlusCircle, Edit, Trash2, Flame, AlertTriangle, CheckCircle, ListTodo, Hourglass, PartyPopper, UserCheck } from "lucide-react";
+import { Clock, PlusCircle, Edit, Trash2, Flame, AlertTriangle, CheckCircle, ListTodo, Hourglass, PartyPopper, UserCheck, LayoutDashboard, BadgeCheck, Star } from "lucide-react";
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -53,7 +53,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
-
 const appointmentSchema = z.object({
     time: z.string().regex(/^(0[1-9]|1[0-2]):[0-5][0-9] (AM|PM)$/, "El formato debe ser HH:MM AM/PM"),
     title: z.string().min(3, "El título debe tener al menos 3 caracteres."),
@@ -81,7 +80,6 @@ type AccountLog = {
     advisor: string;
     details: string;
 }
-
 
 function AppointmentForm({
     selectedDate,
@@ -115,7 +113,6 @@ function AppointmentForm({
             form.reset({ time: "", title: "", description: "", priority: "media", status: "pendiente" });
         }
     }, [existingAppointment, form]);
-
 
     const onSubmit = (data: AppointmentFormValues) => {
         onFormSubmit(data);
@@ -243,7 +240,6 @@ export default function CalendarPage() {
   const accountLogCollectionRef = user ? collection(db, `users/${user.uid}/accountLog`) : null;
   const [accountLogSnapshot, accountLogLoading, accountLogError] = useCollection(accountLogCollectionRef ? query(accountLogCollectionRef) : null);
 
-
   const appointments = React.useMemo(() => {
     if (!appointmentsSnapshot) return [];
     return appointmentsSnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id } as Appointment));
@@ -259,7 +255,11 @@ export default function CalendarPage() {
     const dateKey = format(date, 'yyyy-MM-dd');
     return appointments
       .filter(apt => apt.date === dateKey)
-      .sort((a, b) => new Date(`1970/01/01 ${a.time}`) > new Date(`1970/01/01 ${b.time}`) ? 1 : -1);
+      .sort((a, b) => {
+        const timeA = new Date(`1970/01/01 ${a.time}`);
+        const timeB = new Date(`1970/01/01 ${b.time}`);
+        return timeA.getTime() - timeB.getTime();
+      });
   }, [date, appointments]);
   
   const eventDates = React.useMemo(() => {
@@ -288,34 +288,13 @@ export default function CalendarPage() {
     return counts;
   }, [selectedAppointments]);
 
-
   const modifiers = {
     hasEvent: eventDates,
-  };
-
-  const modifiersStyles = {
-    hasEvent: {
-      '.rdp-day_hasEvent': {
-        position: 'relative'
-      },
-      '.rdp-day_hasEvent::after': {
-        content: '""',
-        position: 'absolute',
-        bottom: '4px',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        width: '6px',
-        height: '6px',
-        borderRadius: '50%',
-        backgroundColor: 'hsl(var(--primary))',
-      },
-    },
   };
   
   const handleAddAppointment = async (data: AppointmentFormValues) => {
     if (!date || !user || !appointmentsCollectionRef) return;
     const dateKey = format(date, 'yyyy-MM-dd');
-    
     const newAppointment = { ...data, date: dateKey };
 
     try {
@@ -372,50 +351,69 @@ export default function CalendarPage() {
   }
   
   const priorityColorClass = {
-      baja: 'bg-green-500',
-      media: 'bg-yellow-500',
-      alta: 'bg-red-500',
+      baja: 'bg-[#13e8a5]',
+      media: 'bg-[#ffd600]',
+      alta: 'bg-[#185adb]',
   }
   
    const statusBadgeVariant = {
         pendiente: 'bg-gray-100 text-gray-800 border-gray-200',
-        en_progreso: 'bg-blue-100 text-blue-800 border-blue-200',
-        completada: 'bg-green-100 text-green-800 border-green-200',
+        en_progreso: 'bg-[#ffd600]/30 text-[#185adb] border-[#ffd600]/20',
+        completada: 'bg-[#13e8a5]/30 text-[#0d193c] border-[#13e8a5]/30',
     };
 
   const isLoading = userLoading || loading || accountLogLoading;
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-3xl font-bold tracking-tight font-headline">Bitácora de Actividades</h1>
-      <p className="text-muted-foreground">
-        Registra, organiza y prioriza tus citas y tareas. Un control claro de tu día a día para que no se te escape nada importante.
+      {/* SUPER APP HEADER */}
+      <div className="flex items-center gap-3 mb-2">
+        <LayoutDashboard className="h-9 w-9 text-[#ffd600]" />
+        <span className="font-extrabold text-2xl text-[#185adb] tracking-tight">Agenda & Bitácora AFORTU</span>
+        <BadgeCheck className="h-6 w-6 text-[#13e8a5] ml-2" />
+      </div>
+      <p className="text-[#0d193c]/80 mb-1">
+        Organiza tus actividades importantes, citas y gestiones de patrimonio en un solo lugar seguro y premium.
       </p>
       <div className="grid lg:grid-cols-3 gap-6 mt-2">
         <div className="lg:col-span-2">
            <Card>
             <CardContent className="p-2 md:p-6 flex justify-center">
               {isLoading ? (
-                <Skeleton className="p-2 md:p-6 w-[292px] h-[345px] sm:w-[502px] sm:h-[377px] rounded-md" />
+                <Skeleton className="p-2 md:p-6 w-full h-[377px] rounded-md" />
               ) : (
                 <Calendar
                   mode="single"
                   selected={date}
                   onSelect={setDate}
-                  className="rounded-md"
+                  className="rounded-md w-full"
                   modifiers={modifiers}
-                  modifiersClassNames={modifiersStyles}
+                  components={{
+                      DayContent: (props) => {
+                          const hasEvent = eventDates.some(eventDate => format(eventDate, 'yyyy-MM-dd') === format(props.date, 'yyyy-MM-dd'));
+                          return (
+                              <div className="relative w-full h-full flex items-center justify-center">
+                                  {props.date.getDate()}
+                                  {hasEvent && <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#13e8a5]" />}
+                              </div>
+                          );
+                      }
+                  }}
                   locale={es}
+                  defaultMonth={new Date()}
                 />
               )}
             </CardContent>
           </Card>
         </div>
         <div className="lg:col-span-1">
-          <Card className="flex flex-col h-full min-h-[400px]">
+          <Card className="flex flex-col h-full min-h-[400px] border-[#ffd600]/40">
             <CardHeader>
-              <CardTitle>Actividades y Citas</CardTitle>
-              <CardDescription>
+              <CardTitle className="flex items-center gap-2">
+                <Star className="h-5 w-5 text-[#185adb]" />
+                Actividades y Citas
+              </CardTitle>
+              <CardDescription className="text-[#0d193c]/60">
                 {date ? format(date, "PPP", { locale: es }) : "Selecciona una fecha"}
               </CardDescription>
             </CardHeader>
@@ -430,43 +428,44 @@ export default function CalendarPage() {
                     <div className="text-center text-destructive py-8">Error al cargar datos.</div>
                 ) : selectedAppointments.length > 0 ? (
                     <div className='space-y-4'>
+                        {date && !isLoading && (
                         <div className="space-y-2">
-                             <Card>
-                                <CardHeader className="p-4">
-                                    <CardTitle className="text-base">Resumen de Prioridad</CardTitle>
+                             <Card className="border-[#ffd600]/40">
+                                <CardHeader className="p-4 pb-2">
+                                    <CardTitle className="text-base text-[#185adb]">Resumen de Prioridad</CardTitle>
                                 </CardHeader>
                                 <CardContent className="p-4 pt-0">
                                     <div className="flex rounded-md overflow-hidden text-xs font-semibold text-white">
-                                        <div className="flex-1 bg-red-500 p-2 flex flex-col items-center justify-center text-center">
+                                        <div className="flex-1 bg-[#185adb] p-2 flex flex-col items-center justify-center text-center">
                                             <Flame className="h-4 w-4 mb-1" />
                                             <div>{priorityCounts.alta} Alta</div>
                                         </div>
-                                        <div className="flex-1 bg-yellow-500 p-2 flex flex-col items-center justify-center text-center">
+                                        <div className="flex-1 bg-[#ffd600] text-[#0d193c] p-2 flex flex-col items-center justify-center text-center">
                                             <AlertTriangle className="h-4 w-4 mb-1" />
                                             <div>{priorityCounts.media} Media</div>
                                         </div>
-                                        <div className="flex-1 bg-green-500 p-2 flex flex-col items-center justify-center text-center">
+                                        <div className="flex-1 bg-[#13e8a5] p-2 flex flex-col items-center justify-center text-center">
                                             <CheckCircle className="h-4 w-4 mb-1" />
                                             <div>{priorityCounts.baja} Baja</div>
                                         </div>
                                     </div>
                                 </CardContent>
                             </Card>
-                            <Card>
-                                <CardHeader className="p-4">
-                                    <CardTitle className="text-base">Resumen de Progreso</CardTitle>
+                            <Card className="border-[#ffd600]/40">
+                                <CardHeader className="p-4 pb-2">
+                                    <CardTitle className="text-base text-[#185adb]">Resumen de Progreso</CardTitle>
                                 </CardHeader>
                                 <CardContent className="p-4 pt-0">
                                     <div className="flex rounded-md overflow-hidden text-xs font-semibold">
-                                        <div className="flex-1 bg-gray-500 text-white p-2 flex flex-col items-center justify-center text-center">
+                                        <div className="flex-1 bg-gray-200 text-[#0d193c] p-2 flex flex-col items-center justify-center text-center">
                                             <ListTodo className="h-4 w-4 mb-1" />
                                             <div>{statusCounts.pendiente} Pendiente</div>
                                         </div>
-                                        <div className="flex-1 bg-blue-500 text-white p-2 flex flex-col items-center justify-center text-center">
+                                        <div className="flex-1 bg-[#ffd600]/60 text-[#185adb] p-2 flex flex-col items-center justify-center text-center">
                                             <Hourglass className="h-4 w-4 mb-1" />
                                             <div>{statusCounts.en_progreso} En Progreso</div>
                                         </div>
-                                        <div className="flex-1 bg-green-500 text-white p-2 flex flex-col items-center justify-center text-center">
+                                        <div className="flex-1 bg-[#13e8a5]/80 text-[#0d193c] p-2 flex flex-col items-center justify-center text-center">
                                             <PartyPopper className="h-4 w-4 mb-1" />
                                             <div>{statusCounts.completada} Completada</div>
                                         </div>
@@ -474,14 +473,15 @@ export default function CalendarPage() {
                                 </CardContent>
                             </Card>
                         </div>
+                        )}
                         <ul className="space-y-3">
                         {selectedAppointments.map((apt) => (
                             <li key={apt.id}>
-                                <Card className={cn("relative overflow-hidden")}>
+                                <Card className={cn("relative overflow-hidden border-[#ffd600]/30")}>
                                     <div className={cn("absolute left-0 top-0 h-full w-1.5", priorityColorClass[apt.priority])}></div>
-                                    <CardContent className="p-4 flex items-center justify-between">
+                                    <CardContent className="p-4 flex items-center justify-between ml-1.5">
                                         <div className="flex items-start gap-4">
-                                            <Clock className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
+                                            <Clock className="h-5 w-5 text-[#185adb] flex-shrink-0 mt-1" />
                                             <div className="flex-grow">
                                                 <div className="flex items-center gap-2 mb-1">
                                                     <p className="font-semibold">{apt.time}</p>
@@ -491,8 +491,8 @@ export default function CalendarPage() {
                                                         </Badge>
                                                     )}
                                                 </div>
-                                                <p className="font-semibold">{apt.title}</p>
-                                                {apt.description && <p className="text-sm text-muted-foreground mt-1">{apt.description}</p>}
+                                                <p className="font-semibold text-[#0d193c]">{apt.title}</p>
+                                                {apt.description && <p className="text-sm text-[#185adb]/80 mt-1">{apt.description}</p>}
                                             </div>
                                         </div>
                                         <div className="flex items-center gap-1">
@@ -528,11 +528,11 @@ export default function CalendarPage() {
                         </ul>
                     </div>
                 ) : (
-                    <div className="text-center text-muted-foreground py-8 flex flex-col items-center justify-center h-full">
+                    <div className="text-center text-[#185adb]/70 py-8 flex flex-col items-center justify-center h-full">
                         <p>No hay actividades programadas para este día.</p>
                         {date && (
                              <AppointmentForm selectedDate={date} onFormSubmit={handleAddAppointment}>
-                                <Button variant="link" className="mt-2">
+                                <Button variant="link" className="mt-2 text-[#185adb] hover:text-[#0d193c]">
                                     <PlusCircle className="mr-2 h-4 w-4" />
                                     Añadir Actividad
                                 </Button>
@@ -544,7 +544,7 @@ export default function CalendarPage() {
              {date && !isLoading && selectedAppointments.length > 0 && (
                 <CardFooter>
                     <AppointmentForm selectedDate={date} onFormSubmit={handleAddAppointment}>
-                        <Button variant="outline" className="w-full">
+                        <Button variant="outline" className="w-full border-[#185adb] text-[#185adb] hover:bg-[#185adb]/10">
                             <PlusCircle className="mr-2 h-4 w-4" />
                             Añadir Otra Actividad
                         </Button>
@@ -554,15 +554,16 @@ export default function CalendarPage() {
           </Card>
         </div>
       </div>
+      {/* Bitácora de seguimiento */}
       <div className="mt-6">
-        <Card>
+        <Card className="border-[#ffd600]/40">
             <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                    <UserCheck className="h-6 w-6 text-primary" />
+                <CardTitle className="flex items-center gap-2 text-[#185adb]">
+                    <UserCheck className="h-6 w-6 text-[#13e8a5]" />
                     Bitácora de Seguimiento de Cuenta
                 </CardTitle>
-                <CardDescription>
-                    Registro de actividades y gestiones realizadas por tu asesor y el equipo de AFORTU.
+                <CardDescription className="text-[#0d193c]/70">
+                    Registro de actividades y gestiones realizadas por tu asesor y el equipo AFORTU.
                 </CardDescription>
             </CardHeader>
             <CardContent>
@@ -586,11 +587,11 @@ export default function CalendarPage() {
                                     <TableCell className="font-medium">{log.date}</TableCell>
                                     <TableCell>{log.activity}</TableCell>
                                     <TableCell>{log.advisor}</TableCell>
-                                    <TableCell className="text-muted-foreground">{log.details}</TableCell>
+                                    <TableCell className="text-[#185adb]/80">{log.details}</TableCell>
                                 </TableRow>
                             ))
                         ) : (
-                             <TableRow><TableCell colSpan={4} className="text-center text-muted-foreground">No hay actividades de seguimiento registradas.</TableCell></TableRow>
+                             <TableRow><TableCell colSpan={4} className="text-center text-[#185adb]/60">No hay actividades de seguimiento registradas.</TableCell></TableRow>
                         )}
                     </TableBody>
                 </Table>
@@ -600,6 +601,3 @@ export default function CalendarPage() {
     </div>
   );
 }
-    
-
-    

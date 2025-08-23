@@ -28,7 +28,6 @@ import {
   ResizablePanelGroup,
   ResizableHandle,
 } from '@/components/ui/resizable';
-import { Skeleton } from '@/components/ui/skeleton';
 
 export default function DashboardLayout({
   children,
@@ -45,7 +44,7 @@ export default function DashboardLayout({
     }
   }, [user, loading, router]);
 
-  if (loading) {
+  if (loading || !user) {
     return (
        <div className="flex items-center justify-center min-h-screen">
           <div className="flex flex-col items-center gap-4">
@@ -54,10 +53,6 @@ export default function DashboardLayout({
           </div>
       </div>
     );
-  }
-
-  if (!user) {
-    return null; // or a redirect component
   }
   
   return (

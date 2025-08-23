@@ -6,9 +6,9 @@
  */
 
 import {ai} from '@/ai/genkit';
-import { getStockPrice } from '../tools/stock-price-tool';
-import { getUserPortfolio } from '../tools/user-data-tools';
-import { AnalyzePortfolioInput, AnalyzePortfolioInputSchema, AnalyzePortfolioOutput, AnalyzePortfolioOutputSchema } from '../schemas/portfolio';
+import { getStockPrice } from '@/ai/tools/stock-tool';
+import { getUserPortfolio } from '@/ai/tools/user-data-tools';
+import { AnalyzePortfolioInput, AnalyzePortfolioInputSchema, AnalyzePortfolioOutput, AnalyzePortfolioOutputSchema } from '@/ai/schemas/portfolio';
 
 
 export async function analyzePortfolio(input: AnalyzePortfolioInput): Promise<AnalyzePortfolioOutput> {

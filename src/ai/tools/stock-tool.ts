@@ -7,8 +7,7 @@
  */
 
 import { ai } from '@/ai/genkit';
-import { getStockPrice as fetchStockPrice } from '@/services/stock-price-service';
-import { z } from 'genkit';
+import { z } from 'zod';
 
 export const getStockPrice = ai.defineTool(
   {
@@ -20,6 +19,8 @@ export const getStockPrice = ai.defineTool(
     outputSchema: z.number(),
   },
   async (input) => {
+    // Import service dynamically inside the tool to avoid webpack issues.
+    const { getStockPrice: fetchStockPrice } = await import('@/services/stock-price-service');
     try {
       const result = await fetchStockPrice(input.ticker);
       return result.price;

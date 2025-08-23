@@ -6,7 +6,7 @@
 
 import { ai } from '@/ai/genkit';
 import { fetchUserPortfolio, fetchBusinessData, fetchBusinessGoals, fetchInvoices, fetchContracts, fetchInvestmentPlans, fetchAccountLog } from '@/services/user-data-service';
-import { z } from 'genkit';
+import { z } from 'zod';
 
 export const getUserPortfolio = ai.defineTool(
   {
