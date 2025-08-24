@@ -60,7 +60,7 @@ export function ChatAsesor() {
         message: currentMessage,
       });
 
-      setMessages([...newMessages, { role: 'model', content: result.response }]);
+      setMessages([...newMessages, { role: 'assistant', content: result.response }]);
     } catch (error) {
       console.error("Error al chatear con el asesor:", error);
       toast({
@@ -104,7 +104,7 @@ export function ChatAsesor() {
                 ) : (
                     messages.map((msg, index) => (
                         <div key={index} className={cn("flex items-start gap-3", msg.role === 'user' && 'justify-end')}>
-                            {msg.role === 'model' && (
+                            {msg.role === 'assistant' && (
                                 <Avatar className="h-8 w-8 bg-primary text-primary-foreground flex items-center justify-center">
                                     <AvatarFallback><Bot className="h-5 w-5" /></AvatarFallback>
                                 </Avatar>

@@ -11,3 +11,4 @@ export const ChatHistorySchema = z.array(ChatMessageSchema);
 
 export type ChatMessage = z.infer<typeof ChatMessageSchema>;
 export type ChatHistory = z.infer<typeof ChatHistorySchema>;
+

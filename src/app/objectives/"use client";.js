@@ -81,7 +81,7 @@ const FinancialGoalCard = ({ goal }: { goal: typeof initialFinancialGoals[0] }) 
     }
 
     return (
-        <Card className="shadow-md border-border/50 transition-all hover:border-primary/40 group flex flex-col h-full">
+        <Card className="shadow-md border-[hsl(var(--border))]/50 transition-all hover:border-primary/40 group flex flex-col h-full">
             <CardHeader>
                 <div className="flex items-center gap-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
@@ -113,7 +113,7 @@ const FinancialGoalCard = ({ goal }: { goal: typeof initialFinancialGoals[0] }) 
                 {goal.monthlyContribution !== undefined && (
                     <div className="mt-auto space-y-4">
                         {/* Aportación Mensual */}
-                        <div className="bg-muted/40 p-3 rounded-lg border border-border/50">
+                        <div className="bg-muted/40 p-3 rounded-lg border border-[hsl(var(--border))]/50">
                              <div className="flex justify-between items-center">
                                 <div>
                                     <p className="text-xs text-muted-foreground">Aportación Mensual Programada</p>
@@ -124,7 +124,7 @@ const FinancialGoalCard = ({ goal }: { goal: typeof initialFinancialGoals[0] }) 
                         </div>
                         
                         {/* Simulador de Aportación Extraordinaria */}
-                        <div className="bg-muted/40 p-3 rounded-lg border border-border/50">
+                        <div className="bg-muted/40 p-3 rounded-lg border border-[hsl(var(--border))]/50">
                             <h5 className="font-semibold text-sm mb-2">Simulador de Aportación Extraordinaria</h5>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
@@ -222,7 +222,7 @@ export default function ObjectivesPage() {
                 <span>Liquidez disponible (10%):</span>
                 <span className="text-lg font-bold text-primary">{formatMoney(calculatedLiquidity)}</span>
               </div>
-              <div className="rounded-lg bg-accent/50 border border-border p-3 flex gap-3 items-start">
+              <div className="rounded-lg bg-accent/50 border border-[hsl(var(--border))] p-3 flex gap-3 items-start">
                 <Info className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                 <p className="text-xs text-muted-foreground">
                   La liquidez estructurada es una herramienta poderosa para emergencias u oportunidades, pero debe usarse con responsabilidad. Consulta a tu asesor para evaluar si es la mejor opción.

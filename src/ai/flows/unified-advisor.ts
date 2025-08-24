@@ -76,7 +76,7 @@ const conversationalAdvisorFlow = ai.defineFlow(
     inputSchema: UnifiedAdvisorInputSchema,
     outputSchema: UnifiedAdvisorOutputSchema,
   },
-  async (input) => {
+  async (input: UnifiedAdvisorInput) => {
     
     // Combine history and the new message for the prompt
     const combinedHistory = [...input.history, { role: 'user' as const, content: input.message }];

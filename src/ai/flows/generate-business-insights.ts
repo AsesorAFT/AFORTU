@@ -52,7 +52,7 @@ const generateBusinessInsightsFlow = ai.defineFlow(
     inputSchema: GenerateBusinessInsightsInputSchema,
     outputSchema: GenerateBusinessInsightsOutputSchema,
   },
-  async input => {
+  async (input: GenerateBusinessInsightsInput) => {
     const {output} = await prompt(input);
     return output!;
   }

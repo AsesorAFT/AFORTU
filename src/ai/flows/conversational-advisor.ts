@@ -26,7 +26,7 @@ const ChatWithAdvisorOutputSchema = z.object({
 export type ChatWithAdvisorOutput = z.infer<typeof ChatWithAdvisorOutputSchema>;
 
 export async function chatWithAdvisor(input: ChatWithAdvisorInput): Promise<ChatWithAdvisorOutput> {
-  return conversationalAdvisorFlow(input);
+  return conversationalAdvisorFlow(input) as Promise<ChatWithAdvisorOutput>;
 }
 
 const prompt = ai.definePrompt({
@@ -51,13 +51,16 @@ Responde al nuevo mensaje del usuario, teniendo en cuenta el historial de la con
 `,
 });
 
+interface ConversationalAdvisorFlowInput extends ChatWithAdvisorInput {}
+interface ConversationalAdvisorFlowOutput extends ChatWithAdvisorOutput {}
+
 const conversationalAdvisorFlow = ai.defineFlow(
   {
     name: 'conversationalAdvisorFlow',
     inputSchema: ChatWithAdvisorInputSchema,
     outputSchema: ChatWithAdvisorOutputSchema,
   },
-  async input => {
+  async (input: ConversationalAdvisorFlowInput): Promise<ConversationalAdvisorFlowOutput> => {
     const {output} = await prompt(input);
     return output!;
   }

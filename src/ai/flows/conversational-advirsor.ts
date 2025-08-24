@@ -57,7 +57,7 @@ const conversationalAdvisorFlow = ai.defineFlow(
     inputSchema: ChatWithAdvisorInputSchema,
     outputSchema: ChatWithAdvisorOutputSchema,
   },
-  async input => {
+  async (input: ChatWithAdvisorInput) => {
     const {output} = await prompt(input);
     return output!;
   }

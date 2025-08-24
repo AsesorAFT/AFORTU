@@ -1,7 +1,14 @@
-import {genkit} from 'genkit';
-import {googleAI} from '@genkit-ai/googleai';
+'use server';
+
+import { genkit } from 'genkit';
+import { googleAI } from '@genkit-ai/googleai';
+import { googleCloud } from '@genkit-ai/google-cloud';
 
 export const ai = genkit({
-  plugins: [googleAI()],
-  model: 'googleai/gemini-1.5-flash',
+  plugins: [
+    googleAI({
+      apiKey: process.env.GEMINI_API_KEY,
+    }),
+    googleCloud(),
+  ],
 });

@@ -1,20 +1,16 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Target, Calculator, PlusCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import dynamic from 'next/dynamic';
 
 // Importación dinámica del componente de meta financiera
-const FinancialGoalCard = useMemo(
-  () =>
-    dynamic(() => import('@/components/FinancialGoalCard'), {
-      loading: () => <div>Cargando meta...</div>,
-      ssr: false,
-    }),
-  []
-);
+const FinancialGoalCard = dynamic(() => import('@/components/FinancialGoalCard'), {
+  loading: () => <div>Cargando meta...</div>,
+  ssr: false,
+});
 
 const initialFinancialGoals = [
   {
@@ -25,7 +21,7 @@ const initialFinancialGoals = [
     description: 'Ahorro para imprevistos',
     targetAmount: 10000,
     currentAmount: 3500,
-    deadline: '2024-12-31', // string, no Date
+    deadline: '2024-12-31',
   },
   {
     id: '2',
@@ -35,7 +31,7 @@ const initialFinancialGoals = [
     description: 'Vacaciones soñadas',
     targetAmount: 5000,
     currentAmount: 1200,
-    deadline: '2025-06-30', // string, no Date
+    deadline: '2025-06-30',
   },
 ];
 
@@ -44,7 +40,7 @@ export default function FinancialGoalsPage() {
 
   return (
     <div className="flex flex-col gap-8 pb-12">
-      <header className="sticky top-[60px] z-10 bg-background/95 border-b -mx-6 px-6 py-4 mb-2">
+      <header className="sticky top-[60px] z-10 bg-[hsl(var(--background))]/95 border-b -mx-6 px-6 py-4 mb-2">
         <div className="flex items-center gap-4">
           <Target className="h-8 w-8 text-primary" />
           <div>
@@ -87,3 +83,5 @@ export default function FinancialGoalsPage() {
         </div>
       </div>
     </div>
+  );
+}
