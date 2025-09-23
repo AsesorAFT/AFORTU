@@ -45,17 +45,15 @@ export function PortfolioTable({ portfolio, setPortfolio }: PortfolioTableProps)
                 }
                 return { ...item, currentPrice: item.purchasePrice }; 
             });
-            // Only update if prices actually changed
-            const hasChanged = React.useMemo(() => {
-              return updatedPortfolio.some((item, idx) => {
-                const prev = portfolio[idx];
-                // Compare both value and type for currentPrice, and also check for NaN
-                return (
-                  (item.currentPrice !== prev.currentPrice) &&
-                  !(Number.isNaN(item.currentPrice) && Number.isNaN(prev.currentPrice))
-                );
-              });
-            }, [updatedPortfolio, portfolio]);
+            // Check if prices actually changed before updating
+            const hasChanged = updatedPortfolio.some((item, idx) => {
+              const prev = portfolio[idx];
+              // Compare both value and type for currentPrice, and also check for NaN
+              return (
+                (item.currentPrice !== prev.currentPrice) &&
+                !(Number.isNaN(item.currentPrice) && Number.isNaN(prev.currentPrice))
+              );
+            });
             if (hasChanged) {
               setPortfolio(updatedPortfolio);
             }

@@ -1,8 +1,0 @@
-# MAX_SIZE
-
-# Este archivo puede usarse para definir una constante de tamaño máximo para tu aplicación.
-# Por ejemplo, puedes definir el tamaño máximo permitido para archivos, datos, etc.
-
-MAX_SIZE = 10485760  # 10 MB en bytes
-
-# Puedes importar esta constante en otros archivos de tu proyecto.

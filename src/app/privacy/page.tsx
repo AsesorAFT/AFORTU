@@ -25,20 +25,20 @@ export default function PrivacyPage() {
                 <p className="text-muted-foreground">Última actualización: 30 de Julio de 2024</p>
             </div>
 
-            <p>AFORTU ("nosotros", "nuestro" o "nos") opera la plataforma AFORTU (en adelante, el "Servicio"). Esta página le informa de nuestras políticas en materia de recopilación, uso y divulgación de datos personales cuando utiliza nuestro Servicio y las opciones que tiene asociadas a dichos datos.</p>
+            <p>AFORTU (&ldquo;nosotros&rdquo;, &ldquo;nuestro&rdquo; o &ldquo;nos&rdquo;) opera la plataforma AFORTU (en adelante, el &ldquo;Servicio&rdquo;). Esta página le informa de nuestras políticas en materia de recopilación, uso y divulgación de datos personales cuando utiliza nuestro Servicio y las opciones que tiene asociadas a dichos datos.</p>
 
             <h2>1. Información que Recopilamos</h2>
             <p>Recopilamos varios tipos diferentes de información con diversos fines para prestarle y mejorar nuestro Servicio.</p>
             <h3>Tipos de Datos Recopilados</h3>
             <ul>
               <li>
-                <strong>Datos Personales:</strong> Mientras utiliza nuestro Servicio, podemos pedirle que nos proporcione cierta información de identificación personal que puede ser utilizada para contactarle o identificarle ("Datos Personales"). La información de identificación personal se obtiene a través del proceso de inicio de sesión con Google e incluye, entre otros, su nombre y dirección de correo electrónico.
+                <strong>Datos Personales:</strong> Mientras utiliza nuestro Servicio, podemos pedirle que nos proporcione cierta información de identificación personal que puede ser utilizada para contactarle o identificarle (&ldquo;Datos Personales&rdquo;). La información de identificación personal se obtiene a través del proceso de inicio de sesión con Google e incluye, entre otros, su nombre y dirección de correo electrónico.
               </li>
               <li>
                 <strong>Datos Financieros:</strong> Para utilizar las funcionalidades de la plataforma, como la gestión de portafolios y el análisis, usted puede proporcionar datos relacionados con sus finanzas, como detalles de activos de inversión, objetivos financieros, datos de negocio y otros datos relacionados. Esta información se almacena de forma segura en la base de datos de Firebase asociada a su cuenta.
               </li>
               <li>
-                <strong>Datos de Uso:</strong> La información que nos proporciona al interactuar con nuestras herramientas de IA, como el "Asesor AFT", se utiliza para procesar sus solicitudes y se maneja de acuerdo con las políticas de privacidad de los modelos de IA de Google (Gemini).
+                <strong>Datos de Uso:</strong> La información que nos proporciona al interactuar con nuestras herramientas de IA, como el &ldquo;Asesor AFT&rdquo;, se utiliza para procesar sus solicitudes y se maneja de acuerdo con las políticas de privacidad de los modelos de IA de Google (Gemini).
               </li>
             </ul>
 

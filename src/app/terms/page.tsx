@@ -31,9 +31,9 @@ export default function TermsPage() {
 
             <h2>1. Definiciones</h2>
             <ul>
-              <li><strong>"Plataforma"</strong> se refiere a la aplicación web y a todos los servicios proporcionados por AFORTU.</li>
-              <li><strong>"Usuario"</strong>, <strong>"Tú"</strong> y <strong>"Tu"</strong> se refiere a ti, la persona que accede a esta plataforma y acepta los términos y condiciones de la Compañía.</li>
-              <li><strong>"Servicio"</strong> incluye la gestión de portafolios, análisis financiero, asesoría con IA (Asesor AFT) y otras funcionalidades ofrecidas a través de la Plataforma.</li>
+              <li><strong>&ldquo;Plataforma&rdquo;</strong> se refiere a la aplicación web y a todos los servicios proporcionados por AFORTU.</li>
+              <li><strong>&ldquo;Usuario&rdquo;</strong>, <strong>&ldquo;Tú&rdquo;</strong> y <strong>&ldquo;Tu&rdquo;</strong> se refiere a ti, la persona que accede a esta plataforma y acepta los términos y condiciones de la Compañía.</li>
+              <li><strong>&ldquo;Servicio&rdquo;</strong> incluye la gestión de portafolios, análisis financiero, asesoría con IA (Asesor AFT) y otras funcionalidades ofrecidas a través de la Plataforma.</li>
             </ul>
 
             <h2>2. Cuentas y Registro</h2>
@@ -48,7 +48,7 @@ export default function TermsPage() {
             </ul>
             
             <h2>4. Asesor AFT y Asesoría Financiera</h2>
-            <p>El "Asesor AFT" es una herramienta de inteligencia artificial diseñada para proporcionar información, análisis y recomendaciones financieras. La información proporcionada por el Asesor AFT y cualquier otra herramienta en la plataforma es solo para fines informativos y no debe considerarse como un consejo de inversión, financiero o de otro tipo. Siempre debes consultar con un asesor financiero humano calificado antes de tomar cualquier decisión de inversión.</p>
+            <p>El &ldquo;Asesor AFT&rdquo; es una herramienta de inteligencia artificial diseñada para proporcionar información, análisis y recomendaciones financieras. La información proporcionada por el Asesor AFT y cualquier otra herramienta en la plataforma es solo para fines informativos y no debe considerarse como un consejo de inversión, financiero o de otro tipo. Siempre debes consultar con un asesor financiero humano calificado antes de tomar cualquier decisión de inversión.</p>
             
             <h2>5. Propiedad Intelectual</h2>
             <p>La plataforma y su contenido original, características y funcionalidad son y seguirán siendo propiedad exclusiva de AFORTU y sus licenciantes. La marca, el diseño y todo el marco de trabajo de la plataforma están protegidos por derechos de autor y otras leyes de propiedad industrial. Nuestras marcas comerciales no pueden ser utilizadas en conexión con ningún producto o servicio sin el consentimiento previo por escrito de AFORTU.</p>

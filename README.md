@@ -52,7 +52,25 @@ docs/
 Ver `.env.example`. Crea `.env.local` para desarrollo y NO lo comitees.
 
 ## Scripts de desarrollo
-(Añadir aquí según package.json – actualizar si procede.)
+```bash
+# Desarrollo
+npm run dev           # Ejecuta el servidor web y genkit en paralelo
+npm run dev:web       # Solo servidor Next.js en puerto 3001
+npm run dev:genkit    # Solo servidor Genkit para IA
+
+# Build y deploy
+npm run build         # Build de producción
+npm run start         # Servidor de producción
+npm run check         # Linting y typecheck
+npm run lint          # Solo linting
+npm run typecheck     # Solo verificación de tipos
+
+# Firebase
+npm run firebase:build   # Build y export
+npm run firebase:deploy  # Deploy completo
+npm run firebase:serve   # Servidor local
+npm run firebase:hosting # Deploy solo hosting
+```
 
 ## Guía de contribución
 1. Crear ramas feature/descripcion-corta
