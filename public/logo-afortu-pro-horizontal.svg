@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="80" viewBox="0 0 300 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f7c873;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e6b85c;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="navyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1931;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a2f47;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a1931;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#185adb;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2970ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1549b8;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="grayGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b949e;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#6e7681;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b949e;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="proBadgeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ff8500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e55a2b;stop-opacity:1" />
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="dropshadow">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#0a1931" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Symbol Section -->
+  <g transform="translate(40, 40)">
+    <!-- Outer circle -->
+    <circle cx="0" cy="0" r="30" fill="none" stroke="url(#navyGradient)" stroke-width="2" opacity="0.8"/>
+    
+    <!-- Arcs -->
+    <path d="M -20 -15 A 20 20 0 0 1 5 -25" fill="none" stroke="url(#blueGradient)" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M 20 -15 A 20 20 0 0 1 -5 -25" fill="none" stroke="url(#goldGradient)" stroke-width="1.5" stroke-linecap="round"/>
+    
+    <!-- Central pattern -->
+    <rect x="-12" y="-12" width="8" height="8" fill="url(#goldGradient)" transform="rotate(45)" rx="1"/>
+    <rect x="4" y="-12" width="8" height="8" fill="url(#navyGradient)" transform="rotate(45)" rx="1"/>
+    <rect x="-12" y="4" width="8" height="8" fill="url(#blueGradient)" transform="rotate(45)" rx="1"/>
+    <rect x="4" y="4" width="8" height="8" fill="url(#grayGradient)" transform="rotate(45)" rx="1" opacity="0.8"/>
+    
+    <!-- Center point -->
+    <circle cx="0" cy="0" r="3" fill="url(#goldGradient)" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="1.5" fill="url(#navyGradient)"/>
+  </g>
+
+  <!-- Text Section -->
+  <text x="95" y="45" font-family="'Poppins', sans-serif" font-size="28" font-weight="800" fill="url(#navyGradient)" filter="url(#dropshadow)">AFORTU</text>
+  
+  <!-- PRO Badge -->
+  <g transform="translate(225, 32)">
+    <rect x="-18" y="-8" width="36" height="16" rx="8" fill="url(#proBadgeGradient)" filter="url(#dropshadow)"/>
+    <text x="0" y="2" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="white">PRO</text>
+  </g>
+  
+  <!-- Subtitle -->
+  <text x="95" y="60" font-family="'Inter', sans-serif" font-size="10" font-weight="400" fill="url(#grayGradient)" letter-spacing="1px">ASSET MANAGEMENT</text>
+</svg>
