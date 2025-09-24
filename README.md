@@ -1,64 +1,104 @@
-"""markdown
-# AFORTU
+# AFORTU Asset Management
 
-Plataforma / código base del proyecto AFORTU.
+<div align="center">
+  <img src="https://raw.githubusercontent.com/AsesorAFT/AFORTU/main/logo.png" alt="Logo de AFORTU" width="300"/>
+</div>
 
-> Nota: Se resolvió un conflicto previo en este README que contenía marcadores de merge (`<<<<<<<`).
+<div align="center">
+  
+**Construyendo tu legado, asegurando tu futuro.**
 
-## Contenido
-- [Descripción](#descripción)
-- [Integración API](#integración-api)
-- [Estructura del código](#estructura-del-código)
-- [Variables de entorno](#variables-de-entorno)
-- [Scripts de desarrollo](#scripts-de-desarrollo)
-- [Guía de contribución](#guía-de-contribución)
+</div>
 
-## Descripción
-Repositorio principal del proyecto. Aquí se integran frontend (Next.js, App Router) y utilidades compartidas.
+[![Estado del Proyecto](https://img.shields.io/badge/Estado-Activo-success)](https://github.com/AsesorAFT/AFORTU)
+[![Sitio Web](https://img.shields.io/badge/Sitio_Web-afortu.com.mx-blue)](https://www.afortu.com.mx)
+[![Licencia](https://img.shields.io/badge/Licencia-MIT-lightgrey.svg)](LICENSE)
 
-## Integración API
-Consulta la guía completa en: `docs/api/INTEGRATION.md`.
+## 📋 Descripción
 
-Resumen rápido:
-```bash
-# .env.local
-AFORTU_API_BASE_URL=https://api.afortu.com
-AFORTU_API_KEY=sk_... # (NO compartir)
-```
-Uso básico server-side:
-```ts
-import { AFORTUApiClient } from '@/lib/afortu';
-const client = new AFORTUApiClient();
-const me = await client.get('/v1/users/me');
-```
+**AFORTU** es una plataforma exclusiva de Asset Management diseñada para ofrecer una experiencia de servicio superior a clientes de alto patrimonio y a sus empresas. Integramos un equipo de asesores expertos con tecnología de vanguardia para proporcionar soluciones integrales en gestión patrimonial, planeación de legado y estrategias de retiro.
 
-## Estructura del código
-```
-src/
-  lib/
-    afortu/
-      apiClient.ts
-      index.ts
-  server/
-    middleware/
-      verifyAfortuApiKey.ts
-  ...
-docs/
-  api/
-    INTEGRATION.md
-```
+Nuestra misión es construir el equipo de asesores que tus negocios necesitan, guiándote desde la planeación inicial hasta la consolidación de tu retiro y la sucesión de tu legado.
 
-## Variables de entorno
-Ver `.env.example`. Crea `.env.local` para desarrollo y NO lo comitees.
+## ✨ Características Principales
 
-## Scripts de desarrollo
-(Añadir aquí según package.json – actualizar si procede.)
+- **Asesoría Integral y Especializada**:
+  - Accede a un **asesor principal** y a un equipo de especialistas dedicados a tus necesidades.
+  - Cubrimos áreas clave: **patrimonial, legado, retiro, legal, fiscal y de inversión**.
 
-## Guía de contribución
-1. Crear ramas feature/descripcion-corta
-2. Commits claros (Convencional Commits sugerido)
-3. PR con descripción y pasos de prueba
+- **Gestión de Inversiones a Medida**:
+  - **Asset Management** a través de contratos de mandato para una gestión transparente y profesional de tus activos.
+  - **Contratos Cerrados a Vencimiento (CCV)** con tasa APR pactada e inversión en tasa fija para un rendimiento predecible y seguro.
 
----
-© AFORTU
-"""
+- **Planeación de Legado y Sucesión**:
+  - Estrategias completas para **herencia, sucesión y planeación de `Family Office`**, asegurando la continuidad y protección de tu patrimonio para las futuras generaciones.
+
+- **Asesor AFT (Inteligencia Artificial)**:
+  - Potenciado por **Gemini 2.5 Pro**, nuestro asistente de IA **Asesor AFT** mejora la experiencia del cliente, ofreciendo análisis avanzados y soporte proactivo en todas las áreas de servicio.
+
+- **Bitácora Digital**:
+  - Toda la interacción y seguimiento se gestiona a través de una **bitácora centralizada**, garantizando una comunicación clara y transparente entre tú y tu equipo de asesores.
+
+## 🚀 Empezando
+
+Este repositorio contiene el código fuente y la documentación de la aplicación AFORTU. Para empezar a desarrollar o contribuir, sigue estos pasos.
+
+### Prerrequisitos
+
+*(Aquí listarías las herramientas necesarias, por ejemplo:)*
+- Node.js v18+
+- Python 3.10+
+- Docker
+
+### Instalación
+
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/AsesorAFT/AFORTU.git
+   cd AFORTU
+   ```
+
+2. Instala las dependencias del frontend:
+   ```bash
+   cd frontend
+   npm install
+   ```
+
+3. Instala las dependencias del backend:
+   ```bash
+   cd ../backend
+   pip install -r requirements.txt
+   ```
+
+4. Inicia la aplicación (ejemplo con Docker Compose):
+   ```bash
+   docker-compose up --build
+   ```
+
+## 🔧 Tecnologías Clave
+
+- **Inteligencia Artificial**: Google Gemini 2.5 Pro
+- **Frontend**: *(Ej: React, Vue.js, Angular)*
+- **Backend**: *(Ej: Python (Django/Flask), Node.js (Express))*
+- **Base de Datos**: *(Ej: PostgreSQL, MongoDB)*
+- **Despliegue**: *(Ej: AWS, Google Cloud, Docker)*
+
+## 👥 Contribución
+
+¡Tu contribución es fundamental para mejorar AFORTU! Si deseas colaborar:
+
+1. Haz un **Fork** de este repositorio.
+2. Crea una nueva rama para tu funcionalidad (`git checkout -b feature/MiFuncionalidad`).
+3. Realiza tus cambios y haz **Commit** (`git commit -m 'Añadir MiFuncionalidad'`).
+4. Sube tus cambios a tu fork (`git push origin feature/MiFuncionalidad`).
+5. Abre un **Pull Request** hacia la rama `main` de este repositorio.
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+
+## 📞 Contacto
+
+- **Organización**: AsesorAFT
+- **Sitio Web**: [www.afortu.com.mx](https://www.afortu.com.mx)
+- **Email**: [tu-email@afortu.com.mx](mailto:tu-email@afortu.com.mx)

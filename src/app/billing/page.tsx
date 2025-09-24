@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
@@ -111,7 +110,7 @@ export default function BillingPage() {
         tableBody.push(
             ['', '', 'Subtotal', `$${subtotal.toFixed(2)}`],
             ['', '', 'IVA (16%)', `$${tax.toFixed(2)}`],
-            ['', '', { content: 'Total', styles: { fontStyle: 'bold' } }, { content: `$${total.toFixed(2)}`, styles: { fontStyle: 'bold' } }]
+            ['', '', 'Total', `$${total.toFixed(2)}`]
         );
 
         autoTable(doc, {
@@ -206,7 +205,8 @@ export default function BillingPage() {
         const totalNet = totalInterest - totalISR;
         
         const foot = [[
-            { content: 'Totales', colSpan: 2, styles: { fontStyle: 'bold', halign: 'right' } },
+            'Totales',
+            '',
             `$${totalInterest.toFixed(2)}`,
             `$${totalISR.toFixed(2)}`,
             `$${totalNet.toFixed(2)}`,

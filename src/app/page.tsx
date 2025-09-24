@@ -1,111 +1,102 @@
-'use client';
-
-import { Briefcase, LogOut, User, TrendingUp, FileText, Bell } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '@/lib/firebase';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-
-export default function DashboardPage() {
-  const [user] = useAuthState(auth);
-  const router = useRouter();
-
-  const handleLogout = async () => {
-    await auth.signOut();
-    router.push('/login');
-  };
-
+export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0a1931] to-[#185adb] flex flex-col items-center py-10 px-2">
-      {/* Branding */}
-      <div className="flex items-center gap-3 mb-8">
-        <Briefcase className="h-10 w-10 text-[#f7c873]" />
-        <span className="font-extrabold text-3xl text-white tracking-tight">AFORTU</span>
-      </div>
-      {/* Main Card */}
-      <Card className="w-full max-w-3xl bg-white/95 shadow-2xl border-0">
-        <CardHeader>
-          <CardTitle className="text-2xl font-bold text-[#185adb]">
-            ¡Bienvenido{user?.displayName ? `, ${user.displayName}` : ''}!
-          </CardTitle>
-          <CardDescription className="text-[#0a1931]/80 mt-1">
-            Tu resumen financiero y próximos movimientos.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="grid gap-8">
+    <div className="min-h-screen bg-gray-950 text-white">
+      {/* Header */}
+      <header className="bg-gray-900 px-6 py-4 border-b border-gray-800">
+        <div className="container mx-auto">
+          <h1 className="text-3xl font-bold text-amber-400">AFORTU PRO</h1>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="px-6 py-24">
+        <div className="container mx-auto text-center">
+          <h2 className="text-5xl font-bold mb-6">
+            Gestión Patrimonial{' '}
+            <span className="bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
+              de Clase Mundial
+            </span>
+          </h2>
+          <p className="text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Plataforma premium para inversionistas institucionales y clientes de alto patrimonio.
+            Tecnología avanzada, análisis profundo, resultados excepcionales.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+            <button className="bg-amber-500 hover:bg-amber-600 text-gray-900 font-semibold px-8 py-4 rounded-lg transition-colors">
+              Acceder a la Plataforma →
+            </button>
+            <button className="border border-amber-500 text-amber-400 hover:bg-amber-500/10 font-semibold px-8 py-4 rounded-lg transition-colors">
+              Conocer Servicios
+            </button>
+          </div>
+
           {/* Métricas */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="rounded-xl bg-[#185adb]/10 p-5 text-center shadow-sm">
-              <div className="text-3xl font-bold text-[#185adb]">$250,000</div>
-              <div className="text-xs text-[#0a1931]/70 mt-1">Patrimonio total</div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+              <div className="text-2xl font-bold text-amber-400 mb-2">$2.5B+</div>
+              <p className="text-gray-400 text-sm">Activos Bajo Gestión</p>
             </div>
-            <div className="rounded-xl bg-[#f7c873]/20 p-5 text-center shadow-sm">
-              <div className="text-3xl font-bold text-[#f7c873]">3</div>
-              <div className="text-xs text-[#0a1931]/70 mt-1">Contratos activos</div>
+            <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+              <div className="text-2xl font-bold text-blue-400 mb-2">15.3%</div>
+              <p className="text-gray-400 text-sm">Rendimiento Promedio Anual</p>
             </div>
-            <div className="rounded-xl bg-[#0a1931]/10 p-5 text-center shadow-sm">
-              <div className="text-3xl font-bold text-[#0a1931]">8.2%</div>
-              <div className="text-xs text-[#0a1931]/70 mt-1">Rendimiento anual</div>
+            <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+              <div className="text-2xl font-bold text-green-400 mb-2">500+</div>
+              <p className="text-gray-400 text-sm">Clientes Institucionales</p>
             </div>
           </div>
-          {/* Acciones rápidas */}
-          <div className="flex flex-col md:flex-row gap-4 justify-center mt-2">
-            <Button asChild className="bg-[#185adb] hover:bg-[#0a1931] text-white font-bold px-8 py-2 rounded-lg flex items-center gap-2">
-              <Link href="/dashboard/activos">
-                <TrendingUp className="h-5 w-5" /> Ver portafolio
-              </Link>
-            </Button>
-            <Button asChild className="bg-[#f7c873] hover:bg-[#ffe29a] text-[#0a1931] font-bold px-8 py-2 rounded-lg flex items-center gap-2">
-              <Link href="/dashboard/inversiones/nueva">
-                <FileText className="h-5 w-5" /> Nueva inversión
-              </Link>
-            </Button>
-            <Button
-              className="bg-[#0a1931] hover:bg-[#185adb] text-white font-bold px-8 py-2 rounded-lg flex items-center gap-2"
-              onClick={handleLogout}
-              type="button"
-            >
-              <LogOut className="h-5 w-5" /> Cerrar sesión
-            </Button>
+        </div>
+      </section>
+
+      {/* Servicios */}
+      <section className="py-24 bg-gray-900/70">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6">
+              Servicios Institucionales
+            </h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              Soluciones sofisticadas diseñadas para los estándares más exigentes 
+              del mercado financiero global.
+            </p>
           </div>
-          {/* Próximos movimientos y noticias */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            <Card className="bg-[#185adb]/5 border-0 shadow">
-              <CardHeader className="flex flex-row items-center gap-2 pb-2">
-                <Bell className="h-5 w-5 text-[#185adb]" />
-                <CardTitle className="text-base text-[#185adb]">Próximos movimientos</CardTitle>
-              </CardHeader>
-              <CardContent className="text-sm text-[#0a1931]/80">
-                <ul className="list-disc pl-4 space-y-1">
-                  <li>Vencimiento de contrato: <span className="font-semibold">15/08/2025</span></li>
-                  <li>Revisión de portafolio: <span className="font-semibold">22/08/2025</span></li>
-                  <li>Depósito programado: <span className="font-semibold">$10,000</span> el 01/09/2025</li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card className="bg-[#f7c873]/10 border-0 shadow">
-              <CardHeader className="flex flex-row items-center gap-2 pb-2">
-                <TrendingUp className="h-5 w-5 text-[#f7c873]" />
-                <CardTitle className="text-base text-[#f7c873]">Noticias financieras</CardTitle>
-              </CardHeader>
-              <CardContent className="text-sm text-[#0a1931]/80">
-                <ul className="list-disc pl-4 space-y-1">
-                  <li>El mercado accionario sube 2% en la última semana.</li>
-                  <li>Nuevas oportunidades de inversión disponibles.</li>
-                  <li>Actualización fiscal 2025: conoce los cambios.</li>
-                </ul>
-              </CardContent>
-            </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-gray-900 border border-gray-700 rounded-lg p-8 hover:shadow-amber-500/10 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
+              <div className="w-16 h-16 bg-gray-800 rounded-xl mb-6 flex items-center justify-center group-hover:bg-amber-900/50 transition-colors">
+                <span className="text-2xl">📊</span>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">Gestión de Portafolios</h3>
+              <p className="text-gray-400 mb-4">Estrategias de inversión personalizadas con análisis cuantitativo avanzado y gestión de riesgos institucional.</p>
+              <div className="text-amber-400 hover:text-amber-300 font-semibold transition-colors">Más información →</div>
+            </div>
+
+            <div className="bg-gray-900 border border-gray-700 rounded-lg p-8 hover:shadow-amber-500/10 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
+              <div className="w-16 h-16 bg-gray-800 rounded-xl mb-6 flex items-center justify-center group-hover:bg-amber-900/50 transition-colors">
+                <span className="text-2xl">🌍</span>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">Asesoría Estratégica</h3>
+              <p className="text-gray-400 mb-4">Consultoría en estructuración patrimonial, planificación fiscal y optimización de inversiones internacionales.</p>
+              <div className="text-amber-400 hover:text-amber-300 font-semibold transition-colors">Más información →</div>
+            </div>
+
+            <div className="bg-gray-900 border border-gray-700 rounded-lg p-8 hover:shadow-amber-500/10 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
+              <div className="w-16 h-16 bg-gray-800 rounded-xl mb-6 flex items-center justify-center group-hover:bg-amber-900/50 transition-colors">
+                <span className="text-2xl">🧠</span>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">Análisis con IA</h3>
+              <p className="text-gray-400 mb-4">Modelos predictivos y análisis de mercado impulsados por IA para decisiones de inversión superiores.</p>
+              <div className="text-amber-400 hover:text-amber-300 font-semibold transition-colors">Más información →</div>
+            </div>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </section>
+
       {/* Footer */}
-      <div className="mt-10 text-xs text-white/70 text-center max-w-lg">
-        Plataforma inteligente para la gestión de tu patrimonio, inversiones y retiro.<br />
-        <span className="text-[#f7c873] font-semibold">AFORTU</span> &copy; {new Date().getFullYear()}
-      </div>
+      <footer className="bg-gray-900 px-6 py-8 text-center border-t border-gray-800">
+        <p className="text-gray-400">© 2025 AFORTU PRO - Gestión Patrimonial de Élite</p>
+      </footer>
     </div>
   );
 }

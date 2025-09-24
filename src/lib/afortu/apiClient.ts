@@ -1,4 +1,3 @@
-"""typescript
 /**
  * Cliente genérico para la API de AFORTU.
  * - Usa fetch nativo.
@@ -176,4 +175,3 @@ export class AFORTUApiClient {
 //   const me = await client.get('/v1/users/me');
 //   return Response.json(me);
 // }
-"""

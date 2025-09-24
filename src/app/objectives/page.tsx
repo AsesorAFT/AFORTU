@@ -1,25 +1,12 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { Target, Calculator, PlusCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-// Usa importación dinámica para mejorar el rendimiento y manejo de errores
-import dynamic from 'next/dynamic';
-
-const FinancialGoalCard = useMemo(
-  () =>
-    dynamic(() => import('@/components/FinancialGoalCard'), {
-      loading: () => <div>Cargando meta...</div>,
-      ssr: false,
-    }),
-  []
-);
+import FinancialGoalCard from '@/components/FinancialGoalCard';
 
 export default function FinancialGoalsPage() {
-  // State de metas, aportaciones, etc.
-  // ...el mismo state que ya tienes...
-
   // Ejemplo de metas financieras iniciales (debes reemplazarlo con tus datos reales o lógica de carga)
   const initialFinancialGoals = [
     {
