@@ -3,9 +3,34 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
+    // SECURITY RECOMMENDATION: Review and strengthen these rules for production
+    // Current rules are basic - consider adding:
+    // 1. Field-level validation for financial data
+    // 2. Rate limiting for sensitive operations
+    // 3. Additional validation for PII and financial information
+    // 4. Audit logging for sensitive data access
+    
     // Allow users to read and write only their own data
     match /users/{userId}/{allPaths=**} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
+      allow read, write: if request.auth != null && request.auth.uid == userId
+        // SECURITY: Add additional validation for financial data updates
+        && isValidUserData(request.resource.data);
+    }
+    
+    // SECURITY TODO: Add specific rules for financial data collections
+    // match /financial_data/{userId}/accounts/{accountId} {
+    //   allow read, write: if request.auth != null 
+    //     && request.auth.uid == userId
+    //     && isValidFinancialData(request.resource.data);
+    // }
+    
+    // Helper function to validate user data (implement based on your schema)
+    function isValidUserData(data) {
+      // TODO: Implement proper validation for user data
+      // - Validate required fields
+      // - Check data types
+      // - Sanitize sensitive information
+      return true; // PLACEHOLDER - IMPLEMENT PROPER VALIDATION
     }
   }
 }

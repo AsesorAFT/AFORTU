@@ -1,11 +1,27 @@
 rules_version = '2';
 
-// Craft rules based on data in your Firestore database
-// allow write: if firestore.get(
-//    /databases/(default)/documents/users/$(request.auth.uid)).data.isAdmin;
+// SECURITY RECOMMENDATION: Review and strengthen these storage rules for production
+// Current rules deny all access - implement proper authentication and authorization
+// Consider adding:
+// 1. User-specific file access controls
+// 2. File type validation (only allow safe file types)
+// 3. File size limits to prevent abuse
+// 4. Virus scanning integration for uploaded files
+// 5. Audit logging for file access
+
 service firebase.storage {
   match /b/{bucket}/o {
+    // SECURITY TODO: Implement proper file access rules
+    // Example for user-specific files:
+    // match /users/{userId}/{allPaths=**} {
+    //   allow read, write: if request.auth != null 
+    //     && request.auth.uid == userId
+    //     && isValidFileType(resource.name)
+    //     && resource.size < 10 * 1024 * 1024; // 10MB limit
+    // }
+    
     match /{allPaths=**} {
+      // SECURITY: Currently denying all access - implement proper rules before production
       allow read, write: if false;
     }
   }

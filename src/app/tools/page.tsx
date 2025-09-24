@@ -26,6 +26,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
+// SECURITY: Client-side validation schemas using Zod
+// CRITICAL: All these validations MUST be duplicated on the server-side/backend
+// when processing sensitive financial data to prevent client-side bypass attacks
 const metricsSchema = z.object({
     totalAfortuAccounts: z.string().min(1, 'Este campo es requerido'),
     newAppointments: z.string().min(1, 'Este campo es requerido'),

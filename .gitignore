@@ -38,11 +38,28 @@ yarn-error.log*
 next-env.d.ts
 
 .genkit/*
+
+# environment variables - ensure all env files are ignored
 .env*
+.env.local
+.env.production
+.env.development
+.env.test
 
 # firebase
 firebase-debug.log
-firestore-debug.logclient_secret_*
-*.json
+firestore-debug.log
 client_secret_*
 *.json
+
+# sensitive configuration files
+config.json
+secrets.json
+service-account-key.json
+firebase-adminsdk-*.json
+
+# API keys and tokens (additional protection)
+**/api-keys/
+**/secrets/
+*.key
+*.pem

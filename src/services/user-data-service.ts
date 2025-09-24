@@ -13,11 +13,15 @@ type PortfolioItem = {
 
 // This is a placeholder for a real user resolution mechanism.
 // In a real app, you would resolve the user from the session/token.
-function getCurrentUserId() {
+async function getCurrentUserId() {
     // For this example, we'll assume a static user ID.
     // In a real app, you'd get this from the authentication state.
     // E.g., const user = await auth.currentUser; return user.uid;
-    const referer = headers().get("referer");
+    
+    // SECURITY FIX: Proper async handling for headers
+    const headersList = await headers();
+    const referer = headersList.get("referer");
+    
     // A simple heuristic to check if we're in a user-specific context
     if (referer?.includes('/dashboard') || referer?.includes('/analysis')) {
         return "sample-user-id"; 
@@ -28,7 +32,7 @@ function getCurrentUserId() {
 
 
 export async function fetchUserPortfolio(): Promise<string> {
-    const userId = getCurrentUserId();
+    const userId = await getCurrentUserId();
     if (!userId) {
         throw new Error("User not authenticated.");
     }
@@ -49,7 +53,7 @@ export async function fetchUserPortfolio(): Promise<string> {
 }
 
 export async function fetchBusinessData(): Promise<string> {
-     const userId = getCurrentUserId();
+     const userId = await getCurrentUserId();
      if (!userId) {
         throw new Error("User not authenticated.");
     }
@@ -59,7 +63,7 @@ export async function fetchBusinessData(): Promise<string> {
 }
 
 export async function fetchBusinessGoals(): Promise<string> {
-    const userId = getCurrentUserId();
+    const userId = await getCurrentUserId();
      if (!userId) {
         throw new Error("User not authenticated.");
     }

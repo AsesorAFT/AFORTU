@@ -17,6 +17,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { Skeleton } from "@/components/ui/skeleton";
 
+// SECURITY: Client-side validation schema using Zod
+// IMPORTANT: This validation MUST be duplicated on the server-side/backend
+// when processing sensitive user data to prevent client-side bypass attacks
 const settingsSchema = z.object({
     name: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
     emailNotifications: z.boolean().default(false),
