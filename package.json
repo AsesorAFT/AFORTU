@@ -19,7 +19,14 @@
     "firebase:emulators": "firebase emulators:start",
     "firebase:hosting": "firebase deploy --only hosting",
     "firebase:rules": "firebase deploy --only firestore:rules,storage:rules",
-    "build:ci": "npm run check && npm run build"
+    "build:ci": "npm run check && npm run build",
+    "deploy": "vercel --prod",
+    "deploy:preview": "vercel",
+    "vercel:build": "npm run build",
+    "vercel:deploy": "npm run build && vercel --prod",
+    "test": "echo \"No tests specified\" && exit 0",
+    "analyze": "ANALYZE=true npm run build",
+    "clean": "rm -rf .next out dist"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",
