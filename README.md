@@ -94,4 +94,3 @@ Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE)
 
 - **Organización**: AsesorAFT
 - **Sitio Web**: [www.afortu.com.mx](https://www.afortu.com.mx)
-- **Email**: [tu-email@afortu.com.mx](mailto:tu-email@afortu.com.mx)
