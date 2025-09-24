@@ -8,8 +8,8 @@
  * - AnalyzePortfolioDataOutput - The return type for the analyzePortfolioData function.
  */
 
-import {ai} from '@/ai/genkit';
-import {z} from 'zod';
+import { ai } from '@/ai/genkit';
+import { z } from 'zod';
 
 const AnalyzePortfolioDataInputSchema = z.object({
   portfolioData: z
@@ -45,8 +45,8 @@ export async function analyzePortfolioData(input: AnalyzePortfolioDataInput): Pr
 
 const prompt = ai.definePrompt({
   name: 'analyzePortfolioDataPrompt',
-  input: {schema: AnalyzePortfolioDataInputSchema},
-  output: {schema: AnalyzePortfolioDataOutputSchema},
+  input: { schema: AnalyzePortfolioDataInputSchema },
+  output: { schema: AnalyzePortfolioDataOutputSchema },
   prompt: `You are an AI-powered financial advisor specializing in analyzing portfolio data to generate insights and identify anomalies.
 
 You will use the following information to analyze the portfolio data and provide key insights, detect anomalies, assess potential risks, and identify opportunities.
@@ -71,8 +71,8 @@ const analyzePortfolioDataFlow = ai.defineFlow(
     inputSchema: AnalyzePortfolioDataInputSchema,
     outputSchema: AnalyzePortfolioDataOutputSchema,
   },
-  async input => {
-    const {output} = await prompt(input);
+  async (input: AnalyzePortfolioDataInput) => {
+    const { output } = await prompt(input);
     return output!;
   }
 );

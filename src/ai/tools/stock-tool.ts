@@ -18,19 +18,16 @@ export const getStockPrice = ai.defineTool(
     }),
     outputSchema: z.number(),
   },
-  async (input) => {
+  async function (input: { ticker: string }): Promise<number> {
     // Import service dynamically inside the tool to avoid webpack issues.
     const { getStockPrice: fetchStockPrice } = await import('@/services/stock-price-service');
     try {
       const result = await fetchStockPrice(input.ticker);
       return result.price;
     } catch (error: any) {
-        // Log the error for debugging but return a user-friendly message to the LLM.
-        // The LLM can then decide how to relay this information.
-        console.error(`Tool Error: getStockPrice failed for ${input.ticker}`, error);
-        // It's often better to throw an error that the LLM can interpret.
-        // Depending on the prompt, it might retry or inform the user.
-        throw new Error(`Could not retrieve stock price for ${input.ticker}. The symbol may be invalid or the service may be down.`);
+      // Log the error for debugging but return a user-friendly message to the LLM.
+      console.error(`Tool Error: getStockPrice failed for ${input.ticker}`, error);
+      throw new Error(`Could not retrieve stock price for ${input.ticker}. The symbol may be invalid or the service may be down.`);
     }
   }
 );

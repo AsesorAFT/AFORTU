@@ -8,7 +8,8 @@
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 import { ChatMessageSchema } from '@/ai/schemas/chat';
-import { getStockPrice } from '@/ai/tools/stock-tool';
+// Update the import path to match the actual file location and name
+import { getStockPrice } from '@/ai/tools/stock-tool'
 import { getAccountLog, getBusinessData, getBusinessGoals, getUserContracts, getUserInvestmentPlans, getUserInvoices, getUserPortfolio } from '@/ai/tools/user-data-tools';
 
 const UnifiedAdvisorInputSchema = z.object({
@@ -75,7 +76,7 @@ const conversationalAdvisorFlow = ai.defineFlow(
     inputSchema: UnifiedAdvisorInputSchema,
     outputSchema: UnifiedAdvisorOutputSchema,
   },
-  async (input) => {
+  async (input: UnifiedAdvisorInput) => {
     
     // Combine history and the new message for the prompt
     const combinedHistory = [...input.history, { role: 'user' as const, content: input.message }];

@@ -79,7 +79,7 @@ export function ChatClient() {
       });
 
        const responseContent = result.response;
-       setMessages([...newMessages, { role: 'model', content: responseContent }]);
+       setMessages([...newMessages, { role: 'assistant', content: responseContent }]);
       
     } catch (error) {
       console.error("Error al chatear con el asesor:", error);
@@ -141,7 +141,7 @@ export function ChatClient() {
                 ) : (
                      messages.map((msg, index) => (
                         <div key={index} className={cn("flex items-start gap-4", msg.role === 'user' && 'justify-end')}>
-                            {msg.role === 'model' && (
+                            {msg.role === 'assistant' && (
                                 <AFTAvatar />
                             )}
                             <div className={cn("rounded-xl px-4 py-3 max-w-2xl", 

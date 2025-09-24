@@ -55,7 +55,7 @@ const analyzePortfolioFlow = ai.defineFlow(
     inputSchema: AnalyzePortfolioInputSchema,
     outputSchema: AnalyzePortfolioOutputSchema,
   },
-  async input => {
+async (input: AnalyzePortfolioInput) => {
     const {output} = await prompt(input);
     return output!;
   }

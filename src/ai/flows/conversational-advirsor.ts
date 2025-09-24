@@ -9,8 +9,8 @@
  */
 
 import {ai} from '@/ai/genkit';
-import {z} from 'zod';
-import { ChatMessageSchema } from '@/ai/schemas/chat';
+import {z} from 'genkit';
+import { ChatMessageSchema } from '../schemas/chat';
 
 const ChatWithAdvisorInputSchema = z.object({
   history: z.array(ChatMessageSchema),
@@ -26,7 +26,7 @@ const ChatWithAdvisorOutputSchema = z.object({
 export type ChatWithAdvisorOutput = z.infer<typeof ChatWithAdvisorOutputSchema>;
 
 export async function chatWithAdvisor(input: ChatWithAdvisorInput): Promise<ChatWithAdvisorOutput> {
-  return conversationalAdvisorFlow(input) as Promise<ChatWithAdvisorOutput>;
+  return conversationalAdvisorFlow(input);
 }
 
 const prompt = ai.definePrompt({
@@ -51,16 +51,13 @@ Responde al nuevo mensaje del usuario, teniendo en cuenta el historial de la con
 `,
 });
 
-interface ConversationalAdvisorFlowInput extends ChatWithAdvisorInput {}
-interface ConversationalAdvisorFlowOutput extends ChatWithAdvisorOutput {}
-
 const conversationalAdvisorFlow = ai.defineFlow(
   {
     name: 'conversationalAdvisorFlow',
     inputSchema: ChatWithAdvisorInputSchema,
     outputSchema: ChatWithAdvisorOutputSchema,
   },
-  async (input: ConversationalAdvisorFlowInput): Promise<ConversationalAdvisorFlowOutput> => {
+  async (input: ChatWithAdvisorInput) => {
     const {output} = await prompt(input);
     return output!;
   }

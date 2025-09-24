@@ -14,7 +14,7 @@ import { MarketTrendAnalyzerInput, MarketTrendAnalyzerInputSchema, MarketTrendAn
 
 
 export async function analyzeMarketTrends(input: MarketTrendAnalyzerInput): Promise<MarketTrendAnalyzerOutput> {
-  return analyzeMarketTrendsFlow(input);
+  return analyzeMarketTrendsFlow(input) as Promise<MarketTrendAnalyzerOutput>;
 }
 
 const prompt = ai.definePrompt({
@@ -35,13 +35,24 @@ Risks:
 Recommendations:`,
 });
 
-const analyzeMarketTrendsFlow = ai.defineFlow(
+interface AnalyzeMarketTrendsFlowInput {
+  marketDescription: string;
+}
+
+interface AnalyzeMarketTrendsFlowOutput {
+  summary: string;
+  insights: string;
+  risks: string;
+  recommendations: string;
+}
+
+const analyzeMarketTrendsFlow = ai.defineFlow<typeof MarketTrendAnalyzerInputSchema, typeof MarketTrendAnalyzerOutputSchema>(
   {
     name: 'analyzeMarketTrendsFlow',
     inputSchema: MarketTrendAnalyzerInputSchema,
     outputSchema: MarketTrendAnalyzerOutputSchema,
   },
-  async input => {
+async (input: MarketTrendAnalyzerInput) => {
     const {output} = await prompt(input);
     return output!;
   }
