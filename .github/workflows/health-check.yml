@@ -1,0 +1,40 @@
+name: 🏥 Health Check
+
+on:
+  schedule:
+    # Run every hour
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📚 Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: 🌐 Check Production Site
+      run: |
+        echo "Checking AFORTU PRO production site..."
+        curl -f https://afortu-pro.vercel.app || exit 1
+        echo "✅ Site is healthy!"
+
+    - name: 📊 Performance Test
+      run: |
+        echo "Running basic performance check..."
+        curl -w "Response time: %{time_total}s\nHTTP Code: %{http_code}\n" \
+             -o /dev/null -s https://afortu-pro.vercel.app
+
+    - name: 🔔 Notify on Failure
+      if: failure()
+      uses: actions/github-script@v7
+      with:
+        script: |
+          github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: '🚨 Site Health Check Failed',
+            body: `Site health check failed at ${new Date().toISOString()}\n\nPlease investigate the production deployment.`,
+            labels: ['bug', 'production', 'urgent']
+          })

@@ -1,0 +1,96 @@
+name: 🚀 Deploy AFORTU PRO
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+    - name: 📚 Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: 🟢 Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: 📦 Install Dependencies
+      run: npm ci
+
+    - name: 🔨 Build Application
+      run: npm run build
+      env:
+        NODE_ENV: production
+
+    - name: 🧪 Run Tests (if available)
+      run: npm test --if-present
+
+    - name: 🌐 Deploy to Vercel (Production)
+      if: github.ref == 'refs/heads/main' && matrix.node-version == '20.x'
+      uses: amondnet/vercel-action@v25
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        vercel-args: '--prod'
+        vercel-org-id: ${{ secrets.ORG_ID }}
+        vercel-project-id: ${{ secrets.PROJECT_ID }}
+
+    - name: 🚀 Deploy to Vercel (Preview)
+      if: github.event_name == 'pull_request' && matrix.node-version == '20.x'
+      uses: amondnet/vercel-action@v25
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        vercel-org-id: ${{ secrets.ORG_ID }}
+        vercel-project-id: ${{ secrets.PROJECT_ID }}
+
+  lint-and-format:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📚 Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: 🟢 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+
+    - name: 📦 Install Dependencies
+      run: npm ci
+
+    - name: 🔍 Lint Code
+      run: npm run lint --if-present
+
+    - name: 💅 Check Prettier Formatting
+      run: npx prettier --check . --ignore-path .gitignore || echo "Prettier check completed"
+
+  security-audit:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📚 Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: 🟢 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+
+    - name: 🔒 Security Audit
+      run: npm audit --audit-level high
+
+    - name: 📊 Dependency Check
+      run: npx npm-check-updates --doctor --upgrade

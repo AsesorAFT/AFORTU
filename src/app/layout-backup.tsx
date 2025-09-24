@@ -1,7 +1,9 @@
-<<<<<<< HEAD
 import type { Metadata } from 'next';
 import './globals.css';
-import { Toaster } from '@/components/ui/toaster';
+import { Toaster } from '@/        <header className="flex h-16 items-center px-4 lg:px-6 bg-white/98 backdrop-blur-sm shadow-sm fixed top-0 w-full z-50 border-b border-gray-200/50">
+          <Link href="/" className="flex items-center hover:opacity-90 transition-opacity">
+            <AfortuProSerious size="sm" animated={true} variant="light" className="hover:scale-105 transition-transform duration-200" />
+          </Link>onents/ui/toaster';
 import Link from 'next/link';
 import AfortuProSerious from '@/components/ui/afortu-pro-serious';
 
@@ -90,7 +92,7 @@ export default function RootLayout({
         {/* Header fijo con logo */}
         <header className="flex h-16 items-center px-4 lg:px-6 bg-white/95 backdrop-blur-sm shadow-lg fixed top-0 w-full z-50 border-b border-[#DAA520]/20">
           <Link href="/" className="flex items-center gap-2 font-semibold hover:opacity-90 transition-opacity">
-            <AfortuProSerious size="sm" animated={true} className="hover:scale-105 transition-transform duration-200" />
+            <AfortuPremiumLogo size="sm" animated={true} className="hover:scale-105 transition-transform duration-200" />
           </Link>
           <div className="ml-auto flex items-center gap-4">
             <nav className="hidden md:flex items-center gap-6">
@@ -116,24 +118,6 @@ export default function RootLayout({
         <Toaster />
         <WhatsAppButton />
       </body>
-=======
-import type { Metadata } from "next";
-import "./globals.css";
-
-export const metadata: Metadata = {
-  title: "AFORTU PRO - Gestión Patrimonial de Élite",
-  description: "Plataforma premium para inversionistas institucionales y clientes de alto patrimonio",
-};
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="es">
-      <body>{children}</body>
->>>>>>> cace42658c93990db8dd211b1312eff48e29c991
     </html>
   );
 }
