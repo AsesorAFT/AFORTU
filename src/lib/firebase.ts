@@ -2,6 +2,7 @@
 import { initializeApp, getApps, getApp, FirebaseApp } from "firebase/app";
 import { getAuth, Auth } from "firebase/auth";
 import { getFirestore, Firestore } from "firebase/firestore";
+import { getStorage, FirebaseStorage } from "firebase/storage";
 
 // Configuration is loaded from environment variables to support environment-specific setups and avoid exposing sensitive identifiers.
 const firebaseConfig = {
@@ -24,5 +25,6 @@ if (!getApps().length) {
 
 const auth: Auth = getAuth(app);
 const db: Firestore = getFirestore(app);
+const storage: FirebaseStorage = getStorage(app);
 
-export { app, auth, db };
+export { app, auth, db, storage };
