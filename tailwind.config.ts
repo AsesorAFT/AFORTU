@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  darkMode: 'class',
+  darkMode: ['class'],
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
@@ -17,40 +17,63 @@ const config: Config = {
         '2xl': 'var(--font-size-2xl)',
       },
       colors: {
-        background: 'hsl(var(--ds-bg))',
-        surface: 'hsl(var(--ds-surface))',
-        border: 'hsl(var(--ds-border))',
-        content: 'hsl(var(--ds-content))',
-        accent: {
-          50: 'var(--accent-50)',
-          100: 'var(--accent-100)',
-          200: 'var(--accent-200)',
-          300: 'var(--accent-300)',
-          400: 'var(--accent-400)',
-          500: 'var(--accent-500)',
-          600: 'var(--accent-600)',
-          700: 'var(--accent-700)',
-          800: 'var(--accent-800)',
-          900: 'var(--accent-900)',
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
         },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
+        // Custom AFORTU colors
+        surface: 'hsl(var(--ds-surface))',
+        content: 'hsl(var(--ds-content))',
         positive: 'hsl(var(--semantic-positive))',
         negative: 'hsl(var(--semantic-negative))',
         warning: 'hsl(var(--semantic-warning))',
         info: 'hsl(var(--semantic-info))',
       },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+        glass: 'var(--glass-radius)',
+      },
       boxShadow: {
         elevate: 'var(--elevate-1)',
         glow: 'var(--elevate-glow)',
-      },
-      borderRadius: {
-        glass: 'var(--glass-radius)',
       },
       backdropBlur: {
         glass: 'var(--glass-blur)',
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
 
 export default config;

@@ -3,11 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Briefcase, ArrowRight, BarChart, BrainCircuit, DollarSign, Shield, Zap, Users } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import AfortuProSerious from '@/components/ui/afortu-pro-serious'; { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Briefcase, ArrowRight, BarChart, BrainCircuit, DollarSign, Shield, Zap, Users } from 'lucide-react';
-import Link from 'next/link';
-import Image from 'next/image';
+import AfortuProSerious from '@/components/ui/afortu-pro-serious';
 import AfortuPremiumLogo from '@/components/ui/afortu-premium-logo';
 
 export default function HomePage() {

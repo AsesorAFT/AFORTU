@@ -1,11 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Toaster } from '@/        <header className="flex h-16 items-center px-4 lg:px-6 bg-white/98 backdrop-blur-sm shadow-sm fixed top-0 w-full z-50 border-b border-gray-200/50">
-          <Link href="/" className="flex items-center hover:opacity-90 transition-opacity">
-            <AfortuProSerious size="sm" animated={true} variant="light" className="hover:scale-105 transition-transform duration-200" />
-          </Link>onents/ui/toaster';
+import { Toaster } from '@/components/ui/toaster';
 import Link from 'next/link';
-import AfortuProSerious from '@/components/ui/afortu-pro-serious';
+import AfortuPremiumLogo from '@/components/ui/afortu-premium-logo';
 
 export const metadata: Metadata = {
   title: 'AFORTU PRO - Gestión Patrimonial Inteligente',

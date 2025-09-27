@@ -18,9 +18,9 @@ import {
   History,
   BookOpen,
 } from 'lucide-react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '@/lib/firebase';
-import { signOut } from 'firebase/auth';
+// import { useAuthState } from 'react-firebase-hooks/auth';
+// import { auth } from '@/lib/firebase';
+// import { signOut } from 'firebase/auth';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
@@ -36,12 +36,19 @@ function getInitials(name?: string | null) {
 }
 
 export default function Sidebar() {
-  const [user, loading] = useAuthState(auth);
+  // const [user, loading] = useAuthState(auth);
   const pathname = usePathname();
   const router = useRouter();
   
+  // Usuario simulado para desarrollo
+  const user = {
+    displayName: 'Usuario Demo',
+    email: 'demo@afortu.com',
+    photoURL: null
+  };
+  
   const handleLogout = async () => {
-    await signOut(auth);
+    // await signOut(auth);
     router.push('/login');
   };
 
@@ -130,7 +137,7 @@ export default function Sidebar() {
     <aside className="h-screen w-[280px] bg-gradient-to-br from-[#0a1931] to-[#185adb] border-r border-white/10 flex flex-col fixed z-40">
       <div className="flex items-center gap-2 px-4 py-5 border-b border-white/10">
         <Link href="/dashboard" className="flex items-center gap-2.5">
-           <Image src="https://firebasestorage.googleapis.com/v0/b/afortu.firebasestorage.app/o/LOGO%20DE%20AFORTU.PNG?alt=media&token=2e8530a1-30d3-4c0d-974e-46451594f7fb" alt="AFORTU Logo" width={32} height={32} />
+           <Image src="/logo-afortu-icon.svg" alt="AFORTU Logo" width={32} height={32} />
           <span className="text-2xl font-bold text-white tracking-wider">
             AFORTU
           </span>

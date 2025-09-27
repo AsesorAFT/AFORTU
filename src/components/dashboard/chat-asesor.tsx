@@ -7,16 +7,94 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, Dialog
 import { Bot, Loader2, Send } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-import { unifiedChat } from '@/ai/flows/unified-advisor';
 import { ChatMessage } from '@/ai/schemas/chat';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '@/lib/firebase';
+// import { useAuthState } from 'react-firebase-hooks/auth';
+// import { auth } from '@/lib/firebase';
 import { ScrollArea } from '../ui/scroll-area';
 
+// Función para generar respuestas simuladas del asesor
+const generateAsesorResponse = (message: string): string => {
+  const lowerMessage = message.toLowerCase();
+  
+  if (lowerMessage.includes('inversión') || lowerMessage.includes('plan')) {
+    return `¡Excelente pregunta! En AFORTU ofrecemos dos productos principales:
+
+📊 **Tasa Fija AFORTU**: Inversión segura con rendimiento garantizado del 15% anual, ideal para quienes buscan estabilidad.
+
+📈 **Asset Management**: Gestión profesional diversificada con potencial de 13.2% de rendimiento, perfecta para maximizar tu patrimonio.
+
+¿Te gustaría conocer más detalles sobre alguno de estos productos? Te recomiendo revisar estos temas con tu asesor personal para mayor detalle.`;
+  }
+  
+  if (lowerMessage.includes('liquidez') || lowerMessage.includes('estructurada')) {
+    return `La liquidez estructurada es una estrategia avanzada que te permite:
+
+💡 **Acceso gradual**: Puedes retirar fondos de manera escalonada según tus necesidades.
+
+🔄 **Flexibilidad**: Mantén un equilibrio entre rentabilidad y disponibilidad de capital.
+
+📅 **Plazos ajustables**: Diseñamos la estructura según tu perfil y objetivos.
+
+En AFORTU, nuestro Asset Management incluye componentes de liquidez para optimizar tu portafolio. Te sugiero agendar una llamada con tu asesor para personalizar tu estrategia.`;
+  }
+  
+  if (lowerMessage.includes('aportaciones') || lowerMessage.includes('mensuales')) {
+    return `Las aportaciones mensuales son una estrategia poderosa:
+
+💰 **Promedio de costos**: Reduces el impacto de la volatilidad del mercado.
+
+📈 **Crecimiento constante**: Tu patrimonio crece de forma sistemática mes a mes.
+
+🎯 **Disciplina financiera**: Desarrollas el hábito del ahorro e inversión.
+
+Con nuestro Asset Management puedes hacer aportaciones desde $5,000 MXN mensuales. ¿Te interesa conocer una proyección personalizada?`;
+  }
+  
+  if (lowerMessage.includes('interés') || lowerMessage.includes('compuesto')) {
+    return `¡El interés compuesto es la octava maravilla del mundo según Einstein! 
+
+🚀 **Efecto multiplicador**: Ganas rendimientos sobre tus rendimientos anteriores.
+
+⏰ **El tiempo es clave**: Mientras más pronto comiences, mayor será el impacto.
+
+📊 **Ejemplo práctico**: $100,000 al 15% anual se convierten en $405,769 en 10 años.
+
+En AFORTU aprovechamos este poder con nuestros productos de Tasa Fija y Asset Management. ¡Te invito a revisar las proyecciones con tu asesor!`;
+  }
+  
+  if (lowerMessage.includes('portafolio') || lowerMessage.includes('diversific')) {
+    return `Tu portafolio actual en AFORTU está bien diversificado:
+
+🏆 **Asset Management ($90,000)**:
+- Acciones: 35%
+- Deuda privada: 30%
+- Deuda pública: 20%
+- Liquidez: 15%
+
+💼 **Tasa Fija ($150,000)**: Estabilidad garantizada al 15% anual.
+
+Esta diversificación te permite equilibrar riesgo y rentabilidad. ¿Te gustaría explorar oportunidades de rebalanceo?`;
+  }
+  
+  // Respuesta general
+  return `¡Hola! Soy tu Asesor AFT de AFORTU. 
+
+Como puedes ver en tu dashboard, tienes un portafolio sólido de $240,000 MXN diversificado entre nuestros productos estrella.
+
+🎯 **¿En qué puedo ayudarte hoy?**
+- Análisis de tu portafolio actual
+- Estrategias de optimización fiscal  
+- Oportunidades de inversión
+- Planificación a largo plazo
+
+Te recomiendo agendar una llamada con tu asesor personal María González para profundizar en cualquier tema. ¡Estamos aquí para potenciar tu patrimonio!`;
+};
+
 export function ChatAsesor() {
-  const [user] = useAuthState(auth);
+  // const [user] = useAuthState(auth);
+  const user = { displayName: 'Usuario Demo', photoURL: null }; // Usuario simulado
   const { toast } = useToast();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
@@ -55,12 +133,12 @@ export function ChatAsesor() {
     setIsLoading(true);
 
     try {
-      const result = await unifiedChat({
-        history: messages,
-        message: currentMessage,
-      });
-
-      setMessages([...newMessages, { role: 'assistant', content: result.response }]);
+      // Simular respuesta del asesor AFT para desarrollo
+      await new Promise(resolve => setTimeout(resolve, 1500)); // Simular delay
+      
+      const simulatedResponse = generateAsesorResponse(currentMessage);
+      
+      setMessages([...newMessages, { role: 'assistant', content: simulatedResponse }]);
     } catch (error) {
       console.error("Error al chatear con el asesor:", error);
       toast({

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f7c873;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e6b85c;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="navyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1931;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a2f47;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a1931;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#185adb;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2970ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1549b8;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="grayGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b949e;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#6e7681;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b949e;stop-opacity:1" />
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Symbol Section centered -->
+  <g transform="translate(20, 20)">
+    <!-- Outer circle -->
+    <circle cx="0" cy="0" r="16" fill="none" stroke="url(#goldGradient)" stroke-width="1.5" opacity="0.9"/>
+    
+    <!-- Arcs -->
+    <path d="M -10 -8 A 12 12 0 0 1 3 -13" fill="none" stroke="url(#blueGradient)" stroke-width="1" stroke-linecap="round"/>
+    <path d="M 10 -8 A 12 12 0 0 1 -3 -13" fill="none" stroke="url(#goldGradient)" stroke-width="1" stroke-linecap="round"/>
+    
+    <!-- Central pattern -->
+    <rect x="-6" y="-6" width="4" height="4" fill="url(#goldGradient)" transform="rotate(45)" rx="0.5"/>
+    <rect x="2" y="-6" width="4" height="4" fill="url(#navyGradient)" transform="rotate(45)" rx="0.5"/>
+    <rect x="-6" y="2" width="4" height="4" fill="url(#blueGradient)" transform="rotate(45)" rx="0.5"/>
+    <rect x="2" y="2" width="4" height="4" fill="url(#grayGradient)" transform="rotate(45)" rx="0.5" opacity="0.8"/>
+    
+    <!-- Center point -->
+    <circle cx="0" cy="0" r="2" fill="url(#goldGradient)" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="1" fill="#ffffff"/>
+  </g>
+</svg>

@@ -14,17 +14,25 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import { CreditCard, LogOut, Settings, User } from "lucide-react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@/lib/firebase";
-import { signOut } from "firebase/auth";
+// import { useAuthState } from "react-firebase-hooks/auth";
+// import { auth } from "@/lib/firebase";
+// import { signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
 export function UserNav() {
-  const [user, loading] = useAuthState(auth);
+  // const [user, loading] = useAuthState(auth);
   const router = useRouter();
 
+  // Usuario simulado para desarrollo
+  const user = {
+    displayName: 'Usuario Demo',
+    email: 'demo@afortu.com',
+    photoURL: null
+  };
+  const loading = false;
+
   const handleLogout = async () => {
-    await signOut(auth);
+    // await signOut(auth);
     router.push('/login');
   };
   

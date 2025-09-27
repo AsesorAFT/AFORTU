@@ -2,45 +2,44 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import Link from 'next/link';
-import AfortuProSerious from '@/components/ui/afortu-pro-serious';
 
 export const metadata: Metadata = {
-  title: 'AFORTU PRO - Gestión Patrimonial Inteligente',
+  title: 'AFORTU Asset Management - Gestión Patrimonial Inteligente',
   description: 'Plataforma profesional para la gestión de activos, inversiones y planificación financiera. Potenciada por IA y asesoría especializada para maximizar tu patrimonio.',
-  keywords: ['gestión patrimonial', 'inversiones', 'planificación financiera', 'activos', 'asesoría financiera', 'inteligencia artificial', 'AFORTU PRO'],
-  authors: [{ name: 'AFORTU PRO' }],
-  creator: 'AFORTU PRO',
-  publisher: 'AFORTU PRO',
+  keywords: ['gestión patrimonial', 'inversiones', 'planificación financiera', 'activos', 'asesoría financiera', 'inteligencia artificial', 'AFORTU Asset Management'],
+  authors: [{ name: 'AFORTU Asset Management' }],
+  creator: 'AFORTU Asset Management',
+  publisher: 'AFORTU Asset Management',
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
       { url: '/favicon.ico', type: 'image/x-icon' },
     ],
     apple: [
-      { url: '/logo-afortu-pro.svg', sizes: '180x180', type: 'image/svg+xml' },
+      { url: '/logo-afortu-asset-management.svg', sizes: '180x180', type: 'image/svg+xml' },
     ],
   },
   openGraph: {
     type: 'website',
     locale: 'es_MX',
-    url: 'https://afortu-pro.com',
-    title: 'AFORTU PRO - Gestión Patrimonial Inteligente',
+    url: 'https://afortu.com.mx',
+    title: 'AFORTU Asset Management - Gestión Patrimonial Inteligente',
     description: 'Plataforma profesional para la gestión de activos e inversiones potenciada por IA.',
-    siteName: 'AFORTU PRO',
+    siteName: 'AFORTU Asset Management',
     images: [
       {
-        url: '/logo-afortu-pro.svg',
+        url: '/logo-afortu-asset-management.svg',
         width: 400,
         height: 500,
-        alt: 'AFORTU PRO Logo',
+        alt: 'AFORTU Asset Management Logo',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AFORTU PRO - Gestión Patrimonial Inteligente',
+    title: 'AFORTU Asset Management - Gestión Patrimonial Inteligente',
     description: 'Plataforma profesional para la gestión de activos e inversiones potenciada por IA.',
-    images: ['/logo-afortu-pro.svg'],
+    images: ['/logo-afortu-asset-management.svg'],
   },
   robots: {
     index: true,
@@ -86,32 +85,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body">
-        {/* Header fijo con logo */}
-        <header className="flex h-16 items-center px-4 lg:px-6 bg-white/95 backdrop-blur-sm shadow-lg fixed top-0 w-full z-50 border-b border-[#DAA520]/20">
-          <Link href="/" className="flex items-center gap-2 font-semibold hover:opacity-90 transition-opacity">
-            <AfortuProSerious size="sm" animated={true} className="hover:scale-105 transition-transform duration-200" />
-          </Link>
-          <div className="ml-auto flex items-center gap-4">
-            <nav className="hidden md:flex items-center gap-6">
-              <Link href="/services" className="text-sm font-medium text-[#0a1931] hover:text-[#185adb] transition-colors">
-                Servicios
-              </Link>
-              <Link href="/about" className="text-sm font-medium text-[#0a1931] hover:text-[#185adb] transition-colors">
-                Nosotros
-              </Link>
-              <Link href="/dashboard" className="text-sm font-medium text-[#185adb] hover:text-[#0a1931] transition-colors">
-                Dashboard
-              </Link>
-            </nav>
-            <Link 
-              href="/login" 
-              className="bg-[#f7c873] hover:bg-[#ffd700] text-[#0a1931] px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-200 hover:shadow-md"
-            >
-              Acceder
-            </Link>
-          </div>
-        </header>
-        <main className="pt-16">{children}</main>
+        <main>{children}</main>
         <Toaster />
         <WhatsAppButton />
       </body>
