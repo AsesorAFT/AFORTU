@@ -58,21 +58,16 @@ Este repositorio contiene el código fuente y la documentación de la aplicació
    cd AFORTU
    ```
 
-2. Instala las dependencias del frontend:
+2. Instala las dependencias del proyecto (aplicación Next.js en la raíz):
    ```bash
-   cd frontend
    npm install
    ```
 
-3. Instala las dependencias del backend:
-   ```bash
-   cd ../backend
-   pip install -r requirements.txt
-   ```
+3. Crea un archivo `.env.local` tomando como referencia `.env.example` y completa las variables necesarias.
 
-4. Inicia la aplicación (ejemplo con Docker Compose):
+4. Inicia la aplicación en modo desarrollo:
    ```bash
-   docker-compose up --build
+   npm run dev
    ```
 
 ## 🔧 Tecnologías Clave

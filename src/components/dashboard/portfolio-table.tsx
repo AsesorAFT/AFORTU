@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Loader2, TrendingDown, TrendingUp } from "lucide-react";
@@ -26,65 +26,106 @@ interface PortfolioTableProps {
 
 export function PortfolioTable({ portfolio, setPortfolio }: PortfolioTableProps) {
   const [loadingPrices, setLoadingPrices] = useState(true);
+  const lastFetchedSymbolsRef = useRef<string | null>(null);
 
   useEffect(() => {
-    let isMounted = true;
+    if (portfolio.length === 0) {
+      setLoadingPrices(false);
+      lastFetchedSymbolsRef.current = null;
+      return;
+    }
+
+    const symbolsKey = portfolio
+      .map((item) => `${item.id}|${item.symbol}|${item.purchasePrice}|${item.shares}|${item.purchaseDate}`)
+      .join(';');
+    const needsFetch =
+      portfolio.some((item) => item.currentPrice === undefined) ||
+      symbolsKey !== lastFetchedSymbolsRef.current;
+
+    if (!needsFetch) {
+      setLoadingPrices(false);
+      return;
+    }
+
+    let isCancelled = false;
+
     const fetchPrices = async () => {
       setLoadingPrices(true);
       try {
-        const pricePromises = portfolio.map(item =>
+        const pricePromises = portfolio.map((item) =>
           axios.get(`/api/stock-price?symbol=${item.symbol}`)
         );
         const priceResults = await Promise.allSettled(pricePromises);
-        // Revisar si hay resultados antes de actualizar el portafolio
-        if (priceResults.length === portfolio.length && isMounted) {
-            const updatedPortfolio = portfolio.map((item, index) => {
-                const result = priceResults[index];
-                if (result.status === 'fulfilled' && result.value.data?.price) {
-                    return { ...item, currentPrice: result.value.data.price };
-                }
-                return { ...item, currentPrice: item.purchasePrice }; 
-            });
-            // Only update if prices actually changed
-            const hasChanged = React.useMemo(() => {
-              return updatedPortfolio.some((item, idx) => {
-                const prev = portfolio[idx];
-                // Compare both value and type for currentPrice, and also check for NaN
-                return (
-                  (item.currentPrice !== prev.currentPrice) &&
-                  !(Number.isNaN(item.currentPrice) && Number.isNaN(prev.currentPrice))
-                );
-              });
-            }, [updatedPortfolio, portfolio]);
-            if (hasChanged) {
-              setPortfolio(updatedPortfolio);
-            }
+
+        if (isCancelled || priceResults.length !== portfolio.length) {
+          return;
         }
 
+        const updatedPortfolio = portfolio.map((item, index) => {
+          const result = priceResults[index];
+
+          if (
+            result.status === 'fulfilled' &&
+            typeof result.value.data?.price === 'number' &&
+            Number.isFinite(result.value.data.price)
+          ) {
+            return { ...item, currentPrice: result.value.data.price };
+          }
+
+          return { ...item, currentPrice: item.purchasePrice };
+        });
+
+        const hasChanged = updatedPortfolio.some((item, idx) => {
+          const prev = portfolio[idx];
+
+          return (
+            item.currentPrice !== prev.currentPrice &&
+            !(Number.isNaN(item.currentPrice) && Number.isNaN(prev.currentPrice))
+          );
+        });
+
+        if (!isCancelled && hasChanged) {
+          setPortfolio(updatedPortfolio);
+        }
+
+        lastFetchedSymbolsRef.current = symbolsKey;
       } catch (error) {
-        console.error("Error fetching stock prices:", error);
-         if (isMounted) {
-            const portfolioWithFallbackPrices = portfolio.map(item => ({...item, currentPrice: item.purchasePrice}));
+        console.error('Error fetching stock prices:', error);
+
+        if (!isCancelled) {
+          const portfolioWithFallbackPrices = portfolio.map((item) => ({
+            ...item,
+            currentPrice: item.purchasePrice,
+          }));
+
+          const hasFallbackChanges = portfolioWithFallbackPrices.some((item, idx) => {
+            const prev = portfolio[idx];
+
+            return (
+              item.currentPrice !== prev.currentPrice &&
+              !(Number.isNaN(item.currentPrice) && Number.isNaN(prev.currentPrice))
+            );
+          });
+
+          if (hasFallbackChanges) {
             setPortfolio(portfolioWithFallbackPrices);
-         }
+          }
+
+          lastFetchedSymbolsRef.current = symbolsKey;
+        }
       } finally {
-        if (isMounted) {
-            setLoadingPrices(false);
+        if (!isCancelled) {
+          setLoadingPrices(false);
         }
       }
     };
 
-    // Only fetch prices on initial mount
-    if (portfolio.length > 0) {
-      fetchPrices();
-    } else {
-      setLoadingPrices(false);
-    }
+    fetchPrices();
+
     return () => {
-      isMounted = false;
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Empty dependency array to run only once on mount
+      isCancelled = true;
+    };
+  }, [portfolio, setPortfolio]);
 
   return (
     <Table>
@@ -116,18 +157,41 @@ export function PortfolioTable({ portfolio, setPortfolio }: PortfolioTableProps)
                   {format(new Date(item.purchaseDate), 'dd MMM, yyyy', { locale: es })}
               </TableCell>
               <TableCell className="text-right">
-                {loadingPrices ? <Loader2 className="h-4 w-4 animate-spin ml-auto" /> : `$${totalValue.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`}
+                {loadingPrices ? (
+                  <Loader2 className="h-4 w-4 animate-spin ml-auto" />
+                ) : (
+                  `$${totalValue.toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}`
+                )}
               </TableCell>
               <TableCell className="text-right">
-                 {loadingPrices ? <Loader2 className="h-4 w-4 animate-spin ml-auto" /> : (
-                     <div className={cn("flex items-center justify-end gap-2", gainLoss >= 0 ? 'text-green-600' : 'text-red-600')}>
-                        {gainLoss >= 0 ? <TrendingUp className="h-4 w-4" /> : <TrendingDown className="h-4 w-4" />}
-                        <div className="flex flex-col items-end">
-                            <span className="font-semibold">{gainLossPercent.toFixed(2)}%</span>
-                            <span className="text-xs">{gainLoss.toLocaleString('en-US', { signDisplay: 'always', minimumFractionDigits: 2 })}</span>
-                        </div>
+                 {loadingPrices ? (
+                  <Loader2 className="h-4 w-4 animate-spin ml-auto" />
+                ) : (
+                  <div
+                    className={cn(
+                      'flex items-center justify-end gap-2',
+                      gainLoss >= 0 ? 'text-green-600' : 'text-red-600'
+                    )}
+                  >
+                    {gainLoss >= 0 ? (
+                      <TrendingUp className="h-4 w-4" />
+                    ) : (
+                      <TrendingDown className="h-4 w-4" />
+                    )}
+                    <div className="flex flex-col items-end">
+                      <span className="font-semibold">{gainLossPercent.toFixed(2)}%</span>
+                      <span className="text-xs">
+                        {gainLoss.toLocaleString('en-US', {
+                          signDisplay: 'always',
+                          minimumFractionDigits: 2,
+                        })}
+                      </span>
                     </div>
-                 )}
+                  </div>
+                )}
               </TableCell>
             </TableRow>
           );

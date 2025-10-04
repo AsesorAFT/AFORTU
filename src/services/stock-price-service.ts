@@ -31,11 +31,17 @@ export async function getStockPrice(symbol: string): Promise<StockPriceResponse>
         }
 
         const price = parseFloat(globalQuote['05. price']);
-        
+
+        if (!Number.isFinite(price)) {
+            console.error(`Received invalid price for symbol ${symbol}:`, globalQuote['05. price']);
+            throw new Error(`Received an invalid price for ${symbol}.`);
+        }
+
         return { symbol, price };
     } catch (error: any) {
-        console.error(`Alpha Vantage API error for symbol ${symbol}:`, error.message || error);
-        if (error.message && (error.message.includes('Invalid API call') || error.message.includes('invalid symbol'))) {
+        console.error(`Alpha Vantage API error for symbol ${symbol}:`, error?.message || error);
+        const message = typeof error?.message === 'string' ? error.message.toLowerCase() : '';
+        if (message.includes('invalid api call') || message.includes('invalid symbol')) {
              throw new Error(`Invalid symbol: ${symbol}. Please check the ticker.`);
         }
         throw new Error(`Failed to fetch stock price for ${symbol}. It might be an invalid symbol or an API issue.`);
