@@ -1,4 +1,3 @@
-"""markdown
 # Integración con la API de AFORTU
 
 Esta guía explica cómo autenticar, consumir y ampliar la API de AFORTU dentro del proyecto.
