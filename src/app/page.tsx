@@ -216,6 +216,57 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* PRO Section */}
+      <section className="py-20 bg-[#0a1931]">
+        <div className="container mx-auto px-6">
+          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
+            <div className="space-y-6 text-white">
+              <p className="text-sm uppercase tracking-[0.3em] text-[#f7c873]">AFORTU PRO</p>
+              <h2 className="text-4xl lg:text-5xl font-bold leading-tight">
+                La experiencia integral para patrimonios exigentes
+              </h2>
+              <p className="text-blue-100 text-lg">
+                Automatización fiscal, gobierno corporativo y acceso a mesas de inversión exclusivas. Orquestamos tu family
+                office sin fricciones, con reportes personalizados y supervisión de expertos.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Button asChild size="lg" className="bg-[#f7c873] text-[#0a1931] hover:bg-[#ffd700] font-semibold">
+                  <Link href="/pro">Descubrir AFORTU PRO</Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white/10 font-semibold"
+                >
+                  <Link href="/contact">Agendar consulta estratégica</Link>
+                </Button>
+              </div>
+            </div>
+            <div className="grid gap-4">
+              <div className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-6 text-white">
+                <h3 className="text-xl font-semibold mb-2">Gobierno corporativo 360°</h3>
+                <p className="text-blue-100 text-sm">
+                  Protocolos familiares, data rooms seguros y actas digitales integradas a tu dashboard.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-6 text-white">
+                <h3 className="text-xl font-semibold mb-2">Analítica avanzada</h3>
+                <p className="text-blue-100 text-sm">
+                  Modelos predictivos con IA, alertas de riesgo y reportes ESG personalizados.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-6 text-white">
+                <h3 className="text-xl font-semibold mb-2">Mesa de inversión dedicada</h3>
+                <p className="text-blue-100 text-sm">
+                  Acceso a oportunidades club-deal y seguimiento semanal con estrategas sénior.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-[#0a1931] to-[#185adb]">
         <div className="container mx-auto px-6 text-center">
