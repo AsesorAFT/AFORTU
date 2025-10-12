@@ -1,178 +1,348 @@
 'use client';
 
 import Link from 'next/link';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { BrainCircuit, Briefcase, DollarSign, Handshake, LineChart, ShieldCheck, Users } from 'lucide-react';
+import {
+  TrendingUp,
+  Shield,
+  Scale,
+  Lightbulb,
+  UserCheck,
+  Building2,
+  Landmark,
+  PiggyBank,
+  CheckCircle2,
+  ArrowRight,
+  Calendar,
+} from 'lucide-react';
 
-const serviceHighlights = [
+const services = [
   {
-    id: 'gestion-activos',
-    icon: DollarSign,
-    title: 'Gestión de Activos',
-    summary:
-      'Administramos portafolios locales e internacionales con monitoreo en tiempo real y rebalanceos automáticos controlados por asesores sénior.',
-    deliverables: ['Portafolio multi-activo', 'Alertas de rebalanceo con IA', 'Reportes de performance mensuales'],
+    id: 'gestion-patrimonial',
+    icon: TrendingUp,
+    title: 'Gestión Patrimonial',
+    description:
+      'Diseñamos estrategias personalizadas para maximizar el rendimiento de tus activos y proteger tu patrimonio a largo plazo.',
+    features: [
+      'Análisis integral de cartera de inversiones',
+      'Diversificación estratégica de activos',
+      'Seguimiento en tiempo real con dashboards ejecutivos',
+      'Rebalanceo automático según objetivos',
+      'Reportes trimestrales de desempeño',
+    ],
+    deliverables: [
+      'Plan de Gestión Patrimonial personalizado',
+      'Modelo de asignación de activos',
+      'Plataforma de seguimiento 24/7',
+      'Reuniones trimestrales de revisión',
+    ],
+    color: 'from-[#f7c873] to-[#ffd700]',
   },
   {
-    id: 'consultoria',
-    icon: Briefcase,
-    title: 'Consultoría Empresarial',
-    summary:
-      'Soluciones fiscales, legales y financieras para empresas familiares y corporativos en expansión.',
-    deliverables: ['Diagnóstico fiscal y legal', 'Diseño de protocolos familiares', 'Gobierno corporativo en 90 días'],
+    id: 'optimizacion-fiscal',
+    icon: Shield,
+    title: 'Optimización Fiscal',
+    description:
+      'Estrategias integrales para reducir cargas fiscales de forma legal, maximizando eficiencia tributaria y asegurando cumplimiento normativo.',
+    features: [
+      'Análisis de situación fiscal actual',
+      'Planeación fiscal anual y plurianual',
+      'Estructuras legales para minimizar impuestos',
+      'Cumplimiento regulatorio continuo',
+      'Defensa ante auditorías fiscales',
+    ],
+    deliverables: [
+      'Diagnóstico fiscal completo',
+      'Estrategia de optimización tributaria',
+      'Calendario de obligaciones fiscales',
+      'Soporte en declaraciones y pagos',
+    ],
+    color: 'from-[#185adb] to-[#3b82f6]',
   },
   {
-    id: 'ia',
-    icon: BrainCircuit,
-    title: 'Asesor AFT con IA',
-    summary:
-      'Chat estratégico conectado a tus metas y al comportamiento del portafolio para recomendar acciones inmediatas.',
-    deliverables: ['Monitoreo 24/7', 'Modelos predictivos con Gemini 2.5 Pro', 'Seguimiento personalizado por objetivos'],
+    id: 'asesoria-legal',
+    icon: Scale,
+    title: 'Asesoría Legal',
+    description:
+      'Protección jurídica integral para estructuras patrimoniales, operaciones complejas y transacciones de alto valor.',
+    features: [
+      'Estructuración de entidades corporativas',
+      'Contratos y acuerdos patrimoniales',
+      'Protección de activos ante litigios',
+      'Compliance regulatorio y corporativo',
+      'Asesoría en fusiones y adquisiciones',
+    ],
+    deliverables: [
+      'Revisión legal de estructuras existentes',
+      'Diseño de arquitectura corporativa',
+      'Documentación legal completa',
+      'Representación legal cuando se requiera',
+    ],
+    color: 'from-[#14b8a6] to-[#06b6d4]',
   },
   {
-    id: 'atencion',
-    icon: Users,
-    title: 'Atención Personalizada',
-    summary:
-      'Un equipo multidisciplinario (asesor financiero, fiscalista y legal) acompañando cada hito patrimonial.',
-    deliverables: ['Mesa de inversión dedicada', 'Plan de sucesión y seguros', 'Sesiones estratégicas trimestrales'],
+    id: 'consultoria-estrategica',
+    icon: Lightbulb,
+    title: 'Consultoría Estratégica',
+    description:
+      'Visión holística para decisiones de inversión, crecimiento empresarial y planificación de largo plazo con enfoque integral.',
+    features: [
+      'Planificación estratégica de crecimiento',
+      'Análisis de oportunidades de inversión',
+      'Modelado financiero y proyecciones',
+      'Estrategias de sucesión y legado',
+      'Asesoría en expansión internacional',
+    ],
+    deliverables: [
+      'Plan estratégico a 3-5 años',
+      'Roadmap de implementación',
+      'Modelos financieros proyectados',
+      'Sesiones ejecutivas trimestrales',
+    ],
+    color: 'from-[#a855f7] to-[#c084fc]',
   },
 ];
 
-const complementaryServices = [
+const teamMembers = [
   {
-    title: 'Blindaje fiscal internacional',
+    icon: UserCheck,
+    role: 'Asesor Principal',
     description:
-      'Estructuramos holdings, fideicomisos y vehículos internacionales cumpliendo con normativas CRS, FATCA y BEPS.',
+      'Tu punto de contacto único. Coordina a todo el equipo especializado y garantiza que todas las áreas trabajen en sincronía para alcanzar tus objetivos.',
+    color: 'gold' as const,
   },
   {
-    title: 'Family office as a Service',
+    icon: Building2,
+    role: 'Asesor Patrimonial',
     description:
-      'Creamos la oficina patrimonial sin inversión inicial: gobierno, tesorería, reporting consolidado y orquestación de terceros.',
+      'Especialista en inversiones y optimización de carteras. Diseña estrategias de alto rendimiento adaptadas a tu perfil de riesgo.',
+    color: 'blue' as const,
   },
   {
-    title: 'Wealth planning multigeneracional',
+    icon: Landmark,
+    role: 'Estructurador de Legado',
     description:
-      'Protocolos familiares, educación financiera para herederos y simulaciones de escenarios de sucesión.',
+      'Experto en planificación sucesoria y protección de patrimonio familiar. Diseña estructuras para preservar tu legado generacional.',
+    color: 'teal' as const,
   },
   {
-    title: 'Estrategias ESG y filantropía',
+    icon: PiggyBank,
+    role: 'Planificador de Retiro',
     description:
-      'Diseñamos vehículos y métricas de impacto para alinear tu capital con causas estratégicas.',
+      'Diseña estrategias para asegurar tu independencia financiera futura. Proyecta escenarios y optimiza recursos para tu retiro.',
+    color: 'purple' as const,
   },
 ];
 
-export default function ServicesPage() {
+const process = [
+  {
+    number: 1,
+    title: 'Diagnóstico y Diseño',
+    description:
+      'Realizamos un análisis profundo de tu situación patrimonial, fiscal, legal y estratégica. Diseñamos un plan personalizado con objetivos claros y métricas de éxito.',
+    color: 'bg-[#f7c873]',
+  },
+  {
+    number: 2,
+    title: 'Implementación',
+    description:
+      'Ejecutamos la estrategia con herramientas de vanguardia, seguimiento en tiempo real y coordinación multidisciplinaria de especialistas.',
+    color: 'bg-[#185adb]',
+  },
+  {
+    number: 3,
+    title: 'Evolución y Adaptabilidad',
+    description:
+      'Ajustamos continuamente la estrategia según cambios en mercados, normativas y tus necesidades. Revisiones trimestrales y optimización constante.',
+    color: 'bg-[#14b8a6]',
+  },
+];
+
+const colorClasses = {
+  gold: 'from-[#f7c873] to-[#ffd700]',
+  blue: 'from-[#185adb] to-[#3b82f6]',
+  teal: 'from-[#14b8a6] to-[#06b6d4]',
+  purple: 'from-[#a855f7] to-[#c084fc]',
+};
+
+export default function ServicesPageNew() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-white to-slate-100 py-20">
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="text-center">
-          <Badge className="bg-[#0a1931] text-white hover:bg-[#132a4c]">Portafolio AFORTU</Badge>
-          <h1 className="mt-6 text-4xl font-bold text-[#0a1931] lg:text-5xl">Servicios alineados a tu estrategia</h1>
-          <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600">
-            Conectamos asesoría humana de alto nivel con analítica inteligente. Cada módulo puede contratarse de manera individual o como parte de un plan AFORTU PRO.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-8 lg:grid-cols-2">
-          {serviceHighlights.map((service) => (
-            <Card key={service.id} id={service.id} className="border-slate-200/80 shadow-xl">
-              <CardHeader className="flex flex-row items-start gap-4">
-                <div className="rounded-full bg-[#0a1931]/10 p-3 text-[#0a1931]">
-                  <service.icon className="h-7 w-7" />
-                </div>
-                <div>
-                  <CardTitle className="text-2xl text-[#0a1931]">{service.title}</CardTitle>
-                  <CardDescription className="text-base text-slate-600">
-                    {service.summary}
-                  </CardDescription>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <ul className="grid gap-2 text-sm text-slate-600">
-                  {service.deliverables.map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <ShieldCheck className="mt-0.5 h-4 w-4 text-[#f7c873]" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex flex-wrap gap-3">
-                  <Button asChild size="sm" className="bg-[#0a1931] text-white hover:bg-[#132a4c]">
-                    <Link href={`/contact?interest=${service.id}`}>Solicitar propuesta</Link>
-                  </Button>
-                  <Button asChild size="sm" variant="outline" className="border-[#0a1931] text-[#0a1931] hover:bg-[#0a1931]/5">
-                    <Link href="#pro">Ver cómo escala en PRO</Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <section className="mt-16 rounded-3xl bg-[#0a1931] px-8 py-12 text-white" id="pro">
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center">
-            <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-[#f7c873]">AFORTU PRO</p>
-              <h2 className="mt-4 text-3xl font-semibold lg:text-4xl">De la consultoría puntual al acompañamiento integral</h2>
-              <p className="mt-4 text-blue-100">
-                Activa automatización fiscal, reportes consolidados por holding y gobierno corporativo sin fricciones. Elige qué módulos quieres delegar y nosotros los operamos con indicadores accionables.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Badge className="bg-white/10 text-[#f7c873] border border-[#f7c873]/40">Family Office virtual</Badge>
-                <Badge className="bg-white/10 text-[#f7c873] border border-[#f7c873]/40">Mesa de inversión dedicada</Badge>
-                <Badge className="bg-white/10 text-[#f7c873] border border-[#f7c873]/40">Compliance automatizado</Badge>
-              </div>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Button asChild size="lg" className="bg-[#f7c873] text-[#0a1931] hover:bg-[#ffd700] font-semibold">
-                  <Link href="/pro">Explorar beneficios PRO</Link>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                  <Link href="/contact">Agendar diagnóstico</Link>
-                </Button>
-              </div>
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+      {/* Hero de Servicios */}
+      <section className="bg-[#0a1931] py-20 text-white">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="text-center">
+            <h1 className="mb-6 text-5xl font-bold md:text-6xl">
+              Nuestros <span className="text-[#f7c873]">Servicios</span>
+            </h1>
+            <p className="mx-auto mb-10 max-w-3xl text-lg leading-relaxed text-slate-300 md:text-xl">
+              Cuatro pilares de excelencia para proteger, optimizar y hacer crecer tu patrimonio. Un equipo
+              especializado coordinado por tu Asesor Principal.
+            </p>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link
+                href="/contact?type=diagnostico"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#f7c873] px-8 py-4 font-bold text-[#0a1931] shadow-lg transition-all hover:bg-[#ffd700]"
+              >
+                Solicitar Diagnóstico
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+              <Link
+                href="/contact?type=consulta"
+                className="inline-flex items-center gap-2 rounded-xl border-2 border-white/20 bg-white/5 px-8 py-4 font-semibold text-white backdrop-blur-sm transition-all hover:border-white/40 hover:bg-white/10"
+              >
+                <Calendar className="h-5 w-5" />
+                Agendar Consulta
+              </Link>
             </div>
-            <Card className="border-white/20 bg-white/10 backdrop-blur-md">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-lg text-white">
-                  <Handshake className="h-5 w-5 text-[#f7c873]" /> Qué incluye el onboarding PRO
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4 text-sm text-blue-50">
-                <div>
-                  <p className="font-semibold text-white">Semana 1-2</p>
-                  <p>Inventario patrimonial, auditoría fiscal y definición de indicadores críticos.</p>
-                </div>
-                <div>
-                  <p className="font-semibold text-white">Semana 3-4</p>
-                  <p>Implementación de tableros, conexión con custodios y activación de alertas IA.</p>
-                </div>
-                <div>
-                  <p className="font-semibold text-white">Semana 5+</p>
-                  <p>Gobierno continuo, sesiones mensuales y soporte on-demand para eventos extraordinarios.</p>
-                </div>
-              </CardContent>
-            </Card>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="mt-20">
-          <div className="grid gap-6 lg:grid-cols-2">
-            {complementaryServices.map((service) => (
-              <Card key={service.title} className="border-slate-200/80">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-[#0a1931]">
-                    <LineChart className="h-5 w-5 text-[#f7c873]" /> {service.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="text-slate-600">{service.description}</CardContent>
-              </Card>
+      {/* Sección de Servicios Detallados */}
+      <section className="py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="space-y-20">
+            {services.map((service, idx) => (
+              <div
+                key={service.id}
+                id={service.id}
+                className="rounded-3xl border border-slate-200 bg-white p-8 shadow-lg md:p-12"
+              >
+                <div className="mb-8 flex items-start gap-6">
+                  <div
+                    className={`flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${service.color} shadow-lg`}
+                  >
+                    <service.icon className="h-8 w-8 text-white" strokeWidth={2} />
+                  </div>
+                  <div className="flex-1">
+                    <h2 className="mb-3 text-3xl font-bold text-slate-900 md:text-4xl">{service.title}</h2>
+                    <p className="text-lg leading-relaxed text-slate-600">{service.description}</p>
+                  </div>
+                </div>
+
+                <div className="grid gap-8 md:grid-cols-2">
+                  {/* Qué Incluye */}
+                  <div>
+                    <h3 className="mb-4 text-xl font-semibold text-slate-900">Qué Incluye</h3>
+                    <ul className="space-y-3">
+                      {service.features.map((feature, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#14b8a6]" />
+                          <span className="text-slate-700">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Entregables */}
+                  <div>
+                    <h3 className="mb-4 text-xl font-semibold text-slate-900">Entregables</h3>
+                    <ul className="space-y-3">
+                      {service.deliverables.map((deliverable, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#f7c873]" />
+                          <span className="text-slate-700">{deliverable}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="mt-8 flex justify-end">
+                  <Link
+                    href={`/contact?service=${service.id}`}
+                    className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-6 py-3 font-semibold text-white transition-all hover:bg-slate-800"
+                  >
+                    Contratar {service.title}
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
             ))}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      {/* Equipo Responsable */}
+      <section className="bg-slate-100 py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-4xl font-bold text-slate-900">Tu Equipo Especializado</h2>
+            <p className="mx-auto max-w-2xl text-lg text-slate-600">
+              Cada servicio cuenta con especialistas dedicados, coordinados por tu{' '}
+              <strong className="text-[#f7c873]">Asesor Principal</strong> para garantizar resultados excepcionales.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {teamMembers.map((member, idx) => (
+              <div
+                key={idx}
+                className="flex flex-col items-start gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-md transition-all hover:shadow-lg"
+              >
+                <div
+                  className={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${colorClasses[member.color]} shadow-md`}
+                >
+                  <member.icon className="h-7 w-7 text-white" strokeWidth={2} />
+                </div>
+                <div>
+                  <h3 className="mb-2 text-xl font-semibold text-slate-900">{member.role}</h3>
+                  <p className="text-sm leading-relaxed text-slate-600">{member.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Proceso en 3 Etapas */}
+      <section className="py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-4xl font-bold text-slate-900">Nuestro Proceso</h2>
+            <p className="mx-auto max-w-2xl text-lg text-slate-600">
+              Un enfoque estructurado en tres etapas para garantizar resultados medibles y sostenibles.
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            {process.map((step, idx) => (
+              <div key={idx} className="text-center">
+                <div className={`mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full ${step.color} text-3xl font-bold text-white shadow-lg`}>
+                  {step.number}
+                </div>
+                <h3 className="mb-3 text-2xl font-semibold text-slate-900">{step.title}</h3>
+                <p className="leading-relaxed text-slate-600">{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Final */}
+      <section className="bg-[#0a1931] py-20 text-white">
+        <div className="mx-auto max-w-4xl px-6 text-center">
+          <h2 className="mb-6 text-4xl font-bold">¿Listo para Potenciar tu Patrimonio?</h2>
+          <p className="mb-10 text-lg leading-relaxed text-slate-300">
+            Agenda una consulta inicial sin compromiso con tu futuro Asesor Principal. Conoce cómo nuestro equipo
+            especializado puede ayudarte a alcanzar tus objetivos patrimoniales.
+          </p>
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              href="/contact?type=consulta-inicial"
+              className="inline-flex items-center gap-2 rounded-xl bg-[#f7c873] px-8 py-4 text-lg font-bold text-[#0a1931] shadow-lg transition-all hover:bg-[#ffd700]"
+            >
+              Agendar Consulta Inicial
+              <Calendar className="h-5 w-5" />
+            </Link>
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 rounded-xl border-2 border-white/20 bg-white/5 px-8 py-4 text-lg font-semibold text-white backdrop-blur-sm transition-all hover:border-white/40 hover:bg-white/10"
+            >
+              Conocer a AFORTU
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
