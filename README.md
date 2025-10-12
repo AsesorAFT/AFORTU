@@ -65,18 +65,38 @@ Este repositorio contiene el código fuente y la documentación de la aplicació
 
 3. Crea un archivo `.env.local` tomando como referencia `.env.example` y completa las variables necesarias.
 
-4. Inicia la aplicación en modo desarrollo:
+4. Inicia la aplicación en modo desarrollo y ábrela en tu navegador:
    ```bash
    npm run dev
    ```
 
+   El servidor local queda disponible en `http://localhost:3000`. Desde ahí puedes navegar a:
+
+   - `http://localhost:3000/` — **Landing page** pública con las CTA principales.
+   - `http://localhost:3000/services` — Catálogo de servicios con vínculos internos.
+   - `http://localhost:3000/pro` — Sección dedicada a AFORTU PRO y su comparativa de planes.
+   - `http://localhost:3000/contact` — Formulario de contacto con seguimiento específico para clientes PRO.
+   - `http://localhost:3000/dashboard` — Vista del panel con métricas, objetivos y recomendaciones.
+   - `http://localhost:3000/asset-management`, `/consultoria`, `/coordination`, `/profile` — Rutas auxiliares enlazadas desde el dashboard.
+
+   > 💡 Si trabajas dentro de un contenedor o túnel remoto, recuerda publicar el puerto 3000 para acceder al navegador.
+
+5. Para validar la build de producción ejecuta:
+   ```bash
+   npm run build
+   npm start
+   ```
+
+   Esto levanta la aplicación optimizada en `http://localhost:3000`.
+
 ## 🔧 Tecnologías Clave
 
-- **Inteligencia Artificial**: Google Gemini 2.5 Pro
-- **Frontend**: *(Ej: React, Vue.js, Angular)*
-- **Backend**: *(Ej: Python (Django/Flask), Node.js (Express))*
-- **Base de Datos**: *(Ej: PostgreSQL, MongoDB)*
-- **Despliegue**: *(Ej: AWS, Google Cloud, Docker)*
+- **Frontend**: [Next.js 14](https://nextjs.org/) con [React](https://react.dev/), [TypeScript](https://www.typescriptlang.org/) y [Tailwind CSS](https://tailwindcss.com/).
+- **Componentes UI**: [Shadcn/ui](https://ui.shadcn.com/) y [Lucide Icons](https://lucide.dev/).
+- **Gestión de estado/server actions**: Hooks de React, Server Components y acciones de Next.js.
+- **Autenticación y datos**: Integración prevista con Firebase Authentication y Firestore (ver reglas en `/firestore.rules`).
+- **Infraestructura**: Configuraciones listas para despliegue en Vercel/Firebase Hosting (`vercel.json`, `firebase.json`).
+- **Inteligencia Artificial**: Asistente conversacional **Asesor AFT** alimentado por Google Gemini 2.5 Pro.
 
 ## 👥 Contribución
 
