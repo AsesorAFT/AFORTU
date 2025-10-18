@@ -40,7 +40,14 @@ const AnalyzePortfolioDataOutputSchema = z.object({
 export type AnalyzePortfolioDataOutput = z.infer<typeof AnalyzePortfolioDataOutputSchema>;
 
 export async function analyzePortfolioData(input: AnalyzePortfolioDataInput): Promise<AnalyzePortfolioDataOutput> {
-  return analyzePortfolioDataFlow(input);
+  // Mock implementation while AI is disabled
+  return {
+    keyInsights: "AI analysis temporarily disabled",
+    anomaliesDetected: "None detected in mock mode",
+    potentialRisks: "Risk analysis unavailable",
+    opportunitiesIdentified: "Opportunity analysis unavailable"
+  };
+  // return analyzePortfolioDataFlow(input);
 }
 
 const prompt = ai.definePrompt({

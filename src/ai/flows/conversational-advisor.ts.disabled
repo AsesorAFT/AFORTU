@@ -26,7 +26,11 @@ const ChatWithAdvisorOutputSchema = z.object({
 export type ChatWithAdvisorOutput = z.infer<typeof ChatWithAdvisorOutputSchema>;
 
 export async function chatWithAdvisor(input: ChatWithAdvisorInput): Promise<ChatWithAdvisorOutput> {
-  return conversationalAdvisorFlow(input) as Promise<ChatWithAdvisorOutput>;
+  // Mock implementation while AI is disabled
+  return {
+    response: "El sistema de chat con asesor está temporalmente deshabilitado para desarrollo."
+  };
+  // return conversationalAdvisorFlow(input) as Promise<ChatWithAdvisorOutput>;
 }
 
 const prompt = ai.definePrompt({

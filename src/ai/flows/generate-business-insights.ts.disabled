@@ -15,7 +15,14 @@ import { GenerateBusinessInsightsInputSchema, GenerateBusinessInsightsOutputSche
 
 
 export async function generateBusinessInsights(input: GenerateBusinessInsightsInput): Promise<GenerateBusinessInsightsOutput> {
-  return generateBusinessInsightsFlow(input);
+  // Mock implementation while AI is disabled
+  return {
+    revenueForecast: "AI analysis temporarily disabled",
+    expenseOptimizationSuggestions: "Optimization suggestions unavailable",
+    customerAcquisitionStrategies: "Strategy analysis unavailable",
+    riskAssessment: "Risk assessment unavailable"
+  };
+  // return generateBusinessInsightsFlow(input);
 }
 
 const prompt = ai.definePrompt({
