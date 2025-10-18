@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
 import AfortuProSerious from '@/components/ui/afortu-pro-serious';
 import { 
@@ -10,6 +10,7 @@ import {
   Sparkles, 
   TrendingUp, 
   Shield, 
+  ShieldCheck,
   Scale, 
   Lightbulb,
   UserCheck,
@@ -17,6 +18,7 @@ import {
   Landmark,
   PiggyBank
 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { ServicePillarCard } from '@/components/ui/service-pillar-card';
 import { TeamSpecialistCard } from '@/components/ui/team-specialist-card';
 

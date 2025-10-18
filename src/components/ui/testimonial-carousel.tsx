@@ -73,7 +73,7 @@ export function TestimonialCarousel() {
             </div>
             
             <p className="text-xl md:text-2xl text-white font-light leading-relaxed mb-8 italic">
-              "{testimonials[currentIndex].text}"
+              &quot;{testimonials[currentIndex].text}&quot;
             </p>
             
             <div className="flex items-center gap-4">
