@@ -130,13 +130,13 @@ export default function DashboardPagePremium() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F8F9FA] via-white to-[#E8DCC8]/20">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
       <div className="space-y-8 p-6 lg:p-10">
         {/* Hero Section con Glassmorphism */}
-        <section className="relative overflow-hidden rounded-3xl shadow-2xl">
+        <section className="relative overflow-hidden rounded-3xl">
           {/* Gradient Background */}
           <div 
-            className="absolute inset-0"
+            className="absolute inset-0 opacity-90"
             style={{
               background: fortuneColors.gradients.luxuryDark,
             }}
@@ -147,27 +147,27 @@ export default function DashboardPagePremium() {
             <div className="flex flex-col gap-6 p-8 lg:flex-row lg:items-center lg:justify-between lg:p-12">
               <div className="animate-fade-in-up">
                 <Badge 
-                  className="mb-4 text-sm font-semibold shadow-lg border-0"
+                  className="mb-4 text-sm font-semibold shadow-lg"
                   style={{
                     backgroundColor: fortuneColors.primary.gold,
-                    color: 'white',
+                    color: fortuneColors.luxury.navy,
                   }}
                 >
                   <Sparkles className="mr-1 h-3 w-3" />
                   Cuenta PRO
                 </Badge>
-                <h1 className="text-4xl font-bold text-white lg:text-5xl font-serif">
+                <h1 className="text-4xl font-bold text-white lg:text-5xl">
                   Bienvenido de nuevo
                 </h1>
-                <p className="mt-3 max-w-2xl text-lg text-[#E8E9EB]">
+                <p className="mt-3 max-w-2xl text-lg text-slate-200">
                   Tu vista consolidada de patrimonio. Datos actualizados cada 15 minutos.
                 </p>
               </div>
               <Button 
-                className="self-start shadow-2xl transition-all hover:scale-105 border-0"
+                className="self-start shadow-2xl transition-all hover:scale-105"
                 style={{
                   backgroundColor: fortuneColors.primary.gold,
-                  color: 'white',
+                  color: fortuneColors.luxury.navy,
                 }}
                 size="lg"
               >
@@ -178,8 +178,8 @@ export default function DashboardPagePremium() {
           </div>
 
           {/* Decorative elements */}
-          <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-gradient-to-br from-[#C9A961]/20 to-transparent blur-3xl" />
-          <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-gradient-to-br from-[#E8E9EB]/30 to-transparent blur-3xl" />
+          <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-gradient-to-br from-blue-500/20 to-transparent blur-3xl" />
+          <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-gradient-to-br from-yellow-500/20 to-transparent blur-3xl" />
         </section>
 
         {/* KPIs Grid con animaciones */}
@@ -202,7 +202,7 @@ export default function DashboardPagePremium() {
                   <div className="mt-3 flex items-baseline gap-2">
                     <h2 
                       className="text-4xl font-extrabold"
-                      style={{ color: fortuneColors.luxury.charcoal }}
+                      style={{ color: fortuneColors.luxury.navy }}
                     >
                       {kpi.value}
                     </h2>
@@ -256,7 +256,7 @@ export default function DashboardPagePremium() {
                 <div>
                   <CardTitle 
                     className="text-2xl font-bold"
-                    style={{ color: fortuneColors.luxury.charcoal }}
+                    style={{ color: fortuneColors.luxury.navy }}
                   >
                     Objetivos estratégicos
                   </CardTitle>
@@ -288,7 +288,7 @@ export default function DashboardPagePremium() {
                     <div className="flex-1">
                       <p 
                         className="text-lg font-semibold"
-                        style={{ color: fortuneColors.luxury.charcoal }}
+                        style={{ color: fortuneColors.luxury.navy }}
                       >
                         {objective.name}
                       </p>
@@ -324,7 +324,7 @@ export default function DashboardPagePremium() {
             <CardHeader className="pb-4">
               <CardTitle 
                 className="text-2xl font-bold"
-                style={{ color: fortuneColors.luxury.charcoal }}
+                style={{ color: fortuneColors.luxury.navy }}
               >
                 Recomendaciones
               </CardTitle>
@@ -356,7 +356,7 @@ export default function DashboardPagePremium() {
                     <div className="flex-1">
                       <p 
                         className="font-semibold"
-                        style={{ color: fortuneColors.luxury.charcoal }}
+                        style={{ color: fortuneColors.luxury.navy }}
                       >
                         {item.title}
                       </p>
@@ -379,7 +379,7 @@ export default function DashboardPagePremium() {
             <CardHeader>
               <CardTitle 
                 className="text-2xl font-bold"
-                style={{ color: fortuneColors.luxury.charcoal }}
+                style={{ color: fortuneColors.luxury.navy }}
               >
                 Próximos hitos
               </CardTitle>
@@ -410,7 +410,7 @@ export default function DashboardPagePremium() {
                   <div className="flex-1">
                     <p 
                       className="font-semibold"
-                      style={{ color: fortuneColors.luxury.charcoal }}
+                      style={{ color: fortuneColors.luxury.navy }}
                     >
                       {event.title}
                     </p>
@@ -427,7 +427,7 @@ export default function DashboardPagePremium() {
             <CardHeader>
               <CardTitle 
                 className="text-2xl font-bold"
-                style={{ color: fortuneColors.luxury.charcoal }}
+                style={{ color: fortuneColors.luxury.navy }}
               >
                 Checklist de cumplimiento
               </CardTitle>
@@ -444,7 +444,7 @@ export default function DashboardPagePremium() {
                 <div className="flex-1">
                   <p 
                     className="text-sm font-semibold"
-                    style={{ color: fortuneColors.luxury.charcoal }}
+                    style={{ color: fortuneColors.luxury.navy }}
                   >
                     Validar KYC de socios internacionales
                   </p>
@@ -459,7 +459,7 @@ export default function DashboardPagePremium() {
                 <div className="flex-1">
                   <p 
                     className="text-sm font-semibold"
-                    style={{ color: fortuneColors.luxury.charcoal }}
+                    style={{ color: fortuneColors.luxury.navy }}
                   >
                     Actualizar pólizas de seguro patrimonial
                   </p>
@@ -474,7 +474,7 @@ export default function DashboardPagePremium() {
                 <div className="flex-1">
                   <p 
                     className="text-sm font-semibold"
-                    style={{ color: fortuneColors.luxury.charcoal }}
+                    style={{ color: fortuneColors.luxury.navy }}
                   >
                     Confirmar onboarding de entidad en Delaware
                   </p>
@@ -486,7 +486,7 @@ export default function DashboardPagePremium() {
                 className="w-full transition-all hover:scale-[1.02]"
                 style={{
                   borderColor: fortuneColors.primary.gold,
-                  color: fortuneColors.luxury.charcoal,
+                  color: fortuneColors.luxury.navy,
                 }}
               >
                 Ver checklist completo

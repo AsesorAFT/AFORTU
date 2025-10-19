@@ -32,11 +32,11 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
 
-    /* AFORTU Custom Colors */
-    --afortu-navy: 220 69% 14%;       /* #0a1931 */
-    --afortu-blue: 221 83% 34%;       /* #185adb */
-    --afortu-gold: 42 87% 72%;        /* #f7c873 */
-    --afortu-gold-bright: 51 100% 50%; /* #ffd700 */
+    /* AFORTU Custom Colors - Refined Palette */
+    --afortu-gold: 42 35% 59%;        /* #C9A961 - Oro refinado del logo */
+    --afortu-charcoal: 210 20% 25%;   /* #2C3E50 - Carbón sofisticado */
+    --afortu-platinum: 220 10% 91%;   /* #E8E9EB - Platino elegante */
+    --afortu-pearl: 210 20% 98%;      /* #F8F9FA - Perla suave */
   }
 
   .dark {
@@ -193,6 +193,48 @@
       opacity: 1;
       transform: translateX(0);
     }
+  }
+
+  /* Premium animations */
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  @keyframes goldGlow {
+    0%, 100% {
+      box-shadow: 0 8px 32px rgba(212, 175, 55, 0.15);
+    }
+    50% {
+      box-shadow: 0 12px 48px rgba(212, 175, 55, 0.35);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+  }
+
+  .animate-gold-glow {
+    animation: goldGlow 3s ease-in-out infinite;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
   }
 
   /* Card hover effects */

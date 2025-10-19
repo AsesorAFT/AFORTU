@@ -39,6 +39,13 @@ Nuestra misión es construir el equipo de asesores que tus negocios necesitan, g
 - **Bitácora Digital**:
   - Toda la interacción y seguimiento se gestiona a través de una **bitácora centralizada**, garantizando una comunicación clara y transparente entre tú y tu equipo de asesores.
 
+- **🎨 Diseño Premium de Alto Patrimonio** (NUEVO):
+  - Sistema de diseño elegante con colores de riqueza (oro, navy, piedras preciosas)
+  - Efectos de glassmorphism y animaciones fluidas
+  - Componentes optimizados con React.memo y hooks de performance
+  - Micro-interacciones y feedback visual premium
+  - Skeleton loaders elegantes para estados de carga
+
 ## 🚀 Empezando
 
 Este repositorio contiene el código fuente y la documentación de la aplicación AFORTU. Para empezar a desarrollar o contribuir, sigue estos pasos.
@@ -93,10 +100,25 @@ Este repositorio contiene el código fuente y la documentación de la aplicació
 
 - **Frontend**: [Next.js 14](https://nextjs.org/) con [React](https://react.dev/), [TypeScript](https://www.typescriptlang.org/) y [Tailwind CSS](https://tailwindcss.com/).
 - **Componentes UI**: [Shadcn/ui](https://ui.shadcn.com/) y [Lucide Icons](https://lucide.dev/).
+- **Sistema de Diseño**: Sistema Fortune con colores premium, glassmorphism y animaciones optimizadas.
 - **Gestión de estado/server actions**: Hooks de React, Server Components y acciones de Next.js.
 - **Autenticación y datos**: Integración prevista con Firebase Authentication y Firestore (ver reglas en `/firestore.rules`).
 - **Infraestructura**: Configuraciones listas para despliegue en Vercel/Firebase Hosting (`vercel.json`, `firebase.json`).
 - **Inteligencia Artificial**: Asistente conversacional **Asesor AFT** alimentado por Google Gemini 2.5 Pro.
+- **Performance**: Componentes memoizados, lazy loading, y hooks optimizados para máximo rendimiento.
+
+## 🎨 Sistema de Diseño Premium
+
+AFORTU cuenta con un sistema de diseño completo enfocado en clientes de alto patrimonio:
+
+- **Colores Fortune**: Paleta dorada (#D4AF37), navy luxury (#0A1628), y acentos de piedras preciosas
+- **Glassmorphism**: Efectos de vidrio esmerilado con backdrop-blur para elegancia moderna
+- **Animaciones Fluidas**: Transiciones suaves, números animados, y efectos de hover premium
+- **Componentes Premium**: PremiumCard, StatCard, PremiumButton con micro-interacciones
+- **Loading States**: Skeleton loaders con animación shimmer elegante
+- **Performance Optimizada**: Memoización, lazy loading, y hooks de optimización
+
+📚 Ver documentación completa en [`docs/DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md) y [`docs/IMPLEMENTACION.md`](docs/IMPLEMENTACION.md)
 
 ## 👥 Contribución
 

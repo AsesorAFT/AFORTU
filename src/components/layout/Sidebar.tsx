@@ -17,6 +17,8 @@ import {
   UserCheck,
   History,
   BookOpen,
+  TrendingUp,
+  Clock,
 } from 'lucide-react';
 // import { useAuthState } from 'react-firebase-hooks/auth';
 // import { auth } from '@/lib/firebase';
@@ -62,6 +64,11 @@ export default function Sidebar() {
       label: "Asset Management",
       href: "/asset-management",
       icon: <Briefcase className="h-5 w-5" />,
+    },
+    {
+      label: "CAV - Contratos",
+      href: "/cav",
+      icon: <TrendingUp className="h-5 w-5" />,
     },
     {
       label: "Contratos",
@@ -124,8 +131,8 @@ export default function Sidebar() {
         href={item.href}
         className={`flex items-center gap-3 px-4 py-2.5 rounded-lg font-semibold text-base transition
             ${isActive
-            ? 'bg-[#f7c873] text-[#0a1931] shadow-lg'
-            : 'text-[#e0e4ea] hover:bg-white/10'
+            ? 'bg-[#C9A961] text-white shadow-lg'
+            : 'text-[#E8E9EB] hover:bg-white/10'
             }`}
         >
         {item.icon} {item.label}
@@ -134,13 +141,16 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="h-screen w-[280px] bg-gradient-to-br from-[#0a1931] to-[#185adb] border-r border-white/10 flex flex-col fixed z-40">
-      <div className="flex items-center gap-2 px-4 py-5 border-b border-white/10">
+    <aside className="h-screen w-[280px] bg-gradient-to-br from-[#2C3E50] via-[#34495E] to-[#2C3E50] border-r border-[#C9A961]/20 flex flex-col fixed z-40 shadow-2xl">
+      <div className="flex items-center gap-2 px-4 py-5 border-b border-[#C9A961]/20">
         <Link href="/dashboard" className="flex items-center gap-2.5">
-           <Image src="/logo-afortu-icon.svg" alt="AFORTU Logo" width={32} height={32} />
-          <span className="text-2xl font-bold text-white tracking-wider">
-            AFORTU
-          </span>
+           <Image 
+             src="https://firebasestorage.googleapis.com/v0/b/afortu.firebasestorage.app/o/LOGO%20DE%20AFORTU.PNG?alt=media&token=2e8530a1-30d3-4c0d-974e-46451594f7fb" 
+             alt="AFORTU Logo" 
+             width={140} 
+             height={40}
+             className="h-10 w-auto"
+           />
         </Link>
       </div>
       
@@ -150,7 +160,7 @@ export default function Sidebar() {
          </div>
         
         <div className="mt-auto flex flex-col gap-1">
-             <div className="text-gray-400 uppercase px-4 pt-2 pb-1 text-xs font-semibold tracking-wider">
+             <div className="text-[#C9A961] uppercase px-4 pt-2 pb-1 text-xs font-semibold tracking-wider">
                 Cuenta
             </div>
             {userMenu.map(navLink)}
@@ -158,24 +168,24 @@ export default function Sidebar() {
              <Button
                 onClick={handleLogout}
                 variant="ghost"
-                className="flex items-center justify-start gap-3 px-4 py-2.5 rounded-lg font-semibold text-base text-[#e0e4ea] hover:bg-white/10 hover:text-white"
+                className="flex items-center justify-start gap-3 px-4 py-2.5 rounded-lg font-semibold text-base text-[#E8E9EB] hover:bg-white/10 hover:text-white"
              >
                 <LogOut className="h-5 w-5" /> Cerrar Sesión
             </Button>
         </div>
       </nav>
 
-      <div className="px-4 py-4 border-t border-white/10 bg-black/20">
+      <div className="px-4 py-4 border-t border-[#C9A961]/20 bg-black/10">
         <div className="flex items-center gap-3">
-            <Avatar className="h-10 w-10">
+            <Avatar className="h-10 w-10 border-2 border-[#C9A961]">
               <AvatarImage src={user?.photoURL ?? undefined} alt={user?.displayName ?? 'Usuario'} />
-              <AvatarFallback className="bg-primary/20 text-[#f7c873]">
+              <AvatarFallback className="bg-[#C9A961]/20 text-[#C9A961] font-bold">
                 {getInitials(user?.displayName)}
               </AvatarFallback>
             </Avatar>
           <div className="flex-1 overflow-hidden">
             <div className="text-sm text-white font-semibold truncate">{user?.displayName || 'Usuario'}</div>
-            <div className="text-xs text-gray-400 truncate">{user?.email}</div>
+            <div className="text-xs text-[#E8E9EB]/70 truncate">{user?.email}</div>
           </div>
         </div>
       </div>
