@@ -14,7 +14,14 @@ import { MarketTrendAnalyzerInput, MarketTrendAnalyzerInputSchema, MarketTrendAn
 
 
 export async function analyzeMarketTrends(input: MarketTrendAnalyzerInput): Promise<MarketTrendAnalyzerOutput> {
-  return analyzeMarketTrendsFlow(input) as Promise<MarketTrendAnalyzerOutput>;
+  // Mock implementation while AI is disabled
+  return {
+    summary: "AI analysis temporarily disabled",
+    insights: "Market insights unavailable",
+    risks: "Risk analysis unavailable",
+    recommendations: "Recommendations unavailable"
+  };
+  // return analyzeMarketTrendsFlow(input) as Promise<MarketTrendAnalyzerOutput>;
 }
 
 const prompt = ai.definePrompt({

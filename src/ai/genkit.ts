@@ -15,6 +15,9 @@
 
 // Mock AI para desarrollo
 export const ai = {
-  chat: () => null,
-  flow: () => null,
+  chat: (...args: any[]) => null,
+  flow: (...args: any[]) => null,
+  definePrompt: (...args: any[]) => null,
+  defineFlow: (...args: any[]) => null,
+  defineTool: (...args: any[]) => null,
 };

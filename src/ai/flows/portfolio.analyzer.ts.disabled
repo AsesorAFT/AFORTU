@@ -12,7 +12,13 @@ import { AnalyzePortfolioInput, AnalyzePortfolioInputSchema, AnalyzePortfolioOut
 
 
 export async function analyzePortfolio(input: AnalyzePortfolioInput): Promise<AnalyzePortfolioOutput> {
-  return analyzePortfolioFlow(input);
+  // Mock implementation while AI is disabled
+  return {
+    diversificationSuggestions: "AI analysis temporarily disabled",
+    riskManagementSuggestions: "Risk analysis unavailable",
+    potentialReturns: "Return analysis unavailable"
+  };
+  // return analyzePortfolioFlow(input);
 }
 
 const prompt = ai.definePrompt({

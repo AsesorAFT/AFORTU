@@ -78,7 +78,7 @@ export function ChatClient() {
         message: currentMessage,
       });
 
-       const responseContent = result.response;
+       const responseContent = result.content;
        setMessages([...newMessages, { role: 'assistant', content: responseContent }]);
       
     } catch (error) {

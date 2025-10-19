@@ -1,8 +1,8 @@
 
 import { NextResponse } from 'next/server';
-import paypal from '@paypal/paypal-server-sdk';
+import paypal from '@paypal/checkout-server-sdk';
 // o
-import { Subscriptions } from '@paypal/paypal-server-sdk';
+// import { Subscriptions } from '@paypal/checkout-server-sdk';
 
 /**
  * API endpoint to handle setting up a PayPal billing agreement/subscription.
