@@ -16,6 +16,13 @@ interface UseAfortuSettingsReturn {
   cavPortfolio: CAVPortfolioSummary;
   investmentPlans: CAVSettings['investmentPlans'];
   
+  // Additional properties for asset management page
+  settings: CAVSettings;
+  enrichedFixedContracts: CAVContract[];
+  enrichedContributionPlans: CAVSettings['investmentPlans'];
+  portfolioSummary: CAVPortfolioSummary;
+  isLoaded: boolean;
+  
   // Loading states
   isLoading: boolean;
   error: string | null;
@@ -301,6 +308,13 @@ export function useAfortuSettings(userId?: string): UseAfortuSettingsReturn {
     cavContracts: cavSettings.contracts,
     cavPortfolio: portfolioSummary,
     investmentPlans: cavSettings.investmentPlans,
+    
+    // Additional properties for asset management
+    settings: cavSettings,
+    enrichedFixedContracts: cavSettings.contracts,
+    enrichedContributionPlans: cavSettings.investmentPlans,
+    portfolioSummary,
+    isLoaded: !isLoading,
     
     // States
     isLoading,
