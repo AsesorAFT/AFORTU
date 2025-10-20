@@ -43,7 +43,7 @@ export const PremiumCard: React.FC<PremiumCardProps> = ({
       boxShadow: fortuneColors.shadows.goldGlow,
     },
     luxury: {
-      background: fortuneColors.luxury.navy,
+      background: fortuneColors.luxury.charcoal,
       backdropFilter: 'none',
       border: `1px solid ${fortuneColors.primary.darkGold}`,
       boxShadow: fortuneColors.shadows.premium,

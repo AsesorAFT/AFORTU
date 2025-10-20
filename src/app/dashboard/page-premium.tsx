@@ -150,7 +150,7 @@ export default function DashboardPagePremium() {
                   className="mb-4 text-sm font-semibold shadow-lg"
                   style={{
                     backgroundColor: fortuneColors.primary.gold,
-                    color: fortuneColors.luxury.navy,
+                    color: fortuneColors.luxury.charcoal,
                   }}
                 >
                   <Sparkles className="mr-1 h-3 w-3" />
@@ -167,7 +167,7 @@ export default function DashboardPagePremium() {
                 className="self-start shadow-2xl transition-all hover:scale-105"
                 style={{
                   backgroundColor: fortuneColors.primary.gold,
-                  color: fortuneColors.luxury.navy,
+                  color: fortuneColors.luxury.charcoal,
                 }}
                 size="lg"
               >
@@ -202,7 +202,7 @@ export default function DashboardPagePremium() {
                   <div className="mt-3 flex items-baseline gap-2">
                     <h2 
                       className="text-4xl font-extrabold"
-                      style={{ color: fortuneColors.luxury.navy }}
+                      style={{ color: fortuneColors.luxury.charcoal }}
                     >
                       {kpi.value}
                     </h2>
@@ -256,7 +256,7 @@ export default function DashboardPagePremium() {
                 <div>
                   <CardTitle 
                     className="text-2xl font-bold"
-                    style={{ color: fortuneColors.luxury.navy }}
+                    style={{ color: fortuneColors.luxury.charcoal }}
                   >
                     Objetivos estratégicos
                   </CardTitle>
@@ -288,7 +288,7 @@ export default function DashboardPagePremium() {
                     <div className="flex-1">
                       <p 
                         className="text-lg font-semibold"
-                        style={{ color: fortuneColors.luxury.navy }}
+                        style={{ color: fortuneColors.luxury.charcoal }}
                       >
                         {objective.name}
                       </p>
@@ -324,7 +324,7 @@ export default function DashboardPagePremium() {
             <CardHeader className="pb-4">
               <CardTitle 
                 className="text-2xl font-bold"
-                style={{ color: fortuneColors.luxury.navy }}
+                style={{ color: fortuneColors.luxury.charcoal }}
               >
                 Recomendaciones
               </CardTitle>
@@ -356,7 +356,7 @@ export default function DashboardPagePremium() {
                     <div className="flex-1">
                       <p 
                         className="font-semibold"
-                        style={{ color: fortuneColors.luxury.navy }}
+                        style={{ color: fortuneColors.luxury.charcoal }}
                       >
                         {item.title}
                       </p>
@@ -379,7 +379,7 @@ export default function DashboardPagePremium() {
             <CardHeader>
               <CardTitle 
                 className="text-2xl font-bold"
-                style={{ color: fortuneColors.luxury.navy }}
+                style={{ color: fortuneColors.luxury.charcoal }}
               >
                 Próximos hitos
               </CardTitle>
@@ -410,7 +410,7 @@ export default function DashboardPagePremium() {
                   <div className="flex-1">
                     <p 
                       className="font-semibold"
-                      style={{ color: fortuneColors.luxury.navy }}
+                      style={{ color: fortuneColors.luxury.charcoal }}
                     >
                       {event.title}
                     </p>
@@ -427,7 +427,7 @@ export default function DashboardPagePremium() {
             <CardHeader>
               <CardTitle 
                 className="text-2xl font-bold"
-                style={{ color: fortuneColors.luxury.navy }}
+                style={{ color: fortuneColors.luxury.charcoal }}
               >
                 Checklist de cumplimiento
               </CardTitle>
@@ -444,7 +444,7 @@ export default function DashboardPagePremium() {
                 <div className="flex-1">
                   <p 
                     className="text-sm font-semibold"
-                    style={{ color: fortuneColors.luxury.navy }}
+                    style={{ color: fortuneColors.luxury.charcoal }}
                   >
                     Validar KYC de socios internacionales
                   </p>
@@ -459,7 +459,7 @@ export default function DashboardPagePremium() {
                 <div className="flex-1">
                   <p 
                     className="text-sm font-semibold"
-                    style={{ color: fortuneColors.luxury.navy }}
+                    style={{ color: fortuneColors.luxury.charcoal }}
                   >
                     Actualizar pólizas de seguro patrimonial
                   </p>
@@ -474,7 +474,7 @@ export default function DashboardPagePremium() {
                 <div className="flex-1">
                   <p 
                     className="text-sm font-semibold"
-                    style={{ color: fortuneColors.luxury.navy }}
+                    style={{ color: fortuneColors.luxury.charcoal }}
                   >
                     Confirmar onboarding de entidad en Delaware
                   </p>
@@ -486,7 +486,7 @@ export default function DashboardPagePremium() {
                 className="w-full transition-all hover:scale-[1.02]"
                 style={{
                   borderColor: fortuneColors.primary.gold,
-                  color: fortuneColors.luxury.navy,
+                  color: fortuneColors.luxury.charcoal,
                 }}
               >
                 Ver checklist completo

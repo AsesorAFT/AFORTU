@@ -83,7 +83,7 @@ export const StatCard = memo<StatCardProps>(({
             <div className="mt-3 flex items-baseline gap-2">
               <h2 
                 className="text-4xl font-extrabold tabular-nums"
-                style={{ color: fortuneColors.luxury.navy }}
+                style={{ color: fortuneColors.luxury.charcoal }}
               >
                 {formatValue(animatedValue)}
               </h2>
