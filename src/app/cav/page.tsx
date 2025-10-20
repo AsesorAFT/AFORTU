@@ -6,7 +6,9 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { PremiumCard } from '@/components/ui/premium-card';
 import { StatCard } from '@/components/ui/stat-card';
+import { LoadingSpinner } from '@/components/ui/skeleton';
 import { fortuneColors } from '@/lib/theme/colors';
+import { useAfortuSettings } from '@/hooks/use-afortu-settings';
 import {
   TrendingUp,
   Clock,
@@ -19,76 +21,27 @@ import {
   AlertCircle,
   CheckCircle2,
   CircleDot,
+  RefreshCw,
 } from 'lucide-react';
-
-// Datos de ejemplo de contratos CAV
-const cavContracts = [
-  {
-    id: 'CAV-001',
-    title: 'Renta Fija Gobierno MX',
-    amount: 5000000,
-    currency: 'MXN',
-    apr: 12.5,
-    startDate: '2024-01-15',
-    endDate: '2025-01-15',
-    daysRemaining: 88,
-    status: 'active',
-    returns: 625000,
-  },
-  {
-    id: 'CAV-002',
-    title: 'Deuda Corporativa AAA',
-    amount: 3500000,
-    currency: 'MXN',
-    apr: 10.8,
-    startDate: '2024-03-01',
-    endDate: '2025-03-01',
-    daysRemaining: 134,
-    status: 'active',
-    returns: 378000,
-  },
-  {
-    id: 'CAV-003',
-    title: 'Bonos Gubernamentales USD',
-    amount: 250000,
-    currency: 'USD',
-    apr: 8.5,
-    startDate: '2024-06-01',
-    endDate: '2025-06-01',
-    daysRemaining: 226,
-    status: 'active',
-    returns: 21250,
-  },
-  {
-    id: 'CAV-004',
-    title: 'Cetes 28 días',
-    amount: 2000000,
-    currency: 'MXN',
-    apr: 11.2,
-    startDate: '2024-09-15',
-    endDate: '2024-10-13',
-    daysRemaining: -6,
-    status: 'completed',
-    returns: 224000,
-  },
-];
-
-const portfolioSummary = {
-  totalInvested: 10750000,
-  totalReturns: 1248250,
-  avgAPR: 10.75,
-  activeContracts: 3,
-  completedContracts: 1,
-  nextMaturity: 88,
-};
 
 export default function CAVPage() {
   const [filter, setFilter] = useState<'all' | 'active' | 'completed'>('all');
+  
+  // ✨ Obtener datos desde el hook centralizado
+  const {
+    cavContracts,
+    cavPortfolio,
+    investmentPlans,
+    isLoading,
+    error,
+    refreshData,
+  } = useAfortuSettings();
 
+  // Filtrar contratos según el filtro seleccionado
   const filteredContracts = useMemo(() => {
     if (filter === 'all') return cavContracts;
     return cavContracts.filter((c) => c.status === filter);
-  }, [filter]);
+  }, [filter, cavContracts]);
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -111,6 +64,47 @@ export default function CAVPage() {
         return 'Pendiente';
     }
   };
+
+  // Mostrar loading
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30 flex items-center justify-center">
+        <div className="text-center">
+          <LoadingSpinner size="lg" />
+          <p className="mt-4 text-slate-600">Cargando contratos CAV...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Mostrar error
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30 flex items-center justify-center">
+        <PremiumCard variant="elevated" className="max-w-md">
+          <div className="flex items-start gap-4 p-6">
+            <AlertCircle className="h-6 w-6 text-red-500" />
+            <div>
+              <h3 className="font-bold text-red-900">Error al cargar datos</h3>
+              <p className="mt-2 text-sm text-red-700">{error}</p>
+              <Button
+                onClick={refreshData}
+                variant="outline"
+                className="mt-4"
+                style={{
+                  borderColor: fortuneColors.primary.gold,
+                  color: fortuneColors.luxury.charcoal,
+                }}
+              >
+                <RefreshCw className="mr-2 h-4 w-4" />
+                Reintentar
+              </Button>
+            </div>
+          </div>
+        </PremiumCard>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
@@ -162,22 +156,22 @@ export default function CAVPage() {
           <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-gradient-to-br from-yellow-500/20 to-transparent blur-3xl" />
         </section>
 
-        {/* Resumen de Portfolio */}
+        {/* Resumen de Portfolio - Datos desde Firestore */}
         <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           <StatCard
             title="Capital Invertido"
-            value={portfolioSummary.totalInvested}
+            value={cavPortfolio.totalInvested}
             format="currency"
             currency="MXN"
             icon={<DollarSign className="h-6 w-6" />}
           />
           <StatCard
             title="Rendimientos Totales"
-            value={portfolioSummary.totalReturns}
+            value={cavPortfolio.totalReturns}
             format="currency"
             currency="MXN"
             trend={{
-              value: portfolioSummary.avgAPR,
+              value: cavPortfolio.avgAPR,
               label: 'APR promedio',
               isPositive: true,
             }}
@@ -185,16 +179,16 @@ export default function CAVPage() {
           />
           <StatCard
             title="Contratos Activos"
-            value={portfolioSummary.activeContracts}
+            value={cavPortfolio.activeContracts}
             format="number"
             icon={<CheckCircle2 className="h-6 w-6" />}
           />
           <StatCard
             title="Próximo Vencimiento"
-            value={portfolioSummary.nextMaturity}
+            value={cavPortfolio.nextMaturity}
             format="number"
             trend={{
-              value: portfolioSummary.nextMaturity,
+              value: cavPortfolio.nextMaturity,
               label: 'días restantes',
               isPositive: true,
             }}
@@ -229,7 +223,7 @@ export default function CAVPage() {
                     : {}
                 }
               >
-                Todos
+                Todos ({cavContracts.length})
               </Button>
               <Button
                 variant={filter === 'active' ? 'default' : 'outline'}
@@ -243,7 +237,7 @@ export default function CAVPage() {
                     : {}
                 }
               >
-                Activos
+                Activos ({cavPortfolio.activeContracts})
               </Button>
               <Button
                 variant={filter === 'completed' ? 'default' : 'outline'}
@@ -257,7 +251,15 @@ export default function CAVPage() {
                     : {}
                 }
               >
-                Completados
+                Completados ({cavPortfolio.completedContracts})
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={refreshData}
+                title="Actualizar datos"
+              >
+                <RefreshCw className="h-4 w-4" />
               </Button>
             </div>
           </div>

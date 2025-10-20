@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Image from 'next/image';
 
 export const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -8,3 +9,37 @@ export const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
+
+interface AfortuPremiumLogoProps {
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  animated?: boolean;
+  className?: string;
+}
+
+export const AfortuPremiumLogo: React.FC<AfortuPremiumLogoProps> = ({ 
+  size = 'md', 
+  animated = false, 
+  className = '' 
+}) => {
+  const sizes = {
+    sm: { width: 80, height: 80 },
+    md: { width: 120, height: 120 },
+    lg: { width: 180, height: 180 },
+    xl: { width: 240, height: 240 }
+  };
+
+  const { width, height } = sizes[size];
+
+  return (
+    <div className={`relative ${className}`}>
+      <Image
+        src="https://firebasestorage.googleapis.com/v0/b/afortu.firebasestorage.app/o/LOGO%20DE%20AFORTU.PNG?alt=media&token=2e8530a1-30d3-4c0d-974e-46451594f7fb"
+        alt="AFORTU Logo"
+        width={width}
+        height={height}
+        className={`object-contain ${animated ? 'animate-pulse' : ''} brightness-0 invert`}
+        priority
+      />
+    </div>
+  );
+};

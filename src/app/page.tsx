@@ -1,13 +1,319 @@
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Briefcase, ArrowRight, BarChart, BrainCircuit, DollarSign, Shield, Zap, Users } from 'lucide-react';
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import AfortuPremiumLogo from '@/components/ui/afortu-premium-logo';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { 
+  AreaChart, 
+  Bot, 
+  ShieldCheck, 
+  Linkedin, 
+  Twitter,
+  ArrowRight,
+  BrainCircuit,
+  BarChart,
+  Shield,
+  DollarSign,
+  Briefcase,
+  Users
+} from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { AfortuPremiumLogo } from '@/components/icons';
 
-export default function HomePage() {
+// --- Constantes y Datos ---
+const features = [
+  {
+    icon: <AreaChart className="h-8 w-8 text-cyan-400" />,
+    title: 'Gestión de Portafolio',
+    description: 'Visualiza y optimiza tus inversiones con análisis avanzado y datos en tiempo real.',
+    href: '/asset-management',
+  },
+  {
+    icon: <Bot className="h-8 w-8 text-blue-400" />,
+    title: 'Asesoría con IA',
+    description: 'Resuelve dudas y recibe recomendaciones estratégicas 24/7 de nuestro asistente inteligente.',
+    href: '/chat',
+  },
+  {
+    icon: <ShieldCheck className="h-8 w-8 text-cyan-400" />,
+    title: 'Seguridad Integral',
+    description: 'Tus activos y datos están protegidos con encriptación de grado bancario y protocolos de última generación.',
+    href: '/contracts',
+  },
+];
+
+// --- Componentes de la Página ---
+
+function Header() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0a1931] via-[#0d2449] to-[#185adb]">
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-slate-900/80 backdrop-blur-md">
+      <nav className="container flex h-16 items-center justify-between px-4 md:px-6">
+        <Link href="/" className="flex items-center gap-2" aria-label="Página de inicio de AFORTU PRO">
+          <Image 
+            src="https://firebasestorage.googleapis.com/v0/b/afortu.firebasestorage.app/o/LOGO%20DE%20AFORTU.PNG?alt=media&token=2e8530a1-30d3-4c0d-974e-46451594f7fb"
+            alt="AFORTU Logo"
+            width={120}
+            height={35}
+            className="h-8 w-auto"
+          />
+          <span className="hidden sm:inline text-xl font-bold text-[#C9A961]">
+            PRO
+          </span>
+        </Link>
+        <div className="flex items-center gap-2 sm:gap-4">
+          <Button variant="ghost" asChild>
+            <Link href="/login" className="text-slate-200 hover:text-white font-semibold transition-colors">Iniciar Sesión</Link>
+          </Button>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          >
+            <Button
+              asChild
+              className="bg-[#C9A961] text-white font-bold hover:bg-[#D4B76E] shadow-lg"
+            >
+              <Link href="/signup">Registrarse</Link>
+            </Button>
+          </motion.div>
+        </div>
+      </nav>
+    </header>
+  );
+}
+
+function HeroSection() {
+  const router = useRouter();
+// Variantes de animación
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'spring' as const,
+      stiffness: 100,
+    },
+  },
+};  return (
+    <section className="relative w-full overflow-hidden py-24 sm:py-32 flex flex-col items-center justify-center text-center">
+      {/* MEJORA: Efecto de aurora animado para el fondo */}
+      <div className="absolute top-0 left-0 -z-10 h-full w-full bg-[#0a1931]">
+        <div className="absolute bottom-0 left-[-20%] right-0 top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"></div>
+        <div className="absolute bottom-0 right-[-20%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(24,90,219,.15),rgba(255,255,255,0))]"></div>
+      </div>
+      
+      <motion.div
+        className="container max-w-4xl px-4 z-10"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.h1
+          className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6 text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-300"
+          variants={itemVariants}
+        >
+          Inteligencia Financiera para tu Patrimonio
+        </motion.h1>
+        <motion.p
+          className="mb-10 max-w-2xl mx-auto text-lg sm:text-xl text-slate-300"
+          variants={itemVariants}
+        >
+          La nueva era de la gestión patrimonial. Combina tu visión con nuestra inteligencia artificial para construir un futuro financiero más sólido y seguro.
+        </motion.p>
+        
+        <motion.div 
+          className="aspect-video w-full max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-2xl mb-10 border-2 border-blue-500/30 bg-black"
+          variants={itemVariants}
+        >
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/Es8PIJVpcko?si=ULyUEkcu7LfYT2rp&autoplay=1&mute=1&controls=0&loop=1&playlist=Es8PIJVpcko"
+            title="Video AFORTU PRO"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+            className="w-full h-full"
+          />
+        </motion.div>
+
+        <motion.div className="flex flex-col sm:flex-row justify-center items-center gap-4" variants={itemVariants}>
+          <motion.div
+            whileHover={{ scale: 1.05, y: -2 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          >
+            <Button
+              size="lg"
+              className="bg-[#C9A961] text-white font-bold text-lg px-8 py-6 hover:bg-[#D4B76E] shadow-lg shadow-[#C9A961]/20"
+              onClick={() => router.push('/signup')}
+            >
+              Comienza Ahora
+            </Button>
+          </motion.div>
+          <motion.div
+            whileHover={{ scale: 1.05, y: -2 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          >
+            <Button
+              size="lg"
+              variant="outline"
+              asChild
+              className="bg-transparent border-slate-400 text-slate-200 hover:bg-white/10 hover:text-white hover:border-white px-8 py-6 text-lg"
+            >
+              <Link href="#features">Descubrir Funciones</Link>
+            </Button>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+}
+
+function FeaturesSection() {
+  return (
+    <section id="features" className="py-20 sm:py-32 bg-black/20">
+      <div className="container px-4">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Todo el control en una sola plataforma.</h2>
+          <p className="mt-4 text-lg text-slate-300">
+            Desde análisis de activos hasta planificación fiscal, hemos construido las herramientas que necesitas para triunfar.
+          </p>
+        </div>
+        <div className="grid gap-8 md:grid-cols-3">
+          {features.map((feature, i) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.5, delay: i * 0.15, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              {/* MEJORA: Hover con efecto "lift" y "glow" */}
+              <motion.div
+                className="h-full group"
+                whileHover={{ y: -8 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
+                <Card className="h-full text-center bg-slate-900/50 border-blue-500/20 backdrop-blur-lg shadow-xl relative overflow-hidden transition-all duration-300 group-hover:border-cyan-400/50">
+                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent via-transparent to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <CardContent className="pt-8 relative z-10">
+                    <Link href={feature.href} className="flex flex-col items-center">
+                        <div className="inline-block rounded-xl bg-blue-600/20 p-4 mb-4 ring-1 ring-blue-400/30">{feature.icon}</div>
+                        <h3 className="mt-2 text-2xl font-semibold text-white">{feature.title}</h3>
+                        <p className="mt-3 text-base text-slate-300 min-h-[72px]">{feature.description}</p>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CtaSection() {
+  const router = useRouter();
+  return (
+    <section className="py-20 sm:py-32 text-center">
+      <div className="container px-4">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Toma el control de tu futuro financiero hoy</h2>
+        <p className="mt-4 text-lg text-slate-300 max-w-2xl mx-auto">Únete a miles de inversionistas que ya están construyendo su patrimonio con inteligencia y precisión.</p>
+        <motion.div
+            whileHover={{ scale: 1.05, y: -2 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+            className="inline-block mt-10"
+        >
+        <Button
+          size="lg"
+          className="bg-[#C9A961] text-white font-bold text-lg px-8 py-6 hover:bg-[#D4B76E] shadow-lg shadow-[#C9A961]/20"
+          onClick={() => router.push('/signup')}
+        >
+          Crear Cuenta
+        </Button>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="bg-slate-900/50 border-t border-white/10">
+      <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="text-center md:text-left">
+            <p className="text-sm text-slate-400">&copy; {new Date().getFullYear()} AFORTU PRO. Todos los derechos reservados.</p>
+            <div className="flex justify-center md:justify-start gap-4 mt-2">
+              <Link href="/terms" className="text-xs text-slate-400 hover:text-white transition-colors">Términos de Servicio</Link>
+              <Link href="/privacy" className="text-xs text-slate-400 hover:text-white transition-colors">Política de Privacidad</Link>
+            </div>
+          </div>
+          <div className="flex items-center justify-center gap-6">
+            <motion.a href="https://linkedin.com/company/afortu" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" whileHover={{ scale: 1.2, color: '#FFFFFF' }} className="text-slate-400">
+              <Linkedin className="h-6 w-6"/>
+            </motion.a>
+            <motion.a href="https://twitter.com/afortu" target="_blank" rel="noopener noreferrer" aria-label="Twitter" whileHover={{ scale: 1.2, color: '#FFFFFF' }} className="text-slate-400">
+              <Twitter className="h-6 w-6"/>
+            </motion.a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+// Botón flotante de WhatsApp con logo AFORTU
+function WhatsAppButton() {
+  const whatsappNumber = "529982399177"; // Número de WhatsApp de AFORTU
+  const message = encodeURIComponent("Hola, me gustaría obtener más información sobre AFORTU PRO");
+  
+  return (
+    <motion.a
+      href={`https://wa.me/${whatsappNumber}?text=${message}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-16 h-16 rounded-full shadow-2xl overflow-hidden border-2 border-[#C9A961]"
+      initial={{ scale: 0, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ delay: 1, type: 'spring', stiffness: 260, damping: 20 }}
+      whileHover={{ scale: 1.1, rotate: 5 }}
+      whileTap={{ scale: 0.95 }}
+      aria-label="Contactar por WhatsApp"
+    >
+      <Image 
+        src="https://firebasestorage.googleapis.com/v0/b/afortu.firebasestorage.app/o/LOGO%20DE%20AFORTU.PNG?alt=media&token=2e8530a1-30d3-4c0d-974e-46451594f7fb"
+        alt="Contactar AFORTU"
+        width={64}
+        height={64}
+        className="w-full h-full object-cover"
+      />
+      {/* Indicador de pulso */}
+      <span className="absolute inset-0 rounded-full bg-[#C9A961] opacity-75 animate-ping"></span>
+    </motion.a>
+  );
+}
+
+
+// --- Página Principal ---
+
+export default function LandingPage() {
+  return (
+    <main className="flex flex-col min-h-screen bg-gradient-to-b from-[#0a1931] via-[#0a1931] to-[#182952] text-white font-sans antialiased">
       {/* Hero Section */}
       <section className="relative">
         <div className="absolute inset-0 bg-black/20"></div>
@@ -283,6 +589,49 @@ export default function HomePage() {
           </Button>
         </div>
       </section>
-    </div>
+
+      {/* Footer */}
+      <footer className="bg-[#0a1931] text-white py-12 border-t border-white/10">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h4 className="font-bold text-lg mb-4 text-[#f7c873]">AFORTU</h4>
+              <p className="text-blue-200 text-sm">
+                Tu plataforma integral de gestión financiera y patrimonial.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-bold text-lg mb-4">Servicios</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link href="/services#gestion-activos" className="text-blue-200 hover:text-[#f7c873]">Gestión de Activos</Link></li>
+                <li><Link href="/services#consultoria" className="text-blue-200 hover:text-[#f7c873]">Consultoría Empresarial</Link></li>
+                <li><Link href="/services#ia" className="text-blue-200 hover:text-[#f7c873]">Asesor con IA</Link></li>
+                <li><Link href="/pro" className="text-blue-200 hover:text-[#f7c873]">AFORTU PRO</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-lg mb-4">Empresa</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link href="/about" className="text-blue-200 hover:text-[#f7c873]">Acerca de</Link></li>
+                <li><Link href="/contact" className="text-blue-200 hover:text-[#f7c873]">Contacto</Link></li>
+                <li><Link href="/privacy" className="text-blue-200 hover:text-[#f7c873]">Privacidad</Link></li>
+                <li><Link href="/terms" className="text-blue-200 hover:text-[#f7c873]">Términos</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-lg mb-4">Contacto</h4>
+              <p className="text-blue-200 text-sm mb-2">contacto@afortu.com</p>
+              <p className="text-blue-200 text-sm">+52 998 239 9177</p>
+            </div>
+          </div>
+          <div className="border-t border-white/10 pt-8 text-center text-sm text-blue-200">
+            <p>&copy; {new Date().getFullYear()} AFORTU. Todos los derechos reservados.</p>
+          </div>
+        </div>
+      </footer>
+
+      {/* Botón flotante de WhatsApp */}
+      <WhatsAppButton />
+    </main>
   );
 }
