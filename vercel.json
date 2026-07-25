@@ -1,26 +1,6 @@
 {
-  "version": 2,
-  "name": "afortu-pro",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "build": {
-    "env": {
-      "NODE_ENV": "production"
-    }
-  },
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
   "functions": {
     "src/app/api/**": {
       "maxDuration": 30
