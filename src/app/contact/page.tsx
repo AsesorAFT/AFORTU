@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check, Mail, MessageCircle, Phone } from "lucide-react";
 import { PublicFooter, PublicHeader } from "@/components/site/public-shell";
@@ -15,20 +16,46 @@ export const metadata: Metadata = {
 const whatsappUrl =
   "https://wa.me/525548144552?text=Hola%2C%20quiero%20solicitar%20un%20diagn%C3%B3stico%20patrimonial%20con%20AFORTU.";
 
+const preparation = [
+  {
+    number: "01",
+    title: "Objetivo",
+    detail: "La decisión o necesidad principal que desea atender.",
+  },
+  {
+    number: "02",
+    title: "Horizonte",
+    detail: "El plazo en el que necesita una respuesta o resultado.",
+  },
+  {
+    number: "03",
+    title: "Contexto",
+    detail:
+      "Las principales restricciones, documentos o antecedentes disponibles.",
+  },
+];
+
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-[#fbf8f1] text-[#172033]">
+    <div className="min-h-screen bg-[#f7f3ea] text-[#15213a]">
       <PublicHeader />
       <main>
-        <section className="border-b border-[#d9d2c3]/70 bg-[#10243f] text-white">
-          <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24 lg:px-10">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#d0b77e]">
-              Contacto
-            </p>
-            <h1 className="mt-4 max-w-4xl font-serif text-5xl font-medium leading-[1.02] tracking-[-0.04em] sm:text-6xl">
+        <section className="relative isolate overflow-hidden bg-[#07133f] text-white">
+          <Image
+            src="/afortu-architecture-hero.webp"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="-z-20 object-cover object-[72%_55%] opacity-65"
+          />
+          <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(4,14,33,0.99)_0%,rgba(4,14,33,0.9)_48%,rgba(4,14,33,0.42)_100%)]" />
+          <div className="mx-auto max-w-7xl px-5 py-20 sm:px-6 sm:py-24 lg:px-10">
+            <p className="afortu-kicker afortu-kicker-light">Contacto</p>
+            <h1 className="afortu-display mt-6 max-w-4xl text-5xl font-medium leading-[0.98] tracking-[-0.03em] sm:text-6xl lg:text-7xl">
               La primera decisión es definir correctamente el problema.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
               Comparta su objetivo principal. La conversación inicial servirá
               para identificar el alcance, la información necesaria y el
               siguiente paso.
@@ -36,87 +63,104 @@ export default function ContactPage() {
           </div>
         </section>
 
-        <section className="mx-auto grid max-w-7xl gap-8 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1fr_0.86fr] lg:px-10">
-          <div className="rounded-[2rem] border border-[#d9d2c3] bg-[#fffdf8] p-6 shadow-[0_25px_70px_rgba(16,36,63,0.08)] sm:p-9">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#8d6c2f]">
-              Antes de conversar
-            </p>
-            <h2 className="mt-3 font-serif text-3xl font-semibold text-[#10243f] sm:text-4xl">
-              Tenga a la mano tres datos
-            </h2>
-            <div className="mt-8 grid gap-4">
-              {[
-                "El objetivo o decisión que necesita atender.",
-                "El plazo en el que necesita una respuesta o resultado.",
-                "Las principales restricciones, documentos o antecedentes disponibles.",
-              ].map((item, index) => (
-                <div
-                  key={item}
-                  className="flex gap-4 rounded-2xl border border-[#e2dacc] bg-white p-5"
-                >
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#10243f] text-xs font-bold text-white">
-                    {index + 1}
-                  </span>
-                  <p className="pt-1 text-sm font-semibold leading-6 text-[#4f5969]">
-                    {item}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <p className="mt-6 text-sm leading-6 text-[#6c7280]">
-              No envíe contraseñas, datos bancarios completos ni documentación
-              sensible por mensajería. Si el asunto requiere expediente, AFORTU
-              indicará el canal y los documentos pertinentes.
-            </p>
-          </div>
-
-          <div className="grid gap-5">
-            <article className="rounded-[2rem] bg-[#10243f] p-7 text-white sm:p-8">
-              <MessageCircle className="h-7 w-7 text-[#d0b77e]" />
-              <h2 className="mt-6 font-serif text-3xl font-semibold">
-                WhatsApp
+        <section className="bg-[#fffdf8]">
+          <div className="mx-auto grid max-w-7xl gap-14 px-5 py-20 sm:px-6 sm:py-24 lg:grid-cols-[1fr_0.9fr] lg:px-10">
+            <div>
+              <p className="afortu-kicker">Antes de conversar</p>
+              <h2 className="afortu-display mt-6 max-w-xl text-4xl font-medium leading-[1.02] text-[#07133f] sm:text-5xl">
+                Tres datos nos permiten iniciar con claridad.
               </h2>
-              <p className="mt-3 text-sm leading-6 text-slate-300">
-                Canal directo para solicitar el diagnóstico y coordinar la
-                conversación inicial.
+
+              <ol className="mt-12 border-t border-[#c9bda9]">
+                {preparation.map((item) => (
+                  <li
+                    key={item.number}
+                    className="grid grid-cols-[auto_1fr] gap-5 border-b border-[#c9bda9] py-6"
+                  >
+                    <span className="afortu-display text-3xl text-[#9c7a3f]/65">
+                      {item.number}
+                    </span>
+                    <div>
+                      <h3 className="font-bold text-[#07133f]">{item.title}</h3>
+                      <p className="mt-2 leading-7 text-[#596273]">
+                        {item.detail}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+
+              <p className="mt-7 max-w-2xl text-sm leading-6 text-[#596273]">
+                No envíe contraseñas, datos bancarios completos ni documentación
+                sensible por mensajería. Si el asunto requiere expediente,
+                AFORTU indicará el canal y los documentos pertinentes.
+              </p>
+            </div>
+
+            <div className="self-start border border-[#c5aa72]/28 bg-[#07133f] p-7 text-white shadow-[0_28px_70px_rgba(7,19,63,0.15)] sm:p-9">
+              <MessageCircle
+                className="h-7 w-7 text-[#c5aa72]"
+                aria-hidden="true"
+              />
+              <p className="mt-7 text-xs font-bold uppercase tracking-[0.2em] text-[#c5aa72]">
+                Canal directo
+              </p>
+              <h2 className="afortu-display mt-3 text-4xl font-semibold">
+                Inicie la conversación.
+              </h2>
+              <p className="mt-4 text-sm leading-7 text-slate-300">
+                WhatsApp es el canal más ágil para solicitar el diagnóstico y
+                coordinar el primer contacto.
               </p>
               <Link
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#d0b77e] px-6 py-3.5 text-sm font-bold text-[#10243f] hover:bg-[#e0c88f]"
+                className="afortu-primary-button mt-8 w-full"
               >
-                Iniciar conversación
-                <ArrowRight className="h-4 w-4" />
+                Contactar por WhatsApp
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
-            </article>
 
-            <div className="grid gap-5 sm:grid-cols-2">
-              <article className="rounded-[1.5rem] border border-[#d9d2c3] bg-[#fffdf8] p-6">
-                <Phone className="h-5 w-5 text-[#8d6c2f]" />
-                <h2 className="mt-4 font-bold text-[#10243f]">Teléfono</h2>
+              <div className="mt-9 border-t border-white/[0.12]">
                 <Link
                   href="tel:+525548144552"
-                  className="mt-2 block text-sm text-[#5c6573] hover:text-[#10243f]"
+                  className="flex min-h-16 items-center gap-4 border-b border-white/[0.12] text-sm text-slate-300 transition-colors hover:text-white"
                 >
-                  +52 55 4814 4552
+                  <Phone
+                    className="h-5 w-5 text-[#c5aa72]"
+                    aria-hidden="true"
+                  />
+                  <span>
+                    <span className="block text-xs uppercase tracking-[0.16em] text-slate-500">
+                      Teléfono
+                    </span>
+                    <span className="mt-1 block font-semibold">
+                      +52 55 4814 4552
+                    </span>
+                  </span>
                 </Link>
-              </article>
-              <article className="rounded-[1.5rem] border border-[#d9d2c3] bg-[#fffdf8] p-6">
-                <Mail className="h-5 w-5 text-[#8d6c2f]" />
-                <h2 className="mt-4 font-bold text-[#10243f]">Correo</h2>
                 <Link
                   href="mailto:contacto@afortu.com.mx?subject=Solicitud%20de%20diagn%C3%B3stico%20patrimonial"
-                  className="mt-2 block break-all text-sm text-[#5c6573] hover:text-[#10243f]"
+                  className="flex min-h-16 items-center gap-4 border-b border-white/[0.12] text-sm text-slate-300 transition-colors hover:text-white"
                 >
-                  contacto@afortu.com.mx
+                  <Mail className="h-5 w-5 text-[#c5aa72]" aria-hidden="true" />
+                  <span className="min-w-0">
+                    <span className="block text-xs uppercase tracking-[0.16em] text-slate-500">
+                      Correo
+                    </span>
+                    <span className="mt-1 block break-words font-semibold">
+                      contacto@afortu.com.mx
+                    </span>
+                  </span>
                 </Link>
-              </article>
-            </div>
+              </div>
 
-            <div className="rounded-[1.5rem] border border-[#d9d2c3] bg-[#f2ecdf] p-6">
-              <p className="flex gap-3 text-sm font-semibold leading-6 text-[#4f5969]">
-                <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#8d6c2f]" />
+              <p className="mt-7 flex gap-3 text-xs leading-6 text-slate-400">
+                <Check
+                  className="mt-0.5 h-4 w-4 shrink-0 text-[#c5aa72]"
+                  aria-hidden="true"
+                />
                 La conversación inicial no constituye una recomendación de
                 inversión ni obliga a contratar servicios.
               </p>

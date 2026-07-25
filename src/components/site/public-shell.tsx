@@ -1,6 +1,16 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Menu } from "lucide-react";
+import { ArrowRight, ChevronRight, Mail, Menu, Phone } from "lucide-react";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 const navigation = [
   { label: "Patrimonio", href: "/#patrimonio" },
@@ -10,99 +20,132 @@ const navigation = [
   { label: "Método", href: "/#metodo" },
 ];
 
+function BrandLockup({ footer = false }: { footer?: boolean }) {
+  return (
+    <span className="flex items-center gap-3">
+      <span
+        className={`flex h-10 w-10 items-center justify-center rounded-full border ${
+          footer
+            ? "border-white/15 bg-white"
+            : "border-[#c5aa72]/45 bg-white/[0.07]"
+        }`}
+      >
+        <Image
+          src="/logo-afortu-icon.svg"
+          alt=""
+          width={34}
+          height={34}
+          priority={!footer}
+        />
+      </span>
+      <span>
+        <span
+          className={`block font-sans text-[1.02rem] font-extrabold tracking-[0.19em] ${
+            footer ? "text-white" : "text-white"
+          }`}
+        >
+          AFORTU
+        </span>
+        <span
+          className={`block text-[0.56rem] font-semibold uppercase tracking-[0.2em] ${
+            footer ? "text-slate-400" : "text-[#c5aa72]"
+          }`}
+        >
+          Arquitectura patrimonial
+        </span>
+      </span>
+    </span>
+  );
+}
+
 export function PublicHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b border-[#d9d2c3]/70 bg-[#fbf8f1]/95 backdrop-blur-xl">
-      <div className="mx-auto flex h-[76px] max-w-7xl items-center gap-8 px-5 sm:px-8 lg:px-10">
-        <Link
-          href="/"
-          className="flex items-center gap-3"
-          aria-label="AFORTU, página de inicio"
-        >
-          <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#c8a96a]/35 bg-white shadow-sm">
-            <Image
-              src="/logo-afortu-icon.svg"
-              alt=""
-              width={34}
-              height={34}
-              priority
-            />
-          </span>
-          <span>
-            <span className="block font-sans text-[1.05rem] font-extrabold tracking-[0.18em] text-[#10243f]">
-              AFORTU
-            </span>
-            <span className="block text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-[#786d5c]">
-              Arquitectura patrimonial
-            </span>
-          </span>
+    <header className="sticky top-0 z-50 bg-[#07133f]/95 text-white shadow-[0_1px_0_rgba(197,170,114,0.16)] backdrop-blur-xl">
+      <div className="hidden border-b border-white/[0.07] md:block">
+        <div className="mx-auto flex h-8 max-w-7xl items-center justify-between px-6 text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-slate-400 lg:px-10">
+          <span>Patrimonio · Retiro · Legado</span>
+          <span>Atención mediante diagnóstico</span>
+        </div>
+      </div>
+
+      <div className="mx-auto flex h-[74px] max-w-7xl items-center gap-8 px-5 sm:px-6 lg:px-10">
+        <Link href="/" aria-label="AFORTU, página de inicio">
+          <BrandLockup />
         </Link>
 
         <nav
-          className="ml-auto hidden items-center gap-6 lg:flex"
+          className="ml-auto hidden items-center gap-7 lg:flex"
           aria-label="Navegación principal"
         >
           {navigation.map((item) => (
             <Link
               key={item.label}
               href={item.href}
-              className="text-sm font-semibold text-[#4b5563] transition-colors hover:text-[#10243f]"
+              className="relative py-3 text-sm font-semibold text-slate-300 transition-colors after:absolute after:inset-x-0 after:bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-[#c5aa72] after:transition-transform hover:text-white hover:after:scale-x-100"
             >
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <div className="ml-auto hidden items-center gap-3 sm:flex lg:ml-2">
-          <Link
-            href="/login"
-            className="px-3 py-2 text-sm font-semibold text-[#10243f] transition-colors hover:text-[#8d6c2f]"
-          >
-            Acceso a clientes
-          </Link>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-[#10243f] px-5 py-3 text-sm font-bold text-white shadow-[0_10px_30px_rgba(16,36,63,0.15)] transition-all hover:-translate-y-0.5 hover:bg-[#17375f]"
-          >
-            Solicitar diagnóstico
-            <ArrowUpRight className="h-4 w-4" />
-          </Link>
-        </div>
+        <Link
+          href="/contact"
+          className="ml-auto hidden min-h-11 items-center gap-2 rounded-lg bg-[#c5aa72] px-5 text-sm font-bold text-[#07133f] transition-all hover:-translate-y-0.5 hover:bg-[#d4bd8a] lg:ml-1 lg:inline-flex"
+        >
+          Solicitar diagnóstico
+          <ArrowRight className="h-4 w-4" />
+        </Link>
 
-        <details className="group relative ml-auto sm:hidden">
-          <summary
-            className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full border border-[#d9d2c3] bg-white text-[#10243f] [&::-webkit-details-marker]:hidden"
-            aria-label="Abrir menú"
-          >
-            <Menu className="h-5 w-5" />
-          </summary>
-          <div className="absolute right-0 top-14 w-[min(86vw,330px)] rounded-2xl border border-[#d9d2c3] bg-[#fffdf8] p-4 shadow-2xl">
-            <nav className="grid gap-1" aria-label="Navegación móvil">
+        <Sheet>
+          <SheetTrigger asChild>
+            <button
+              type="button"
+              className="ml-auto flex h-11 w-11 items-center justify-center rounded-lg border border-white/15 bg-white/[0.06] text-white transition-colors hover:bg-white/[0.1] lg:hidden"
+              aria-label="Abrir menú"
+            >
+              <Menu className="h-5 w-5" aria-hidden="true" />
+            </button>
+          </SheetTrigger>
+          <SheetContent className="w-[min(88vw,380px)] border-l border-[#c5aa72]/25 bg-[#07133f] p-5 text-white">
+            <SheetTitle className="sr-only">Navegación de AFORTU</SheetTitle>
+            <SheetDescription className="sr-only">
+              Enlaces principales del sitio público de AFORTU.
+            </SheetDescription>
+            <Link
+              href="/"
+              className="inline-flex"
+              aria-label="AFORTU, página de inicio"
+            >
+              <BrandLockup />
+            </Link>
+            <nav className="mt-10 grid gap-1" aria-label="Navegación móvil">
               {navigation.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="rounded-xl px-4 py-3 text-sm font-semibold text-[#344052] hover:bg-[#f2ecdf]"
-                >
-                  {item.label}
-                </Link>
+                <SheetClose asChild key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="flex min-h-12 items-center justify-between rounded-lg px-4 text-sm font-semibold text-slate-200 transition-colors hover:bg-white/[0.07]"
+                  >
+                    {item.label}
+                    <ChevronRight
+                      className="h-4 w-4 text-[#c5aa72]"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                </SheetClose>
               ))}
-              <div className="my-2 h-px bg-[#e3dccf]" />
-              <Link
-                href="/login"
-                className="rounded-xl px-4 py-3 text-sm font-semibold text-[#10243f]"
-              >
-                Acceso a clientes
-              </Link>
-              <Link
-                href="/contact"
-                className="mt-1 rounded-xl bg-[#10243f] px-4 py-3 text-center text-sm font-bold text-white"
-              >
-                Solicitar diagnóstico
-              </Link>
+              <div className="my-2 h-px bg-white/10" />
+              <SheetClose asChild>
+                <Link
+                  href="/contact"
+                  className="flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#c5aa72] px-4 text-center text-sm font-bold text-[#07133f]"
+                >
+                  Solicitar diagnóstico
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </SheetClose>
             </nav>
-          </div>
-        </details>
+          </SheetContent>
+        </Sheet>
       </div>
     </header>
   );
@@ -110,69 +153,68 @@ export function PublicHeader() {
 
 export function PublicFooter() {
   return (
-    <footer className="border-t border-white/10 bg-[#091a2e] text-white">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-[1.2fr_0.8fr_0.8fr] lg:px-10">
+    <footer className="bg-[#050f23] text-white">
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-6 md:grid-cols-[1.25fr_0.7fr_0.85fr] lg:px-10 lg:py-20">
         <div>
-          <div className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white">
-              <Image
-                src="/logo-afortu-icon.svg"
-                alt=""
-                width={34}
-                height={34}
-              />
-            </span>
-            <span className="font-sans text-lg font-extrabold tracking-[0.18em]">
-              AFORTU
-            </span>
-          </div>
-          <p className="mt-5 max-w-md text-sm leading-7 text-slate-300">
+          <BrandLockup footer />
+          <p className="mt-6 max-w-md text-sm leading-7 text-slate-400">
             Coordinación patrimonial para personas, familias y empresas que
-            necesitan ordenar decisiones de patrimonio, retiro y legado con una
-            visión integral.
+            necesitan ordenar decisiones de patrimonio, retiro y legado bajo una
+            misma visión.
+          </p>
+          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-[#c5aa72]">
+            Criterio · Coordinación · Seguimiento
           </p>
         </div>
 
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#d0b77e]">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#c5aa72]">
             Navegación
           </p>
-          <div className="mt-5 grid gap-3 text-sm text-slate-300">
-            <Link href="/#modelo" className="hover:text-white">
-              Nuestro modelo
+          <div className="mt-6 grid gap-3.5 text-sm text-slate-400">
+            <Link href="/#patrimonio" className="hover:text-white">
+              Patrimonio
             </Link>
-            <Link href="/#metodo" className="hover:text-white">
-              Método de trabajo
+            <Link href="/#retiro" className="hover:text-white">
+              Retiro
+            </Link>
+            <Link href="/#legado" className="hover:text-white">
+              Legado
+            </Link>
+            <Link href="/#modelo" className="hover:text-white">
+              Modelo de Asesor Principal
             </Link>
             <Link href="/contact" className="hover:text-white">
               Contacto
             </Link>
-            <Link href="/login" className="hover:text-white">
-              Acceso a clientes
-            </Link>
           </div>
         </div>
 
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#d0b77e]">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#c5aa72]">
             Contacto
           </p>
-          <div className="mt-5 grid gap-3 text-sm text-slate-300">
-            <Link href="tel:+525548144552" className="hover:text-white">
+          <div className="mt-6 grid gap-4 text-sm text-slate-400">
+            <Link
+              href="tel:+525548144552"
+              className="flex items-center gap-3 hover:text-white"
+            >
+              <Phone className="h-4 w-4 text-[#c5aa72]" />
               +52 55 4814 4552
             </Link>
             <Link
               href="mailto:contacto@afortu.com.mx"
-              className="hover:text-white"
+              className="flex items-center gap-3 hover:text-white"
             >
+              <Mail className="h-4 w-4 text-[#c5aa72]" />
               contacto@afortu.com.mx
             </Link>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-6 text-xs leading-5 text-slate-400 sm:px-8 md:flex-row md:items-end md:justify-between lg:px-10">
+      <div className="border-t border-white/[0.08]">
+        <div className="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-7 text-xs leading-5 text-slate-500 sm:px-6 md:flex-row md:items-end md:justify-between lg:px-10">
           <p className="max-w-4xl">
             La información de este sitio es de carácter general y no constituye
             una oferta, recomendación individualizada ni garantía de
