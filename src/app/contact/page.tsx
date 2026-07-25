@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check, Mail, MessageCircle, Phone } from "lucide-react";
 import { PublicFooter, PublicHeader } from "@/components/site/public-shell";
@@ -37,52 +36,65 @@ const preparation = [
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-[#f7f3ea] text-[#15213a]">
+    <div className="afortu-public min-h-screen">
+      <a
+        href="#contenido"
+        className="sr-only z-[60] rounded bg-white px-4 py-2 text-[#071625] focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+      >
+        Ir al contenido
+      </a>
       <PublicHeader />
-      <main>
-        <section className="relative isolate overflow-hidden bg-[#07133f] text-white">
-          <Image
-            src="/afortu-architecture-hero.webp"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="-z-20 object-cover object-[72%_55%] opacity-65"
-          />
-          <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(4,14,33,0.99)_0%,rgba(4,14,33,0.9)_48%,rgba(4,14,33,0.42)_100%)]" />
-          <div className="mx-auto max-w-7xl px-5 py-20 sm:px-6 sm:py-24 lg:px-10">
-            <p className="afortu-kicker afortu-kicker-light">Contacto</p>
-            <h1 className="afortu-display mt-6 max-w-4xl text-5xl font-medium leading-[0.98] tracking-[-0.03em] sm:text-6xl lg:text-7xl">
-              La primera decisión es definir correctamente el problema.
-            </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
-              Comparta su objetivo principal. La conversación inicial servirá
-              para identificar el alcance, la información necesaria y el
-              siguiente paso.
-            </p>
+      <main id="contenido">
+        <section className="afortu-contact-pattern relative overflow-hidden text-white">
+          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-12 px-5 py-20 sm:px-6 sm:py-24 lg:grid-cols-[1fr_auto] lg:px-8">
+            <div>
+              <p className="afortu-kicker afortu-kicker-light">Contacto</p>
+              <h1 className="afortu-display mt-7 max-w-4xl text-[clamp(3rem,6vw,5.8rem)] font-medium leading-[0.94] tracking-[-0.04em]">
+                La primera decisión es definir el problema{" "}
+                <em className="font-medium text-[#d3ba84]">correctamente.</em>
+              </h1>
+              <p className="mt-8 max-w-2xl text-[1.05rem] leading-8 text-slate-300">
+                Comparta su objetivo principal. La conversación inicial servirá
+                para identificar el alcance, la información necesaria y el
+                siguiente paso.
+              </p>
+            </div>
+            <div
+              className="hidden border-l border-[#c2a56d]/35 py-8 pl-10 xl:block"
+              aria-hidden="true"
+            >
+              <p className="afortu-display text-8xl font-medium leading-none text-[#c2a56d]/35">
+                01
+              </p>
+              <p className="mt-5 max-w-36 text-[0.62rem] font-bold uppercase leading-5 tracking-[0.24em] text-slate-400">
+                Definir · ordenar · avanzar
+              </p>
+            </div>
           </div>
         </section>
 
-        <section className="bg-[#fffdf8]">
-          <div className="mx-auto grid max-w-7xl gap-14 px-5 py-20 sm:px-6 sm:py-24 lg:grid-cols-[1fr_0.9fr] lg:px-10">
+        <section className="bg-[#fcfaf5]">
+          <div className="mx-auto grid max-w-[1240px] gap-14 px-5 py-20 sm:px-6 sm:py-28 lg:grid-cols-[1fr_0.9fr] lg:px-8 lg:py-32">
             <div>
               <p className="afortu-kicker">Antes de conversar</p>
-              <h2 className="afortu-display mt-6 max-w-xl text-4xl font-medium leading-[1.02] text-[#07133f] sm:text-5xl">
+              <h2 className="afortu-display mt-6 max-w-xl text-4xl font-medium leading-[0.98] tracking-[-0.035em] text-[#071625] sm:text-6xl">
                 Tres datos nos permiten iniciar con claridad.
               </h2>
 
-              <ol className="mt-12 border-t border-[#c9bda9]">
+              <ol className="mt-12 border-t border-[#c5b8a5]">
                 {preparation.map((item) => (
                   <li
                     key={item.number}
-                    className="grid grid-cols-[auto_1fr] gap-5 border-b border-[#c9bda9] py-6"
+                    className="grid grid-cols-[auto_1fr] gap-6 border-b border-[#c5b8a5] py-7"
                   >
-                    <span className="afortu-display text-3xl text-[#9c7a3f]/65">
+                    <span className="afortu-display text-4xl text-[#76572a]/55">
                       {item.number}
                     </span>
                     <div>
-                      <h3 className="font-bold text-[#07133f]">{item.title}</h3>
-                      <p className="mt-2 leading-7 text-[#596273]">
+                      <h3 className="!font-sans font-bold text-[#071625]">
+                        {item.title}
+                      </h3>
+                      <p className="mt-2 leading-7 text-[#596371]">
                         {item.detail}
                       </p>
                     </div>
@@ -90,22 +102,22 @@ export default function ContactPage() {
                 ))}
               </ol>
 
-              <p className="mt-7 max-w-2xl text-sm leading-6 text-[#596273]">
+              <p className="mt-8 max-w-2xl text-sm leading-6 text-[#596371]">
                 No envíe contraseñas, datos bancarios completos ni documentación
                 sensible por mensajería. Si el asunto requiere expediente,
                 AFORTU indicará el canal y los documentos pertinentes.
               </p>
             </div>
 
-            <div className="self-start border border-[#c5aa72]/28 bg-[#07133f] p-7 text-white shadow-[0_28px_70px_rgba(7,19,63,0.15)] sm:p-9">
+            <div className="self-start border border-[#c2a56d]/32 bg-[#071625] p-7 text-white shadow-[0_28px_70px_rgba(7,22,37,0.13)] sm:p-10">
               <MessageCircle
-                className="h-7 w-7 text-[#c5aa72]"
+                className="h-7 w-7 text-[#c2a56d]"
                 aria-hidden="true"
               />
-              <p className="mt-7 text-xs font-bold uppercase tracking-[0.2em] text-[#c5aa72]">
+              <p className="mt-8 text-xs font-bold uppercase tracking-[0.2em] text-[#c2a56d]">
                 Canal directo
               </p>
-              <h2 className="afortu-display mt-3 text-4xl font-semibold">
+              <h2 className="afortu-display mt-3 text-4xl font-semibold leading-none">
                 Inicie la conversación.
               </h2>
               <p className="mt-4 text-sm leading-7 text-slate-300">
@@ -128,7 +140,7 @@ export default function ContactPage() {
                   className="flex min-h-16 items-center gap-4 border-b border-white/[0.12] text-sm text-slate-300 transition-colors hover:text-white"
                 >
                   <Phone
-                    className="h-5 w-5 text-[#c5aa72]"
+                    className="h-5 w-5 text-[#c2a56d]"
                     aria-hidden="true"
                   />
                   <span>
@@ -144,7 +156,7 @@ export default function ContactPage() {
                   href="mailto:contacto@afortu.com.mx?subject=Solicitud%20de%20diagn%C3%B3stico%20patrimonial"
                   className="flex min-h-16 items-center gap-4 border-b border-white/[0.12] text-sm text-slate-300 transition-colors hover:text-white"
                 >
-                  <Mail className="h-5 w-5 text-[#c5aa72]" aria-hidden="true" />
+                  <Mail className="h-5 w-5 text-[#c2a56d]" aria-hidden="true" />
                   <span className="min-w-0">
                     <span className="block text-xs uppercase tracking-[0.16em] text-slate-500">
                       Correo
@@ -158,7 +170,7 @@ export default function ContactPage() {
 
               <p className="mt-7 flex gap-3 text-xs leading-6 text-slate-400">
                 <Check
-                  className="mt-0.5 h-4 w-4 shrink-0 text-[#c5aa72]"
+                  className="mt-0.5 h-4 w-4 shrink-0 text-[#c2a56d]"
                   aria-hidden="true"
                 />
                 La conversación inicial no constituye una recomendación de

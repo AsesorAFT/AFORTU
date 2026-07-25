@@ -22,36 +22,30 @@ const navigation = [
 
 function BrandLockup({ footer = false }: { footer?: boolean }) {
   return (
-    <span className="flex items-center gap-3">
+    <span className="flex items-center gap-3.5">
       <span
-        className={`flex h-10 w-10 items-center justify-center rounded-full border ${
-          footer
-            ? "border-white/15 bg-white"
-            : "border-[#c5aa72]/45 bg-white/[0.07]"
+        className={`flex h-11 w-11 items-center justify-center ${
+          footer ? "text-[#c2a56d]" : "text-[#c2a56d]"
         }`}
       >
         <Image
-          src="/logo-afortu-icon.svg"
+          src="/logo-afortu-mark.svg"
           alt=""
-          width={34}
-          height={34}
+          width={44}
+          height={44}
           priority={!footer}
         />
       </span>
       <span>
-        <span
-          className={`block font-sans text-[1.02rem] font-extrabold tracking-[0.19em] ${
-            footer ? "text-white" : "text-white"
-          }`}
-        >
+        <span className="block font-sans text-[1.05rem] font-extrabold tracking-[0.22em] text-white">
           AFORTU
         </span>
         <span
-          className={`block text-[0.56rem] font-semibold uppercase tracking-[0.2em] ${
+          className={`mt-0.5 block text-[0.61rem] font-semibold uppercase tracking-[0.17em] ${
             footer ? "text-slate-400" : "text-[#c5aa72]"
           }`}
         >
-          Arquitectura patrimonial
+          Patrimonio · Retiro · Legado
         </span>
       </span>
     </span>
@@ -60,15 +54,8 @@ function BrandLockup({ footer = false }: { footer?: boolean }) {
 
 export function PublicHeader() {
   return (
-    <header className="sticky top-0 z-50 bg-[#07133f]/95 text-white shadow-[0_1px_0_rgba(197,170,114,0.16)] backdrop-blur-xl">
-      <div className="hidden border-b border-white/[0.07] md:block">
-        <div className="mx-auto flex h-8 max-w-7xl items-center justify-between px-6 text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-slate-400 lg:px-10">
-          <span>Patrimonio · Retiro · Legado</span>
-          <span>Atención mediante diagnóstico</span>
-        </div>
-      </div>
-
-      <div className="mx-auto flex h-[74px] max-w-7xl items-center gap-8 px-5 sm:px-6 lg:px-10">
+    <header className="sticky top-0 z-50 border-b border-white/[0.09] bg-[#071625]/[0.94] text-white backdrop-blur-xl">
+      <div className="mx-auto flex h-[78px] max-w-[1240px] items-center gap-8 px-5 sm:px-6 lg:px-8">
         <Link href="/" aria-label="AFORTU, página de inicio">
           <BrandLockup />
         </Link>
@@ -81,7 +68,7 @@ export function PublicHeader() {
             <Link
               key={item.label}
               href={item.href}
-              className="relative py-3 text-sm font-semibold text-slate-300 transition-colors after:absolute after:inset-x-0 after:bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-[#c5aa72] after:transition-transform hover:text-white hover:after:scale-x-100"
+              className="relative py-3 text-[0.78rem] font-semibold tracking-[0.015em] text-slate-300 transition-colors after:absolute after:inset-x-0 after:bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-[#c2a56d] after:transition-transform hover:text-white hover:after:scale-x-100"
             >
               {item.label}
             </Link>
@@ -90,10 +77,10 @@ export function PublicHeader() {
 
         <Link
           href="/contact"
-          className="ml-auto hidden min-h-11 items-center gap-2 rounded-lg bg-[#c5aa72] px-5 text-sm font-bold text-[#07133f] transition-all hover:-translate-y-0.5 hover:bg-[#d4bd8a] lg:ml-1 lg:inline-flex"
+          className="ml-auto hidden min-h-11 items-center gap-2 rounded-[0.3rem] border border-[#c2a56d] bg-[#c2a56d] px-5 text-[0.78rem] font-bold text-[#071625] transition-colors hover:bg-[#d0b77f] lg:ml-1 lg:inline-flex"
         >
           Solicitar diagnóstico
-          <ArrowRight className="h-4 w-4" />
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>
 
         <Sheet>
@@ -106,7 +93,7 @@ export function PublicHeader() {
               <Menu className="h-5 w-5" aria-hidden="true" />
             </button>
           </SheetTrigger>
-          <SheetContent className="w-[min(88vw,380px)] border-l border-[#c5aa72]/25 bg-[#07133f] p-5 text-white">
+          <SheetContent className="w-[min(88vw,380px)] overflow-y-auto border-l border-[#c2a56d]/25 bg-[#071625] p-5 text-white">
             <SheetTitle className="sr-only">Navegación de AFORTU</SheetTitle>
             <SheetDescription className="sr-only">
               Enlaces principales del sitio público de AFORTU.
@@ -123,11 +110,11 @@ export function PublicHeader() {
                 <SheetClose asChild key={item.label}>
                   <Link
                     href={item.href}
-                    className="flex min-h-12 items-center justify-between rounded-lg px-4 text-sm font-semibold text-slate-200 transition-colors hover:bg-white/[0.07]"
+                    className="flex min-h-12 items-center justify-between rounded-[0.35rem] px-4 text-sm font-semibold text-slate-200 transition-colors hover:bg-white/[0.07]"
                   >
                     {item.label}
                     <ChevronRight
-                      className="h-4 w-4 text-[#c5aa72]"
+                      className="h-4 w-4 text-[#c2a56d]"
                       aria-hidden="true"
                     />
                   </Link>
@@ -137,7 +124,7 @@ export function PublicHeader() {
               <SheetClose asChild>
                 <Link
                   href="/contact"
-                  className="flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#c5aa72] px-4 text-center text-sm font-bold text-[#07133f]"
+                  className="flex min-h-12 items-center justify-center gap-2 rounded-[0.35rem] bg-[#c2a56d] px-4 text-center text-sm font-bold text-[#071625]"
                 >
                   Solicitar diagnóstico
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -153,8 +140,8 @@ export function PublicHeader() {
 
 export function PublicFooter() {
   return (
-    <footer className="bg-[#050f23] text-white">
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-6 md:grid-cols-[1.25fr_0.7fr_0.85fr] lg:px-10 lg:py-20">
+    <footer className="bg-[#050f1b] text-white">
+      <div className="mx-auto grid max-w-[1240px] gap-12 px-5 py-16 sm:px-6 md:grid-cols-[1.25fr_0.7fr_0.85fr] lg:px-8 lg:py-20">
         <div>
           <BrandLockup footer />
           <p className="mt-6 max-w-md text-sm leading-7 text-slate-400">
@@ -162,13 +149,13 @@ export function PublicFooter() {
             necesitan ordenar decisiones de patrimonio, retiro y legado bajo una
             misma visión.
           </p>
-          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-[#c5aa72]">
+          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-[#c2a56d]">
             Criterio · Coordinación · Seguimiento
           </p>
         </div>
 
-        <div>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#c5aa72]">
+        <nav aria-label="Navegación secundaria">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#c2a56d]">
             Navegación
           </p>
           <div className="mt-6 grid gap-3.5 text-sm text-slate-400">
@@ -187,11 +174,17 @@ export function PublicFooter() {
             <Link href="/contact" className="hover:text-white">
               Contacto
             </Link>
+            <Link href="/privacy" className="hover:text-white">
+              Privacidad
+            </Link>
+            <Link href="/terms" className="hover:text-white">
+              Términos
+            </Link>
           </div>
-        </div>
+        </nav>
 
-        <div>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#c5aa72]">
+        <address className="not-italic">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#c2a56d]">
             Contacto
           </p>
           <div className="mt-6 grid gap-4 text-sm text-slate-400">
@@ -199,22 +192,22 @@ export function PublicFooter() {
               href="tel:+525548144552"
               className="flex items-center gap-3 hover:text-white"
             >
-              <Phone className="h-4 w-4 text-[#c5aa72]" />
+              <Phone className="h-4 w-4 text-[#c2a56d]" aria-hidden="true" />
               +52 55 4814 4552
             </Link>
             <Link
               href="mailto:contacto@afortu.com.mx"
               className="flex items-center gap-3 hover:text-white"
             >
-              <Mail className="h-4 w-4 text-[#c5aa72]" />
+              <Mail className="h-4 w-4 text-[#c2a56d]" aria-hidden="true" />
               contacto@afortu.com.mx
             </Link>
           </div>
-        </div>
+        </address>
       </div>
 
       <div className="border-t border-white/[0.08]">
-        <div className="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-7 text-xs leading-5 text-slate-500 sm:px-6 md:flex-row md:items-end md:justify-between lg:px-10">
+        <div className="mx-auto flex max-w-[1240px] flex-col gap-5 px-5 py-7 text-xs leading-5 text-slate-400 sm:px-6 md:flex-row md:items-end md:justify-between lg:px-8">
           <p className="max-w-4xl">
             La información de este sitio es de carácter general y no constituye
             una oferta, recomendación individualizada ni garantía de

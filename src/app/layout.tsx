@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "AFORTU",
     images: [
       {
-        url: "/afortu-architecture-hero.webp",
+        url: "/afortu-architecture-hero-v2.webp",
         width: 1586,
         height: 992,
         alt: "AFORTU, arquitectura patrimonial",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: "AFORTU | Arquitectura patrimonial",
     description:
       "Coordinación patrimonial para decisiones de patrimonio, retiro y legado.",
-    images: ["/afortu-architecture-hero.webp"],
+    images: ["/afortu-architecture-hero-v2.webp"],
   },
   robots: {
     index: true,
@@ -77,7 +77,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&display=swap"
           rel="stylesheet"
         />
       </head>

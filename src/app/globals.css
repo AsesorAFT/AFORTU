@@ -37,16 +37,16 @@
     --afortu-pearl: 210 20% 98%; /* #F8F9FA - Perla suave */
 
     /* AFORTU public site */
-    --afortu-navy: #07133f;
-    --afortu-navy-soft: #0d2045;
-    --afortu-gold-deep: #9c7a3f;
-    --afortu-gold-text: #795f2e;
-    --afortu-gold-soft: #c5aa72;
-    --afortu-ivory: #f7f3ea;
-    --afortu-paper: #fffdf8;
-    --afortu-ink: #15213a;
-    --afortu-copy: #596273;
-    --afortu-line: #ded7ca;
+    --afortu-navy: #071625;
+    --afortu-navy-soft: #0d2236;
+    --afortu-gold-deep: #76572a;
+    --afortu-gold-text: #76572a;
+    --afortu-gold-soft: #c2a56d;
+    --afortu-ivory: #f4efe6;
+    --afortu-paper: #fcfaf5;
+    --afortu-ink: #162337;
+    --afortu-copy: #596371;
+    --afortu-line: #ded5c7;
   }
 
   .dark {
@@ -127,12 +127,36 @@ summary {
 }
 
 :focus-visible {
-  outline: 2px solid var(--afortu-paper);
+  outline: 2px solid var(--afortu-gold-soft);
   outline-offset: 2px;
   box-shadow: 0 0 0 4px var(--afortu-navy);
 }
 
 @layer components {
+  .afortu-public {
+    background: var(--afortu-ivory);
+    color: var(--afortu-ink);
+    font-family:
+      "Manrope",
+      "Avenir Next",
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+    font-feature-settings:
+      "kern" 1,
+      "liga" 1;
+  }
+
+  .afortu-public h1,
+  .afortu-public h2,
+  .afortu-public h3,
+  .afortu-public h4 {
+    font-family:
+      "Newsreader", "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+  }
+
   .afortu-kicker {
     display: inline-flex;
     align-items: center;
@@ -158,8 +182,7 @@ summary {
 
   .afortu-display {
     font-family:
-      "Cormorant Garamond", "Iowan Old Style", "Baskerville", "Times New Roman",
-      serif;
+      "Newsreader", "Iowan Old Style", "Baskerville", "Times New Roman", serif;
     text-wrap: balance;
   }
 
@@ -169,23 +192,24 @@ summary {
     align-items: center;
     justify-content: center;
     gap: 0.65rem;
-    border-radius: 0.5rem;
+    border: 1px solid var(--afortu-gold-soft);
+    border-radius: 0.3rem;
     background: var(--afortu-gold-soft);
     padding: 0.85rem 1.5rem;
     color: var(--afortu-navy);
     font-size: 0.875rem;
     font-weight: 750;
-    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
     transition:
-      transform 180ms ease,
       background-color 180ms ease,
+      border-color 180ms ease,
       box-shadow 180ms ease;
   }
 
   .afortu-primary-button:hover {
-    transform: translateY(-2px);
-    background: #d4bd8a;
-    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.24);
+    border-color: #d0b77f;
+    background: #d0b77f;
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.2);
   }
 
   .afortu-secondary-link {
@@ -211,12 +235,11 @@ summary {
   .afortu-lift {
     transition:
       border-color 180ms ease,
-      background-color 180ms ease,
-      transform 180ms ease;
+      background-color 180ms ease;
   }
 
   .afortu-lift:hover {
-    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.28);
   }
 
   .afortu-hero-image {
@@ -225,6 +248,195 @@ summary {
 
   .afortu-hero-copy {
     animation: afortuCopyReveal 800ms 120ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .afortu-hero-surface {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(7, 22, 37, 0.995) 0%,
+        rgba(7, 22, 37, 0.96) 40%,
+        rgba(7, 22, 37, 0.5) 69%,
+        rgba(7, 22, 37, 0.16) 100%
+      ),
+      radial-gradient(
+        circle at 30% 38%,
+        rgba(194, 165, 109, 0.09),
+        transparent 32%
+      );
+  }
+
+  .afortu-hero-surface::after {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgba(194, 165, 109, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(194, 165, 109, 0.055) 1px, transparent 1px);
+    background-position: right top;
+    background-size: 72px 72px;
+    content: "";
+    mask-image: linear-gradient(90deg, transparent 46%, black 100%);
+  }
+
+  .afortu-hero-index {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .afortu-pillar-row {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 0.85fr) minmax(0, 1.18fr) minmax(
+        14rem,
+        0.82fr
+      );
+    align-items: start;
+    gap: 2rem;
+    border-top: 1px solid var(--afortu-line);
+    padding: 2.7rem 0;
+    transition: background-color 180ms ease;
+  }
+
+  .afortu-pillar-row:last-child {
+    border-bottom: 1px solid var(--afortu-line);
+  }
+
+  .afortu-pillar-row:hover {
+    background: rgba(255, 255, 255, 0.36);
+  }
+
+  .afortu-pillar-number {
+    color: rgba(118, 87, 42, 0.42);
+    font-family:
+      "Newsreader", "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+    font-size: clamp(3rem, 5vw, 4.75rem);
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+    letter-spacing: -0.045em;
+    line-height: 0.9;
+  }
+
+  .afortu-model-map {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(194, 165, 109, 0.26);
+    background:
+      linear-gradient(rgba(194, 165, 109, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(194, 165, 109, 0.055) 1px, transparent 1px),
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.055),
+        rgba(255, 255, 255, 0.018)
+      );
+    background-size:
+      48px 48px,
+      48px 48px,
+      auto;
+  }
+
+  .afortu-model-node {
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(194, 165, 109, 0.38);
+    background: rgba(7, 22, 37, 0.92);
+  }
+
+  .afortu-model-connector {
+    position: relative;
+  }
+
+  .afortu-model-connector::before {
+    position: absolute;
+    top: -2rem;
+    bottom: calc(100% - 1px);
+    left: 50%;
+    width: 1px;
+    background: rgba(194, 165, 109, 0.5);
+    content: "";
+  }
+
+  .afortu-method-step {
+    position: relative;
+  }
+
+  .afortu-method-step::before {
+    position: absolute;
+    top: 1.05rem;
+    right: calc(50% + 1.5rem);
+    left: calc(-50% + 1.5rem);
+    height: 1px;
+    background: var(--afortu-line);
+    content: "";
+  }
+
+  .afortu-method-step:first-child::before {
+    display: none;
+  }
+
+  .afortu-contact-pattern {
+    background:
+      radial-gradient(
+        circle at 72% 30%,
+        rgba(194, 165, 109, 0.14),
+        transparent 24%
+      ),
+      linear-gradient(rgba(194, 165, 109, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(194, 165, 109, 0.06) 1px, transparent 1px),
+      var(--afortu-navy);
+    background-size:
+      auto,
+      64px 64px,
+      64px 64px,
+      auto;
+  }
+}
+
+@media (max-width: 1023px) {
+  .afortu-hero-surface {
+    background: linear-gradient(
+      90deg,
+      rgba(7, 22, 37, 0.97),
+      rgba(7, 22, 37, 0.8)
+    );
+  }
+
+  .afortu-pillar-row {
+    grid-template-columns: 5rem minmax(0, 0.8fr) minmax(0, 1.2fr);
+  }
+
+  .afortu-pillar-row > :last-child {
+    grid-column: 2 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .afortu-hero-surface::after {
+    mask-image: linear-gradient(180deg, transparent 35%, black 100%);
+  }
+
+  .afortu-pillar-row {
+    grid-template-columns: 4rem minmax(0, 1fr);
+    gap: 1.25rem 1rem;
+    padding: 2.25rem 0;
+  }
+
+  .afortu-pillar-row > :nth-child(n + 3) {
+    grid-column: 2;
+  }
+
+  .afortu-pillar-row:hover {
+    background: transparent;
+  }
+
+  .afortu-method-step::before {
+    top: -2.5rem;
+    left: 1rem;
+    width: 1px;
+    height: 2.5rem;
+  }
+
+  .afortu-model-connector::before {
+    display: none;
   }
 }
 
