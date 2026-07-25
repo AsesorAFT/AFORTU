@@ -1,20 +1,26 @@
-'use client';
+"use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import Link from 'next/link';
-import { CAVContract } from '@/types/cav';
-import { formatCurrency, formatDate } from '@/lib/formatters';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
+import { CAVContract } from "@/types/cav";
+import { formatCurrency, formatDate } from "@/lib/formatters";
 
 interface FixedRateContractsCardProps {
   contracts: CAVContract[];
   requestLink: string;
 }
 
-export function FixedRateContractsCard({ contracts, requestLink }: FixedRateContractsCardProps) {
-  const activeContracts = contracts.filter(c => c.status === 'active');
-  const totalValue = activeContracts.reduce((sum, c) => sum + c.currentValue, 0);
+export function FixedRateContractsCard({
+  contracts,
+  requestLink,
+}: FixedRateContractsCardProps) {
+  const activeContracts = contracts.filter((c) => c.status === "active");
+  const totalValue = activeContracts.reduce(
+    (sum, c) => sum + c.amount + c.returns,
+    0,
+  );
 
   return (
     <Card>
@@ -29,16 +35,16 @@ export function FixedRateContractsCard({ contracts, requestLink }: FixedRateCont
 
         {activeContracts.length > 0 ? (
           <div className="space-y-2">
-            {activeContracts.slice(0, 3).map(contract => (
+            {activeContracts.slice(0, 3).map((contract) => (
               <div key={contract.id} className="p-3 bg-muted rounded-lg">
                 <div className="flex justify-between items-start mb-1">
-                  <p className="font-medium text-sm">{contract.name}</p>
+                  <p className="font-medium text-sm">{contract.title}</p>
                   <Badge variant="secondary" className="text-xs">
-                    {(contract.rate * 100).toFixed(2)}%
+                    {contract.apr.toFixed(2)}%
                   </Badge>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  Vence: {formatDate(contract.maturityDate)}
+                  Vence: {formatDate(contract.endDate)}
                 </p>
               </div>
             ))}

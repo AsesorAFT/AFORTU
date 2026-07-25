@@ -1,53 +1,62 @@
-'use client';
+"use client";
 
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { useInView } from 'framer-motion';
-import Link from 'next/link';
-import AfortuProSerious from '@/components/ui/afortu-pro-serious';
-import { 
-  ArrowRight, 
-  Calendar, 
-  Sparkles, 
-  TrendingUp, 
-  Shield, 
-  Scale, 
+import { useEffect, useMemo, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import Link from "next/link";
+import AfortuProSerious from "@/components/ui/afortu-pro-serious";
+import { Button } from "@/components/ui/button";
+import {
+  ArrowRight,
+  Calendar,
+  Sparkles,
+  TrendingUp,
+  Shield,
+  ShieldCheck,
+  Scale,
   Lightbulb,
   UserCheck,
   Building2,
   Landmark,
-  PiggyBank
-} from 'lucide-react';
-import { ServicePillarCard } from '@/components/ui/service-pillar-card';
-import { TeamSpecialistCard } from '@/components/ui/team-specialist-card';
+  PiggyBank,
+} from "lucide-react";
+import { ServicePillarCard } from "@/components/ui/service-pillar-card";
+import { TeamSpecialistCard } from "@/components/ui/team-specialist-card";
 
 const TYPING_SPEED = 80;
 const TYPING_PAUSE = 1800;
 
-const typingWords = ['de Clase Mundial', 'Impulsada por IA', 'Altamente Personalizada'];
+const typingWords = [
+  "de Clase Mundial",
+  "Impulsada por IA",
+  "Altamente Personalizada",
+];
 
 function useTypingLoop(words: string[]) {
   const [index, setIndex] = useState(0);
-  const [displayed, setDisplayed] = useState('');
+  const [displayed, setDisplayed] = useState("");
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     const current = words[index % words.length];
-    const timeout = setTimeout(() => {
-      if (!deleting) {
-        const next = current.slice(0, displayed.length + 1);
-        setDisplayed(next);
-        if (next === current) {
-          setDeleting(true);
+    const timeout = setTimeout(
+      () => {
+        if (!deleting) {
+          const next = current.slice(0, displayed.length + 1);
+          setDisplayed(next);
+          if (next === current) {
+            setDeleting(true);
+          }
+        } else {
+          const next = current.slice(0, displayed.length - 1);
+          setDisplayed(next);
+          if (next === "") {
+            setDeleting(false);
+            setIndex((prev) => (prev + 1) % words.length);
+          }
         }
-      } else {
-        const next = current.slice(0, displayed.length - 1);
-        setDisplayed(next);
-        if (next === '') {
-          setDeleting(false);
-          setIndex((prev) => (prev + 1) % words.length);
-        }
-      }
-    }, deleting ? TYPING_SPEED / 1.5 : TYPING_SPEED);
+      },
+      deleting ? TYPING_SPEED / 1.5 : TYPING_SPEED,
+    );
 
     return () => clearTimeout(timeout);
   }, [displayed, deleting, index, words]);
@@ -62,9 +71,17 @@ function useTypingLoop(words: string[]) {
   return displayed;
 }
 
-function AnimatedStatistic({ value, suffix, label }: { value: number; suffix?: string; label: string }) {
+function AnimatedStatistic({
+  value,
+  suffix,
+  label,
+}: {
+  value: number;
+  suffix?: string;
+  label: string;
+}) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [displayValue, setDisplayValue] = useState(0);
 
   useEffect(() => {
@@ -84,10 +101,16 @@ function AnimatedStatistic({ value, suffix, label }: { value: number; suffix?: s
     requestAnimationFrame(step);
   }, [isInView, value]);
 
-  const formattedValue = useMemo(() => displayValue.toLocaleString('es-MX'), [displayValue]);
+  const formattedValue = useMemo(
+    () => displayValue.toLocaleString("es-MX"),
+    [displayValue],
+  );
 
   return (
-    <div ref={ref} className="rounded-2xl border border-white/20 bg-white/10 p-6 text-left text-white shadow-lg backdrop-blur-md">
+    <div
+      ref={ref}
+      className="rounded-2xl border border-white/20 bg-white/10 p-6 text-left text-white shadow-lg backdrop-blur-md"
+    >
       <p className="text-3xl font-bold md:text-4xl">
         {formattedValue}
         {suffix}
@@ -98,9 +121,13 @@ function AnimatedStatistic({ value, suffix, label }: { value: number; suffix?: s
 }
 
 const heroStats = [
-  { value: 50000000, suffix: ' USD+', label: 'Patrimonio gestionado globalmente' },
-  { value: 1200, suffix: '+', label: 'Clientes de alto patrimonio' },
-  { value: 18, suffix: ' países', label: 'Presencia internacional' },
+  {
+    value: 50000000,
+    suffix: " USD+",
+    label: "Patrimonio gestionado globalmente",
+  },
+  { value: 1200, suffix: "+", label: "Clientes de alto patrimonio" },
+  { value: 18, suffix: " países", label: "Presencia internacional" },
 ];
 
 function DashboardPreview() {
@@ -108,7 +135,7 @@ function DashboardPreview() {
     <motion.div
       initial={{ opacity: 0, y: 60 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.9, delay: 0.2, ease: 'easeOut' }}
+      transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
       className="relative mx-auto mt-16 w-full max-w-5xl"
     >
       <div className="absolute -inset-6 rounded-3xl bg-gradient-to-r from-blue-500/20 via-cyan-400/10 to-purple-500/20 blur-3xl" />
@@ -116,13 +143,17 @@ function DashboardPreview() {
         <div className="grid gap-4 p-6 md:grid-cols-[2fr,1fr]">
           <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-6">
             <div className="flex items-center justify-between">
-              <p className="text-sm font-semibold text-slate-200">Rendimiento Total</p>
-              <span className="rounded-full bg-emerald-500/10 px-3 py-1 text-xs text-emerald-300">+15.3% anual</span>
+              <p className="text-sm font-semibold text-slate-200">
+                Rendimiento Total
+              </p>
+              <span className="rounded-full bg-emerald-500/10 px-3 py-1 text-xs text-emerald-300">
+                +15.3% anual
+              </span>
             </div>
             <motion.div
-              initial={{ width: '0%' }}
-              animate={{ width: '100%' }}
-              transition={{ delay: 0.6, duration: 1.2, ease: 'easeOut' }}
+              initial={{ width: "0%" }}
+              animate={{ width: "100%" }}
+              transition={{ delay: 0.6, duration: 1.2, ease: "easeOut" }}
               className="mt-6 h-36 rounded-xl bg-gradient-to-r from-amber-400 via-blue-500 to-purple-500"
             />
             <div className="mt-6 grid grid-cols-2 gap-4 text-xs text-slate-300">
@@ -143,11 +174,18 @@ function DashboardPreview() {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="rounded-2xl border border-white/10 bg-slate-900/70 p-4"
             >
-              <p className="text-sm font-semibold text-white">Alerta Inteligente</p>
-              <p className="mt-2 text-sm text-slate-300">
-                Oportunidad detectada en mercados emergentes. Potencial alfa anualizado del 6.2%.
+              <p className="text-sm font-semibold text-white">
+                Alerta Inteligente
               </p>
-              <Button variant="secondary" size="sm" className="mt-4 bg-white/10 text-white">
+              <p className="mt-2 text-sm text-slate-300">
+                Oportunidad detectada en mercados emergentes. Potencial alfa
+                anualizado del 6.2%.
+              </p>
+              <Button
+                variant="secondary"
+                size="sm"
+                className="mt-4 bg-white/10 text-white"
+              >
                 Ver recomendación
               </Button>
             </motion.div>
@@ -157,7 +195,9 @@ function DashboardPreview() {
               transition={{ delay: 0.7, duration: 0.6 }}
               className="rounded-2xl border border-white/10 bg-slate-900/70 p-4"
             >
-              <p className="text-sm font-semibold text-white">Balance Multiactivo</p>
+              <p className="text-sm font-semibold text-white">
+                Balance Multiactivo
+              </p>
               <div className="mt-4 space-y-3 text-xs text-slate-300">
                 <div className="flex items-center justify-between">
                   <span>Renta variable</span>
@@ -222,7 +262,7 @@ function ParticleAurora() {
           transition={{
             duration: particle.duration,
             repeat: Infinity,
-            ease: 'easeInOut',
+            ease: "easeInOut",
             delay: particle.delay,
           }}
         />
@@ -248,9 +288,14 @@ export function HeroSection() {
         <div className="flex flex-col items-center gap-6 opacity-100">
           <div
             className="relative flex items-center justify-center overflow-visible after:absolute after:-inset-4 after:bg-gradient-to-r after:from-[#d9c08a]/20 after:via-[#f7c873]/25 after:to-transparent after:blur-2xl after:content-[''] drop-shadow-[0_12px_38px_rgba(23,91,219,0.35)]"
-            style={{ width: '280px', height: '140px' }}
+            style={{ width: "280px", height: "140px" }}
           >
-            <AfortuProSerious size="lg" animated variant="light" className="relative h-full w-full" />
+            <AfortuProSerious
+              size="lg"
+              animated
+              variant="light"
+              className="relative h-full w-full"
+            />
           </div>
 
           <div className="relative inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold text-slate-100 backdrop-blur-lg">
@@ -272,8 +317,9 @@ export function HeroSection() {
 
         {/* Subtitle */}
         <p className="mt-6 max-w-3xl text-lg text-slate-200 md:text-xl opacity-100">
-          Inteligencia financiera de próxima generación para inversionistas institucionales y clientes de alto
-          patrimonio. Datos en tiempo real, modelos predictivos y asesoría personalizada desde un único panel
+          Inteligencia financiera de próxima generación para inversionistas
+          institucionales y clientes de alto patrimonio. Datos en tiempo real,
+          modelos predictivos y asesoría personalizada desde un único panel
           estratégico.
         </p>
 
@@ -298,7 +344,12 @@ export function HeroSection() {
         {/* Stats Grid */}
         <div className="mt-14 grid w-full gap-4 md:grid-cols-3 opacity-100">
           {heroStats.map((stat, idx) => (
-            <AnimatedStatistic key={idx} value={stat.value} suffix={stat.suffix} label={stat.label} />
+            <AnimatedStatistic
+              key={idx}
+              value={stat.value}
+              suffix={stat.suffix}
+              label={stat.label}
+            />
           ))}
         </div>
 

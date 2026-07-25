@@ -41,7 +41,7 @@ export default function Sidebar() {
   // const [user, loading] = useAuthState(auth);
   const pathname = usePathname();
   const router = useRouter();
-  
+
   // Usuario simulado para desarrollo
   const user = {
     displayName: 'Usuario Demo',
@@ -145,7 +145,7 @@ export default function Sidebar() {
       <div className="flex items-center gap-2 px-4 py-5 border-b border-[#C9A961]/20">
         <Link href="/dashboard" className="flex items-center gap-2.5">
            <Image 
-             src="https://firebasestorage.googleapis.com/v0/b/afortu.firebasestorage.app/o/LOGO%20DE%20AFORTU.PNG?alt=media&token=2e8530a1-30d3-4c0d-974e-46451594f7fb" 
+             src="/logo-afortu-pro-horizontal.svg"
              alt="AFORTU Logo" 
              width={140} 
              height={40}
@@ -192,5 +192,3 @@ export default function Sidebar() {
     </aside>
   );
 }
-
-  

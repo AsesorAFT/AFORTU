@@ -26,7 +26,7 @@ function GlobalHeader() {
           <div className="flex items-center gap-3">
             <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
               <Image
-                src="https://firebasestorage.googleapis.com/v0/b/afortu.firebasestorage.app/o/LOGO%20DE%20AFORTU.PNG?alt=media&token=2e8530a1-30d3-4c0d-974e-46451594f7fb"
+                src="/logo-afortu-pro-horizontal.svg"
                 alt="AFORTU Logo"
                 width={128}
                 height={128}

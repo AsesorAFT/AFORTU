@@ -1,637 +1,499 @@
-'use client';
-
-import Link from 'next/link';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { 
-  AreaChart, 
-  Bot, 
-  ShieldCheck, 
-  Linkedin, 
-  Twitter,
+import type { Metadata } from "next";
+import Link from "next/link";
+import {
   ArrowRight,
-  BrainCircuit,
-  BarChart,
-  Shield,
-  DollarSign,
-  Briefcase,
-  Users
-} from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { AfortuPremiumLogo } from '@/components/icons';
+  BarChart3,
+  BriefcaseBusiness,
+  Check,
+  Compass,
+  FileCheck2,
+  Landmark,
+  LineChart,
+  Network,
+  PiggyBank,
+  Scale,
+  ShieldCheck,
+  UserRoundCheck,
+} from "lucide-react";
+import { PublicFooter, PublicHeader } from "@/components/site/public-shell";
 
-// --- Constantes y Datos ---
-const features = [
-  {
-    icon: <AreaChart className="h-8 w-8 text-cyan-400" />,
-    title: 'Gestión de Portafolio',
-    description: 'Visualiza y optimiza tus inversiones con análisis avanzado y datos en tiempo real.',
-    href: '/asset-management',
-  },
-  {
-    icon: <Bot className="h-8 w-8 text-blue-400" />,
-    title: 'Asesoría con IA',
-    description: 'Resuelve dudas y recibe recomendaciones estratégicas 24/7 de nuestro asistente inteligente.',
-    href: '/chat',
-  },
-  {
-    icon: <ShieldCheck className="h-8 w-8 text-cyan-400" />,
-    title: 'Seguridad Integral',
-    description: 'Tus activos y datos están protegidos con encriptación de grado bancario y protocolos de última generación.',
-    href: '/contracts',
-  },
-];
-
-// --- Componentes de la Página ---
-
-function Header() {
-  return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-slate-900/80 backdrop-blur-md">
-      <nav className="container flex h-16 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2" aria-label="Página de inicio de AFORTU PRO">
-          <Image 
-            src="https://firebasestorage.googleapis.com/v0/b/afortu.firebasestorage.app/o/LOGO%20DE%20AFORTU.PNG?alt=media&token=2e8530a1-30d3-4c0d-974e-46451594f7fb"
-            alt="AFORTU Logo"
-            width={120}
-            height={35}
-            className="h-8 w-auto"
-          />
-          <span className="hidden sm:inline text-xl font-bold text-[#C9A961]">
-            PRO
-          </span>
-        </Link>
-        <div className="flex items-center gap-2 sm:gap-4">
-          <Button variant="ghost" asChild>
-            <Link href="/login" className="text-slate-200 hover:text-white font-semibold transition-colors">Iniciar Sesión</Link>
-          </Button>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            <Button
-              asChild
-              className="bg-[#C9A961] text-white font-bold hover:bg-[#D4B76E] shadow-lg"
-            >
-              <Link href="/signup">Registrarse</Link>
-            </Button>
-          </motion.div>
-        </div>
-      </nav>
-    </header>
-  );
-}
-
-function HeroSection() {
-  const router = useRouter();
-// Variantes de animación
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.2,
-    },
+export const metadata: Metadata = {
+  title: "Arquitectura patrimonial para proteger, ordenar y avanzar",
+  description:
+    "AFORTU coordina decisiones de patrimonio, retiro y legado mediante un Asesor Principal y especialistas económicos, fiscales y jurídicos.",
+  alternates: {
+    canonical: "/",
   },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: 'spring' as const,
-      stiffness: 100,
-    },
+const pillars = [
+  {
+    id: "patrimonio",
+    number: "01",
+    icon: BriefcaseBusiness,
+    eyebrow: "Patrimonio",
+    title: "Orden para decidir con claridad",
+    description:
+      "Integramos objetivos, flujo de efectivo, activos, obligaciones y riesgos para convertir información dispersa en una estrategia coordinada.",
+    items: [
+      "Diagnóstico patrimonial",
+      "Estrategia financiera",
+      "Seguimiento de decisiones",
+    ],
   },
-};  return (
-    <section className="relative w-full overflow-hidden py-24 sm:py-32 flex flex-col items-center justify-center text-center">
-      {/* MEJORA: Efecto de aurora animado para el fondo */}
-      <div className="absolute top-0 left-0 -z-10 h-full w-full bg-[#0a1931]">
-        <div className="absolute bottom-0 left-[-20%] right-0 top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"></div>
-        <div className="absolute bottom-0 right-[-20%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(24,90,219,.15),rgba(255,255,255,0))]"></div>
-      </div>
-      
-      <motion.div
-        className="container max-w-4xl px-4 z-10"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+  {
+    id: "retiro",
+    number: "02",
+    icon: PiggyBank,
+    eyebrow: "Retiro",
+    title: "Preparación con horizonte",
+    description:
+      "Revisamos la situación previsional y financiera para construir una ruta de retiro congruente con el tiempo, la liquidez y el nivel de riesgo.",
+    items: [
+      "Revisión previsional",
+      "Proyección de escenarios",
+      "Plan de aportaciones",
+    ],
+  },
+  {
+    id: "legado",
+    number: "03",
+    icon: Landmark,
+    eyebrow: "Legado",
+    title: "Continuidad con estructura",
+    description:
+      "Coordinamos la dimensión financiera, documental y jurídica para reducir fricciones y dar mayor claridad a la transmisión patrimonial.",
+    items: [
+      "Inventario y documentación",
+      "Coordinación jurídica y fiscal",
+      "Continuidad familiar o empresarial",
+    ],
+  },
+];
+
+const process = [
+  {
+    number: "01",
+    icon: Compass,
+    title: "Diagnóstico",
+    description:
+      "Definimos objetivos, restricciones, prioridades y riesgos antes de recomendar una ruta.",
+  },
+  {
+    number: "02",
+    icon: FileCheck2,
+    title: "Diseño e implementación",
+    description:
+      "Convertimos el diagnóstico en acciones, responsables, documentos y decisiones coordinadas.",
+  },
+  {
+    number: "03",
+    icon: LineChart,
+    title: "Seguimiento",
+    description:
+      "Revisamos avances y ajustamos la estrategia cuando cambian las circunstancias o los objetivos.",
+  },
+];
+
+const fitList = [
+  "Su patrimonio está fragmentado entre decisiones financieras, fiscales o jurídicas.",
+  "Necesita preparar su retiro y no quiere depender de una sola estimación.",
+  "Busca ordenar documentos, beneficiarios, activos o continuidad familiar.",
+  "Quiere un punto de coordinación, no una colección de recomendaciones aisladas.",
+];
+
+export default function HomePage() {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "AFORTU",
+    url: "https://afortu.com.mx",
+    description:
+      "Coordinación patrimonial para decisiones de patrimonio, retiro y legado mediante un modelo de Asesor Principal.",
+    areaServed: {
+      "@type": "Country",
+      name: "México",
+    },
+    telephone: "+52 55 4814 4552",
+    email: "contacto@afortu.com.mx",
+  };
+
+  return (
+    <div className="min-h-screen bg-[#fbf8f1] text-[#172033]">
+      <a
+        href="#contenido"
+        className="sr-only z-[60] rounded bg-white px-4 py-2 text-[#10243f] focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
       >
-        <motion.h1
-          className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6 text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-300"
-          variants={itemVariants}
-        >
-          Inteligencia Financiera para tu Patrimonio
-        </motion.h1>
-        <motion.p
-          className="mb-10 max-w-2xl mx-auto text-lg sm:text-xl text-slate-300"
-          variants={itemVariants}
-        >
-          La nueva era de la gestión patrimonial. Combina tu visión con nuestra inteligencia artificial para construir un futuro financiero más sólido y seguro.
-        </motion.p>
-        
-        <motion.div 
-          className="aspect-video w-full max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-2xl mb-10 border-2 border-blue-500/30 bg-black"
-          variants={itemVariants}
-        >
-          <iframe
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/Es8PIJVpcko?si=ULyUEkcu7LfYT2rp&autoplay=1&mute=1&controls=0&loop=1&playlist=Es8PIJVpcko"
-            title="Video AFORTU PRO"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            loading="lazy"
-            className="w-full h-full"
-          />
-        </motion.div>
+        Ir al contenido
+      </a>
+      <PublicHeader />
 
-        <motion.div className="flex flex-col sm:flex-row justify-center items-center gap-4" variants={itemVariants}>
-          <motion.div
-            whileHover={{ scale: 1.05, y: -2 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            <Button
-              size="lg"
-              className="bg-[#C9A961] text-white font-bold text-lg px-8 py-6 hover:bg-[#D4B76E] shadow-lg shadow-[#C9A961]/20"
-              onClick={() => router.push('/signup')}
-            >
-              Comienza Ahora
-            </Button>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.05, y: -2 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            <Button
-              size="lg"
-              variant="outline"
-              asChild
-              className="bg-transparent border-slate-400 text-slate-200 hover:bg-white/10 hover:text-white hover:border-white px-8 py-6 text-lg"
-            >
-              <Link href="#features">Descubrir Funciones</Link>
-            </Button>
-          </motion.div>
-        </motion.div>
-      </motion.div>
-    </section>
-  );
-}
-
-function FeaturesSection() {
-  return (
-    <section id="features" className="py-20 sm:py-32 bg-black/20">
-      <div className="container px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Todo el control en una sola plataforma.</h2>
-          <p className="mt-4 text-lg text-slate-300">
-            Desde análisis de activos hasta planificación fiscal, hemos construido las herramientas que necesitas para triunfar.
-          </p>
-        </div>
-        <div className="grid gap-8 md:grid-cols-3">
-          {features.map((feature, i) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 50, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.5, delay: i * 0.15, ease: 'easeOut' }}
-              viewport={{ once: true, amount: 0.3 }}
-            >
-              {/* MEJORA: Hover con efecto "lift" y "glow" */}
-              <motion.div
-                className="h-full group"
-                whileHover={{ y: -8 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                <Card className="h-full text-center bg-slate-900/50 border-blue-500/20 backdrop-blur-lg shadow-xl relative overflow-hidden transition-all duration-300 group-hover:border-cyan-400/50">
-                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent via-transparent to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <CardContent className="pt-8 relative z-10">
-                    <Link href={feature.href} className="flex flex-col items-center">
-                        <div className="inline-block rounded-xl bg-blue-600/20 p-4 mb-4 ring-1 ring-blue-400/30">{feature.icon}</div>
-                        <h3 className="mt-2 text-2xl font-semibold text-white">{feature.title}</h3>
-                        <p className="mt-3 text-base text-slate-300 min-h-[72px]">{feature.description}</p>
-                    </Link>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CtaSection() {
-  const router = useRouter();
-  return (
-    <section className="py-20 sm:py-32 text-center">
-      <div className="container px-4">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Toma el control de tu futuro financiero hoy</h2>
-        <p className="mt-4 text-lg text-slate-300 max-w-2xl mx-auto">Únete a miles de inversionistas que ya están construyendo su patrimonio con inteligencia y precisión.</p>
-        <motion.div
-            whileHover={{ scale: 1.05, y: -2 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-            className="inline-block mt-10"
-        >
-        <Button
-          size="lg"
-          className="bg-[#C9A961] text-white font-bold text-lg px-8 py-6 hover:bg-[#D4B76E] shadow-lg shadow-[#C9A961]/20"
-          onClick={() => router.push('/signup')}
-        >
-          Crear Cuenta
-        </Button>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="bg-slate-900/50 border-t border-white/10">
-      <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-center md:text-left">
-            <p className="text-sm text-slate-400">&copy; {new Date().getFullYear()} AFORTU PRO. Todos los derechos reservados.</p>
-            <div className="flex justify-center md:justify-start gap-4 mt-2">
-              <Link href="/terms" className="text-xs text-slate-400 hover:text-white transition-colors">Términos de Servicio</Link>
-              <Link href="/privacy" className="text-xs text-slate-400 hover:text-white transition-colors">Política de Privacidad</Link>
-            </div>
-          </div>
-          <div className="flex items-center justify-center gap-6">
-            <motion.a href="https://linkedin.com/company/afortu" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" whileHover={{ scale: 1.2, color: '#FFFFFF' }} className="text-slate-400">
-              <Linkedin className="h-6 w-6"/>
-            </motion.a>
-            <motion.a href="https://twitter.com/afortu" target="_blank" rel="noopener noreferrer" aria-label="Twitter" whileHover={{ scale: 1.2, color: '#FFFFFF' }} className="text-slate-400">
-              <Twitter className="h-6 w-6"/>
-            </motion.a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-// Botón flotante de WhatsApp con logo AFORTU
-function WhatsAppButton() {
-  const whatsappNumber = "529982399177"; // Número de WhatsApp de AFORTU
-  const message = encodeURIComponent("Hola, me gustaría obtener más información sobre AFORTU PRO");
-  
-  return (
-    <motion.a
-      href={`https://wa.me/${whatsappNumber}?text=${message}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-16 h-16 rounded-full shadow-2xl overflow-hidden border-2 border-[#C9A961]"
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ delay: 1, type: 'spring', stiffness: 260, damping: 20 }}
-      whileHover={{ scale: 1.1, rotate: 5 }}
-      whileTap={{ scale: 0.95 }}
-      aria-label="Contactar por WhatsApp"
-    >
-      <Image 
-        src="https://firebasestorage.googleapis.com/v0/b/afortu.firebasestorage.app/o/LOGO%20DE%20AFORTU.PNG?alt=media&token=2e8530a1-30d3-4c0d-974e-46451594f7fb"
-        alt="Contactar AFORTU"
-        width={64}
-        height={64}
-        className="w-full h-full object-cover"
-      />
-      {/* Indicador de pulso */}
-      <span className="absolute inset-0 rounded-full bg-[#C9A961] opacity-75 animate-ping"></span>
-    </motion.a>
-  );
-}
-
-
-// --- Página Principal ---
-
-export default function LandingPage() {
-  return (
-    <main className="flex flex-col min-h-screen bg-gradient-to-b from-[#0a1931] via-[#0a1931] to-[#182952] text-white font-sans antialiased">
-      {/* Hero Section */}
-      <section className="relative">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative container mx-auto px-6 py-20 lg:py-32">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            {/* Logo Animado Premium */}
-            <div className="flex justify-center mb-12">
-              <AfortuPremiumLogo 
-                size="xl" 
-                animated={true} 
-                className="transform hover:scale-105 transition-transform duration-700 filter drop-shadow-2xl" 
-              />
-            </div>
-            
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-              Tu Futuro Financiero,{' '}
-              <span className="bg-gradient-to-r from-[#f7c873] to-[#ffd700] bg-clip-text text-transparent">
-                Inteligente y Seguro.
-              </span>
-            </h1>
-            <p className="text-xl lg:text-2xl text-blue-100 mb-8 leading-relaxed">
-              Gestiona tu patrimonio, optimiza tus inversiones y recibe asesoría exclusiva
-              potenciada por IA, en una sola plataforma.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-[#f7c873] hover:bg-[#ffd700] text-[#0a1931] font-bold text-lg px-8 py-4">
-                <Link href="/login">
-                  Acceder a mi cuenta <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10 font-semibold text-lg px-8 py-4">
-                <Link href="/services">
-                  Conocer los servicios de AFORTU
-                </Link>
-              </Button>
-            </div>
-
-            {/* Stats Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#f7c873] rounded-lg mx-auto mb-4">
-                  <BrainCircuit className="h-6 w-6 text-[#0a1931]" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Análisis IA</h3>
-                <p className="text-blue-200 text-sm">Insights avanzados con Gemini 2.5 Pro</p>
+      <main id="contenido">
+        <section className="relative overflow-hidden border-b border-[#d9d2c3]/70">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(200,169,106,0.14),transparent_30%),radial-gradient(circle_at_10%_85%,rgba(29,73,118,0.09),transparent_28%)]" />
+          <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1.08fr_0.92fr] lg:px-10 lg:py-28">
+            <div>
+              <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#c8a96a]/35 bg-white/70 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-[#795f2e] shadow-sm">
+                <ShieldCheck className="h-4 w-4" />
+                Patrimonio · Retiro · Legado
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#f7c873] rounded-lg mx-auto mb-4">
-                  <BarChart className="h-6 w-6 text-[#0a1931]" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Portafolios a Medida</h3>
-                <p className="text-blue-200 text-sm">Gestión profesional personalizada</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#f7c873] rounded-lg mx-auto mb-4">
-                  <Shield className="h-6 w-6 text-[#0a1931]" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Seguridad Total</h3>
-                <p className="text-blue-200 text-sm">Protección de alto nivel para tu patrimonio</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Dashboard Preview */}
-        <div className="container mx-auto px-6 pb-20">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-4">
-              <Image
-                src="https://firebasestorage.googleapis.com/v0/b/afortu.firebasestorage.app/o/Disen%CC%83o%20sin%20ti%CC%81tulo(3).png?alt=media&token=f3e96a27-f7fb-4f05-b12e-fe7d94c31bd9"
-                alt="Captura de dashboard financiero AFORTU mostrando métricas de inversión"
-                width={800}
-                height={500}
-                className="w-full rounded-lg shadow-2xl"
-                priority
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-[#0a1931] mb-6">
-              Una Plataforma, Todas las Soluciones
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Desde la gestión de tus activos personales hasta la consultoría estratégica 
-              corporativa, AFORTU te respalda.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Gestión de Activos */}
-            <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <CardContent className="p-8">
-                <div className="flex items-center justify-center w-16 h-16 bg-[#0a1931] rounded-xl mb-6 group-hover:bg-[#185adb] transition-colors">
-                  <DollarSign className="h-8 w-8 text-[#f7c873]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#0a1931] mb-3">Gestión de Activos</h3>
-                <p className="text-gray-600 mb-4">
-                  Portafolios diversificados gestionados por expertos para maximizar tu rendimiento.
-                </p>
-                <Link href="/services#gestion-activos" className="text-[#185adb] hover:text-[#0a1931] font-semibold inline-flex items-center">
-                  Saber más <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
-              </CardContent>
-            </Card>
-
-            {/* Consultoría Empresarial */}
-            <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <CardContent className="p-8">
-                <div className="flex items-center justify-center w-16 h-16 bg-[#0a1931] rounded-xl mb-6 group-hover:bg-[#185adb] transition-colors">
-                  <Briefcase className="h-8 w-8 text-[#f7c873]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#0a1931] mb-3">Consultoría Empresarial</h3>
-                <p className="text-gray-600 mb-4">
-                  Soluciones fiscales, legales y de gobierno corporativo para potenciar tu negocio.
-                </p>
-                <Link href="/services#consultoria" className="text-[#185adb] hover:text-[#0a1931] font-semibold inline-flex items-center">
-                  Saber más <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
-              </CardContent>
-            </Card>
-
-            {/* Asesor AFT (IA) */}
-            <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <CardContent className="p-8">
-                <div className="flex items-center justify-center w-16 h-16 bg-[#0a1931] rounded-xl mb-6 group-hover:bg-[#185adb] transition-colors">
-                  <BrainCircuit className="h-8 w-8 text-[#f7c873]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#0a1931] mb-3">Asesor AFT (con IA)</h3>
-                <p className="text-gray-600 mb-4">
-                  Tu asistente financiero inteligente 24/7 impulsado por IA para insights y análisis.
-                </p>
-                <Link href="/services#ia" className="text-[#185adb] hover:text-[#0a1931] font-semibold inline-flex items-center">
-                  Saber más <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
-              </CardContent>
-            </Card>
-
-            {/* Atención Personalizada */}
-            <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <CardContent className="p-8">
-                <div className="flex items-center justify-center w-16 h-16 bg-[#0a1931] rounded-xl mb-6 group-hover:bg-[#185adb] transition-colors">
-                  <Users className="h-8 w-8 text-[#f7c873]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#0a1931] mb-3">Atención Personalizada</h3>
-                <p className="text-gray-600 mb-4">
-                  Asesores dedicados a entender y acompañar tu estrategia financiera.
-                </p>
-                <Link href="/services#atencion" className="text-[#185adb] hover:text-[#0a1931] font-semibold inline-flex items-center">
-                  Saber más <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Steps Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-[#0a1931] mb-6">
-              Tu Éxito Financiero en 3 Pasos
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
-            {/* Step 1 */}
-            <div className="text-center">
-              <div className="flex items-center justify-center w-20 h-20 bg-[#0a1931] rounded-full mx-auto mb-6">
-                <span className="text-3xl font-bold text-[#f7c873]">1</span>
-              </div>
-              <h3 className="text-2xl font-bold text-[#0a1931] mb-4">Regístrate en minutos</h3>
-              <p className="text-gray-600 text-lg">
-                Crea tu cuenta segura y completa tu perfil inicial.
+              <h1 className="max-w-4xl font-serif text-[clamp(3rem,7vw,5.8rem)] font-medium leading-[0.98] tracking-[-0.045em] text-[#10243f]">
+                Su patrimonio merece una estrategia completa.
+              </h1>
+              <p className="mt-7 max-w-2xl text-lg leading-8 text-[#596273] sm:text-xl sm:leading-9">
+                AFORTU coordina decisiones financieras, fiscales y jurídicas a
+                través de un{" "}
+                <strong className="font-semibold text-[#10243f]">
+                  Asesor Principal
+                </strong>
+                , para que cada acción responda a una misma visión.
               </p>
-            </div>
-
-            {/* Step 2 */}
-            <div className="text-center">
-              <div className="flex items-center justify-center w-20 h-20 bg-[#185adb] rounded-full mx-auto mb-6">
-                <span className="text-3xl font-bold text-white">2</span>
-              </div>
-              <h3 className="text-2xl font-bold text-[#0a1931] mb-4">Define tus metas</h3>
-              <p className="text-gray-600 text-lg">
-                Establece objetivos financieros y configura tu portafolio base.
-              </p>
-            </div>
-
-            {/* Step 3 */}
-            <div className="text-center">
-              <div className="flex items-center justify-center w-20 h-20 bg-[#f7c873] rounded-full mx-auto mb-6">
-                <span className="text-3xl font-bold text-[#0a1931]">3</span>
-              </div>
-              <h3 className="text-2xl font-bold text-[#0a1931] mb-4">Optimiza y crece</h3>
-              <p className="text-gray-600 text-lg">
-                Monitorea resultados y ajusta estrategia con tu asesor e IA.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* PRO Section */}
-      <section className="py-20 bg-[#0a1931]">
-        <div className="container mx-auto px-6">
-          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
-            <div className="space-y-6 text-white">
-              <p className="text-sm uppercase tracking-[0.3em] text-[#f7c873]">AFORTU PRO</p>
-              <h2 className="text-4xl lg:text-5xl font-bold leading-tight">
-                La experiencia integral para patrimonios exigentes
-              </h2>
-              <p className="text-blue-100 text-lg">
-                Automatización fiscal, gobierno corporativo y acceso a mesas de inversión exclusivas. Orquestamos tu family
-                office sin fricciones, con reportes personalizados y supervisión de expertos.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Button asChild size="lg" className="bg-[#f7c873] text-[#0a1931] hover:bg-[#ffd700] font-semibold">
-                  <Link href="/pro">Descubrir AFORTU PRO</Link>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white/10 font-semibold"
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href="/contact"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#10243f] px-7 py-4 text-sm font-bold text-white shadow-[0_18px_40px_rgba(16,36,63,0.18)] transition-all hover:-translate-y-0.5 hover:bg-[#17375f]"
                 >
-                  <Link href="/contact">Agendar consulta estratégica</Link>
-                </Button>
+                  Solicitar diagnóstico patrimonial
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  href="#modelo"
+                  className="inline-flex items-center justify-center rounded-full border border-[#bcb4a5] bg-white/70 px-7 py-4 text-sm font-bold text-[#10243f] transition-colors hover:bg-white"
+                >
+                  Conocer el modelo
+                </Link>
               </div>
-            </div>
-            <div className="grid gap-4">
-              <div className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-6 text-white">
-                <h3 className="text-xl font-semibold mb-2">Gobierno corporativo 360°</h3>
-                <p className="text-blue-100 text-sm">
-                  Protocolos familiares, data rooms seguros y actas digitales integradas a tu dashboard.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-6 text-white">
-                <h3 className="text-xl font-semibold mb-2">Analítica avanzada</h3>
-                <p className="text-blue-100 text-sm">
-                  Modelos predictivos con IA, alertas de riesgo y reportes ESG personalizados.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-6 text-white">
-                <h3 className="text-xl font-semibold mb-2">Mesa de inversión dedicada</h3>
-                <p className="text-blue-100 text-sm">
-                  Acceso a oportunidades club-deal y seguimiento semanal con estrategas sénior.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#0a1931] to-[#185adb]">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-            ¿Listo para tomar el control?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Únete a la comunidad de AFORTU y comienza a construir tu futuro financiero hoy mismo.
-          </p>
-          <Button asChild size="lg" className="bg-[#f7c873] hover:bg-[#ffd700] text-[#0a1931] font-bold text-lg px-12 py-4">
-            <Link href="/signup">
-              Regístrate Ahora <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-[#0a1931] text-white py-12 border-t border-white/10">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h4 className="font-bold text-lg mb-4 text-[#f7c873]">AFORTU</h4>
-              <p className="text-blue-200 text-sm">
-                Tu plataforma integral de gestión financiera y patrimonial.
+              <p className="mt-5 text-xs leading-5 text-[#7a746a]">
+                Primera conversación para identificar necesidades. No implica
+                contratación ni recomendación de inversión.
               </p>
             </div>
-            <div>
-              <h4 className="font-bold text-lg mb-4">Servicios</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/services#gestion-activos" className="text-blue-200 hover:text-[#f7c873]">Gestión de Activos</Link></li>
-                <li><Link href="/services#consultoria" className="text-blue-200 hover:text-[#f7c873]">Consultoría Empresarial</Link></li>
-                <li><Link href="/services#ia" className="text-blue-200 hover:text-[#f7c873]">Asesor con IA</Link></li>
-                <li><Link href="/pro" className="text-blue-200 hover:text-[#f7c873]">AFORTU PRO</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold text-lg mb-4">Empresa</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/about" className="text-blue-200 hover:text-[#f7c873]">Acerca de</Link></li>
-                <li><Link href="/contact" className="text-blue-200 hover:text-[#f7c873]">Contacto</Link></li>
-                <li><Link href="/privacy" className="text-blue-200 hover:text-[#f7c873]">Privacidad</Link></li>
-                <li><Link href="/terms" className="text-blue-200 hover:text-[#f7c873]">Términos</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold text-lg mb-4">Contacto</h4>
-              <p className="text-blue-200 text-sm mb-2">contacto@afortu.com</p>
-              <p className="text-blue-200 text-sm">+52 998 239 9177</p>
-            </div>
-          </div>
-          <div className="border-t border-white/10 pt-8 text-center text-sm text-blue-200">
-            <p>&copy; {new Date().getFullYear()} AFORTU. Todos los derechos reservados.</p>
-          </div>
-        </div>
-      </footer>
 
-      {/* Botón flotante de WhatsApp */}
-      <WhatsAppButton />
-    </main>
+            <div className="relative mx-auto w-full max-w-[540px]">
+              <div className="absolute -inset-5 rounded-[2.5rem] border border-[#c8a96a]/20" />
+              <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#10243f] p-6 text-white shadow-[0_35px_100px_rgba(16,36,63,0.28)] sm:p-8">
+                <div className="absolute -right-28 -top-28 h-72 w-72 rounded-full border border-[#d4bd8a]/20" />
+                <div className="absolute -right-16 -top-16 h-44 w-44 rounded-full border border-[#d4bd8a]/20" />
+                <div className="relative">
+                  <div className="flex items-center justify-between border-b border-white/10 pb-5">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#d0b77e]">
+                        Visión coordinada
+                      </p>
+                      <p className="mt-2 font-serif text-2xl">
+                        Un solo tablero
+                      </p>
+                    </div>
+                    <Network className="h-7 w-7 text-[#d0b77e]" />
+                  </div>
+
+                  <div className="my-7 grid gap-3">
+                    {[
+                      {
+                        label: "Patrimonio",
+                        detail: "Activos, flujo y riesgo",
+                        icon: BarChart3,
+                      },
+                      {
+                        label: "Retiro",
+                        detail: "Tiempo, previsión y liquidez",
+                        icon: PiggyBank,
+                      },
+                      {
+                        label: "Legado",
+                        detail: "Documentos y continuidad",
+                        icon: Landmark,
+                      },
+                    ].map((item) => {
+                      const Icon = item.icon;
+                      return (
+                        <div
+                          key={item.label}
+                          className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.055] p-4"
+                        >
+                          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#d0b77e]/15 text-[#e2ca95]">
+                            <Icon className="h-5 w-5" />
+                          </span>
+                          <div>
+                            <p className="font-bold">{item.label}</p>
+                            <p className="mt-1 text-xs text-slate-300">
+                              {item.detail}
+                            </p>
+                          </div>
+                          <Check className="ml-auto h-4 w-4 text-[#d0b77e]" />
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  <div className="rounded-2xl bg-[#f7f1e5] p-5 text-[#10243f]">
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#10243f] text-white">
+                        <UserRoundCheck className="h-5 w-5" />
+                      </span>
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#8d6c2f]">
+                          Asesor Principal
+                        </p>
+                        <p className="mt-1 text-sm font-semibold">
+                          Coordina prioridades y especialistas
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-[#d9d2c3]/70 bg-[#f2ecdf]">
+          <div className="mx-auto grid max-w-7xl gap-6 px-5 py-7 text-sm font-semibold text-[#4f5867] sm:px-8 md:grid-cols-3 lg:px-10">
+            <div className="flex items-center gap-3">
+              <Scale className="h-5 w-5 text-[#8d6c2f]" />
+              Coordinación económica, fiscal y jurídica
+            </div>
+            <div className="flex items-center gap-3">
+              <FileCheck2 className="h-5 w-5 text-[#8d6c2f]" />
+              Decisiones documentadas y trazables
+            </div>
+            <div className="flex items-center gap-3">
+              <ShieldCheck className="h-5 w-5 text-[#8d6c2f]" />
+              Alcance definido antes de implementar
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28 lg:px-10">
+          <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#8d6c2f]">
+                Tres decisiones conectadas
+              </p>
+              <h2 className="mt-4 font-serif text-4xl font-medium leading-tight tracking-[-0.03em] text-[#10243f] sm:text-5xl">
+                El patrimonio no se administra por partes.
+              </h2>
+              <p className="mt-5 max-w-md leading-7 text-[#606979]">
+                Una decisión de inversión puede afectar liquidez, impuestos,
+                retiro o sucesión. Por eso trabajamos con una arquitectura
+                común.
+              </p>
+            </div>
+
+            <div className="grid gap-5">
+              {pillars.map((pillar) => {
+                const Icon = pillar.icon;
+                return (
+                  <article
+                    key={pillar.id}
+                    id={pillar.id}
+                    className="scroll-mt-28 rounded-[1.75rem] border border-[#d9d2c3] bg-[#fffdf8] p-6 shadow-[0_18px_50px_rgba(16,36,63,0.055)] sm:p-8"
+                  >
+                    <div className="grid gap-6 md:grid-cols-[auto_1fr_0.8fr] md:items-start">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#10243f] text-[#e2ca95]">
+                        <Icon className="h-6 w-6" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#8d6c2f]">
+                          {pillar.number} · {pillar.eyebrow}
+                        </p>
+                        <h3 className="mt-2 font-serif text-2xl font-semibold text-[#10243f] sm:text-3xl">
+                          {pillar.title}
+                        </h3>
+                        <p className="mt-3 leading-7 text-[#626b79]">
+                          {pillar.description}
+                        </p>
+                      </div>
+                      <ul className="grid gap-3 border-t border-[#e3dccf] pt-5 text-sm font-semibold text-[#445064] md:border-l md:border-t-0 md:pl-6 md:pt-0">
+                        {pillar.items.map((item) => (
+                          <li key={item} className="flex gap-3">
+                            <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#9a7737]" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section id="modelo" className="scroll-mt-24 bg-[#10243f] text-white">
+          <div className="mx-auto grid max-w-7xl gap-14 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-2 lg:px-10">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#d0b77e]">
+                Modelo de Asesor Principal
+              </p>
+              <h2 className="mt-4 max-w-xl font-serif text-4xl font-medium leading-tight tracking-[-0.03em] sm:text-5xl">
+                Una visión. Un responsable de coordinación.
+              </h2>
+              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
+                El Asesor Principal organiza el diagnóstico, traduce prioridades
+                y coordina la participación de especialistas. El objetivo es
+                reducir contradicciones, omisiones y decisiones aisladas.
+              </p>
+              <Link
+                href="/contact"
+                className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#d0b77e] px-6 py-3.5 text-sm font-bold text-[#10243f] transition-colors hover:bg-[#e0c88f]"
+              >
+                Iniciar conversación
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                {
+                  icon: UserRoundCheck,
+                  title: "Punto de contacto",
+                  description:
+                    "Centraliza contexto, prioridades y seguimiento.",
+                },
+                {
+                  icon: Scale,
+                  title: "Especialistas",
+                  description:
+                    "Intervienen según el alcance real de cada asunto.",
+                },
+                {
+                  icon: FileCheck2,
+                  title: "Expediente",
+                  description:
+                    "Da trazabilidad a información, acuerdos y documentos.",
+                },
+                {
+                  icon: Network,
+                  title: "Coordinación",
+                  description:
+                    "Conecta decisiones que normalmente se atienden por separado.",
+                },
+              ].map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={item.title}
+                    className="rounded-3xl border border-white/10 bg-white/[0.055] p-6"
+                  >
+                    <Icon className="h-6 w-6 text-[#d0b77e]" />
+                    <h3 className="mt-5 text-lg font-bold">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-slate-300">
+                      {item.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="metodo"
+          className="scroll-mt-24 mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28 lg:px-10"
+        >
+          <div className="max-w-3xl">
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#8d6c2f]">
+              Método de trabajo
+            </p>
+            <h2 className="mt-4 font-serif text-4xl font-medium leading-tight tracking-[-0.03em] text-[#10243f] sm:text-5xl">
+              Primero entendemos. Después diseñamos.
+            </h2>
+            <p className="mt-5 text-lg leading-8 text-[#606979]">
+              La recomendación viene después del diagnóstico. Cada etapa debe
+              producir una decisión clara y un siguiente paso verificable.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {process.map((step) => {
+              const Icon = step.icon;
+              return (
+                <article
+                  key={step.number}
+                  className="relative overflow-hidden rounded-[1.75rem] border border-[#d9d2c3] bg-[#fffdf8] p-7"
+                >
+                  <span className="absolute right-5 top-2 font-serif text-7xl text-[#ede5d6]">
+                    {step.number}
+                  </span>
+                  <div className="relative">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#10243f] text-[#e2ca95]">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <h3 className="mt-8 font-serif text-2xl font-semibold text-[#10243f]">
+                      {step.title}
+                    </h3>
+                    <p className="mt-3 leading-7 text-[#606979]">
+                      {step.description}
+                    </p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="border-y border-[#d9d2c3] bg-[#f2ecdf]">
+          <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[1fr_1.1fr] lg:px-10">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#8d6c2f]">
+                ¿Para quién es AFORTU?
+              </p>
+              <h2 className="mt-4 font-serif text-4xl font-medium leading-tight tracking-[-0.03em] text-[#10243f]">
+                Para quien necesita coordinación, no más ruido.
+              </h2>
+              <p className="mt-5 leading-7 text-[#606979]">
+                El diagnóstico inicial sirve para determinar si AFORTU es el
+                coordinador adecuado y qué especialidad debe intervenir.
+              </p>
+            </div>
+            <ul className="grid gap-3">
+              {fitList.map((item) => (
+                <li
+                  key={item}
+                  className="flex gap-4 rounded-2xl border border-[#d7cdbb] bg-[#fffdf8] p-5 text-sm font-semibold leading-6 text-[#455064]"
+                >
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#8d6c2f]" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28 lg:px-10">
+          <div className="relative overflow-hidden rounded-[2rem] bg-[#10243f] px-6 py-14 text-center text-white shadow-[0_30px_80px_rgba(16,36,63,0.2)] sm:px-12 sm:py-20">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_10%,rgba(208,183,126,0.16),transparent_24%),radial-gradient(circle_at_90%_85%,rgba(46,103,163,0.28),transparent_30%)]" />
+            <div className="relative mx-auto max-w-3xl">
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#d0b77e]">
+                Primer movimiento
+              </p>
+              <h2 className="mt-4 font-serif text-4xl font-medium leading-tight tracking-[-0.03em] sm:text-5xl">
+                Empiece por ordenar el tablero completo.
+              </h2>
+              <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-300">
+                Comparta su objetivo principal y le ayudaremos a identificar el
+                alcance, la información necesaria y el siguiente paso.
+              </p>
+              <Link
+                href="/contact"
+                className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#d0b77e] px-7 py-4 text-sm font-bold text-[#10243f] transition-all hover:-translate-y-0.5 hover:bg-[#e0c88f]"
+              >
+                Solicitar diagnóstico patrimonial
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <PublicFooter />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+    </div>
   );
 }

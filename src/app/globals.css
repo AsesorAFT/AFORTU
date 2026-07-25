@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 @layer base {
   :root {
@@ -33,10 +33,10 @@
     --chart-5: 27 87% 67%;
 
     /* AFORTU Custom Colors - Refined Palette */
-    --afortu-gold: 42 35% 59%;        /* #C9A961 - Oro refinado del logo */
-    --afortu-charcoal: 210 20% 25%;   /* #2C3E50 - Carbón sofisticado */
-    --afortu-platinum: 220 10% 91%;   /* #E8E9EB - Platino elegante */
-    --afortu-pearl: 210 20% 98%;      /* #F8F9FA - Perla suave */
+    --afortu-gold: 42 35% 59%; /* #C9A961 - Oro refinado del logo */
+    --afortu-charcoal: 210 20% 25%; /* #2C3E50 - Carbón sofisticado */
+    --afortu-platinum: 220 10% 91%; /* #E8E9EB - Platino elegante */
+    --afortu-pearl: 210 20% 98%; /* #F8F9FA - Perla suave */
   }
 
   .dark {
@@ -68,62 +68,104 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family:
+      "Inter",
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
+    text-rendering: optimizeLegibility;
   }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', 'Times New Roman', serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Playfair Display", "Times New Roman", serif;
   }
   .font-serif-premium {
-    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-family: "Cormorant Garamond", "Times New Roman", serif;
   }
   .font-sans-premium {
-    font-family: 'Montserrat', 'Inter', system-ui, sans-serif;
+    font-family: "Montserrat", "Inter", system-ui, sans-serif;
   }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+::selection {
+  background: #d0b77e;
+  color: #10243f;
+}
+
+summary {
+  list-style: none;
 }
 
 /* Custom AFORTU Styles */
 @layer components {
   .font-headline {
-    font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+    font-family: "Poppins", "Inter", system-ui, sans-serif;
     font-weight: 700;
   }
-  
+
   .font-body {
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family:
+      "Inter",
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
   }
 
   .bg-afortu-gradient {
     background: linear-gradient(135deg, #0a1931 0%, #185adb 50%, #0a1931 100%);
   }
-  
+
   .bg-afortu-gradient-light {
-    background: linear-gradient(135deg, rgba(10, 25, 49, 0.05) 0%, rgba(24, 90, 219, 0.05) 50%, rgba(10, 25, 49, 0.05) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(10, 25, 49, 0.05) 0%,
+      rgba(24, 90, 219, 0.05) 50%,
+      rgba(10, 25, 49, 0.05) 100%
+    );
   }
-  
+
   .text-afortu-navy {
     color: #0a1931;
   }
-  
+
   .text-afortu-blue {
     color: #185adb;
   }
-  
+
   .text-afortu-gold {
     color: #f7c873;
   }
-  
+
   .bg-afortu-navy {
     background-color: #0a1931;
   }
-  
+
   .bg-afortu-blue {
     background-color: #185adb;
   }
-  
+
   .bg-afortu-gold {
     background-color: #f7c873;
   }
-  
+
   .border-afortu-gold {
     border-color: #f7c873;
   }
@@ -139,27 +181,27 @@
   .transition-all-300 {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
+
   /* Custom scrollbar */
   .custom-scrollbar {
     scrollbar-width: thin;
     scrollbar-color: #f7c873 #f1f5f9;
   }
-  
+
   .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
   }
-  
+
   .custom-scrollbar::-webkit-scrollbar-track {
     background: #f1f5f9;
     border-radius: 3px;
   }
-  
+
   .custom-scrollbar::-webkit-scrollbar-thumb {
     background: #f7c873;
     border-radius: 3px;
   }
-  
+
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #ffd700;
   }
@@ -168,7 +210,7 @@
   .fade-in-up {
     animation: fadeInUp 0.8s ease-out forwards;
   }
-  
+
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -179,11 +221,11 @@
       transform: translateY(0);
     }
   }
-  
+
   .slide-in-left {
     animation: slideInLeft 0.8s ease-out forwards;
   }
-  
+
   @keyframes slideInLeft {
     from {
       opacity: 0;
@@ -206,7 +248,8 @@
   }
 
   @keyframes goldGlow {
-    0%, 100% {
+    0%,
+    100% {
       box-shadow: 0 8px 32px rgba(212, 175, 55, 0.15);
     }
     50% {
@@ -241,7 +284,7 @@
   .card-hover {
     transition: all 0.3s ease;
   }
-  
+
   .card-hover:hover {
     transform: translateY(-8px);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -251,7 +294,7 @@
   .btn-primary {
     @apply bg-[#f7c873] hover:bg-[#ffd700] text-[#0a1931] font-bold transition-all-300 shadow-lg hover:shadow-xl;
   }
-  
+
   .btn-secondary {
     @apply border-white text-white hover:bg-white/10 font-semibold transition-all-300;
   }
