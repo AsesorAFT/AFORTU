@@ -51,8 +51,14 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
 
   return (
     <div className="afortu-public min-h-screen">
+      <a
+        href="#contenido"
+        className="sr-only z-[60] rounded bg-white px-4 py-2 text-[#071a2b] focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+      >
+        Ir al contenido
+      </a>
       <PublicHeader />
-      <main>
+      <main id="contenido">
         <section className="relative overflow-hidden bg-[#071a2b] text-white">
           <div className="afortu-symbol-grid absolute inset-0 opacity-25" />
           <div className="relative mx-auto grid min-h-[570px] max-w-[1240px] items-end gap-12 px-5 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1fr_0.42fr] lg:px-8 lg:py-24">
@@ -89,7 +95,10 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
 
             <div className="border-l border-[#b89663]/35 pb-2 pl-8">
               <Icon className="h-10 w-10 text-[#b89663]" aria-hidden="true" />
-              <p className="afortu-display mt-10 text-7xl font-medium leading-none text-[#b89663]/35">
+              <p
+                className="afortu-display mt-10 text-7xl font-medium leading-none text-[#c7ab76]/70"
+                aria-hidden="true"
+              >
                 {number}
               </p>
               <p className="mt-6 text-[0.63rem] font-extrabold uppercase leading-5 tracking-[0.22em] text-slate-400">
@@ -143,7 +152,7 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
               {analysis.map((item, index) => (
                 <article
                   key={item.title}
-                  className="min-h-[240px] border-b border-r border-[#c7bdaf] p-7 sm:p-9"
+                  className="border-b border-r border-[#c7bdaf] p-7 sm:p-9 md:min-h-[240px]"
                 >
                   <span className="text-[0.62rem] font-extrabold tracking-[0.2em] text-[#71562f]">
                     {String(index + 1).padStart(2, "0")}
@@ -181,7 +190,7 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
                   key={item.title}
                   className="grid border-b border-r border-white/[0.15] p-7 sm:grid-cols-[4rem_1fr] sm:gap-6 sm:p-8"
                 >
-                  <span className="afortu-display text-4xl text-[#b89663]/55">
+                  <span className="afortu-display text-4xl text-[#c7ab76]">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <div className="mt-5 sm:mt-0">
@@ -217,9 +226,9 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
               {process.map((step, index) => (
                 <li
                   key={step.title}
-                  className="min-h-[270px] border-b border-r border-[#bdb2a3] p-7 sm:p-8"
+                  className="border-b border-r border-[#bdb2a3] p-7 sm:p-8 md:min-h-[270px]"
                 >
-                  <span className="afortu-display text-4xl text-[#8a693b]/55">
+                  <span className="afortu-display text-4xl text-[#71562f]">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <h3 className="mt-10 !font-sans text-base font-extrabold text-[#071a2b]">

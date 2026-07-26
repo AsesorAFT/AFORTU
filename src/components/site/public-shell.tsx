@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronRight, Mail, Menu, Phone } from "lucide-react";
+import { usePathname } from "next/navigation";
 import {
   Sheet,
   SheetClose,
@@ -20,7 +21,13 @@ const navigation = [
   { label: "Gobierno del caso", href: "/modelo-afortu#gobierno" },
 ];
 
-export function OfficialEmblem({ className = "" }: { className?: string }) {
+export function OfficialEmblem({
+  className = "",
+  priority = false,
+}: {
+  className?: string;
+  priority?: boolean;
+}) {
   return (
     <span
       className={`relative block shrink-0 overflow-hidden ${className}`}
@@ -31,7 +38,8 @@ export function OfficialEmblem({ className = "" }: { className?: string }) {
         alt=""
         width={460}
         height={560}
-        priority
+        priority={priority}
+        sizes="96px"
         className="absolute left-[-41%] top-[-17%] h-auto w-[182%] max-w-none"
       />
     </span>
@@ -41,7 +49,10 @@ export function OfficialEmblem({ className = "" }: { className?: string }) {
 function BrandLockup({ compact = false }: { compact?: boolean }) {
   return (
     <span className="flex items-center gap-3.5">
-      <OfficialEmblem className={compact ? "h-10 w-10" : "h-11 w-11"} />
+      <OfficialEmblem
+        priority={!compact}
+        className={compact ? "h-10 w-10" : "h-11 w-11"}
+      />
       <span>
         <span className="block font-sans text-[1.08rem] font-extrabold tracking-[0.22em] text-[#071a2b]">
           AFORTU
@@ -55,17 +66,14 @@ function BrandLockup({ compact = false }: { compact?: boolean }) {
 }
 
 export function PublicHeader() {
+  const pathname = usePathname();
+
   return (
-    <header className="sticky top-0 z-50 shadow-[0_10px_35px_rgba(7,26,43,0.08)]">
+    <header className="sticky top-0 z-50 shadow-[0_12px_34px_rgba(7,26,43,0.09)]">
       <div className="hidden border-b border-white/[0.08] bg-[#071a2b] text-white sm:block">
-        <div className="mx-auto flex h-9 max-w-[1240px] items-center justify-between gap-6 px-6 text-[0.61rem] font-bold uppercase tracking-[0.17em] lg:px-8">
-          <p className="text-slate-400">
-            AFORTU · Coordinación patrimonial en México
-          </p>
+        <div className="mx-auto flex h-8 max-w-[1240px] items-center justify-between gap-6 px-6 text-[0.65rem] font-bold uppercase tracking-[0.15em] lg:px-8">
+          <p className="text-slate-300">Patrimonio · Retiro · Legado</p>
           <div className="flex items-center gap-6 text-slate-300">
-            <Link href="/login" className="transition-colors hover:text-white">
-              Acceso a clientes
-            </Link>
             <Link
               href="tel:+525548144552"
               className="transition-colors hover:text-white"
@@ -82,8 +90,8 @@ export function PublicHeader() {
         </div>
       </div>
 
-      <div className="border-b border-[#d8d0c4] bg-[#f6f2ea]/[0.96] text-[#071a2b] backdrop-blur-xl">
-        <div className="mx-auto flex h-[82px] max-w-[1240px] items-center gap-7 px-5 sm:px-6 lg:px-8">
+      <div className="relative border-b border-[#d8d0c4] bg-[#f6f2ea]/[0.96] text-[#071a2b] backdrop-blur-xl after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-gradient-to-r after:from-transparent after:via-[#b89663]/50 after:to-transparent">
+        <div className="mx-auto flex h-[72px] max-w-[1240px] items-center gap-7 px-5 sm:px-6 lg:px-8">
           <Link href="/" aria-label="AFORTU, página de inicio">
             <BrandLockup />
           </Link>
@@ -96,7 +104,13 @@ export function PublicHeader() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="relative py-3 text-[0.73rem] font-bold tracking-[0.01em] text-[#40515b] transition-colors after:absolute after:inset-x-0 after:bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-[#8a693b] after:transition-transform hover:text-[#071a2b] hover:after:scale-x-100"
+                aria-current={
+                  pathname === item.href ||
+                  (item.href !== "/" && pathname.startsWith(item.href))
+                    ? "page"
+                    : undefined
+                }
+                className="relative py-3 text-[0.75rem] font-bold tracking-[0.01em] text-[#40515b] transition-colors after:absolute after:inset-x-0 after:bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-[#8a693b] after:transition-transform hover:text-[#071a2b] hover:after:scale-x-100 aria-[current=page]:text-[#071a2b] aria-[current=page]:after:scale-x-100"
               >
                 {item.label}
               </Link>
@@ -107,7 +121,7 @@ export function PublicHeader() {
             href="/contact"
             className="ml-auto hidden min-h-11 items-center gap-2 border border-[#071a2b] bg-[#071a2b] px-5 text-[0.74rem] font-extrabold text-white transition-colors hover:border-[#163b56] hover:bg-[#163b56] sm:inline-flex xl:ml-1"
           >
-            Solicitar diagnóstico
+            Iniciar conversación
             <ArrowRight className="h-4 w-4 text-[#c7ab76]" aria-hidden="true" />
           </Link>
 
@@ -162,7 +176,7 @@ export function PublicHeader() {
                   href="/contact"
                   className="mt-7 flex min-h-12 items-center justify-center gap-2 bg-[#071a2b] px-4 text-center text-sm font-extrabold text-white"
                 >
-                  Solicitar diagnóstico
+                  Iniciar conversación
                   <ArrowRight
                     className="h-4 w-4 text-[#c7ab76]"
                     aria-hidden="true"
@@ -202,11 +216,13 @@ export function PublicFooter() {
     <footer className="bg-[#061522] text-white">
       <div className="mx-auto grid max-w-[1240px] gap-12 px-5 py-16 sm:px-6 md:grid-cols-2 lg:grid-cols-[1.25fr_0.65fr_0.7fr_0.9fr] lg:px-8 lg:py-20">
         <div>
-          <div className="inline-flex items-center gap-5 border border-[#b89663]/30 bg-[#f6f2ea] px-6 py-5 text-[#071a2b]">
-            <OfficialEmblem className="h-20 w-20" />
+          <div className="inline-flex items-center gap-4 text-white">
+            <OfficialEmblem className="h-14 w-14 bg-[#f6f2ea]" />
             <div>
-              <p className="text-xl font-extrabold tracking-[0.2em]">AFORTU</p>
-              <p className="mt-1 text-[0.6rem] font-extrabold uppercase tracking-[0.18em] text-[#71562f]">
+              <p className="text-xl font-extrabold tracking-[0.2em] text-white">
+                AFORTU
+              </p>
+              <p className="mt-1 text-[0.65rem] font-extrabold uppercase tracking-[0.16em] text-[#c7ab76]">
                 Arquitectura patrimonial
               </p>
             </div>
@@ -254,9 +270,6 @@ export function PublicFooter() {
             <Link href="/contact" className="hover:text-white">
               Contacto
             </Link>
-            <Link href="/login" className="hover:text-white">
-              Acceso a clientes
-            </Link>
           </div>
         </nav>
 
@@ -296,7 +309,7 @@ export function PublicFooter() {
       </div>
 
       <div className="border-t border-white/[0.08]">
-        <div className="mx-auto flex max-w-[1240px] flex-col gap-5 px-5 py-7 text-xs leading-5 text-slate-500 sm:px-6 md:flex-row md:items-end md:justify-between lg:px-8">
+        <div className="mx-auto flex max-w-[1240px] flex-col gap-5 px-5 py-7 text-xs leading-5 text-slate-400 sm:px-6 md:flex-row md:items-end md:justify-between lg:px-8">
           <p className="max-w-4xl">
             La información de este sitio es de carácter general y no constituye
             una oferta, recomendación individualizada ni garantía de

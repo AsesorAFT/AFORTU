@@ -116,8 +116,14 @@ const principles = [
 export default function ModeloAfortuPage() {
   return (
     <div className="afortu-public min-h-screen">
+      <a
+        href="#contenido"
+        className="sr-only z-[60] rounded bg-white px-4 py-2 text-[#071a2b] focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+      >
+        Ir al contenido
+      </a>
       <PublicHeader />
-      <main>
+      <main id="contenido">
         <section className="relative overflow-hidden bg-[#071a2b] text-white">
           <div className="afortu-symbol-grid absolute inset-0 opacity-25" />
           <div className="relative mx-auto grid min-h-[610px] max-w-[1240px] items-end gap-12 px-5 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1fr_0.4fr] lg:px-8 lg:py-24">
@@ -142,7 +148,10 @@ export default function ModeloAfortuPage() {
                 className="h-11 w-11 text-[#b89663]"
                 aria-hidden="true"
               />
-              <p className="afortu-display mt-10 text-7xl font-medium leading-none text-[#b89663]/35">
+              <p
+                className="afortu-display mt-10 text-7xl font-medium leading-none text-[#c7ab76]/70"
+                aria-hidden="true"
+              >
                 AP
               </p>
               <p className="mt-6 text-[0.63rem] font-extrabold uppercase leading-5 tracking-[0.22em] text-slate-400">
@@ -193,7 +202,7 @@ export default function ModeloAfortuPage() {
               {responsibilities.map(({ Icon, label, title, detail }) => (
                 <article
                   key={label}
-                  className="min-h-[270px] border-b border-r border-[#c7bdaf] p-7 sm:p-9"
+                  className="border-b border-r border-[#c7bdaf] p-7 sm:p-9 md:min-h-[270px]"
                 >
                   <div className="flex items-center justify-between gap-4">
                     <p className="text-[0.62rem] font-extrabold uppercase tracking-[0.2em] text-[#71562f]">
@@ -238,18 +247,18 @@ export default function ModeloAfortuPage() {
               {roles.map((item, index) => (
                 <article
                   key={item.role}
-                  className="grid border-b border-r border-white/[0.15] p-7 sm:grid-cols-[3rem_0.6fr_0.72fr_1.3fr] sm:items-center sm:gap-6 sm:p-8"
+                  className="grid border-b border-r border-white/[0.15] p-7 lg:grid-cols-[3rem_0.6fr_0.72fr_1.3fr] lg:items-center lg:gap-6 lg:p-8"
                 >
                   <span className="text-[0.62rem] font-extrabold tracking-[0.18em] text-[#b89663]">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="mt-5 !font-sans text-base font-extrabold text-white sm:mt-0">
+                  <h3 className="mt-5 !font-sans text-base font-extrabold text-white lg:mt-0">
                     {item.role}
                   </h3>
-                  <p className="mt-2 text-sm font-bold text-[#c7ab76] sm:mt-0">
+                  <p className="mt-2 text-sm font-bold text-[#c7ab76] lg:mt-0">
                     {item.authority}
                   </p>
-                  <p className="mt-3 text-sm leading-7 text-slate-400 sm:mt-0">
+                  <p className="mt-3 text-sm leading-7 text-slate-300 lg:mt-0">
                     {item.detail}
                   </p>
                 </article>
@@ -280,9 +289,9 @@ export default function ModeloAfortuPage() {
               {lifecycle.map((step) => (
                 <li
                   key={step.number}
-                  className="min-h-[330px] border-b border-r border-[#bdb2a3] p-7 sm:p-8"
+                  className="border-b border-r border-[#bdb2a3] p-7 sm:p-8 md:min-h-[330px]"
                 >
-                  <span className="afortu-display text-5xl text-[#8a693b]/55">
+                  <span className="afortu-display text-5xl text-[#71562f]">
                     {step.number}
                   </span>
                   <p className="mt-10 text-[0.62rem] font-extrabold uppercase tracking-[0.2em] text-[#71562f]">

@@ -803,6 +803,1105 @@ summary {
   }
 }
 
+/* AFORTU public site — institutional V3 */
+@layer components {
+  .afortu-v3-hero {
+    position: relative;
+    overflow: hidden;
+    background: #071a2b;
+    color: white;
+  }
+
+  .afortu-v3-hero-grid {
+    display: grid;
+    max-width: 1380px;
+    min-height: 760px;
+    margin: 0 auto;
+  }
+
+  .afortu-v3-hero-copy {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5.5rem 1.25rem 5rem;
+    background:
+      radial-gradient(
+        circle at 18% 24%,
+        rgba(184, 150, 99, 0.11),
+        transparent 28%
+      ),
+      #071a2b;
+    animation: afortuCopyReveal 760ms 80ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .afortu-v3-hero-index {
+    position: absolute;
+    top: 1.4rem;
+    right: 1.25rem;
+    left: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    color: rgba(211, 186, 132, 0.68);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .afortu-v3-hero-visual {
+    position: relative;
+    min-height: 430px;
+    overflow: hidden;
+    background: #0b1e2f;
+  }
+
+  .afortu-v3-hero-image {
+    animation: afortuHeroReveal 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .afortu-v3-hero-shade {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(7, 26, 43, 0.12), rgba(7, 26, 43, 0.48)),
+      linear-gradient(90deg, rgba(7, 26, 43, 0.4), transparent 36%);
+  }
+
+  .afortu-v3-hero-visual::before {
+    position: absolute;
+    inset: 1.5rem;
+    z-index: 2;
+    border: 1px solid rgba(218, 190, 133, 0.35);
+    content: "";
+    pointer-events: none;
+  }
+
+  .afortu-v3-brand-plate {
+    position: absolute;
+    z-index: 3;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    max-width: 28rem;
+    padding: 1.15rem 1.25rem;
+    border: 1px solid rgba(184, 150, 99, 0.42);
+    background: rgba(246, 242, 234, 0.96);
+    box-shadow: 0 26px 70px rgba(0, 0, 0, 0.24);
+    backdrop-filter: blur(14px);
+  }
+
+  .afortu-v3-hero-note {
+    position: absolute;
+    z-index: 3;
+    top: 3.25rem;
+    right: 3.25rem;
+    display: flex;
+    gap: 1rem;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+  }
+
+  .afortu-v3-hero-note span + span {
+    color: #d3ba84;
+  }
+
+  .afortu-v3-commitment-rail {
+    position: relative;
+    z-index: 4;
+    border-top: 1px solid rgba(184, 150, 99, 0.36);
+    border-bottom: 1px solid rgba(184, 150, 99, 0.18);
+    background: #061522;
+  }
+
+  .afortu-v3-commitment {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    padding: 1.4rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  }
+
+  .afortu-v3-commitment > span {
+    color: #d3ba84;
+    font-family:
+      "Newsreader", "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .afortu-v3-commitment p {
+    font-size: 0.82rem;
+    font-weight: 750;
+    color: #f8f4ec;
+  }
+
+  .afortu-v3-commitment small {
+    display: block;
+    margin-top: 0.3rem;
+    color: #aeb9c0;
+    font-size: 0.72rem;
+    line-height: 1.5;
+  }
+
+  .afortu-v3-solution-card {
+    position: relative;
+    display: flex;
+    min-height: 620px;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #c7bdaf;
+    background: #fbf9f4;
+    padding: 1.5rem;
+    box-shadow: 0 18px 45px rgba(50, 41, 29, 0.06);
+    transition:
+      transform 240ms ease,
+      box-shadow 240ms ease,
+      border-color 240ms ease;
+  }
+
+  .afortu-v3-solution-card::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 3px;
+    background: #8a693b;
+    content: "";
+    transform: scaleX(0.15);
+    transform-origin: left;
+    transition: transform 260ms ease;
+  }
+
+  .afortu-v3-solution-card:hover {
+    z-index: 2;
+    border-color: #a99678;
+    box-shadow: 0 28px 70px rgba(50, 41, 29, 0.13);
+    transform: translateY(-6px);
+  }
+
+  .afortu-v3-solution-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .afortu-signal {
+    position: relative;
+    height: 190px;
+    margin-top: 1.5rem;
+    overflow: hidden;
+    border: 1px solid #d4cabc;
+    background:
+      linear-gradient(rgba(113, 86, 47, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(113, 86, 47, 0.055) 1px, transparent 1px),
+      #f1ebe1;
+    background-size: 28px 28px;
+  }
+
+  .afortu-signal-caption {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.9rem;
+    left: 0.9rem;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    color: #6f604d;
+    font-size: 0.61rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .afortu-map-rings {
+    position: absolute;
+    inset: 2.7rem 1rem 0.8rem;
+    display: grid;
+    place-items: center;
+  }
+
+  .afortu-map-ring {
+    position: absolute;
+    border: 1px solid rgba(82, 110, 114, 0.75);
+    border-radius: 999px;
+  }
+
+  .afortu-map-ring-outer {
+    width: 8.7rem;
+    height: 8.7rem;
+  }
+
+  .afortu-map-ring-middle {
+    width: 6.3rem;
+    height: 6.3rem;
+    border-color: rgba(82, 110, 114, 0.58);
+  }
+
+  .afortu-map-ring-inner {
+    width: 3.9rem;
+    height: 3.9rem;
+    border-color: rgba(82, 110, 114, 0.42);
+  }
+
+  .afortu-map-center {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    width: 3.05rem;
+    height: 3.05rem;
+    place-items: center;
+    border-radius: 999px;
+    background: #526e72;
+    color: white;
+    font-size: 0.56rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .afortu-timeline-line {
+    position: absolute;
+    top: 52%;
+    right: 1.4rem;
+    left: 1.4rem;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #77745b;
+  }
+
+  .afortu-timeline-line::before {
+    position: absolute;
+    top: -2.5rem;
+    right: 0;
+    left: 0;
+    height: 2.5rem;
+    background: linear-gradient(
+      135deg,
+      transparent 8%,
+      rgba(119, 116, 91, 0.2) 8% 30%,
+      transparent 30% 39%,
+      rgba(119, 116, 91, 0.34) 39% 63%,
+      transparent 63% 70%,
+      rgba(119, 116, 91, 0.5) 70%
+    );
+    clip-path: polygon(
+      0 100%,
+      0 82%,
+      28% 65%,
+      45% 76%,
+      69% 32%,
+      100% 0,
+      100% 100%
+    );
+    content: "";
+  }
+
+  .afortu-timeline-line span {
+    width: 0.72rem;
+    height: 0.72rem;
+    margin-top: -0.4rem;
+    border: 2px solid #f1ebe1;
+    border-radius: 999px;
+    background: #77745b;
+    box-shadow: 0 0 0 1px #77745b;
+  }
+
+  .afortu-timeline-labels {
+    position: absolute;
+    right: 1.4rem;
+    bottom: 1rem;
+    left: 1.4rem;
+    display: flex;
+    justify-content: space-between;
+    color: #6f604d;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .afortu-signal-network::before,
+  .afortu-signal-network::after {
+    position: absolute;
+    top: 51%;
+    left: 50%;
+    width: 8rem;
+    height: 1px;
+    background: rgba(118, 91, 80, 0.48);
+    content: "";
+    transform-origin: left;
+  }
+
+  .afortu-signal-network::before {
+    transform: rotate(-30deg);
+  }
+
+  .afortu-signal-network::after {
+    transform: rotate(30deg);
+  }
+
+  .afortu-network-node {
+    position: absolute;
+    z-index: 2;
+    display: grid;
+    min-width: 5.2rem;
+    min-height: 2.4rem;
+    place-items: center;
+    border: 1px solid rgba(118, 91, 80, 0.46);
+    background: #f7f2e9;
+    color: #654b42;
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .afortu-network-node-main {
+    top: 50%;
+    left: 50%;
+    border-color: #765b50;
+    background: #765b50;
+    color: white;
+    transform: translate(-50%, -50%);
+  }
+
+  .afortu-network-node-a {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .afortu-network-node-b {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .afortu-network-node-c {
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .afortu-v3-card-link {
+    display: flex;
+    min-height: 3.25rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 1.5rem;
+    color: #71562f;
+    font-size: 0.82rem;
+    font-weight: 800;
+  }
+
+  .afortu-v3-card-link svg {
+    transition: transform 180ms ease;
+  }
+
+  .afortu-v3-card-link:hover svg {
+    transform: translate(3px, -3px);
+  }
+
+  .afortu-dossier {
+    position: relative;
+    color: #071a2b;
+    border: 1px solid rgba(184, 150, 99, 0.52);
+    background:
+      linear-gradient(rgba(113, 86, 47, 0.04) 1px, transparent 1px), #f7f3eb;
+    background-size: 100% 2rem;
+    padding: 1.25rem;
+    box-shadow:
+      1rem 1rem 0 rgba(184, 150, 99, 0.12),
+      0 40px 100px rgba(0, 0, 0, 0.3);
+  }
+
+  .afortu-dossier::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    background: #8a693b;
+    content: "";
+  }
+
+  .afortu-dossier-topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid #c7bdaf;
+  }
+
+  .afortu-dossier-topline p {
+    font-size: 0.72rem;
+    font-weight: 850;
+    letter-spacing: 0.17em;
+  }
+
+  .afortu-dossier-topline span {
+    display: block;
+    margin-top: 0.15rem;
+    color: #715f4a;
+    font-size: 0.58rem;
+    font-weight: 750;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .afortu-dossier-title {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 1.5rem;
+    padding: 1.55rem 0;
+  }
+
+  .afortu-dossier-title span,
+  .afortu-dossier-section-title {
+    color: #71562f;
+    font-size: 0.61rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .afortu-dossier-title h3 {
+    max-width: 34rem;
+    margin-top: 0.45rem;
+    font-family:
+      "Newsreader", "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+    font-size: clamp(1.7rem, 3vw, 2.65rem);
+    font-weight: 550;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+  }
+
+  .afortu-dossier-title svg {
+    color: #8a693b;
+  }
+
+  .afortu-dossier-grid {
+    display: grid;
+    border-top: 1px solid #bdb2a3;
+    border-left: 1px solid #bdb2a3;
+  }
+
+  .afortu-dossier-grid > div {
+    min-height: 9.5rem;
+    padding: 1rem;
+    border-right: 1px solid #bdb2a3;
+    border-bottom: 1px solid #bdb2a3;
+    background: rgba(255, 255, 255, 0.38);
+  }
+
+  .afortu-dossier-grid span,
+  .afortu-dossier-grid small {
+    display: block;
+    color: #71562f;
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .afortu-dossier-grid p {
+    margin-top: 0.8rem;
+    font-size: 0.78rem;
+    font-weight: 750;
+    line-height: 1.55;
+  }
+
+  .afortu-dossier-grid small {
+    margin-top: 1rem;
+    color: #6e787d;
+    letter-spacing: 0.06em;
+  }
+
+  .afortu-dossier-priorities {
+    padding: 1.4rem 0 0;
+  }
+
+  .afortu-dossier-section-title {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid #c7bdaf;
+  }
+
+  .afortu-priority-row {
+    display: grid;
+    grid-template-columns: minmax(10rem, 0.7fr) 1fr;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: 3.7rem;
+    border-bottom: 1px solid #d4cabc;
+  }
+
+  .afortu-priority-row p {
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  .afortu-priority-row span {
+    display: block;
+    margin-top: 0.2rem;
+    color: #6e787d;
+    font-size: 0.61rem;
+    font-weight: 700;
+  }
+
+  .afortu-priority-track {
+    height: 0.35rem;
+    overflow: hidden;
+    background: #d9d0c4;
+  }
+
+  .afortu-priority-track span {
+    height: 100%;
+    margin: 0;
+    background: linear-gradient(90deg, #526e72, #8a693b);
+  }
+
+  .afortu-dossier-footer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 1.4rem;
+    border-top: 1px solid #bdb2a3;
+    border-left: 1px solid #bdb2a3;
+  }
+
+  .afortu-dossier-footer span {
+    padding: 0.8rem 0.5rem;
+    border-right: 1px solid #bdb2a3;
+    border-bottom: 1px solid #bdb2a3;
+    color: #71562f;
+    font-size: 0.55rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .afortu-dossier-disclaimer {
+    margin-top: 0.85rem;
+    color: #6e787d;
+    font-size: 0.62rem;
+    line-height: 1.5;
+  }
+
+  .afortu-orbit {
+    position: relative;
+    min-height: 620px;
+    overflow: hidden;
+    border: 1px solid rgba(184, 150, 99, 0.45);
+    background:
+      radial-gradient(
+        circle at 50% 50%,
+        rgba(184, 150, 99, 0.15),
+        transparent 32%
+      ),
+      #0b2235;
+    box-shadow: 0 34px 90px rgba(7, 26, 43, 0.2);
+  }
+
+  .afortu-orbit-grid {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(rgba(184, 150, 99, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184, 150, 99, 0.06) 1px, transparent 1px);
+    background-size: 42px 42px;
+  }
+
+  .afortu-orbit-grid::before,
+  .afortu-orbit-grid::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 62%;
+    height: 1px;
+    background: rgba(184, 150, 99, 0.34);
+    content: "";
+    transform-origin: center;
+  }
+
+  .afortu-orbit-grid::before {
+    transform: translate(-50%, -50%) rotate(28deg);
+  }
+
+  .afortu-orbit-grid::after {
+    transform: translate(-50%, -50%) rotate(-28deg);
+  }
+
+  .afortu-orbit-center {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    width: 12rem;
+    min-height: 9.5rem;
+    place-items: center;
+    padding: 1.25rem;
+    border: 1px solid #c1a36b;
+    background: #f6f2ea;
+    color: #071a2b;
+    text-align: center;
+    transform: translate(-50%, -50%);
+  }
+
+  .afortu-orbit-center svg {
+    color: #8a693b;
+  }
+
+  .afortu-orbit-center span {
+    font-size: 0.68rem;
+    font-weight: 850;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .afortu-orbit-center p {
+    color: #59666e;
+    font-size: 0.72rem;
+    line-height: 1.55;
+  }
+
+  .afortu-orbit-node {
+    position: absolute;
+    z-index: 2;
+    width: 14rem;
+    min-height: 9rem;
+    padding: 1.2rem;
+    border: 1px solid rgba(184, 150, 99, 0.36);
+    background: rgba(12, 36, 56, 0.94);
+    color: white;
+    backdrop-filter: blur(8px);
+  }
+
+  .afortu-orbit-node > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    color: #d3ba84;
+  }
+
+  .afortu-orbit-node span {
+    font-size: 0.61rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .afortu-orbit-node p {
+    margin-top: 1.1rem;
+    font-size: 0.82rem;
+    font-weight: 800;
+  }
+
+  .afortu-orbit-node small {
+    display: block;
+    margin-top: 0.45rem;
+    color: #b5c0c7;
+    font-size: 0.68rem;
+    line-height: 1.55;
+  }
+
+  .afortu-orbit-node-1 {
+    top: 2rem;
+    left: 2rem;
+  }
+
+  .afortu-orbit-node-2 {
+    top: 2rem;
+    right: 2rem;
+  }
+
+  .afortu-orbit-node-3 {
+    bottom: 2rem;
+    left: 2rem;
+  }
+
+  .afortu-orbit-node-4 {
+    right: 2rem;
+    bottom: 2rem;
+  }
+
+  .afortu-process-track {
+    position: relative;
+    display: grid;
+    gap: 0;
+    margin-top: 4rem;
+    border-top: 1px solid #bdb2a3;
+  }
+
+  .afortu-process-step {
+    position: relative;
+    padding: 2.8rem 1.5rem 1.5rem;
+    border-right: 1px solid #bdb2a3;
+    border-bottom: 1px solid #bdb2a3;
+    border-left: 1px solid #bdb2a3;
+    background: rgba(246, 242, 234, 0.42);
+    transition: background-color 180ms ease;
+  }
+
+  .afortu-process-step:hover {
+    background: #f8f4ec;
+  }
+
+  .afortu-process-marker {
+    position: absolute;
+    top: -1.35rem;
+    left: 1.4rem;
+    display: grid;
+    width: 2.7rem;
+    height: 2.7rem;
+    place-items: center;
+    border: 1px solid #8a693b;
+    border-radius: 999px;
+    background: #ece5da;
+    color: #71562f;
+    font-family:
+      "Newsreader", "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+    font-size: 1.1rem;
+  }
+
+  .afortu-process-label {
+    color: #71562f;
+    font-size: 0.65rem;
+    font-weight: 850;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .afortu-process-step h3 {
+    margin-top: 1rem;
+    font-family:
+      "Newsreader", "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .afortu-process-description {
+    margin-top: 1rem;
+    color: #59666e;
+    font-size: 0.82rem;
+    line-height: 1.75;
+  }
+
+  .afortu-process-result {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #c7bdaf;
+    color: #071a2b;
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+
+  .afortu-process-result span {
+    color: #806742;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .afortu-trust-ledger {
+    display: grid;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    border-left: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .afortu-trust-ledger > div {
+    border-right: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .afortu-trust-ledger-title {
+    padding: 1.1rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    color: #d3ba84;
+    font-size: 0.68rem;
+    font-weight: 850;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+  }
+
+  .afortu-trust-ledger li {
+    display: grid;
+    grid-template-columns: 2rem 1.2rem 1fr;
+    align-items: center;
+    gap: 0.7rem;
+    min-height: 5rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    color: #eef2f4;
+  }
+
+  .afortu-trust-ledger li > span:first-child {
+    color: #d3ba84;
+    font-family:
+      "Newsreader", "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+    font-size: 1rem;
+  }
+
+  .afortu-trust-ledger li svg {
+    color: #d3ba84;
+  }
+
+  .afortu-trust-ledger li p {
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+
+  .afortu-v3-contact {
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid #d8d0c4;
+    background:
+      radial-gradient(
+        circle at 88% 30%,
+        rgba(184, 150, 99, 0.16),
+        transparent 24%
+      ),
+      #f6f2ea;
+  }
+
+  .afortu-v3-contact-mark {
+    position: absolute;
+    top: 50%;
+    right: -5rem;
+    width: 29rem;
+    height: 29rem;
+    opacity: 0.055;
+    transform: translateY(-50%);
+  }
+}
+
+@media (min-width: 640px) {
+  .afortu-v3-hero-copy {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+
+  .afortu-v3-hero-index {
+    right: 2rem;
+    left: 2rem;
+  }
+
+  .afortu-v3-brand-plate {
+    right: 3rem;
+    bottom: 3rem;
+    left: 3rem;
+    padding: 1.35rem 1.5rem;
+  }
+
+  .afortu-v3-hero-visual::before {
+    inset: 2rem;
+  }
+
+  .afortu-v3-solution-card {
+    padding: 2rem;
+  }
+
+  .afortu-dossier {
+    padding: 1.8rem;
+  }
+
+  .afortu-dossier-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .afortu-trust-ledger {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 768px) {
+  .afortu-v3-commitment-rail .afortu-v3-commitment {
+    border-right: 1px solid rgba(255, 255, 255, 0.09);
+    border-bottom: 0;
+    padding: 1.55rem 2rem;
+  }
+
+  .afortu-process-track {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .afortu-v3-hero-grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(420px, 0.92fr);
+  }
+
+  .afortu-v3-hero-copy {
+    padding: 6rem 3.5rem 5.5rem;
+    border-right: 1px solid rgba(184, 150, 99, 0.24);
+  }
+
+  .afortu-v3-hero-index {
+    right: 3.5rem;
+    left: 3.5rem;
+  }
+
+  .afortu-v3-hero-visual {
+    min-height: 760px;
+  }
+
+  .afortu-v3-brand-plate {
+    left: -2.4rem;
+  }
+
+  .afortu-dossier {
+    padding: 2.2rem;
+  }
+
+  .afortu-process-track {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .afortu-process-step + .afortu-process-step {
+    border-left: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .afortu-v3-hero-copy {
+    padding-right: 5rem;
+    padding-left: 5rem;
+  }
+
+  .afortu-v3-hero-index {
+    right: 5rem;
+    left: 5rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .afortu-orbit {
+    display: grid;
+    min-height: auto;
+    gap: 1px;
+    padding: 1px;
+    background: rgba(184, 150, 99, 0.42);
+  }
+
+  .afortu-orbit-grid {
+    display: none;
+  }
+
+  .afortu-orbit-center,
+  .afortu-orbit-node {
+    position: static;
+    width: auto;
+    min-height: auto;
+    transform: none;
+  }
+
+  .afortu-orbit-center {
+    min-height: 10rem;
+    order: -1;
+  }
+
+  .afortu-orbit-node {
+    border: 0;
+    padding: 1.4rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .afortu-v3-hero-grid {
+    min-height: auto;
+  }
+
+  .afortu-v3-hero-copy {
+    padding-top: 4.75rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .afortu-v3-hero-copy h1 {
+    font-size: clamp(2.85rem, 14vw, 4.45rem);
+    line-height: 0.9;
+  }
+
+  .afortu-v3-hero-copy .afortu-primary-button {
+    width: 100%;
+  }
+
+  .afortu-v3-hero-visual {
+    min-height: 340px;
+  }
+
+  .afortu-v3-hero-note {
+    display: none;
+  }
+
+  .afortu-v3-brand-plate {
+    max-width: none;
+  }
+
+  .afortu-v3-solution-card {
+    min-height: 0;
+  }
+
+  .afortu-dossier-topline {
+    align-items: flex-start;
+  }
+
+  .afortu-dossier-grid > div {
+    min-height: 0;
+  }
+
+  .afortu-priority-row {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+    padding: 0.85rem 0;
+  }
+
+  .afortu-dossier-footer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .afortu-process-track {
+    margin-top: 3.5rem;
+    border-top: 0;
+    border-left: 1px solid #bdb2a3;
+  }
+
+  .afortu-process-step {
+    padding-top: 2rem;
+    padding-left: 2.7rem;
+    border-top: 1px solid #bdb2a3;
+    border-left: 0;
+  }
+
+  .afortu-process-marker {
+    top: 1.3rem;
+    left: -1.35rem;
+  }
+
+  .afortu-trust-ledger > div + div {
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .afortu-v3-contact-mark {
+    right: -10rem;
+  }
+}
+
 /* Print styles */
 @media print {
   .no-print {

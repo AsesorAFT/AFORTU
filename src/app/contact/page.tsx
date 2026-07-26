@@ -63,7 +63,10 @@ export default function ContactPage() {
               className="hidden border-l border-[#b89663]/35 py-8 pl-10 xl:block"
               aria-hidden="true"
             >
-              <p className="afortu-display text-8xl font-medium leading-none text-[#b89663]/35">
+              <p
+                className="afortu-display text-8xl font-medium leading-none text-[#c7ab76]/70"
+                aria-hidden="true"
+              >
                 01
               </p>
               <p className="mt-5 max-w-36 text-[0.62rem] font-bold uppercase leading-5 tracking-[0.24em] text-slate-400">
@@ -87,7 +90,7 @@ export default function ContactPage() {
                     key={item.number}
                     className="grid grid-cols-[auto_1fr] gap-6 border-b border-[#c5b8a5] py-7"
                   >
-                    <span className="afortu-display text-4xl text-[#8a693b]/55">
+                    <span className="afortu-display text-4xl text-[#71562f]">
                       {item.number}
                     </span>
                     <div>
@@ -144,7 +147,7 @@ export default function ContactPage() {
                     aria-hidden="true"
                   />
                   <span>
-                    <span className="block text-xs uppercase tracking-[0.16em] text-slate-500">
+                    <span className="block text-xs uppercase tracking-[0.16em] text-slate-400">
                       Teléfono
                     </span>
                     <span className="mt-1 block font-semibold">
@@ -158,7 +161,7 @@ export default function ContactPage() {
                 >
                   <Mail className="h-5 w-5 text-[#b89663]" aria-hidden="true" />
                   <span className="min-w-0">
-                    <span className="block text-xs uppercase tracking-[0.16em] text-slate-500">
+                    <span className="block text-xs uppercase tracking-[0.16em] text-slate-400">
                       Correo
                     </span>
                     <span className="mt-1 block break-words font-semibold">
