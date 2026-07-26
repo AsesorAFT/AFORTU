@@ -28,7 +28,7 @@ export function WhatsAppButton() {
       href="https://wa.me/525548144552?text=Hola%2C%20quiero%20solicitar%20un%20diagn%C3%B3stico%20patrimonial%20con%20AFORTU."
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-[calc(1.25rem+env(safe-area-inset-bottom))] right-5 z-40 flex h-12 w-12 items-center justify-center gap-2 rounded-full border border-[#c2a56d]/30 bg-[#071625]/95 text-white shadow-[0_14px_34px_rgba(5,15,27,0.22)] backdrop-blur-md transition-colors hover:border-[#c2a56d]/60 hover:bg-[#0d2236] sm:w-auto sm:px-4"
+      className="fixed bottom-[calc(1.25rem+env(safe-area-inset-bottom))] right-5 z-40 flex h-12 w-12 items-center justify-center gap-2 rounded-full border border-[#b89663]/30 bg-[#071a2b]/95 text-white shadow-[0_14px_34px_rgba(5,15,27,0.22)] backdrop-blur-md transition-colors hover:border-[#b89663]/60 hover:bg-[#123047] sm:w-auto sm:px-4"
       aria-label="Contactar a AFORTU por WhatsApp"
     >
       <WhatsAppIcon className="h-5 w-5 text-[#57b68b]" />

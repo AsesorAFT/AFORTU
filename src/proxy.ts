@@ -18,7 +18,25 @@ const protectedPortalPaths = [
   "/tools",
 ];
 
+const legacyPublicRedirects = [
+  { path: "/about", destination: "/modelo-afortu" },
+  { path: "/services", destination: "/#soluciones" },
+  { path: "/consultoria", destination: "/#soluciones" },
+];
+
 export function proxy(request: NextRequest) {
+  const legacyRedirect = legacyPublicRedirects.find(
+    ({ path }) =>
+      request.nextUrl.pathname === path ||
+      request.nextUrl.pathname.startsWith(`${path}/`),
+  );
+
+  if (legacyRedirect) {
+    return NextResponse.redirect(
+      new URL(legacyRedirect.destination, request.url),
+    );
+  }
+
   const isProtectedPortalPath = protectedPortalPaths.some(
     (path) =>
       request.nextUrl.pathname === path ||
@@ -43,6 +61,7 @@ export const config = {
     "/billing/:path*",
     "/calendar/:path*",
     "/cav/:path*",
+    "/consultoria/:path*",
     "/contracts/:path*",
     "/coordination/:path*",
     "/dashboard/:path*",

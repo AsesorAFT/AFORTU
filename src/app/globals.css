@@ -37,16 +37,16 @@
     --afortu-pearl: 210 20% 98%; /* #F8F9FA - Perla suave */
 
     /* AFORTU public site */
-    --afortu-navy: #071625;
-    --afortu-navy-soft: #0d2236;
-    --afortu-gold-deep: #76572a;
-    --afortu-gold-text: #76572a;
-    --afortu-gold-soft: #c2a56d;
-    --afortu-ivory: #f4efe6;
-    --afortu-paper: #fcfaf5;
-    --afortu-ink: #162337;
-    --afortu-copy: #596371;
-    --afortu-line: #ded5c7;
+    --afortu-navy: #071a2b;
+    --afortu-navy-soft: #123047;
+    --afortu-gold-deep: #71562f;
+    --afortu-gold-text: #71562f;
+    --afortu-gold-soft: #b89663;
+    --afortu-ivory: #f6f2ea;
+    --afortu-paper: #fbf9f4;
+    --afortu-ink: #132b39;
+    --afortu-copy: #59666e;
+    --afortu-line: #d8d0c4;
   }
 
   .dark {
@@ -212,6 +212,31 @@ summary {
     box-shadow: 0 16px 38px rgba(0, 0, 0, 0.2);
   }
 
+  .afortu-dark-button {
+    display: inline-flex;
+    min-height: 3.35rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    border: 1px solid var(--afortu-navy);
+    background: var(--afortu-navy);
+    padding: 0.9rem 1.55rem;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 750;
+    box-shadow: 0 16px 36px rgba(7, 26, 43, 0.16);
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .afortu-dark-button:hover {
+    border-color: var(--afortu-navy-soft);
+    background: var(--afortu-navy-soft);
+    box-shadow: 0 20px 42px rgba(7, 26, 43, 0.22);
+  }
+
   .afortu-secondary-link {
     display: inline-flex;
     min-height: 3.25rem;
@@ -282,6 +307,87 @@ summary {
   .afortu-hero-index {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
+  }
+
+  .afortu-hero-blueprint {
+    background:
+      linear-gradient(rgba(113, 86, 47, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(113, 86, 47, 0.055) 1px, transparent 1px),
+      radial-gradient(
+        circle at 18% 28%,
+        rgba(184, 150, 99, 0.15),
+        transparent 27%
+      );
+    background-size:
+      64px 64px,
+      64px 64px,
+      auto;
+    mask-image: linear-gradient(
+      90deg,
+      black 0%,
+      rgba(0, 0, 0, 0.82) 58%,
+      transparent 84%
+    );
+  }
+
+  .afortu-symbol-grid {
+    background:
+      repeating-linear-gradient(
+        45deg,
+        transparent 0 48px,
+        rgba(184, 150, 99, 0.11) 48px 49px,
+        transparent 49px 96px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent 0 48px,
+        rgba(184, 150, 99, 0.08) 48px 49px,
+        transparent 49px 96px
+      ),
+      radial-gradient(
+        circle at 50% 35%,
+        rgba(184, 150, 99, 0.18),
+        transparent 42%
+      );
+  }
+
+  .afortu-solution-row {
+    display: grid;
+    grid-template-columns:
+      5.5rem minmax(0, 1.15fr) minmax(13rem, 0.75fr)
+      minmax(13rem, 0.7fr);
+    align-items: start;
+    gap: 2rem;
+    border-bottom: 1px solid #bdb2a3;
+    padding: 3rem 0;
+  }
+
+  .afortu-operating-map {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(184, 150, 99, 0.38);
+    background:
+      linear-gradient(rgba(184, 150, 99, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184, 150, 99, 0.055) 1px, transparent 1px),
+      #0c2438;
+    background-size: 48px 48px;
+    box-shadow: 0 34px 90px rgba(0, 0, 0, 0.24);
+  }
+
+  .afortu-operating-map-header {
+    display: flex;
+    min-height: 3.25rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(184, 150, 99, 0.3);
+    background: #081d2e;
+    padding: 0 1.5rem;
+    color: #b89663;
+    font-size: 0.61rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
   }
 
   .afortu-pillar-row {
@@ -407,9 +513,30 @@ summary {
   .afortu-pillar-row > :last-child {
     grid-column: 2 / -1;
   }
+
+  .afortu-solution-row {
+    grid-template-columns: 4.5rem minmax(0, 1fr) minmax(13rem, 0.8fr);
+  }
+
+  .afortu-solution-row > :last-child {
+    grid-column: 2 / -1;
+  }
 }
 
 @media (max-width: 767px) {
+  .afortu-hero-blueprint {
+    background-size:
+      40px 40px,
+      40px 40px,
+      auto;
+    mask-image: linear-gradient(
+      180deg,
+      black 0%,
+      rgba(0, 0, 0, 0.7) 72%,
+      transparent 100%
+    );
+  }
+
   .afortu-hero-surface::after {
     mask-image: linear-gradient(180deg, transparent 35%, black 100%);
   }
@@ -437,6 +564,23 @@ summary {
 
   .afortu-model-connector::before {
     display: none;
+  }
+
+  .afortu-solution-row {
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    gap: 1.5rem 1rem;
+    padding: 2.5rem 0;
+  }
+
+  .afortu-solution-row > :nth-child(n + 3) {
+    grid-column: 2;
+  }
+
+  .afortu-solution-row > :last-child {
+    border-top: 1px solid #bdb2a3;
+    border-left: 0;
+    padding-top: 1.5rem;
+    padding-left: 0;
   }
 }
 
