@@ -22,8 +22,20 @@ export const metadata: Metadata = {
   creator: "AFORTU",
   publisher: "AFORTU",
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
-    apple: [{ url: "/logo-afortu-icon.svg", type: "image/svg+xml" }],
+    icon: [
+      {
+        url: "/media/brand/afortu-emblem.png",
+        type: "image/png",
+        sizes: "512x512",
+      },
+    ],
+    apple: [
+      {
+        url: "/media/brand/afortu-emblem.png",
+        type: "image/png",
+        sizes: "512x512",
+      },
+    ],
   },
   openGraph: {
     type: "website",

@@ -357,6 +357,69 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="overflow-hidden bg-[#071a2b] text-white">
+          <div className="mx-auto grid max-w-[1320px] gap-14 px-5 py-20 sm:px-6 sm:py-28 lg:grid-cols-[0.58fr_1.42fr] lg:items-center lg:px-8 lg:py-32">
+            <div>
+              <p className="afortu-kicker afortu-kicker-light">
+                Cómo trabajamos
+              </p>
+              <h2 className="afortu-display mt-6 max-w-xl text-4xl font-medium leading-[0.96] tracking-[-0.04em] sm:text-6xl">
+                La arquitectura no es adorno. Es una forma de ordenar.
+              </h2>
+              <p className="mt-7 max-w-xl text-[1.02rem] leading-8 text-slate-300">
+                Ver el conjunto, reconocer dependencias y diseñar una secuencia:
+                el mismo principio que organiza un espacio puede ordenar una
+                decisión patrimonial compleja.
+              </p>
+              <p className="mt-9 text-[0.62rem] font-extrabold uppercase tracking-[0.19em] text-[#c7ab76]">
+                Estructura · perspectiva · continuidad
+              </p>
+            </div>
+
+            <div className="afortu-editorial-mosaic">
+              <figure className="afortu-editorial-tile afortu-editorial-tile-tall">
+                <Image
+                  src="/media/editorial/estructura.webp"
+                  alt="Fachada contemporánea de vidrio enmarcada por vegetación."
+                  fill
+                  sizes="(max-width: 639px) calc(100vw - 2.5rem), (max-width: 1023px) 38vw, (max-width: 1319px) 24vw, 330px"
+                  className="object-cover"
+                />
+                <figcaption>
+                  <span>01</span>
+                  Estructura
+                </figcaption>
+              </figure>
+              <figure className="afortu-editorial-tile">
+                <Image
+                  src="/media/editorial/perspectiva.webp"
+                  alt="Plaza arquitectónica contemporánea vista desde un patio abierto."
+                  fill
+                  sizes="(max-width: 639px) calc(50vw - 1.6rem), (max-width: 1023px) 58vw, (max-width: 1319px) 39vw, 520px"
+                  className="object-cover"
+                />
+                <figcaption>
+                  <span>02</span>
+                  Perspectiva
+                </figcaption>
+              </figure>
+              <figure className="afortu-editorial-tile">
+                <Image
+                  src="/media/editorial/continuidad.webp"
+                  alt="Jardín urbano integrado entre edificios contemporáneos."
+                  fill
+                  sizes="(max-width: 639px) calc(50vw - 1.6rem), (max-width: 1023px) 58vw, (max-width: 1319px) 39vw, 520px"
+                  className="object-cover"
+                />
+                <figcaption>
+                  <span>03</span>
+                  Continuidad
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
         <section id="soluciones" className="scroll-mt-32 bg-[#ebe4d9]">
           <div className="mx-auto max-w-[1320px] px-5 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-32">
             <div className="grid gap-8 lg:grid-cols-[1fr_0.62fr] lg:items-end">
@@ -692,7 +755,11 @@ export default function HomePage() {
 
         <section className="afortu-v3-contact">
           <div className="afortu-v3-contact-mark" aria-hidden="true">
-            <OfficialEmblem className="h-full w-full" />
+            <OfficialEmblem
+              className="h-full w-full"
+              framed={false}
+              sizes="464px"
+            />
           </div>
           <div className="relative mx-auto grid max-w-[1320px] gap-10 px-5 py-20 sm:px-6 sm:py-28 lg:grid-cols-[1fr_auto] lg:items-end lg:px-8">
             <div>

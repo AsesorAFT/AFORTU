@@ -20,6 +20,12 @@ const data: SolutionPageData = {
   title: "Preparación con horizonte.",
   lead: "Revisamos el punto de partida y construimos una ruta que conecte situación previsional, ahorro, tiempo, liquidez y capacidad de aportación.",
   Icon: PiggyBank,
+  media: {
+    src: "/media/editorial/retiro.webp",
+    alt: "Tres personas conversan durante una reunión de planeación.",
+    caption: "Punto de partida · escenarios · horizonte",
+    position: "62% center",
+  },
   situations: [
     "Se conocen algunos datos de cotización o ahorro, pero no su efecto conjunto.",
     "Hay dudas sobre el horizonte, las brechas o la secuencia de decisiones.",

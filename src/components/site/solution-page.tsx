@@ -1,5 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import { ArrowRight, Check, ChevronRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { PublicFooter, PublicHeader } from "@/components/site/public-shell";
 
@@ -9,6 +10,12 @@ export type SolutionPageData = {
   title: string;
   lead: string;
   Icon: LucideIcon;
+  media: {
+    src: string;
+    alt: string;
+    caption: string;
+    position?: string;
+  };
   situations: string[];
   analysis: Array<{
     title: string;
@@ -40,6 +47,7 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
     title,
     lead,
     Icon,
+    media,
     situations,
     analysis,
     deliverables,
@@ -61,7 +69,7 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
       <main id="contenido">
         <section className="relative overflow-hidden bg-[#071a2b] text-white">
           <div className="afortu-symbol-grid absolute inset-0 opacity-25" />
-          <div className="relative mx-auto grid min-h-[570px] max-w-[1240px] items-end gap-12 px-5 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1fr_0.42fr] lg:px-8 lg:py-24">
+          <div className="relative mx-auto grid min-h-[620px] max-w-[1240px] items-center gap-12 px-5 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1fr_0.58fr] lg:px-8 lg:py-24">
             <div>
               <div className="flex items-center gap-5">
                 <span className="text-xs font-extrabold tracking-[0.2em] text-[#b89663]">
@@ -93,17 +101,22 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
               </div>
             </div>
 
-            <div className="border-l border-[#b89663]/35 pb-2 pl-8">
-              <Icon className="h-10 w-10 text-[#b89663]" aria-hidden="true" />
-              <p
-                className="afortu-display mt-10 text-7xl font-medium leading-none text-[#c7ab76]/70"
-                aria-hidden="true"
-              >
-                {number}
-              </p>
-              <p className="mt-6 text-[0.63rem] font-extrabold uppercase leading-5 tracking-[0.22em] text-slate-400">
-                Situación · análisis · entregables · seguimiento
-              </p>
+            <div className="afortu-solution-hero-media">
+              <Image
+                src={media.src}
+                alt={media.alt}
+                fill
+                priority
+                sizes="(max-width: 1023px) 100vw, 38vw"
+                className="object-cover"
+                style={{ objectPosition: media.position ?? "center" }}
+              />
+              <div className="afortu-solution-hero-shade" />
+              <div className="afortu-solution-hero-number" aria-hidden="true">
+                <Icon className="h-6 w-6" />
+                <span>{number}</span>
+              </div>
+              <p className="afortu-solution-hero-caption">{media.caption}</p>
             </div>
           </div>
         </section>

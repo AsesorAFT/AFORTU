@@ -24,23 +24,27 @@ const navigation = [
 export function OfficialEmblem({
   className = "",
   priority = false,
+  sizes = "96px",
+  framed = true,
 }: {
   className?: string;
   priority?: boolean;
+  sizes?: string;
+  framed?: boolean;
 }) {
   return (
     <span
-      className={`relative block shrink-0 overflow-hidden ${className}`}
+      className={`relative block shrink-0 ${framed ? "bg-[#071a2b] p-1" : ""} ${className}`}
       aria-hidden="true"
     >
       <Image
-        src="/logo-afortu-oficial.png"
+        src="/media/brand/afortu-emblem.png"
         alt=""
-        width={460}
-        height={560}
+        width={512}
+        height={512}
         priority={priority}
-        sizes="96px"
-        className="absolute left-[-41%] top-[-17%] h-auto w-[182%] max-w-none"
+        sizes={sizes}
+        className="h-full w-full object-contain"
       />
     </span>
   );
@@ -217,7 +221,7 @@ export function PublicFooter() {
       <div className="mx-auto grid max-w-[1240px] gap-12 px-5 py-16 sm:px-6 md:grid-cols-2 lg:grid-cols-[1.25fr_0.65fr_0.7fr_0.9fr] lg:px-8 lg:py-20">
         <div>
           <div className="inline-flex items-center gap-4 text-white">
-            <OfficialEmblem className="h-14 w-14 bg-[#f6f2ea]" />
+            <OfficialEmblem className="h-14 w-14" />
             <div>
               <p className="text-xl font-extrabold tracking-[0.2em] text-white">
                 AFORTU

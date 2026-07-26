@@ -1689,6 +1689,133 @@ summary {
     opacity: 0.055;
     transform: translateY(-50%);
   }
+
+  .afortu-solution-hero-media {
+    position: relative;
+    min-height: 470px;
+    overflow: hidden;
+    border: 1px solid rgba(211, 186, 132, 0.42);
+    background: #102a3f;
+    box-shadow: 0 34px 90px rgba(0, 0, 0, 0.28);
+    isolation: isolate;
+  }
+
+  .afortu-solution-hero-media::before {
+    position: absolute;
+    inset: 1.15rem;
+    z-index: 3;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    content: "";
+    pointer-events: none;
+  }
+
+  .afortu-solution-hero-shade {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(7, 26, 43, 0.08), rgba(7, 26, 43, 0.76)),
+      linear-gradient(110deg, rgba(7, 26, 43, 0.38), transparent 58%);
+  }
+
+  .afortu-solution-hero-number {
+    position: absolute;
+    z-index: 4;
+    top: 2.1rem;
+    left: 2.1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #ead9b6;
+  }
+
+  .afortu-solution-hero-number span {
+    font-family:
+      "Newsreader", "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+    font-size: 3.4rem;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .afortu-solution-hero-caption {
+    position: absolute;
+    z-index: 4;
+    right: 2.1rem;
+    bottom: 2.1rem;
+    left: 2.1rem;
+    color: #f5ecdc;
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    line-height: 1.7;
+    text-transform: uppercase;
+  }
+
+  .afortu-editorial-mosaic {
+    display: grid;
+    min-height: 560px;
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+  }
+
+  .afortu-editorial-tile {
+    position: relative;
+    min-height: 260px;
+    overflow: hidden;
+    border: 1px solid rgba(211, 186, 132, 0.34);
+    background: #102a3f;
+    isolation: isolate;
+  }
+
+  .afortu-editorial-tile::after {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(180deg, transparent 42%, rgba(7, 26, 43, 0.78)),
+      linear-gradient(120deg, rgba(7, 26, 43, 0.18), transparent 58%);
+    content: "";
+    pointer-events: none;
+  }
+
+  .afortu-editorial-tile img {
+    transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .afortu-editorial-tile:hover img {
+    transform: scale(1.035);
+  }
+
+  .afortu-editorial-tile-tall {
+    grid-row: 1 / span 2;
+  }
+
+  .afortu-editorial-tile figcaption {
+    position: absolute;
+    z-index: 2;
+    right: 1.25rem;
+    bottom: 1.15rem;
+    left: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    color: white;
+    font-size: 0.64rem;
+    font-weight: 800;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+  }
+
+  .afortu-editorial-tile figcaption span {
+    color: #d3ba84;
+    font-family:
+      "Newsreader", "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
 }
 
 @media (min-width: 640px) {
@@ -1899,6 +2026,41 @@ summary {
 
   .afortu-v3-contact-mark {
     right: -10rem;
+  }
+
+  .afortu-solution-hero-media {
+    min-height: 350px;
+  }
+
+  .afortu-solution-hero-media::before {
+    inset: 0.8rem;
+  }
+
+  .afortu-solution-hero-number {
+    top: 1.5rem;
+    left: 1.5rem;
+  }
+
+  .afortu-solution-hero-caption {
+    right: 1.5rem;
+    bottom: 1.5rem;
+    left: 1.5rem;
+  }
+
+  .afortu-editorial-mosaic {
+    min-height: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: 240px 170px;
+  }
+
+  .afortu-editorial-tile-tall {
+    min-height: 240px;
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .afortu-editorial-tile:not(.afortu-editorial-tile-tall) {
+    min-height: 170px;
   }
 }
 

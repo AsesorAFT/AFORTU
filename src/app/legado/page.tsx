@@ -20,6 +20,12 @@ const data: SolutionPageData = {
   title: "Continuidad con estructura.",
   lead: "Organizamos patrimonio, documentos, titulares, beneficiarios y dependencias para que la continuidad no dependa de información dispersa.",
   Icon: Landmark,
+  media: {
+    src: "/media/editorial/legado.webp",
+    alt: "Un adulto mayor abraza a un niño al aire libre.",
+    caption: "Titularidad · beneficiarios · continuidad",
+    position: "62% center",
+  },
   situations: [
     "Los activos y documentos relevantes no están inventariados en una sola vista.",
     "Existen dudas sobre titulares, beneficiarios o continuidad familiar.",

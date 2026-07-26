@@ -20,6 +20,11 @@ const data: SolutionPageData = {
   title: "Orden para decidir con claridad.",
   lead: "Integramos objetivos, activos, obligaciones, liquidez y riesgos para que cada decisión responda a una misma visión.",
   Icon: ShieldCheck,
+  media: {
+    src: "/media/editorial/patrimonio.webp",
+    alt: "Personas revisan un reporte financiero junto a una computadora portátil.",
+    caption: "Activos · obligaciones · liquidez · prioridades",
+  },
   situations: [
     "Existen activos o ingresos, pero no una jerarquía clara de prioridades.",
     "Varias decisiones compiten por la misma liquidez.",
