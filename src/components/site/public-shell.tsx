@@ -2,8 +2,16 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronRight, Mail, Menu, Phone } from "lucide-react";
+import {
+  ArrowRight,
+  ChevronRight,
+  Mail,
+  MapPin,
+  Menu,
+  Phone,
+} from "lucide-react";
 import { usePathname } from "next/navigation";
+import { legalIdentity } from "@/lib/legal";
 import {
   Sheet,
   SheetClose,
@@ -236,6 +244,9 @@ export function PublicFooter() {
             Un sistema de coordinación para decisiones de patrimonio, retiro y
             legado que necesitan diagnóstico, criterio y seguimiento.
           </p>
+          <p className="mt-4 max-w-md text-xs leading-6 text-slate-500">
+            {legalIdentity.legalName}
+          </p>
         </div>
 
         <nav aria-label="Soluciones">
@@ -286,28 +297,37 @@ export function PublicFooter() {
             Contacto
           </p>
           <div className="mt-6 grid gap-4 text-sm text-slate-400">
+            {legalIdentity.address.isConfigured ? (
+              <p className="flex items-start gap-3">
+                <MapPin
+                  className="mt-0.5 h-4 w-4 shrink-0 text-[#c7ab76]"
+                  aria-hidden="true"
+                />
+                <span>{legalIdentity.address.formatted}</span>
+              </p>
+            ) : null}
             <Link
-              href="tel:+525548144552"
+              href={legalIdentity.phoneHref}
               className="flex items-center gap-3 hover:text-white"
             >
               <Phone className="h-4 w-4 text-[#c7ab76]" aria-hidden="true" />
-              +52 55 4814 4552
+              {legalIdentity.phoneDisplay}
             </Link>
             <Link
-              href="mailto:contacto@afortu.com.mx"
+              href={`mailto:${legalIdentity.email}`}
               className="flex items-start gap-3 break-all hover:text-white"
             >
               <Mail
                 className="mt-0.5 h-4 w-4 shrink-0 text-[#c7ab76]"
                 aria-hidden="true"
               />
-              contacto@afortu.com.mx
+              {legalIdentity.email}
             </Link>
           </div>
 
           <div className="mt-8 grid gap-3 text-xs text-slate-500">
             <Link href="/privacy" className="hover:text-white">
-              Privacidad y canales digitales
+              Aviso de privacidad integral
             </Link>
             <Link href="/terms" className="hover:text-white">
               Términos y alcance
@@ -325,7 +345,9 @@ export function PublicFooter() {
             contrato y, cuando corresponda, a la participación de especialistas
             autorizados.
           </p>
-          <p className="shrink-0">© {new Date().getFullYear()} AFORTU</p>
+          <p className="shrink-0">
+            © {new Date().getFullYear()} {legalIdentity.legalName}
+          </p>
         </div>
       </div>
     </footer>

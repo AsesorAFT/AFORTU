@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { WhatsAppButton } from "@/components/site/whatsapp-button";
+import { legalIdentity } from "@/lib/legal";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://afortu.com.mx"),
@@ -19,8 +20,8 @@ export const metadata: Metadata = {
     "AFORTU",
   ],
   authors: [{ name: "AFORTU" }],
-  creator: "AFORTU",
-  publisher: "AFORTU",
+  creator: legalIdentity.legalName,
+  publisher: legalIdentity.legalName,
   icons: {
     icon: [
       {

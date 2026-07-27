@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FileText, Mail } from "lucide-react";
 import { PublicFooter, PublicHeader } from "@/components/site/public-shell";
+import { legalIdentity } from "@/lib/legal";
 
 export const metadata: Metadata = {
   title: "Términos y alcance del sitio",
@@ -16,6 +17,16 @@ export const metadata: Metadata = {
 const sections = [
   {
     number: "01",
+    title: "Titular y operador del sitio",
+    body: [
+      `${legalIdentity.legalName} opera este sitio y utiliza AFORTU como nombre comercial.`,
+      legalIdentity.address.isConfigured
+        ? `El domicilio público es ${legalIdentity.address.formatted}. Los asuntos relacionados con el sitio pueden dirigirse a ${legalIdentity.email}.`
+        : `El domicilio publicable se incorporará desde la configuración privada del sitio antes de habilitar la captación en producción. Los asuntos relacionados con el sitio pueden dirigirse a ${legalIdentity.email}.`,
+    ],
+  },
+  {
+    number: "02",
     title: "Naturaleza del sitio",
     body: [
       "El sitio público de AFORTU presenta información general sobre su modelo de coordinación patrimonial, áreas de atención y canales de contacto.",
@@ -23,7 +34,7 @@ const sections = [
     ],
   },
   {
-    number: "02",
+    number: "03",
     title: "Diagnóstico y contratación",
     body: [
       "Todo servicio requiere definir previamente el objetivo, el alcance, la información necesaria, los responsables y las condiciones aplicables.",
@@ -31,15 +42,15 @@ const sections = [
     ],
   },
   {
-    number: "03",
+    number: "04",
     title: "Participación de especialistas",
     body: [
       "Cuando una materia requiera autorización, representación, dictamen o intervención profesional específica, la participación deberá realizarse por la persona o entidad facultada para ello.",
-      "AFORTU puede coordinar el contexto y la secuencia del caso sin sustituir las responsabilidades propias de cada especialista.",
+      "AFORTU puede coordinar el contexto y la secuencia del caso sin sustituir las responsabilidades propias de cada especialista. Cualquier actividad regulada sólo podrá realizarse dentro del alcance contractual aplicable y por la persona o entidad que cuente con la facultad correspondiente.",
     ],
   },
   {
-    number: "04",
+    number: "05",
     title: "Uso responsable",
     body: [
       "La persona usuaria se compromete a utilizar el sitio y sus canales para fines lícitos, a no intentar vulnerar su seguridad y a no proporcionar información falsa o perteneciente a terceros sin autorización.",
@@ -47,7 +58,7 @@ const sections = [
     ],
   },
   {
-    number: "05",
+    number: "06",
     title: "Contenido y propiedad intelectual",
     body: [
       "La marca AFORTU, sus elementos gráficos, textos, estructura y materiales propios no pueden reproducirse, alterarse o utilizarse comercialmente sin autorización.",
@@ -55,7 +66,7 @@ const sections = [
     ],
   },
   {
-    number: "06",
+    number: "07",
     title: "Disponibilidad y actualización",
     body: [
       "AFORTU puede actualizar el sitio, corregir contenido o modificar sus canales cuando sea necesario. La disponibilidad continua del sitio no está garantizada.",
@@ -94,14 +105,14 @@ export default function TermsPage() {
           <div className="mx-auto max-w-[1020px] px-5 py-16 sm:px-6 sm:py-24 lg:px-8">
             <div className="flex flex-col gap-4 border-b border-[#c7bdaf] pb-8 sm:flex-row sm:items-end sm:justify-between">
               <p className="text-sm leading-6 text-[#59666e]">
-                Última actualización: 25 de julio de 2026
+                Última actualización: {legalIdentity.lastUpdated}
               </p>
               <Link
-                href="mailto:contacto@afortu.com.mx"
+                href={`mailto:${legalIdentity.email}`}
                 className="inline-flex items-center gap-2 text-sm font-bold text-[#71562f] hover:text-[#071a2b]"
               >
                 <Mail className="h-4 w-4" aria-hidden="true" />
-                contacto@afortu.com.mx
+                {legalIdentity.email}
               </Link>
             </div>
 

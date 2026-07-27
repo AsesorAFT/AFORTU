@@ -24,6 +24,7 @@ import {
   PublicFooter,
   PublicHeader,
 } from "@/components/site/public-shell";
+import { legalIdentity } from "@/lib/legal";
 
 export const metadata: Metadata = {
   title: "Decisiones patrimoniales coordinadas de principio a fin",
@@ -255,7 +256,8 @@ export default function HomePage() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    name: "AFORTU",
+    name: legalIdentity.commercialName,
+    legalName: legalIdentity.legalName,
     url: "https://afortu.com.mx",
     description:
       "Coordinación patrimonial para decisiones de patrimonio, retiro y legado mediante un modelo de Asesor Principal.",
@@ -263,8 +265,17 @@ export default function HomePage() {
       "@type": "Country",
       name: "México",
     },
-    telephone: "+52 55 4814 4552",
-    email: "contacto@afortu.com.mx",
+    telephone: legalIdentity.phoneDisplay,
+    email: legalIdentity.email,
+    ...(legalIdentity.address.isConfigured
+      ? {
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: legalIdentity.address.formatted,
+            addressCountry: "MX",
+          },
+        }
+      : {}),
   };
 
   return (

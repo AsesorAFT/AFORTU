@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Check, Mail, MessageCircle, Phone } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+} from "lucide-react";
 import { PublicFooter, PublicHeader } from "@/components/site/public-shell";
+import { legalIdentity } from "@/lib/legal";
 
 export const metadata: Metadata = {
   title: "Solicitar diagnóstico patrimonial",
@@ -110,6 +118,16 @@ export default function ContactPage() {
                 sensible por mensajería. Si el asunto requiere expediente,
                 AFORTU indicará el canal y los documentos pertinentes.
               </p>
+              <p className="mt-4 max-w-2xl text-sm leading-6 text-[#59666e]">
+                Consulte el{" "}
+                <Link
+                  href="/privacy"
+                  className="font-bold text-[#71562f] underline decoration-[#b89663]/50 underline-offset-4 hover:text-[#071a2b]"
+                >
+                  aviso de privacidad integral
+                </Link>{" "}
+                antes de compartir información personal.
+              </p>
             </div>
 
             <div className="self-start border border-[#b89663]/30 bg-[#071a2b] p-7 text-white shadow-[0_28px_70px_rgba(7,26,43,0.14)] sm:p-10">
@@ -139,7 +157,7 @@ export default function ContactPage() {
 
               <div className="mt-9 border-t border-white/[0.12]">
                 <Link
-                  href="tel:+525548144552"
+                  href={legalIdentity.phoneHref}
                   className="flex min-h-16 items-center gap-4 border-b border-white/[0.12] text-sm text-slate-300 transition-colors hover:text-white"
                 >
                   <Phone
@@ -151,12 +169,12 @@ export default function ContactPage() {
                       Teléfono
                     </span>
                     <span className="mt-1 block font-semibold">
-                      +52 55 4814 4552
+                      {legalIdentity.phoneDisplay}
                     </span>
                   </span>
                 </Link>
                 <Link
-                  href="mailto:contacto@afortu.com.mx?subject=Solicitud%20de%20diagn%C3%B3stico%20patrimonial"
+                  href={`mailto:${legalIdentity.email}?subject=Solicitud%20de%20diagn%C3%B3stico%20patrimonial`}
                   className="flex min-h-16 items-center gap-4 border-b border-white/[0.12] text-sm text-slate-300 transition-colors hover:text-white"
                 >
                   <Mail className="h-5 w-5 text-[#b89663]" aria-hidden="true" />
@@ -165,10 +183,26 @@ export default function ContactPage() {
                       Correo
                     </span>
                     <span className="mt-1 block break-words font-semibold">
-                      contacto@afortu.com.mx
+                      {legalIdentity.email}
                     </span>
                   </span>
                 </Link>
+                {legalIdentity.address.isConfigured ? (
+                  <p className="flex min-h-20 items-start gap-4 border-b border-white/[0.12] py-5 text-sm text-slate-300">
+                    <MapPin
+                      className="mt-0.5 h-5 w-5 shrink-0 text-[#b89663]"
+                      aria-hidden="true"
+                    />
+                    <span>
+                      <span className="block text-xs uppercase tracking-[0.16em] text-slate-400">
+                        Domicilio público
+                      </span>
+                      <span className="mt-1 block leading-6">
+                        {legalIdentity.address.formatted}
+                      </span>
+                    </span>
+                  </p>
+                ) : null}
               </div>
 
               <p className="mt-7 flex gap-3 text-xs leading-6 text-slate-400">
