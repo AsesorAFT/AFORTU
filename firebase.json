@@ -1,12 +1,4 @@
 {
-  "hosting": {
-    "public": "y",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ]
-  },
   "firestore": {
     "database": "(default)",
     "location": "nam5",

@@ -15,7 +15,7 @@ export function AuthLayout({ title, description, children }: AuthLayoutProps) {
           <div className="mb-8 text-center">
             <Link href="/" className="inline-block">
               <Image
-                src="https://firebasestorage.googleapis.com/v0/b/afortu.firebasestorage.app/o/LOGO%20DE%20AFORTU.PNG?alt=media&token=2e8530a1-30d3-4c0d-974e-46451594f7fb"
+                src="/logo-afortu-icon.svg"
                 alt="AFORTU Logo"
                 width={60}
                 height={60}
@@ -30,7 +30,7 @@ export function AuthLayout({ title, description, children }: AuthLayoutProps) {
       </div>
       <div className="hidden bg-muted lg:flex flex-col items-center justify-center p-12 text-center border-l">
         <Image
-          src="https://firebasestorage.googleapis.com/v0/b/afortu.firebasestorage.app/o/Sitio%20Web%20Link%20en%20Bio%20Tecnologi%CC%81a%20y%20Gaming%20Sencillo%20Azul%20Oscuro(2).png?alt=media&token=03d3c1e2-bdfe-40e0-8266-8ec29d4339ba"
+          src="/logo-afortu-pro.svg"
           alt="AFORTU Platform"
           width={400}
           height={400}

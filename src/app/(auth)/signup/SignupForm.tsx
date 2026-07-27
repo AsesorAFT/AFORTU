@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useToast } from '@/hooks/use-toast';
-import { Loader2 } from 'lucide-react';
+import * as React from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useToast } from "@/hooks/use-toast";
+import { Loader2 } from "lucide-react";
 
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
@@ -17,12 +17,17 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { Switch } from '@/components/ui/switch';
-import { Label } from '@/components/ui/label';
-import { GoogleIcon } from '@/components/icons';
+} from "@/components/ui/form";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
+import { GoogleIcon } from "@/components/icons";
 
-import { signupSchema, SignupFormValues, signupWithEmail, signupWithGoogle } from '@/lib/auth-service';
+import {
+  signupSchema,
+  SignupFormValues,
+  signupWithEmail,
+  signInWithGoogle as signupWithGoogle,
+} from "@/lib/auth-service";
 
 export function SignupForm() {
   const router = useRouter();
@@ -33,7 +38,7 @@ export function SignupForm() {
 
   const form = useForm<SignupFormValues>({
     resolver: zodResolver(signupSchema),
-    defaultValues: { name: '', email: '', password: '', isAfortuPro: false },
+    defaultValues: { name: "", email: "", password: "", isAfortuPro: false },
   });
 
   const handleGoogleSignup = async () => {
@@ -41,15 +46,16 @@ export function SignupForm() {
     try {
       await signupWithGoogle(isAfortuPro);
       toast({
-        title: '¡Bienvenido a AFORTU!',
-        description: 'Tu cuenta ha sido creada con éxito.',
+        title: "¡Bienvenido a AFORTU!",
+        description: "Tu cuenta ha sido creada con éxito.",
       });
-      router.push('/dashboard');
+      router.push("/dashboard");
     } catch (error: any) {
       toast({
-        variant: 'destructive',
-        title: 'Error de registro',
-        description: 'No se pudo crear tu cuenta con Google. Inténtalo de nuevo.',
+        variant: "destructive",
+        title: "Error de registro",
+        description:
+          "No se pudo crear tu cuenta con Google. Inténtalo de nuevo.",
       });
     } finally {
       setIsGoogleSubmitting(false);
@@ -61,18 +67,18 @@ export function SignupForm() {
     try {
       await signupWithEmail(values);
       toast({
-        title: '¡Bienvenido a AFORTU!',
-        description: 'Tu cuenta ha sido creada con éxito.',
+        title: "¡Bienvenido a AFORTU!",
+        description: "Tu cuenta ha sido creada con éxito.",
       });
-      router.push('/dashboard');
+      router.push("/dashboard");
     } catch (error: any) {
       toast({
-        variant: 'destructive',
-        title: 'Error de registro',
+        variant: "destructive",
+        title: "Error de registro",
         description:
-          error.code === 'auth/email-already-in-use'
-            ? 'Este correo ya está en uso. Por favor, inicia sesión.'
-            : 'Ocurrió un error. Por favor, inténtalo de nuevo.',
+          error.code === "auth/email-already-in-use"
+            ? "Este correo ya está en uso. Por favor, inicia sesión."
+            : "Ocurrió un error. Por favor, inténtalo de nuevo.",
       });
     } finally {
       setIsSubmitting(false);
@@ -128,7 +134,11 @@ export function SignupForm() {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="nombre@ejemplo.com" type="email" {...field} />
+                  <Input
+                    placeholder="nombre@ejemplo.com"
+                    type="email"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -151,30 +161,34 @@ export function SignupForm() {
             control={form.control}
             name="isAfortuPro"
             render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
-                    <div className="space-y-0.5">
-                        <FormLabel>Iniciar con AFORTU Asset Management</FormLabel>
-                        <p className="text-sm text-muted-foreground">
-                            Accede a herramientas y asesoría avanzada.
-                        </p>
-                    </div>
-                    <FormControl>
-                        <Switch
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                        />
-                    </FormControl>
-                </FormItem>
+              <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+                <div className="space-y-0.5">
+                  <FormLabel>Iniciar con AFORTU Asset Management</FormLabel>
+                  <p className="text-sm text-muted-foreground">
+                    Accede a herramientas y asesoría avanzada.
+                  </p>
+                </div>
+                <FormControl>
+                  <Switch
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+              </FormItem>
             )}
           />
-          <Button type="submit" className="w-full" disabled={isSubmitting || isGoogleSubmitting}>
+          <Button
+            type="submit"
+            className="w-full"
+            disabled={isSubmitting || isGoogleSubmitting}
+          >
             {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             Crear Cuenta
           </Button>
         </form>
       </Form>
       <div className="mt-4 text-center text-sm">
-        ¿Ya tienes una cuenta?{' '}
+        ¿Ya tienes una cuenta?{" "}
         <Link href="/login" className="underline">
           Inicia Sesión
         </Link>

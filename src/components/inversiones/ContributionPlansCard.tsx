@@ -1,21 +1,26 @@
-'use client';
+"use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import Link from 'next/link';
-import { InvestmentPlan } from '@/types/cav';
-import { formatCurrency, formatDate } from '@/lib/formatters';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
+import { InvestmentPlan } from "@/types/cav";
+import { formatCurrency } from "@/lib/formatters";
 
 interface ContributionPlansCardProps {
   plans: InvestmentPlan[];
   contactLink: string;
 }
 
-export function ContributionPlansCard({ plans, contactLink }: ContributionPlansCardProps) {
-  const activePlans = plans.filter(p => p.status === 'active');
-  const totalAccumulated = activePlans.reduce((sum, p) => sum + p.accumulated, 0);
-  const monthlyTotal = activePlans.reduce((sum, p) => sum + p.monthlyAmount, 0);
+export function ContributionPlansCard({
+  plans,
+  contactLink,
+}: ContributionPlansCardProps) {
+  const availablePlans = plans;
+  const minimumAmount =
+    availablePlans.length > 0
+      ? Math.min(...availablePlans.map((plan) => plan.minAmount))
+      : 0;
 
   return (
     <Card>
@@ -24,39 +29,39 @@ export function ContributionPlansCard({ plans, contactLink }: ContributionPlansC
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <p className="text-sm text-muted-foreground">Total Acumulado</p>
-          <p className="text-2xl font-bold">{formatCurrency(totalAccumulated)}</p>
+          <p className="text-sm text-muted-foreground">Opciones disponibles</p>
+          <p className="text-2xl font-bold">{availablePlans.length}</p>
         </div>
 
         <div className="p-3 bg-muted rounded-lg">
-          <p className="text-xs text-muted-foreground">Aportación Mensual</p>
-          <p className="text-lg font-medium">{formatCurrency(monthlyTotal)}</p>
+          <p className="text-xs text-muted-foreground">Monto inicial desde</p>
+          <p className="text-lg font-medium">{formatCurrency(minimumAmount)}</p>
         </div>
 
-        {activePlans.length > 0 ? (
+        {availablePlans.length > 0 ? (
           <div className="space-y-2">
-            {activePlans.slice(0, 2).map(plan => (
+            {availablePlans.slice(0, 2).map((plan) => (
               <div key={plan.id} className="p-3 bg-muted rounded-lg">
                 <div className="flex justify-between items-start mb-1">
                   <p className="font-medium text-sm">{plan.name}</p>
                   <Badge variant="secondary" className="text-xs">
-                    {plan.frequency}
+                    Riesgo {plan.riskLevel}
                   </Badge>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  {formatCurrency(plan.monthlyAmount)}/mes
+                  Desde {formatCurrency(plan.minAmount)}
                 </p>
               </div>
             ))}
-            {activePlans.length > 2 && (
+            {availablePlans.length > 2 && (
               <p className="text-xs text-muted-foreground text-center">
-                +{activePlans.length - 2} planes más
+                +{availablePlans.length - 2} opciones más
               </p>
             )}
           </div>
         ) : (
           <p className="text-sm text-muted-foreground">
-            No tienes planes activos
+            No hay opciones disponibles
           </p>
         )}
 

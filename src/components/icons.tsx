@@ -33,7 +33,7 @@ export const AfortuPremiumLogo: React.FC<AfortuPremiumLogoProps> = ({
   return (
     <div className={`relative ${className}`}>
       <Image
-        src="https://firebasestorage.googleapis.com/v0/b/afortu.firebasestorage.app/o/LOGO%20DE%20AFORTU.PNG?alt=media&token=2e8530a1-30d3-4c0d-974e-46451594f7fb"
+        src="/logo-afortu-icon.svg"
         alt="AFORTU Logo"
         width={width}
         height={height}
