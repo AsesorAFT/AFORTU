@@ -1,0 +1,1463 @@
+{
+  "summary": {
+    "generatedAt": "2026-07-27T00:40:32.440Z",
+    "methodology": "Triage automatizado por expresiones regulares. No sustituye revisión jurídica, fiscal, financiera ni editorial humana.",
+    "totalArticles": 43,
+    "p0": 36,
+    "p1": 2,
+    "p2": 5,
+    "articlesWithFindings": 39,
+    "allRemainNoindex": true
+  },
+  "articles": [
+    {
+      "slug": "reconfiguring-portfolios-in-2026-strategy-amid-high-rates",
+      "title": "Reconfigurando portafolios en 2026, ante tasas elevadas",
+      "publishedAt": "2026-05-02T01:53:11.178Z",
+      "primaryCategory": "Patrimonio",
+      "originalUrl": "https://afortu.com.mx/blog/f/reconfiguring-portfolios-in-2026-strategy-amid-high-rates",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "regulated-investment-language",
+          "severity": "alta",
+          "label": "Lenguaje de inversión o actividad regulada",
+          "matchCount": 2,
+          "examples": ["portafolio", "rendimiento"]
+        },
+        {
+          "ruleId": "dated-claim",
+          "severity": "media",
+          "label": "Referencia temporal que puede perder vigencia",
+          "matchCount": 2,
+          "examples": ["2026", "Hoy"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 2,
+          "examples": ["debe", "es fundamental"]
+        }
+      ]
+    },
+    {
+      "slug": "el-conocimiento-como-capital-semilla-la-tasa-de-retorno",
+      "title": "El Conocimiento como Capital Semilla: La Tasa de Retorno",
+      "publishedAt": "2026-03-25T17:16:24.541Z",
+      "primaryCategory": "Patrimonio",
+      "originalUrl": "https://afortu.com.mx/blog/f/el-conocimiento-como-capital-semilla-la-tasa-de-retorno",
+      "editorialStatus": "en_revision",
+      "priority": "P1",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "dated-claim",
+          "severity": "media",
+          "label": "Referencia temporal que puede perder vigencia",
+          "matchCount": 1,
+          "examples": ["hoy"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["debe"]
+        }
+      ]
+    },
+    {
+      "slug": "choose-financial-consultant-in-mexico",
+      "title": "Choose Financial Consultant in Mexico",
+      "publishedAt": "2026-03-10T02:16:12.477Z",
+      "primaryCategory": "Patrimonio",
+      "originalUrl": "https://afortu.com.mx/blog/f/choose-financial-consultant-in-mexico",
+      "editorialStatus": "en_revision",
+      "priority": "P2",
+      "reviewRequired": false,
+      "findings": []
+    },
+    {
+      "slug": "el-activo-mas-rentable-del-patrimonio-la-educacion-como-columna",
+      "title": "El Activo Más Rentable del Patrimonio: La Educación como Columna",
+      "publishedAt": "2026-02-16T15:29:52.269Z",
+      "primaryCategory": "Educación financiera",
+      "originalUrl": "https://afortu.com.mx/blog/f/el-activo-m%C3%A1s-rentable-del-patrimonio-la-educaci%C3%B3n-como-columna",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "regulated-investment-language",
+          "severity": "alta",
+          "label": "Lenguaje de inversión o actividad regulada",
+          "matchCount": 1,
+          "examples": ["portafolio"]
+        },
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 1,
+          "examples": ["asegura"]
+        },
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 1,
+          "examples": ["Sucesión"]
+        },
+        {
+          "ruleId": "quantitative-claim",
+          "severity": "media",
+          "label": "Cifra, tasa, monto o porcentaje",
+          "matchCount": 2,
+          "examples": ["70%", "90%"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["debe"]
+        }
+      ]
+    },
+    {
+      "slug": "el-fenomeno-de-la-tercera-generacion",
+      "title": "El Fenómeno de la Tercera Generación",
+      "publishedAt": "2026-02-10T15:15:45.475Z",
+      "primaryCategory": "Legado",
+      "originalUrl": "https://afortu.com.mx/blog/f/el-fen%C3%B3meno-de-la-tercera-generaci%C3%B3n",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "regulated-investment-language",
+          "severity": "alta",
+          "label": "Lenguaje de inversión o actividad regulada",
+          "matchCount": 1,
+          "examples": ["gestión de activos"]
+        },
+        {
+          "ruleId": "quantitative-claim",
+          "severity": "media",
+          "label": "Cifra, tasa, monto o porcentaje",
+          "matchCount": 2,
+          "examples": ["70%", "90%"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["debe"]
+        }
+      ]
+    },
+    {
+      "slug": "propositos-que-si-se-cumplen-como-estructurar-tu-inversion-para",
+      "title": "Propósitos que sí se cumplen: cómo estructurar tu inversión para 2026",
+      "publishedAt": "2025-12-22T17:20:44.956Z",
+      "primaryCategory": "Patrimonio",
+      "originalUrl": "https://afortu.com.mx/blog/f/prop%C3%B3sitos-que-s%C3%AD-se-cumplen-c%C3%B3mo-estructurar-tu-inversi%C3%B3n-para",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "regulated-investment-language",
+          "severity": "alta",
+          "label": "Lenguaje de inversión o actividad regulada",
+          "matchCount": 1,
+          "examples": ["rendimiento"]
+        },
+        {
+          "ruleId": "quantitative-claim",
+          "severity": "media",
+          "label": "Cifra, tasa, monto o porcentaje",
+          "matchCount": 2,
+          "examples": [
+            "tasa real de crecimiento de tu dinero este año? Si tu capital creció por debajo del 5",
+            "6%"
+          ]
+        },
+        {
+          "ruleId": "dated-claim",
+          "severity": "media",
+          "label": "Referencia temporal que puede perder vigencia",
+          "matchCount": 2,
+          "examples": ["2026", "este año"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 3,
+          "examples": ["debes", "debe", "Es fundamental"]
+        }
+      ]
+    },
+    {
+      "slug": "incremento-de-cuotas-patronales-por-cesantia-y-vejez",
+      "title": "Incremento de Cuotas Patronales por Cesantía y Vejez",
+      "publishedAt": "2025-11-12T22:19:55.567Z",
+      "primaryCategory": "Retiro",
+      "originalUrl": "https://afortu.com.mx/blog/f/incremento-de-cuotas-patronales-por-cesant%C3%ADa-y-vejez",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 4,
+          "examples": ["cuotas patronales", "Ley", "AFORE", "pensión"]
+        },
+        {
+          "ruleId": "quantitative-claim",
+          "severity": "media",
+          "label": "Cifra, tasa, monto o porcentaje",
+          "matchCount": 4,
+          "examples": ["3.15%", "11.875%", "cuota pasará del 3", "15%"]
+        },
+        {
+          "ruleId": "dated-claim",
+          "severity": "media",
+          "label": "Referencia temporal que puede perder vigencia",
+          "matchCount": 2,
+          "examples": ["2023", "hoy"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["debe"]
+        }
+      ]
+    },
+    {
+      "slug": "modalidad-10-del-imss-en-2025-seguridad-social",
+      "title": "Modalidad 10 del IMSS en 2025: Seguridad Social",
+      "publishedAt": "2025-10-23T15:50:28.251Z",
+      "primaryCategory": "Retiro",
+      "originalUrl": "https://afortu.com.mx/blog/f/modalidad-10-del-imss-en-2025-seguridad-social",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 4,
+          "examples": ["asegurado", "asegura", "proteger tu", "asegurar"]
+        },
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 11,
+          "examples": [
+            "IMSS",
+            "pensión",
+            "Modalidad 10",
+            "Modalidad 40",
+            "SAT",
+            "ley",
+            "Ley",
+            "Pensión",
+            "modalidad 10",
+            "pension",
+            "imss"
+          ]
+        },
+        {
+          "ruleId": "quantitative-claim",
+          "severity": "media",
+          "label": "Cifra, tasa, monto o porcentaje",
+          "matchCount": 9,
+          "examples": [
+            "5%",
+            "cuota sumará ese 5",
+            "tasa de aportación de Modalidad 40 fue actualizada a 13",
+            "347%",
+            "$1,000",
+            "$30,000",
+            "$4,000",
+            "cuota de Mod 10 sea más elevada en porcentaje que la de Mod 40",
+            "$10,000"
+          ]
+        },
+        {
+          "ruleId": "dated-claim",
+          "severity": "media",
+          "label": "Referencia temporal que puede perder vigencia",
+          "matchCount": 4,
+          "examples": ["actualmente", "2025", "vigente", "hoy"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["debes"]
+        }
+      ]
+    },
+    {
+      "slug": "fintech-y-patrimonio-aliados-o-disruptores",
+      "title": "Fintech y Patrimonio: ¿Aliados o Disruptores?",
+      "publishedAt": "2025-10-05T19:01:51.439Z",
+      "primaryCategory": "Innovación",
+      "originalUrl": "https://afortu.com.mx/blog/f/fintech-y-patrimonio-%C2%BFaliados-o-disruptores",
+      "editorialStatus": "en_revision",
+      "priority": "P2",
+      "reviewRequired": false,
+      "findings": []
+    },
+    {
+      "slug": "protocolos-familiares-y-gobernanza-patrimonial",
+      "title": "Protocolos familiares y gobernanza patrimonial",
+      "publishedAt": "2025-09-24T17:17:14.306Z",
+      "primaryCategory": "Legado",
+      "originalUrl": "https://afortu.com.mx/blog/f/protocolos-familiares-y-gobernanza-patrimonial",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 1,
+          "examples": ["sucesión"]
+        },
+        {
+          "ruleId": "dated-claim",
+          "severity": "media",
+          "label": "Referencia temporal que puede perder vigencia",
+          "matchCount": 1,
+          "examples": ["Hoy"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["debe"]
+        }
+      ]
+    },
+    {
+      "slug": "como-la-inteligencia-artificial-esta-redefiniendo-la-consultoria",
+      "title": "Cómo la inteligencia artificial está redefiniendo la consultoría",
+      "publishedAt": "2025-09-24T16:47:03.504Z",
+      "primaryCategory": "Innovación",
+      "originalUrl": "https://afortu.com.mx/blog/f/c%C3%B3mo-la-inteligencia-artificial-est%C3%A1-redefiniendo-la-consultor%C3%ADa",
+      "editorialStatus": "en_revision",
+      "priority": "P1",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "quantitative-claim",
+          "severity": "media",
+          "label": "Cifra, tasa, monto o porcentaje",
+          "matchCount": 1,
+          "examples": ["60%"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["debe"]
+        }
+      ]
+    },
+    {
+      "slug": "diagnostico-patrimonial-y-fiscal-para-pymes",
+      "title": "Diagnóstico Patrimonial y Fiscal para PYMES",
+      "publishedAt": "2025-08-13T23:19:55.012Z",
+      "primaryCategory": "Empresas",
+      "originalUrl": "https://afortu.com.mx/blog/f/diagn%C3%B3stico-patrimonial-y-fiscal-para-pymes",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "regulated-investment-language",
+          "severity": "alta",
+          "label": "Lenguaje de inversión o actividad regulada",
+          "matchCount": 1,
+          "examples": ["rendimiento"]
+        },
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 5,
+          "examples": [
+            "SAT",
+            "IMSS",
+            "Deducciones",
+            "artículo 33",
+            "deducciones"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "empresa-con-sintomas-de-que-necesita-estructura-urgentemente",
+      "title": "Empresa con síntomas de que necesita estructura urgentemente",
+      "publishedAt": "2025-08-12T19:56:57.381Z",
+      "primaryCategory": "Empresas",
+      "originalUrl": "https://afortu.com.mx/blog/f/empresa-con-s%C3%ADntomas-de-que-necesita-estructura-urgentemente",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 1,
+          "examples": ["SAT"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 2,
+          "examples": ["debes", "debe"]
+        }
+      ]
+    },
+    {
+      "slug": "el-poder-de-entender-tus-derechos",
+      "title": "El poder de entender tus derechos",
+      "publishedAt": "2025-08-12T19:52:35.268Z",
+      "primaryCategory": "Legado",
+      "originalUrl": "https://afortu.com.mx/blog/f/el-poder-de-entender-tus-derechos",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 2,
+          "examples": ["Sucesión", "SAT"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["debe"]
+        }
+      ]
+    },
+    {
+      "slug": "heredar-con-claridad",
+      "title": "Heredar con claridad",
+      "publishedAt": "2025-08-12T19:24:33.844Z",
+      "primaryCategory": "Legado",
+      "originalUrl": "https://afortu.com.mx/blog/f/heredar-con-claridad",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 1,
+          "examples": ["sucesión"]
+        },
+        {
+          "ruleId": "dated-claim",
+          "severity": "media",
+          "label": "Referencia temporal que puede perder vigencia",
+          "matchCount": 1,
+          "examples": ["hoy"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["debe"]
+        }
+      ]
+    },
+    {
+      "slug": "planificacion-del-retiro",
+      "title": "Planificación del retiro",
+      "publishedAt": "2025-07-16T15:50:29.495Z",
+      "primaryCategory": "Retiro",
+      "originalUrl": "https://afortu.com.mx/blog/f/planificaci%C3%B3n-del-retiro",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "regulated-investment-language",
+          "severity": "alta",
+          "label": "Lenguaje de inversión o actividad regulada",
+          "matchCount": 1,
+          "examples": ["fondos de inversión"]
+        },
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 1,
+          "examples": ["garantiza"]
+        },
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 5,
+          "examples": ["pensión", "ISSSTE", "IMSS", "deducciones", "sucesión"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["debe"]
+        }
+      ]
+    },
+    {
+      "slug": "la-gestion-patrimonial",
+      "title": "La gestión patrimonial",
+      "publishedAt": "2025-07-16T15:47:41.391Z",
+      "primaryCategory": "Patrimonio",
+      "originalUrl": "https://afortu.com.mx/blog/f/la-gesti%C3%B3n-patrimonial",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 1,
+          "examples": ["asegurar"]
+        },
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 1,
+          "examples": ["deducciones"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["debe"]
+        }
+      ]
+    },
+    {
+      "slug": "el-legado-empresarial-clave-para-la-trascendencia",
+      "title": "El Legado Empresarial: Clave para la Trascendencia",
+      "publishedAt": "2025-07-16T15:42:22.486Z",
+      "primaryCategory": "Legado",
+      "originalUrl": "https://afortu.com.mx/blog/f/el-legado-empresarial-clave-para-la-trascendencia",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 2,
+          "examples": ["garantizar", "asegura"]
+        },
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 2,
+          "examples": ["pensión", "sucesión"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["debe"]
+        }
+      ]
+    },
+    {
+      "slug": "estrategias-fiscales",
+      "title": "Estrategias Fiscales",
+      "publishedAt": "2025-07-16T15:37:54.519Z",
+      "primaryCategory": "Empresas",
+      "originalUrl": "https://afortu.com.mx/blog/f/estrategias-fiscales",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 1,
+          "examples": ["asegurar"]
+        },
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 9,
+          "examples": [
+            "ley",
+            "Deducciones",
+            "deducciones",
+            "deducción",
+            "AFORE",
+            "pensión",
+            "Ley",
+            "Modalidad 40",
+            "IMSS"
+          ]
+        },
+        {
+          "ruleId": "quantitative-claim",
+          "severity": "media",
+          "label": "Cifra, tasa, monto o porcentaje",
+          "matchCount": 8,
+          "examples": [
+            "$47,993",
+            "$136,482",
+            "$36,460",
+            "25 %",
+            "85 %",
+            "$23,000",
+            "$6,900",
+            "$5"
+          ]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["debe"]
+        }
+      ]
+    },
+    {
+      "slug": "asesoria-legal-el-respaldo-que-transforma-decisiones",
+      "title": "Asesoría legal el respaldo que transforma decisiones",
+      "publishedAt": "2025-07-05T23:36:52.413Z",
+      "primaryCategory": "Legado",
+      "originalUrl": "https://afortu.com.mx/blog/f/asesor%C3%ADa-legal-el-respaldo-que-transforma-decisiones",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 2,
+          "examples": ["Garantizar", "Asegurar"]
+        },
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 2,
+          "examples": ["sucesión", "ley"]
+        }
+      ]
+    },
+    {
+      "slug": "planificacion-sucesoria-protege-tu-legado-con-inteligencia",
+      "title": "Planificación Sucesoria: Protege tu legado con inteligencia",
+      "publishedAt": "2025-07-05T22:39:18.487Z",
+      "primaryCategory": "Legado",
+      "originalUrl": "https://afortu.com.mx/blog/f/planificaci%C3%B3n-sucesoria-protege-tu-legado-con-inteligencia",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 1,
+          "examples": ["asegurar"]
+        },
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 2,
+          "examples": ["sucesión", "ley"]
+        },
+        {
+          "ruleId": "dated-claim",
+          "severity": "media",
+          "label": "Referencia temporal que puede perder vigencia",
+          "matchCount": 2,
+          "examples": ["vigente", "hoy"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["debe"]
+        }
+      ]
+    },
+    {
+      "slug": "planificacion-de-la-sucesion-familiar",
+      "title": "Planificación de la Sucesión Familiar",
+      "publishedAt": "2025-07-05T21:47:53.937Z",
+      "primaryCategory": "Legado",
+      "originalUrl": "https://afortu.com.mx/blog/f/planificaci%C3%B3n-de-la-sucesi%C3%B3n-familiar",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 6,
+          "examples": [
+            "garantizar",
+            "Garantiza",
+            "asegurar",
+            "garantiza",
+            "Garantizar",
+            "asegura"
+          ]
+        },
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 3,
+          "examples": ["sucesión", "Sucesión", "ley"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["debes"]
+        }
+      ]
+    },
+    {
+      "slug": "modalidad-10-del-imss-seguridad-social",
+      "title": "Modalidad 10 del IMSS: Seguridad social",
+      "publishedAt": "2025-06-24T18:42:26.028Z",
+      "primaryCategory": "Retiro",
+      "originalUrl": "https://afortu.com.mx/blog/f/modalidad-10-del-imss-seguridad-social",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 1,
+          "examples": ["garantizar"]
+        },
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 5,
+          "examples": ["Modalidad 10", "IMSS", "pensión", "Pensión", "imss"]
+        },
+        {
+          "ruleId": "quantitative-claim",
+          "severity": "media",
+          "label": "Cifra, tasa, monto o porcentaje",
+          "matchCount": 2,
+          "examples": ["$10,000", "cuota ronda los $2,500"]
+        },
+        {
+          "ruleId": "dated-claim",
+          "severity": "media",
+          "label": "Referencia temporal que puede perder vigencia",
+          "matchCount": 1,
+          "examples": ["actualmente"]
+        }
+      ]
+    },
+    {
+      "slug": "constitucion-de-sociedades-mercantiles-en-mexico",
+      "title": "Constitución de Sociedades Mercantiles en México",
+      "publishedAt": "2025-06-19T16:51:55.929Z",
+      "primaryCategory": "Patrimonio",
+      "originalUrl": "https://afortu.com.mx/blog/f/constituci%C3%B3n-de-sociedades-mercantiles-en-m%C3%A9xico",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 1,
+          "examples": ["asegurar"]
+        },
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 7,
+          "examples": [
+            "Ley",
+            "Sociedades Mercantiles",
+            "SAT",
+            "sociedades mercantiles",
+            "deducciones",
+            "IMSS",
+            "sucesión"
+          ]
+        },
+        {
+          "ruleId": "quantitative-claim",
+          "severity": "media",
+          "label": "Cifra, tasa, monto o porcentaje",
+          "matchCount": 1,
+          "examples": ["100 %"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["debe"]
+        }
+      ]
+    },
+    {
+      "slug": "educacion-financiera-para-jovenes-construyendo-un-futuro-solido",
+      "title": "Educación financiera para jóvenes: construyendo un futuro sólido",
+      "publishedAt": "2025-06-18T19:03:50.199Z",
+      "primaryCategory": "Educación financiera",
+      "originalUrl": "https://afortu.com.mx/blog/f/educaci%C3%B3n-financiera-para-j%C3%B3venes-construyendo-un-futuro-s%C3%B3lido",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 1,
+          "examples": ["garantizar"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["es fundamental"]
+        }
+      ]
+    },
+    {
+      "slug": "en-que-casos-puedes-retirar-dinero-de-tu-afore-issste",
+      "title": "¿En qué casos puedes retirar dinero de tu AFORE ISSSTE?",
+      "publishedAt": "2025-06-18T18:58:07.814Z",
+      "primaryCategory": "Retiro",
+      "originalUrl": "https://afortu.com.mx/blog/f/%C2%BFen-qu%C3%A9-casos-puedes-retirar-dinero-de-tu-afore-issste",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 4,
+          "examples": ["ISSSTE", "AFORE", "pensión", "Deducciones"]
+        },
+        {
+          "ruleId": "quantitative-claim",
+          "severity": "media",
+          "label": "Cifra, tasa, monto o porcentaje",
+          "matchCount": 6,
+          "examples": [
+            "$200,000",
+            "$15,000",
+            "$1,125,000",
+            "10%",
+            "$20,000.",
+            "$20,000"
+          ]
+        },
+        {
+          "ruleId": "dated-claim",
+          "severity": "media",
+          "label": "Referencia temporal que puede perder vigencia",
+          "matchCount": 1,
+          "examples": ["vigente"]
+        }
+      ]
+    },
+    {
+      "slug": "servicios",
+      "title": "Servicios",
+      "publishedAt": "2025-06-13T17:36:22.982Z",
+      "primaryCategory": "Patrimonio",
+      "originalUrl": "https://afortu.com.mx/blog/f/servicios",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "regulated-investment-language",
+          "severity": "alta",
+          "label": "Lenguaje de inversión o actividad regulada",
+          "matchCount": 2,
+          "examples": ["administración de activos", "portafolio"]
+        },
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 2,
+          "examples": ["IMSS", "ISSSTE"]
+        },
+        {
+          "ruleId": "dated-claim",
+          "severity": "media",
+          "label": "Referencia temporal que puede perder vigencia",
+          "matchCount": 2,
+          "examples": ["vigente", "hoy"]
+        }
+      ]
+    },
+    {
+      "slug": "modalidad-40-del-imss-potenciando-tu-pension",
+      "title": "Modalidad 40 del IMSS: Potenciando tu Pensión",
+      "publishedAt": "2025-06-05T14:42:10.875Z",
+      "primaryCategory": "Retiro",
+      "originalUrl": "https://afortu.com.mx/blog/f/modalidad-40-del-imss-potenciando-tu-pensi%C3%B3n",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "regulated-investment-language",
+          "severity": "alta",
+          "label": "Lenguaje de inversión o actividad regulada",
+          "matchCount": 1,
+          "examples": ["rendimiento"]
+        },
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 5,
+          "examples": [
+            "Modalidad 40",
+            "IMSS",
+            "pensión",
+            "Modalidad 10",
+            "Afore"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "estrategias-de-inversion-en-tiempos-de-incertidumbre-economica",
+      "title": "Estrategias de Inversión en Tiempos de Incertidumbre Económica",
+      "publishedAt": "2025-06-04T17:20:15.408Z",
+      "primaryCategory": "Patrimonio",
+      "originalUrl": "https://afortu.com.mx/blog/f/estrategias-de-inversi%C3%B3n-en-tiempos-de-incertidumbre-econ%C3%B3mica",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "regulated-investment-language",
+          "severity": "alta",
+          "label": "Lenguaje de inversión o actividad regulada",
+          "matchCount": 3,
+          "examples": ["portafolio", "rendimiento", "Fondos de Inversión"]
+        },
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 2,
+          "examples": ["protege tu", "asegurar"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 2,
+          "examples": ["debe", "es indispensable"]
+        }
+      ]
+    },
+    {
+      "slug": "regulacion-y-cumplimiento-lo-que-todo-inversionista-debe-saber",
+      "title": "Regulación y Cumplimiento: Lo que todo Inversionista debe saber",
+      "publishedAt": "2025-06-04T17:13:44.274Z",
+      "primaryCategory": "Patrimonio",
+      "originalUrl": "https://afortu.com.mx/blog/f/regulaci%C3%B3n-y-cumplimiento-lo-que-todo-inversionista-debe-saber",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "regulated-investment-language",
+          "severity": "alta",
+          "label": "Lenguaje de inversión o actividad regulada",
+          "matchCount": 3,
+          "examples": ["gestión de activos", "Gestión de Activos", "captación"]
+        },
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 3,
+          "examples": ["garantiza", "asegurar", "garantizar"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 2,
+          "examples": ["debe", "es fundamental"]
+        }
+      ]
+    },
+    {
+      "slug": "errores-comunes-en-la-gestion-de-activos-y-como-evitarlos",
+      "title": "Errores Comunes en la Gestión de Activos y Cómo Evitarlos",
+      "publishedAt": "2025-06-04T17:08:43.127Z",
+      "primaryCategory": "Patrimonio",
+      "originalUrl": "https://afortu.com.mx/blog/f/errores-comunes-en-la-gesti%C3%B3n-de-activos-y-c%C3%B3mo-evitarlos",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "regulated-investment-language",
+          "severity": "alta",
+          "label": "Lenguaje de inversión o actividad regulada",
+          "matchCount": 5,
+          "examples": [
+            "gestión de activos",
+            "rendimiento",
+            "Gestión de Activos",
+            "administración de activos",
+            "portafolio"
+          ]
+        },
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 2,
+          "examples": ["garantiza", "asegurar"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 2,
+          "examples": ["debe", "es fundamental"]
+        }
+      ]
+    },
+    {
+      "slug": "tendencias-en-gestion-de-activos-hacia-donde-vamos",
+      "title": "Tendencias en Gestión de Activos: ¿Hacia Dónde Vamos?",
+      "publishedAt": "2025-06-04T17:03:42.616Z",
+      "primaryCategory": "Patrimonio",
+      "originalUrl": "https://afortu.com.mx/blog/f/tendencias-en-gesti%C3%B3n-de-activos-%C2%BFhacia-d%C3%B3nde-vamos",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "regulated-investment-language",
+          "severity": "alta",
+          "label": "Lenguaje de inversión o actividad regulada",
+          "matchCount": 1,
+          "examples": ["gestión de activos"]
+        },
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 1,
+          "examples": ["garantizar"]
+        },
+        {
+          "ruleId": "dated-claim",
+          "severity": "media",
+          "label": "Referencia temporal que puede perder vigencia",
+          "matchCount": 2,
+          "examples": ["2025", "hoy"]
+        }
+      ]
+    },
+    {
+      "slug": "transformacion-digital-y-fintech",
+      "title": "Transformación Digital y Fintech",
+      "publishedAt": "2025-05-31T14:08:24.197Z",
+      "primaryCategory": "Innovación",
+      "originalUrl": "https://afortu.com.mx/blog/f/transformaci%C3%B3n-digital-y-fintech",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "regulated-investment-language",
+          "severity": "alta",
+          "label": "Lenguaje de inversión o actividad regulada",
+          "matchCount": 1,
+          "examples": ["gestión de activos"]
+        },
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 1,
+          "examples": ["asegurar"]
+        }
+      ]
+    },
+    {
+      "slug": "deducciones-fiscales-que-pocos-aprovechan",
+      "title": "Deducciones fiscales que pocos aprovechan",
+      "publishedAt": "2025-05-28T18:40:43.176Z",
+      "primaryCategory": "Empresas",
+      "originalUrl": "https://afortu.com.mx/blog/f/deducciones-fiscales-que-pocos-aprovechan",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "regulated-investment-language",
+          "severity": "alta",
+          "label": "Lenguaje de inversión o actividad regulada",
+          "matchCount": 1,
+          "examples": ["Fondos de inversión"]
+        },
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 4,
+          "examples": ["deducciones", "ley", "deducción", "SAT"]
+        }
+      ]
+    },
+    {
+      "slug": "educa-a-tus-hijos-en-finanzas-preparando-a-la-proxima-generacion",
+      "title": "Educa a Tus Hijos en Finanzas: Preparando a la Próxima Generación",
+      "publishedAt": "2025-05-09T15:34:14.145Z",
+      "primaryCategory": "Educación financiera",
+      "originalUrl": "https://afortu.com.mx/blog/f/educa-a-tus-hijos-en-finanzas-preparando-a-la-pr%C3%B3xima-generaci%C3%B3n",
+      "editorialStatus": "en_revision",
+      "priority": "P2",
+      "reviewRequired": false,
+      "findings": []
+    },
+    {
+      "slug": "3-libros-recomendados-para-mejorar-tus-finanzas-en-2025",
+      "title": "3 Libros Recomendados para Mejorar Tus Finanzas en 2025",
+      "publishedAt": "2025-05-09T15:33:38.768Z",
+      "primaryCategory": "Educación financiera",
+      "originalUrl": "https://afortu.com.mx/blog/f/3-libros-recomendados-para-mejorar-tus-finanzas-en-2025",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 1,
+          "examples": ["proteger tu"]
+        },
+        {
+          "ruleId": "dated-claim",
+          "severity": "media",
+          "label": "Referencia temporal que puede perder vigencia",
+          "matchCount": 3,
+          "examples": ["2025", "2024", "2023"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 2,
+          "examples": ["debes", "es fundamental"]
+        }
+      ]
+    },
+    {
+      "slug": "como-declarar-en-2025-sin-dolores-de-cabeza",
+      "title": "Cómo declarar en 2025 sin dolores de cabeza",
+      "publishedAt": "2025-05-09T15:32:48.712Z",
+      "primaryCategory": "Empresas",
+      "originalUrl": "https://afortu.com.mx/blog/f/c%C3%B3mo-declarar-en-2025-sin-dolores-de-cabeza",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 4,
+          "examples": ["deducciones", "SAT", "régimen fiscal", "Deducciones"]
+        },
+        {
+          "ruleId": "quantitative-claim",
+          "severity": "media",
+          "label": "Cifra, tasa, monto o porcentaje",
+          "matchCount": 2,
+          "examples": ["$400,000", "$35"]
+        },
+        {
+          "ruleId": "dated-claim",
+          "severity": "media",
+          "label": "Referencia temporal que puede perder vigencia",
+          "matchCount": 1,
+          "examples": ["2025"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["debes"]
+        }
+      ]
+    },
+    {
+      "slug": "finanzas-y-cultura",
+      "title": "Finanzas y Cultura",
+      "publishedAt": "2025-03-08T01:38:55.510Z",
+      "primaryCategory": "Educación financiera",
+      "originalUrl": "https://afortu.com.mx/blog/f/finanzas-y-cultura",
+      "editorialStatus": "en_revision",
+      "priority": "P2",
+      "reviewRequired": false,
+      "findings": []
+    },
+    {
+      "slug": "10-libros-esenciales-para-transformar-tus-finanzas-personales",
+      "title": "10 Libros Esenciales para Transformar tus Finanzas Personales",
+      "publishedAt": "2025-03-08T01:23:45.843Z",
+      "primaryCategory": "Educación financiera",
+      "originalUrl": "https://afortu.com.mx/blog/f/10-libros-esenciales-para-transformar-tus-finanzas-personales",
+      "editorialStatus": "en_revision",
+      "priority": "P2",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "dated-claim",
+          "severity": "media",
+          "label": "Referencia temporal que puede perder vigencia",
+          "matchCount": 2,
+          "examples": ["Hoy", "hoy"]
+        }
+      ]
+    },
+    {
+      "slug": "educacion-financiera-la-clave-para-un-futuro-de-exito",
+      "title": "Educación Financiera: La Clave para Un Futuro de Éxito",
+      "publishedAt": "2025-03-08T01:09:02.282Z",
+      "primaryCategory": "Educación financiera",
+      "originalUrl": "https://afortu.com.mx/blog/f/educaci%C3%B3n-financiera-la-clave-para-un-futuro-de-%C3%A9xito",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 2,
+          "examples": ["protege tu", "asegurar"]
+        },
+        {
+          "ruleId": "dated-claim",
+          "severity": "media",
+          "label": "Referencia temporal que puede perder vigencia",
+          "matchCount": 1,
+          "examples": ["hoy"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["Es fundamental"]
+        }
+      ]
+    },
+    {
+      "slug": "economia-personal-y-familiar",
+      "title": "Economía personal y familiar: construyendo una base financiera sólida",
+      "publishedAt": "2025-03-08T00:53:20.470Z",
+      "primaryCategory": "Educación financiera",
+      "originalUrl": "https://afortu.com.mx/blog/f/econom%C3%ADa-personal-y-familiar",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "regulated-investment-language",
+          "severity": "alta",
+          "label": "Lenguaje de inversión o actividad regulada",
+          "matchCount": 1,
+          "examples": ["fondos de inversión"]
+        },
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 1,
+          "examples": ["Protege tu"]
+        }
+      ]
+    },
+    {
+      "slug": "como-elegir-el-regimen-fiscal-adecuado-en-mexico",
+      "title": "Cómo elegir el régimen fiscal adecuado en México",
+      "publishedAt": "2025-03-07T14:03:17.712Z",
+      "primaryCategory": "Empresas",
+      "originalUrl": "https://afortu.com.mx/blog/f/c%C3%B3mo-elegir-el-r%C3%A9gimen-fiscal-adecuado-en-m%C3%A9xico",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 1,
+          "examples": ["garantizar"]
+        },
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 5,
+          "examples": [
+            "régimen fiscal",
+            "SAT",
+            "Ley",
+            "deducción",
+            "Deducciones"
+          ]
+        },
+        {
+          "ruleId": "quantitative-claim",
+          "severity": "media",
+          "label": "Cifra, tasa, monto o porcentaje",
+          "matchCount": 6,
+          "examples": [
+            "$3.5",
+            "Tasa de ISR progresiva del 1% al 2",
+            "5%",
+            "$2",
+            "100%",
+            "$35"
+          ]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 2,
+          "examples": ["debe", "la mejor opción"]
+        }
+      ]
+    },
+    {
+      "slug": "el-regimen-pensionario-en-mexico-todo-lo-que-necesitas-saber",
+      "title": "El Régimen Pensionario en México: Todo lo que Necesitas Saber",
+      "publishedAt": "2025-03-06T22:05:17.784Z",
+      "primaryCategory": "Retiro",
+      "originalUrl": "https://afortu.com.mx/blog/f/el-r%C3%A9gimen-pensionario-en-m%C3%A9xico-todo-lo-que-necesitas-saber",
+      "editorialStatus": "en_revision",
+      "priority": "P0",
+      "reviewRequired": true,
+      "findings": [
+        {
+          "ruleId": "regulated-investment-language",
+          "severity": "alta",
+          "label": "Lenguaje de inversión o actividad regulada",
+          "matchCount": 1,
+          "examples": ["rendimiento"]
+        },
+        {
+          "ruleId": "guarantee-or-certainty",
+          "severity": "alta",
+          "label": "Promesa, garantía o certeza",
+          "matchCount": 2,
+          "examples": ["garantizar", "garantiza"]
+        },
+        {
+          "ruleId": "tax-legal-pension",
+          "severity": "alta",
+          "label": "Materia fiscal, jurídica, pensionaria o de seguridad social",
+          "matchCount": 6,
+          "examples": ["IMSS", "Ley", "pensión", "Pensión", "Afore", "ley"]
+        },
+        {
+          "ruleId": "quantitative-claim",
+          "severity": "media",
+          "label": "Cifra, tasa, monto o porcentaje",
+          "matchCount": 1,
+          "examples": ["50%"]
+        },
+        {
+          "ruleId": "dated-claim",
+          "severity": "media",
+          "label": "Referencia temporal que puede perder vigencia",
+          "matchCount": 1,
+          "examples": ["2021"]
+        },
+        {
+          "ruleId": "recommendation-language",
+          "severity": "media",
+          "label": "Lenguaje prescriptivo o de recomendación",
+          "matchCount": 1,
+          "examples": ["Es fundamental"]
+        }
+      ]
+    }
+  ]
+}

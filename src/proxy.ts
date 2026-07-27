@@ -24,6 +24,14 @@ const legacyPublicRedirects = [
   { path: "/consultoria", destination: "/#soluciones" },
 ];
 
+const disabledApiPaths = [
+  "/api/chart",
+  "/api/metrics",
+  "/api/paypal/setup-billing",
+  "/api/stock-price",
+  "/api/transactions",
+];
+
 export function proxy(request: NextRequest) {
   const legacyRedirect = legacyPublicRedirects.find(
     ({ path }) =>
@@ -34,6 +42,20 @@ export function proxy(request: NextRequest) {
   if (legacyRedirect) {
     return NextResponse.redirect(
       new URL(legacyRedirect.destination, request.url),
+      308,
+    );
+  }
+
+  if (disabledApiPaths.includes(request.nextUrl.pathname)) {
+    return NextResponse.json(
+      { error: "Not found" },
+      {
+        status: 404,
+        headers: {
+          "Cache-Control": "no-store",
+          "X-Robots-Tag": "noindex, nofollow, noarchive",
+        },
+      },
     );
   }
 
@@ -56,6 +78,11 @@ export function proxy(request: NextRequest) {
 export const config = {
   matcher: [
     "/about/:path*",
+    "/api/chart",
+    "/api/metrics",
+    "/api/paypal/setup-billing",
+    "/api/stock-price",
+    "/api/transactions",
     "/analysis/:path*",
     "/asset-management/:path*",
     "/billing/:path*",

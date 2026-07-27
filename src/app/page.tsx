@@ -3,6 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
+  BookOpenText,
+  BriefcaseBusiness,
+  Building2,
   Check,
   ChevronRight,
   CircleArrowOutUpRight,
@@ -85,6 +88,33 @@ const solutions = [
       "Organizamos titularidad, documentos, beneficiarios y riesgos de continuidad, coordinando especialistas cuando corresponde.",
     output: "Ruta documental y coordinación especializada.",
     visual: "network",
+  },
+];
+
+const audiences = [
+  {
+    Icon: UsersRound,
+    label: "Personas y familias",
+    href: "/personas-y-familias",
+    title: "Decisiones que cruzan etapas, personas y patrimonio.",
+    description:
+      "Una lectura integrada para ordenar objetivos familiares, liquidez, retiro, protección y continuidad.",
+  },
+  {
+    Icon: Building2,
+    label: "Empresas",
+    href: "/empresas",
+    title: "La empresa y el patrimonio no deciden por separado.",
+    description:
+      "Coordinación para decisiones que conectan operación, socios, riesgos, sucesión y patrimonio personal.",
+  },
+  {
+    Icon: BriefcaseBusiness,
+    label: "Oficina Patrimonial",
+    href: "/oficina-patrimonial",
+    title: "Gobierno ligero para patrimonios con más variables.",
+    description:
+      "Un expediente central y una cadencia de seguimiento para coordinar familia, activos y especialistas.",
   },
 ];
 
@@ -498,6 +528,59 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="border-y border-[#d8d0c4] bg-[#fbf9f4]">
+          <div className="mx-auto max-w-[1320px] px-5 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-32">
+            <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+              <div>
+                <p className="afortu-kicker">Para quién</p>
+                <h2 className="afortu-display mt-6 max-w-2xl text-4xl font-medium leading-[0.96] tracking-[-0.04em] text-[#071a2b] sm:text-6xl">
+                  La misma disciplina, aplicada a contextos distintos.
+                </h2>
+              </div>
+              <p className="max-w-2xl text-[1.02rem] leading-8 text-[#59666e] lg:justify-self-end">
+                El método se adapta al tablero real: una familia, una empresa o
+                una estructura patrimonial que necesita coordinar múltiples
+                responsables.
+              </p>
+            </div>
+
+            <div className="mt-16 grid border-l border-t border-[#c7bdaf] lg:grid-cols-3">
+              {audiences.map(({ Icon, label, href, title, description }) => (
+                <article
+                  key={href}
+                  className="flex min-h-[28rem] flex-col border-b border-r border-[#c7bdaf] bg-[#f6f2ea] p-8 sm:p-10"
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <p className="text-[0.65rem] font-extrabold uppercase tracking-[0.19em] text-[#71562f]">
+                      {label}
+                    </p>
+                    <Icon
+                      className="h-5 w-5 text-[#8a693b]"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <h3 className="afortu-display mt-12 text-[2.4rem] font-semibold leading-[0.98] tracking-[-0.03em] text-[#071a2b]">
+                    {title}
+                  </h3>
+                  <p className="mt-6 text-sm leading-7 text-[#59666e]">
+                    {description}
+                  </p>
+                  <Link
+                    href={href}
+                    className="mt-auto flex items-center justify-between border-t border-[#c7bdaf] pt-6 text-sm font-extrabold text-[#071a2b]"
+                  >
+                    Ver ruta
+                    <ArrowRight
+                      className="h-4 w-4 text-[#8a693b]"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section
           id="entregable"
           className="scroll-mt-32 overflow-hidden bg-[#071a2b] text-white"
@@ -750,6 +833,28 @@ export default function HomePage() {
                 </ul>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="bg-[#ebe4d9]">
+          <div className="mx-auto grid max-w-[1320px] gap-12 px-5 py-20 sm:px-6 sm:py-28 lg:grid-cols-[auto_1fr_auto] lg:items-center lg:px-8">
+            <div className="flex h-20 w-20 items-center justify-center border border-[#b89663]/45 bg-[#071a2b] text-[#c7ab76]">
+              <BookOpenText className="h-8 w-8" aria-hidden="true" />
+            </div>
+            <div>
+              <p className="afortu-kicker">Centro de Conocimiento</p>
+              <h2 className="afortu-display mt-5 max-w-4xl text-4xl font-medium leading-[0.96] tracking-[-0.04em] text-[#071a2b] sm:text-5xl">
+                Contexto para entender antes de decidir.
+              </h2>
+              <p className="mt-5 max-w-3xl leading-8 text-[#59666e]">
+                Análisis y guías sobre patrimonio, retiro, legado, empresa y
+                coordinación especializada, con fecha y alcance visibles.
+              </p>
+            </div>
+            <Link href="/conocimiento" className="afortu-dark-button">
+              Explorar contenidos
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
           </div>
         </section>
 

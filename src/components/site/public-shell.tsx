@@ -14,11 +14,12 @@ import {
 } from "@/components/ui/sheet";
 
 const navigation = [
-  { label: "Patrimonio", href: "/patrimonio" },
-  { label: "Retiro", href: "/retiro" },
-  { label: "Legado", href: "/legado" },
-  { label: "Modelo AFORTU", href: "/modelo-afortu" },
-  { label: "Gobierno del caso", href: "/modelo-afortu#gobierno" },
+  { label: "Personas", href: "/personas-y-familias" },
+  { label: "Empresas", href: "/empresas" },
+  { label: "Oficina Patrimonial", href: "/oficina-patrimonial" },
+  { label: "Soluciones", href: "/#soluciones" },
+  { label: "Conocimiento", href: "/conocimiento" },
+  { label: "Modelo", href: "/modelo-afortu" },
 ];
 
 export function OfficialEmblem({
@@ -101,7 +102,7 @@ export function PublicHeader() {
           </Link>
 
           <nav
-            className="ml-auto hidden items-center gap-6 xl:flex"
+            className="ml-auto hidden items-center gap-4 xl:flex"
             aria-label="Navegación principal"
           >
             {navigation.map((item) => (
@@ -114,7 +115,7 @@ export function PublicHeader() {
                     ? "page"
                     : undefined
                 }
-                className="relative py-3 text-[0.75rem] font-bold tracking-[0.01em] text-[#40515b] transition-colors after:absolute after:inset-x-0 after:bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-[#8a693b] after:transition-transform hover:text-[#071a2b] hover:after:scale-x-100 aria-[current=page]:text-[#071a2b] aria-[current=page]:after:scale-x-100"
+                className="relative py-3 text-[0.7rem] font-bold tracking-[0.01em] text-[#40515b] transition-colors after:absolute after:inset-x-0 after:bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-[#8a693b] after:transition-transform hover:text-[#071a2b] hover:after:scale-x-100 aria-[current=page]:text-[#071a2b] aria-[current=page]:after:scale-x-100"
               >
                 {item.label}
               </Link>
@@ -262,17 +263,20 @@ export function PublicFooter() {
             <Link href="/modelo-afortu" className="hover:text-white">
               Modelo AFORTU
             </Link>
+            <Link href="/personas-y-familias" className="hover:text-white">
+              Personas y familias
+            </Link>
+            <Link href="/empresas" className="hover:text-white">
+              Empresas
+            </Link>
+            <Link href="/oficina-patrimonial" className="hover:text-white">
+              Oficina Patrimonial
+            </Link>
+            <Link href="/conocimiento" className="hover:text-white">
+              Centro de Conocimiento
+            </Link>
             <Link href="/modelo-afortu#gobierno" className="hover:text-white">
               Gobierno del caso
-            </Link>
-            <Link href="/#metodo" className="hover:text-white">
-              Método
-            </Link>
-            <Link href="/#confianza" className="hover:text-white">
-              Confianza
-            </Link>
-            <Link href="/contact" className="hover:text-white">
-              Contacto
             </Link>
           </div>
         </nav>
