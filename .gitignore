@@ -1,99 +1,5 @@
-<<<<<<< HEAD
 # Dependencies
-/node_modules
-/.pnp
-.pnp.js
-.yarn/install-state.gz
-
-# Testing
-/coverage
-
-# Next.js
-/.next/
-/out/
-/build
-
-# Production
-/dist
-
-# Misc
-.DS_Store
-*.pem
-
-# Debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Local env files
-.env
-.env*.local
-.env.production
-
-# Vercel
-.vercel
-
-# TypeScript
-*.tsbuildinfo
-next-env.d.ts
-
-# Firebase
-.firebaserc
-firebase-debug.log
-firestore-debug.log
-
-# IDEs
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS generated files
-Thumbs.db
-ehthumbs.db
-
-# Genkit
-.genkit/
-
-# Logs
-logs
-*.log
-
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Optional npm cache directory
-.npm
-
-# Optional REPL history
-.node_repl_history
-
-# Output of 'npm pack'
-*.tgz
-
-# Yarn Integrity file
-.yarn-integrity
-
-# parcel-bundler cache (https://parceljs.org/)
-.cache
-.parcel-cache
-
-# temporary folders
-tmp/
-temp/
-
-# Mac specific
-.AppleDouble
-.LSOverride
-node_modules
-=======
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
+node_modules/
 /.pnp
 .pnp.*
 .yarn/*
@@ -102,40 +8,82 @@ node_modules
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
-
-# next.js
+# Next.js / build outputs
 /.next/
 /out/
+/build/
+/dist/
+*.tsbuildinfo
+next-env.d.ts
 
-# production
-/build
+# Testing
+/coverage
 
-# misc
-.DS_Store
+# Environment variables (solo se versiona .env.example)
+.env
+.env.*
+!.env.example
+
+# Vercel
+.vercel
+
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+database-debug.log
+pubsub-debug.log
+
+# Firebase Studio / IDX
+.idx/
+
+# Genkit
+.genkit/
+
+# Credenciales
+client_secret_*.json
+service-account*.json
 *.pem
 
-# debug
+# Backups
+*.backup
+*.backup.*
+*-backup.*
+
+# Debug / logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# vercel
-.vercel
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
 
-.genkit/*
-.env*
+# OS
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
 
-# firebase
-firebase-debug.log
-firestore-debug.logclient_secret_*
-*.json
-client_secret_*
-*.json
->>>>>>> cace42658c93990db8dd211b1312eff48e29c991
+# Misc
+.npm
+.node_repl_history
+*.tgz
+.yarn-integrity
+.cache
+.parcel-cache
+tmp/
+temp/
