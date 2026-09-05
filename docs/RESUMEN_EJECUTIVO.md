@@ -154,10 +154,10 @@ Crear `src/app/dashboard-premium/page.tsx` y copiar el contenido de `page-premiu
 12. `src/app/dashboard/page-premium.tsx`
 
 ### Scripts y Docs
-13. `activate-premium.sh` - Script de activación
+13. ~~`activate-premium.sh`~~ - Script de activación (eliminado; el dashboard premium ya está activo)
 14. `docs/DESIGN_SYSTEM.md` - Documentación completa
 15. `docs/IMPLEMENTACION.md` - Guía de implementación
-16. `MEJORAS_IMPLEMENTADAS.md` - Resumen detallado
+16. `docs/MEJORAS_IMPLEMENTADAS.md` - Resumen detallado
 
 ---
 
@@ -214,7 +214,7 @@ Crear `src/app/dashboard-premium/page.tsx` y copiar el contenido de `page-premiu
 
 ### Para Stakeholders
 - Este documento (resumen ejecutivo)
-- `MEJORAS_IMPLEMENTADAS.md` - Detalle de cambios
+- `docs/MEJORAS_IMPLEMENTADAS.md` - Detalle de cambios
 
 ---
 
