@@ -12,6 +12,17 @@ Referencias preferidas: Interactive Brokers, Bursanet, BlackRock, Chase y JPMorg
 
 Estos criterios guiarán las siguientes fases de Servicios y OS+. Se conserva la identidad propia de AFORTU: emblema oficial sin alterar su geometría, encabezado grafito, azul rey y cromo pulido, y las tres tarjetas doradas aprobadas. No se reabre la exploración visual ni se rediseña esta primera pantalla.
 
+### Ajustes solicitados para la fuente Sites local
+
+El coordinador realizará y comprobará visualmente estos cambios en el componente de Sites local. Este documento registra el pedido del usuario, no una implementación ni una publicación verificadas; no se abre otra implementación en el repositorio legacy.
+
+- **Tarjeta patrimonial referida por el usuario como publicada:** conservar el efecto metálico y el emblema oficial discreto, sin alterar geometría ni proporciones. Eliminar el matiz morado; usar azul noche, reflejos azul rey y cromo suave. No extender dorado a esta variante: permanece reservado para las tarjetas doradas aprobadas. Las tres tarjetas del prototipo `/os` conservan su acabado aprobado.
+- **BitForward:** reducir bloques de texto; dar protagonismo a gráficas y métricas con jerarquía clara, cifras alineadas y fuentes/fechas visibles. Agrupar visualmente las herramientas disponibles, sin inventar capacidades, monedas negociables o integraciones.
+- **Movimiento:** limitarlo a monedas ilustrativas y reflejos, de forma sutil. Incluir control accesible para pausar/reanudar; respetar `prefers-reduced-motion` con presentación estática. No animar cifras ni puntos de gráfica para sugerir cotizaciones, actividad o datos en vivo.
+- **Veracidad:** usar únicamente datos demo identificados en la comprobación local. Si falta información verificada, mostrar pendiente/no disponible, no cotizaciones inventadas ni éxito simulado. Conservar datos, saldos, cálculos, naturaleza y estados.
+
+Aceptación visual a cargo del coordinador: comparar móvil y escritorio antes/después; comprobar ausencia de morado en la tarjeta objetivo, metal/emblema conservados y dorado limitado a las tarjetas aprobadas; verificar gráficas/métricas legibles y herramientas agrupadas; probar pausa con teclado y tacto y modo estático con reduced-motion. Fuente/fecha/demo permanecen visibles y valores/registros son idénticos antes/después. Los escenarios A19–A22 de `AUDITORIA_FUNCIONAL.md` detallan estas comprobaciones; todavía no están ejecutados en esta entrega documental.
+
 ## Vista previa
 
 Con las dependencias instaladas, ejecuta `npm run dev` y abre `http://localhost:3001/os`. Las demás secciones del menú conducen a pantallas provisionales.

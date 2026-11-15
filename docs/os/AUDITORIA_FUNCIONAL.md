@@ -145,6 +145,17 @@ Si el tipo o estado no están verificados, usar un título neutral y un estado e
 
 Evidencia local relacionada: `RecentTransactions` muestra `description`/`type`/`status` (`src/components/dashboard/recent-transactions.tsx:63-80`); `TransactionsTable` usa los mismos campos pero textos/estados esperados en inglés (`src/components/dashboard/transactions-table.tsx:24-54`), distintos de los estados españoles del mock (`src/app/api/transactions/route.ts:4-10`). `/contracts` y `/billing` usan IDs y arrays, no un modelo documental completo. No se verificó aquí una tarjeta de Sites titulada por nombre de archivo: este es un requisito aportado, no un defecto observado personalmente. La armonización de etiquetas debe respetar los estados originales, no traducirlos a un estado distinto.
 
+### Ajuste visual de tarjeta patrimonial y BitForward: requisito del usuario
+
+Procedencia: pedido del usuario, no observación propia del componente publicado. El coordinador implementará y comprobará la mejora en la fuente Sites local; no se atribuye el resultado a v437 ni a producción hasta verificar versión y publicación. Esta entrega solo actualiza documentación; no cambia componentes legacy.
+
+| Elemento | Criterio aprobado para la mejora | Invariante |
+| --- | --- | --- |
+| Tarjeta patrimonial objetivo de Sites | Conservar metal y emblema discreto; sustituir matiz morado por azul noche, reflejos azul rey y cromo suave. | Emblema oficial sin redibujar ni alterar proporciones. Dorado reservado a las tarjetas aprobadas; no cambiar el dorado de las tres tarjetas `/os`. |
+| BitForward: jerarquía | Menos bloques de texto; gráficas y métricas protagonistas, cifras alineadas, fuente/fecha y condición demo visibles. | No inventar cotizaciones, series, activos negociables ni datos disponibles. Información pendiente tiene estado explícito; gráfica ilustrativa identificada como demo. |
+| BitForward: herramientas | Agrupar visualmente las herramientas disponibles con nombres claros y acceso comprensible. | No crear ni redefinir funciones/integraciones por un ajuste de presentación. Mantener visibles los estados pendientes reales. |
+| Monedas y reflejos | Movimiento decorativo sutil, pausable/reanudable mediante control accesible; presentación estática con `prefers-reduced-motion`. | Ningún cambio/animación de valores, series o estados que aparente cotización, actividad o actualización en vivo. La pausa se mantiene hasta reanudar; elementos puramente decorativos no añaden ruido al lector de pantalla. |
+
 ## 6. Brechas priorizadas para comparar con Sites
 
 Prioridad indica orden de decisión, no autorización para implementar.
@@ -162,8 +173,9 @@ Prioridad indica orden de decisión, no autorización para implementar.
 | P1 | Servicios/casos son catálogos o muestras en AFORTU; ocultación del menú sin casos reportada en UI Sites. | Validar familias contratables, solicitud/caso, siguiente paso, documentos y comunicaciones; catálogo accesible también sin casos. Retirar responsables internos de la vista cliente futura. |
 | P2 | OS+ carece de lectura/seguimiento y herramientas integradas en `/os`; archivo manual y análisis limitado reportados en UI Sites. | Comprobar funciones reales de Atlas/Intelligence; validar publicaciones, fuente/fecha, permisos y temas; distinguir archivo editorial de actualidad. Aplicar brief aprobado sin redefinir herramientas. |
 | P2 | Perfil/soporte/navegación incompletos y destinos provisionales. | Verificar acciones reales, navegación móvil y desktop y estados de error/vacío antes de ampliar pantallas. |
+| P2 | Ajuste visual solicitado de tarjeta patrimonial Sites y BitForward. | El coordinador aplicará azul noche/rey/cromo sin morado y reforzará gráficas/métricas y agrupación; conservar emblema y dorado aprobado. Verificar pausa/reduced-motion y datos intactos, sin simular información en vivo. |
 
-La entrega previa de `/os` dejó 8 pruebas focalizadas aprobadas y TypeScript con 43 errores preexistentes idénticos a la línea base, sin errores en archivos nuevos/modificados. Es evidencia de esa entrega, no validación de los flujos legacy de esta auditoría. No se reejecutaron pruebas ni build para este documento. Los checks Vercel fallidos y sus límites están separados en `docs/os/PROTOTIPO_AFORTU_OS.md:34-40`; no se alteró el despliegue.
+La entrega previa de `/os` dejó 8 pruebas focalizadas aprobadas y TypeScript con 43 errores preexistentes idénticos a la línea base, sin errores en archivos nuevos/modificados. Es evidencia de esa entrega, no validación de los flujos legacy de esta auditoría. No se reejecutaron pruebas ni build para este documento. Los checks Vercel fallidos y sus límites están separados en la sección «Diagnóstico de Vercel» de `docs/os/PROTOTIPO_AFORTU_OS.md`; no se alteró el despliegue.
 
 ## 7. Pruebas de aceptación propuestas
 
@@ -189,5 +201,9 @@ Ejecutar solo tras comparar fuentes y acordar alcance, con usuarios, cuentas, as
 | A16 | Comparar registros antes/después de cambiar la redacción de títulos. | Importes, moneda, signo, saldo, naturaleza, estado e identificadores idénticos. Una valuación no se contabiliza como depósito o interés; un reporte no pasa a recibido. Tipo desconocido no produce confirmación inventada. |
 | A17 | Contrastar dos asesores demo y un bloque externo modificado después del snapshot. | Selección usa el calendario/scope acordado para el asesor; actualización o caducidad explícita del busy externo. No confirmar sobre una copia obsoleta como si fuera sincronización viva. Verificar en vista cliente, no solo administrativa. |
 | A18 | Cliente demo sin casos clasificados abre Servicios y Noticias/Análisis. | Catálogo disponible sigue accesible con estado vacío de casos. Noticias archivadas muestran fuente/fecha y no aparentan actualidad; cálculo y accesos no se presentan como herramientas completas no verificadas. |
+| A19 | Comparar la tarjeta patrimonial objetivo de Sites antes/después en móvil y escritorio. | Sin matiz morado; azul noche, reflejos azul rey y cromo suave. Metal y emblema discreto conservados, geometría/proporciones oficiales intactas. Dorado solo en tarjetas aprobadas; sin cambios a las tres tarjetas `/os`. |
+| A20 | Abrir BitForward con métricas/gráficas demo y herramientas disponibles o pendientes. | Menos bloques de texto; métricas y gráficas legibles y protagonistas, herramientas agrupadas y estados honestos. Sin desbordamiento a 320/390 px; fuente/fecha/demo visibles, sin presentar una integración inexistente como activa. |
+| A21 | Pausar y reanudar monedas/reflejos con teclado y tacto; activar reduced-motion. | Pausa detiene todo movimiento decorativo y permanece hasta reanudar; control con foco y estado accesibles. Reduced-motion muestra la variante estática desde el inicio. La lectura y las acciones no dependen de la animación. |
+| A22 | Dejar BitForward abierto con datos demo sin nuevas entradas y comparar antes/después del ajuste visual. | Cifras, series, fechas, saldos, cálculos, naturaleza y estados no cambian. Sin cotizaciones inventadas, interpolación de valores ni indicadores de actividad en vivo. Si falta información, pendiente/no disponible en vez de dato fabricado. |
 
 **Puerta de salida de la auditoría:** completar una columna de contraste con Sites (presente, parcial, ausente o no verificable) y acordar qué fuente y contratos se reutilizan. Hasta entonces, esta entrega añade únicamente documentación al PR #47.
