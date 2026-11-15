@@ -1310,11 +1310,8 @@
   color: var(--os-ink);
 }
 .afortu-os .os-acc__sub {
-  overflow: hidden;
   font-size: 13px;
   line-height: 18px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   color: var(--os-ink-3);
 }
 .afortu-os .os-acc__contract {
