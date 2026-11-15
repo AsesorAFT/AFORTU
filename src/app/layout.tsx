@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
+import { HideOnOsRoutes } from '@/components/os/hide-on-os-routes';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -87,7 +88,9 @@ export default function RootLayout({
       <body className="font-body">
         <main>{children}</main>
         <Toaster />
-        <WhatsAppButton />
+        <HideOnOsRoutes>
+          <WhatsAppButton />
+        </HideOnOsRoutes>
       </body>
     </html>
   );
